@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<appendix id="customParameters">
+  <title>Customization Parametrs</title>
+  <para>
+    This section describe each of the customization parameter used in SilkPage.
+    This information is most useful when customizing SilkPage to publish your 
+    Website.
+  </para>
+</appendix>

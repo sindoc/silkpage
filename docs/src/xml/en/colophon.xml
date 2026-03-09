@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE colophon PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+<colophon>
+<?dbhtml filename="colophon.html"?>
+  <para>
+    This document was prepared using <ulink url="http://docbook.sourceforge.net/projects/xsl/">DocBook XSL Stylesheets</ulink>. The main font is helvetica, arial and sans-serif. The DocBook XSL was refined and customized by <ulink url="http://www.markupware.com/about/team.html">Sina K. Heshmati</ulink> which in turn, was drived from the style by <ulink url="http://nwalsh.com/people/ndw/index.html">Norman Walsh</ulink>. In addition, the visual markup is controlled by a single CSS stylesheet prepared by <ulink url="http://www.khakbaz.com/javad">Javad K. Heshmati</ulink>. The final version of this document was produced by running a single Make file on a Dell Latitude running the <ulink url="http://www.redhat.com">Redhat</ulink> distribution of the <ulink url="http://www.gnu.org">GNU/Linux</ulink> operating system.
+  </para>
+</colophon>
+

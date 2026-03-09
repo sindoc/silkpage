@@ -1,0 +1,159 @@
+<t:templates xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0"
+	     xmlns:param="http://nwalsh.com/docbook/xsl/template/1.0/param"
+             xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="article" t:wrapper="div" class="article-titlepage">
+  <t:titlepage-content t:side="recto">
+    <pubdate/>
+    <legalnotice t:predicate="[not(@role) or @role!='status']"/>
+    <abstract/> 
+    <copyright/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="appendix" t:wrapper="div" class="appendix-titlepage">
+  <t:titlepage-content t:side="recto">
+    <subtitle/>
+    <corpauthor/>
+    <releaseinfo/>
+    <copyright/>
+    <legalnotice/>
+    <pubdate/>
+    <revision/>
+    <revhistory/>
+    <abstract/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="section" t:wrapper="div" class="section-titlepage">
+  <t:titlepage-content t:side="recto">
+    <title t:named-template="section.title"/>
+    <subtitle/>
+    <corpauthor/>
+    <authorgroup/>
+    <author/>
+    <releaseinfo/>
+    <copyright/>
+    <legalnotice/>
+    <pubdate/>
+    <revision/>
+    <revhistory/>
+    <abstract/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+    <xsl:if test="count(parent::*)='0'"><hr/></xsl:if>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="bibliography" t:wrapper="div" class="bibliography-titlepage">
+  <t:titlepage-content t:side="recto">
+    <title t:force="1"
+	   t:named-template="component.title"
+	   param:node="ancestor-or-self::bibliography[1]"/>
+    <subtitle/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="glossary" t:wrapper="div" class="glossary-titlepage">
+  <t:titlepage-content t:side="recto">
+    <title t:force="1"
+	   t:named-template="component.title"
+	   param:node="ancestor-or-self::glossary[1]"/>
+    <subtitle/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="index" t:wrapper="div" class="index-titlepage">
+  <t:titlepage-content t:side="recto">
+    <title t:force="1"
+	   t:named-template="component.title"
+	   param:node="ancestor-or-self::index[1]"/>
+    <subtitle/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+<!-- ==================================================================== -->
+
+</t:templates>

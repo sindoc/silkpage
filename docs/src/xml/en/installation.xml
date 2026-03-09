@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<chapter id="installation">
+<title>Installation and Setup</title>
+<section id="requirements">
+  <title>System Requirement</title>
+  <itemizedlist>
+    <listitem>
+      <formalpara>
+        <title>CPU</title>
+        <para>
+          <trademark class="registered">Intel</trademark>
+          <trademark class="registered">Pentium</trademark>
+          II or higher processor
+        </para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>Memory</title>
+        <para>32 MB RAM</para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>Disk Space</title>
+        <para>20 MB</para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>Network</title>
+        <para>
+          Internet connection and a  
+          <link linkend="gls:browser">Web Browser</link>
+        </para>
+      </formalpara>
+    </listitem>
+  </itemizedlist>
+</section>
+
+<section id="prerequisite">
+  <title>Prerequisite Software</title>
+  <para>
+     Prior to installing SilkPage, you must first install the following 
+     application software and middleware. Detailed instructions for installing 
+     and using the below mentioned applications are beyond the scope of this 
+     document.  However, you'll find appropriate instructions in the 
+     corresponding URL(s).
+  </para>
+ 
+  <orderedlist>
+    <listitem>
+      <para>
+        Download and Install <xref linkend="gls:java"/>
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Download and Install <xref linkend="gls:ant"/>
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Download and Install <xref linkend="gls:docbook.xsl"/>
+        (optional)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Download and Install <xref linkend="gls:docbook.website"/>
+        (optional)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Download
+        <xref linkend="res:silkpage.latest" endterm="ttl:silkpage.latest"/>
+      </para>
+    </listitem>
+  </orderedlist>
+</section>
+
+<section id="installSilkPage">
+  <title>Installation Tasks</title>
+  <para>
+    This section covers the SilkPage installation tasks. 
+    <replaceable>VERSION</replaceable> corresponds to the current version of
+    the SilkPage software.
+  </para>
+  
+  <section id="installation.downloadfiles">
+    <title>SilkPage Distribution Download</title>
+    <para>
+      SilkPage comes in two bundles:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+	  <filename>
+            silkpage-<replaceable>VERSION</replaceable>.zip
+	  </filename>
+	  only includes SilkPage
+          distribution. If you choose this download file, you also need to
+          download the required DocBook resources mentioned in 
+          <xref linkend="prerequisite"/>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+	  <filename>
+            silkpage-<replaceable>VERSION</replaceable>-plus.zip
+	  </filename>
+           in addition to SilkPage 
+           distribution, it also includes the required DocBook resources. It's
+           recommended that you choose this download file as it includes all
+           the required DocBook resources.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  
+  <section id="installation.unpacking">
+    <title>Installing SilkPage Distribution</title>
+    <para>
+      To install SilkPage you only need to unpack the SilkPage distribution 
+      file. Unpacking the download file should result the directory 
+      structure shown in <xref linkend="install.dir.structure"/>. Once unpacked,
+      you can test the SilkPage installation by running the 
+      <parameter>config</parameter> target as shown in 
+      <xref linkend="install.gnu"/>.
+    </para>
+
+  <example id="install.gnu">
+    <title>Installing SilkPage</title>
+
+    <cmdsynopsis>
+      <command>unzip</command>
+      <arg choice='plain'>
+        silkpage-<replaceable>VERSION</replaceable>.zip
+      </arg>
+    </cmdsynopsis>
+
+    <cmdsynopsis>
+      <command>cd</command>
+      <arg choice='plain'>
+        silkpage-<replaceable>VERSION</replaceable>
+      </arg>
+    </cmdsynopsis>
+
+    <cmdsynopsis>
+      <command>ant</command>
+      <arg choice="plain">
+	<option>-f</option>
+      </arg> 
+      <arg choice="plain">src/xml/build/tasks.xml</arg>
+      <arg choice="plain">config</arg>
+    </cmdsynopsis>
+
+    <programlisting>
+<![CDATA[
+   config:
+     [echo] SilkPage (VERSION)
+     [echo] user.name: jhe
+     [echo] os.name: Linux
+     [echo] temp.dir: /tmp
+     [echo] DocBook Website installed ? true
+     [echo] DocBook XSL installed ? true
+]]>
+    </programlisting>
+  </example>
+  
+  <para>
+    Refer to <xref linkend="commands"/> for detailed information about 
+    SilkPage command line options. For troubleshooting, refer to
+   <xref linkend="faq:install"/>.
+  </para>
+
+  </section>
+
+  <section id="install.dir.structure">
+  <title>SilkPage Directory Structure</title>
+    <para>
+      This section gives an overview of the SilkPage directories and the files 
+      they contain. Assuming the SilkPage software is installed at 
+      <filename>silkpage<replaceable>-VERSION</replaceable></filename>, here 
+      are some of the most important 
+      directories:
+    </para>
+    <programlisting>
+<![CDATA[
+
+		              [siklpage-VERSION] - $SILKPAGE_HOME
+                                     |
+          +-------------+------------+------------------------+
+          |             |            |                        |
+        [cfg]         [docs]      [share]                   [src]
+        acronyms.properties          |                        |
+        catalog.xml           +------+-----+       +----------+----------+
+        token.properties      |            |       |          |          |  
+        tidy.properties     [lib]      [tools]   [css]      [xml]      [xsl]
+     
+]]>
+    </programlisting>
+    <variablelist>
+      <title>SilkPage Directories</title>
+      <varlistentry id="silkpage.home.dir">
+        <term><filename class="directory"><envar>SILKPAGE_HOME</envar></filename></term>
+        <listitem>
+          <para>
+            The installation directory of SilkPage software, refered to as
+            <filename class="directory"><envar>SILKPAGE_HOME</envar></filename> here after.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry id="silkpage.cfg.dir">
+        <term><filename class="directory">cfg/</filename></term>
+        <listitem>
+          <para>
+            The configuration directory of the SilkPage software.
+          </para>
+
+            <itemizedlist>
+              <listitem>
+                <para>
+                 <xref linkend="gfiles.catalog.xml" 
+                   endterm="ttl:gfiles.catalog.xml"/> used in order to
+                 perform Entity and URI resolution.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                 <xref linkend="gfiles.token.properties"
+                   endterm="ttl:gfiles.token.properties"/> contains a set of
+                 <emphasis>key</emphasis> and <emphasis>value</emphasis> 
+                 entries defined by the user. The entries in this file are used 
+                 to replace the occurrence of a given key with its value in the
+                 generated Web pages.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                 <xref linkend="gfiles.tidy.properties"
+                   endterm="ttl:gfiles.tidy.properties"/> contains 
+                 <application>Tidy</application> properties that are fed to 
+                 <application>Tidy</application> when it's run by SilkPage to
+                 validate the XHTML output.
+                </para>
+              </listitem>
+            </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">docs/</filename></term>
+        <listitem>
+          <para>
+            Contains SilkPage User Guide and documentation. 
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">share/</filename></term>
+        <listitem>
+          <para>
+             Contains resource files used by SilkPage.
+            <itemizedlist>
+              <listitem>
+                <para>
+                 <filename>lib/</filename> contains code libraries.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                 <filename>tools/</filename> contains middleware and tools 
+                 including <application>DocBook Website</application> and
+                 <application>DocBook XSL</application> stylesheets.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">src/</filename></term>
+        <listitem>
+          <para>
+            Contains SilkPage source files.
+            <itemizedlist>
+              <listitem>
+                <para>
+                 <filename>css/</filename> contains a set of CSS stylesheets 
+                 that are used to control the XHTML style and presentation.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                 <filename>xml/</filename> contains 
+                 <application>Ant</application> based build instructions used
+                 to generate your Website.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                 <filename>xsl/</filename> contains a set of XSL stylesheets 
+                 used to output XHTML.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </section>
+
+</section>
+</chapter>

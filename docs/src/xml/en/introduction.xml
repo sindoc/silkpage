@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE preface PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<preface id="introduction">
+<title>Introduction</title>
+<para>
+  This document contains useful information to assist you during the 
+  installation, customization and usage of SilkPage.
+</para>
+
+<section id="silkpage">
+<title>What is SilkPage?</title>
+  <para>
+    SilkPage is an XML based Web publishing framework that has evolved from the
+    Docbook Website. With strong foundations in XML, it is a publishing 
+    framework with a focus on web standards and usability. SilkPage provides a 
+    framework for publishing structured and standard compliant websites in XML.
+    It is particularly suited to publish personal websites, though it is by no 
+    means limited to them.
+  </para>
+
+  <variablelist id="silkpage.features">
+    <title>Key Features</title>
+    <varlistentry>
+      <term>Conent Management</term>
+      <listitem>
+        <para>
+          XML based content management.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>WaSP Compliant</term>
+      <listitem>
+        <para>
+           Web Standards (WaSP) compliant XHTML output.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Accessibilty</term>
+      <listitem>
+        <para>
+          SilkPage is developed with accessibility and usability in mind.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Content Feeds Support</term>
+      <listitem>
+        <para>
+          Integrated XML and RSS feed generation.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Separate Presentation Model</term>
+      <listitem>
+        <para>
+          Customization via XSL and CSS customization layers.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>
+
+<section id="typography">
+  <title>Notation and Typographical Conventions</title>
+  <para>
+    There is a systematic usage of typography and highlighting in this 
+    document. Different styles are defined as follows:
+  </para>
+  <variablelist>
+    <title>Typography Styles</title>
+    <varlistentry>
+      <term><sgmltag class="element">element</sgmltag></term>
+      <listitem>
+        <para>
+          An XML element.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><sgmltag class="attribute">attribute</sgmltag></term>
+      <listitem>
+        <para>
+          An XML attribute.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><filename>filename</filename></term>
+      <listitem>
+        <para>
+          Paths, directory and file names.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><application>application</application></term>
+      <listitem>
+        <para>
+          Programs and software application names.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><cmdsynopsis>
+	<command>command</command>
+	<arg choice='plain'>synopsis</arg></cmdsynopsis></term>
+      <listitem>
+        <para>
+	  Shell commands that are executed by the user
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><userinput>User Input</userinput></term>
+      <listitem>
+        <para>
+          Text that the user has to type.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><computeroutput>Computer output</computeroutput></term>
+      <listitem>
+        <para>
+          Text displayed by the computer on the command line.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+</section>
+
+</preface>

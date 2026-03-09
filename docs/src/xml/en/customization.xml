@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<chapter id="customization">
+<title>Customization</title>
+<para>
+  SilkPage allows stylesheet Customization for a particular website. That is
+  customizing with XSL as well as CSS stylesheets.
+</para>
+
+<section id="xsl">
+<title>XSL Driven Customization</title>
+<para>FIXME</para>
+</section>
+
+<section id="css">
+<title>CSS Driven Customization</title>
+<para>FIXME</para>
+</section>
+
+</chapter>

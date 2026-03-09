@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE catalog
+   PUBLIC "-//OASIS/DTD Entity Resolution XML Catalog V1.0//EN"
+   "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <!-- DTD and stylesheet files installed under /usr/share/sgml/docbook -->
+  <group  xml:base="file:///usr/share/sgml/docbook/">
+
+    <!-- Resolve DTD URL system ID to local file -->
+    <rewriteSystem
+        systemIdStartString="http://www.oasis-open.org/docbook/xml/4.3/"
+        rewritePrefix="xml-4.3/" />
+    <rewriteSystem
+        systemIdStartString="http://www.oasis-open.org/docbook/xml/4.2/"
+        rewritePrefix="xml-dtd-4.2-1.0-14/" />
+    <!-- Resolve stylesheet URL to local file -->
+    <rewriteURI
+        uriStartString="http://docbook.sourceforge.net/release/xsl/current/"
+        rewritePrefix="xsl-1.67.2/" />
+
+    <!-- Resolve DTD PUBLIC identifiers -->
+    <nextCatalog  catalog="docbook42/catalog.xml" />
+
+    <!-- To resolve simple DTD SYSTEM identifiers. -->
+    <!-- Note: this does not work with Java resolver -->
+    <!--   classes in Saxon or Xalan -->
+    <system
+         systemId="docbook.dtd"
+         uri="docbook42/docbookx.dtd" />
+
+    <!-- To resolve short stylesheet references -->
+    <uri
+        name="docbook.xsl"
+        uri="xsl-1.67.2//html/docbook.xsl" />
+    <uri 
+        name="chunk.xsl"
+        uri="xsl-1.67.2/html/chunk.xsl" />
+    <uri
+        name="fo-docbook.xsl"
+        uri="xsl-1.67.2/fo/docbook.xsl" />
+
+  </group>
+
+  <group  xml:base="../">
+    <rewriteSystem
+        systemIdStartString="http://www.markupware.com/xml/docs/1.0/dtd/"
+        rewritePrefix="src/dtd/"/>
+  </group>
+
+  <nextCatalog  catalog="/tmp/www.markupware.com/build/catalog.xml"/>
+
+</catalog>

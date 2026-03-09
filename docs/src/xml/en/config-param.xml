@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<appendix id="configParameters">
+  <title>Configuration Files and Parametrs</title>
+  <para>
+    This section describe each of the configuration parameter used in SilkPage.
+    This information is most useful when configuring SilkPage to publish your 
+    Website.
+  </para>
+
+  <variablelist id="configurationFiles">
+    <title>Configuration Files</title>
+    <varlistentry>
+      <term><filename>src/xsl/config.xsl</filename></term>
+      <listitem>
+        <para>
+          The main configuaration file that contains customization parameters 
+          used to customize the SilkPage at the XSL layer. 
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <filename>src/css/<replaceable>sitename</replaceable>.css</filename>
+      </term>
+      <listitem>
+        <para>
+          The default CSS stylesheet used that contains customization parameters
+	  used to customize the SilkPage at the CSS layer.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <filename><replaceable>sitename</replaceable>.properties</filename>
+      </term>
+      <listitem>
+        <para>
+          The main configuaration file that contains configuration information
+          used by <application>Ant</application> to build and publish your
+          Website.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <refentry id="silkpage.adapt.xsl.main">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.xsl.main</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><varname>silkpage.adapt.xsl.main</varname></refname>
+      <refpurpose>
+        A fully qualified filename to the main XSL configuration parameters.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+      <synopsis>
+        The main configuaration file that contains customization parameters 
+        used to customize the SilkPage at the XSL layer. 
+      </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Default Value</title>
+      <para>
+        <filename path="${user.dir}/src/xsl/">config.xsl</filename>
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry id="silkpage.adapt.xsl.theme">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.xsl.theme</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><varname>silkpage.adapt.xsl.theme</varname></refname>
+      <refpurpose>
+        An identifier to the  XSL ...
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+      <synopsis>
+        Some text
+      </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Default Value</title>
+      <para>
+        Some value
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry id="silkpage.adapt.css.theme">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.css.theme</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><varname>silkpage.adapt.css.theme</varname></refname>
+      <refpurpose>
+        An identifier to the  CSS ...
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+      <synopsis>
+        Some text
+      </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Default Value</title>
+      <para>
+        Some value
+      </para>
+    </refsect1>
+  </refentry>
+</appendix>

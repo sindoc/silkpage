@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<appendix id="commands">
+  <title>Command Line Options</title>
+  <para>
+    This section covers
+    the complete list of command line targets and options of SilkPage used to 
+    publish websites. SilkPage command is based on <xref linkend="gls:ant"/>. 
+    Before running SilkPage tragets, make sure that you have installed 
+    the Prerequisite software listed in <xref linkend="prerequisite"/>. 
+    Moreover, refer to <xref linkend="ifiles.build.properties"/> in order
+    to learn about parameters' configuration that may effect the command line
+    targets.
+  </para>
+
+
+  <refentry id="ant">
+
+  <refmeta>
+    <refentrytitle>ant</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ant</refname>
+    <refpurpose>
+      Processes SilkPage command line targets options used for generating and
+      publishing websites.
+    </refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+  <cmdsynopsis>
+    <command>ant</command>
+    <arg>config</arg>
+    <arg>preview</arg>
+    <arg>publish</arg>
+    <arg>scratch</arg>
+    <sbr/>
+  </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id="ant.targets">
+    <title>Targets</title>
+    <refsect2 id="target.scratch">
+      <title><parameter>scratch</parameter></title>
+      <para>
+      uses the pre-defined SilkPage templates
+      to generate the first draft of your website in XML format. 
+      This target must be
+      executed in the <xref linkend="silkpage.home.dir"/> directory and takes
+      two arguments:
+      </para>
+      <orderedlist>
+        <listitem>
+	  <cmdsynopsis>
+	    <arg choice="plain">
+	      <option>-f</option>
+	    </arg>
+	    <arg choice="plain">src/xml/build/tasks.xml</arg>
+	  </cmdsynopsis>
+        </listitem>
+        <listitem>
+	  <cmdsynopsis>
+	    <arg choice="plain">
+	      <option>-Dsite.id=<replaceable>identifier</replaceable></option>
+	    </arg>
+	  </cmdsynopsis>
+        </listitem>
+      </orderedlist>
+      <para>Once executed, it generates the directory structure shown in 
+      <xref linkend="site.skel.structure"/>  that can be used as a 
+      start point for your website development.</para>
+      <formalpara id="target.scratch.example">
+	<title>Full command line:</title>
+	<para>
+	<cmdsynopsis>
+	  <command>ant</command>
+	  <arg choice="plain">
+	    <option>-f</option>
+	  </arg>
+	  <arg choice="plain">src/xml/build/tasks.xml</arg>
+	  <arg choice="plain">
+	    <option>-Dsite.id=<replaceable>identifier</replaceable></option>
+	  </arg>
+	  <arg choice="plain">scratch</arg>
+	</cmdsynopsis>
+	</para>
+      </formalpara>
+    </refsect2>
+    <refsect2 id="target.preview">
+      <title>
+	<parameter>preview</parameter>
+      </title>
+      <para>
+      After executing the <xref linkend="target.scratch"/> target, you need to 
+      change directory to <xref linkend="site.home.dir"/> and execute the 
+      preview target in order to generate and install a local copy of
+      your website in XHTML format. The local website is installed relative to 
+      the 
+      <filename class="directory">temp.dir</filename> directory. If not 
+      specified, the local host <emphasis>default temp dir</emphasis> is used.
+      </para>
+      <formalpara id="target.preview.example">
+        <title>Full command line:</title>
+	<para>
+	<cmdsynopsis>
+	  <command>ant</command>
+	  <arg choice="plain">preview</arg>
+	</cmdsynopsis>
+	</para>
+      </formalpara>
+    </refsect2>
+    <refsect2 id="target.publish">
+    <title><parameter>publish</parameter></title>
+    <para>
+      generates a local copy of your website and
+      publishes it online by uploading the generated files. Before executing 
+      this target, make sure that you have set the configuration parameters of
+      <xref linkend="ftp.param"/>. This target must be
+      executed in the <xref linkend="site.home.dir"/> directory 
+      and takes two arguments
+      that are the login and password of the FTP server of your website:</para>
+      <orderedlist>
+        <listitem>
+	  <cmdsynopsis>
+	    <arg choice="plain">
+	      <option>-Dftp.userid=<replaceable>login</replaceable>
+	      </option>
+	    </arg>
+	  </cmdsynopsis>
+        </listitem>
+        <listitem>
+	  <cmdsynopsis>
+	    <arg choice="plain">
+	      <option>-Dftp.password=<replaceable>password</replaceable>
+	      </option>
+	    </arg>
+	  </cmdsynopsis>
+        </listitem>
+      </orderedlist>
+      <formalpara id="target.publish.example">
+        <title>Full command line:</title>
+	<para>
+	<cmdsynopsis>
+	  <command>ant</command>
+	    <arg choice="plain">
+	      <option>-Dftp.userid=<replaceable>login</replaceable>
+	      </option>
+	    </arg>
+	    <arg choice="plain">
+	      <option>-Dftp.password=<replaceable>password</replaceable>
+	      </option>
+	    </arg>
+	    <arg choice="plain">publish</arg>
+	  </cmdsynopsis>
+	</para>
+      </formalpara>
+    </refsect2>
+    <refsect2 id="target.config">
+      <title><parameter>config</parameter></title>
+      <para>
+       prints configuration information about
+      the SilkPage and its prerequisite software mentioned in
+      <xref linkend="prerequisite"/>. This target must be executed in 
+      <xref linkend="silkpage.home.dir"/> directory and takes the following 
+      argument:
+	<cmdsynopsis>
+	  <arg choice="plain">
+	    <option>-f</option>
+	  </arg>
+	  <arg choice="plain">src/xml/build/tasks.xml</arg>
+	</cmdsynopsis>
+	</para>
+        <formalpara id="target.config.example">
+          <title>Full command line:</title>
+	  <para>
+	  <cmdsynopsis>
+	    <command>ant</command>
+	    <arg choice="plain">
+	      <option>-f</option>
+	    </arg>
+	    <arg choice="plain">src/xml/build/tasks.xml</arg>
+	    <arg choice="plain">config</arg>
+	  </cmdsynopsis>
+	</para>
+        </formalpara>
+      </refsect2>
+    </refsect1>
+  </refentry>
+
+</appendix>

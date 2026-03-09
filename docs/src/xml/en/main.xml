@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+ <book 
+   xmlns:xi="http://www.w3.org/2001/XInclude" 
+   id="silkpage-userguide" 
+   lang="en">
+  <bookinfo>
+    <releaseinfo role="cvs">
+	$Id: main.xml,v 1.1.1.1 2005-07-28 22:08:06 sina Exp $
+    </releaseinfo>
+
+    <title>SilkPage User Guide</title>
+    <copyright>
+      <year>2004</year>
+      <holder><ulink url="http://www.markupware.com">MarkupWare</ulink></holder>
+    </copyright>
+
+<!--
+    <authorgroup>
+      <author>
+	<firstname>Sina</firstname>
+	<othername role="middle">K.</othername>
+	<surname>Heshmati</surname>
+	<affiliation>
+	  <orgname>Markupware</orgname>
+	  <address>
+	    <email>sina@markupware.com</email>
+	  </address>
+	</affiliation>
+      </author>
+      <author>
+	<firstname>Javad</firstname>
+	<othername role="middle">K.</othername>
+	<surname>Heshmati</surname>
+	<affiliation>
+	  <orgname>Markupware</orgname>
+	  <address>
+	    <email>javad@markupware.com</email>
+	  </address>
+	</affiliation>
+      </author>
+    </authorgroup>
+
+    <pubdate>05 October 2004</pubdate>
+    <abstract>
+      <para>
+        Contains useful information to assist the user during the installation,
+        customization and usage of SilkPage.
+        At MarkupWare we use SilkPage to prepare and present our Websites. 
+        SilkPage is a XML driven web publishing framework that can be extended
+        and customized to fit your needs. Its elegant output gives each 
+        webpage a visual identity and each Website a unique personality.
+      </para>
+
+    </abstract>
+-->
+  <xi:include href="legal-notice.xml"/>
+  </bookinfo>
+
+  <xi:include href="introduction.xml"/>
+  <xi:include href="installation.xml"/>
+  <xi:include href="usage.xml"/>
+  <xi:include href="config-files-global.xml"/>
+  <xi:include href="config-files-instance.xml"/>
+  <xi:include href="commands.xml"/>
+  <xi:include href="faq.xml"/>
+  <xi:include href="resources.xml"/>
+  <xi:include href="glossary.xml"/>
+  <xi:include href="colophon.xml"/>
+</book>

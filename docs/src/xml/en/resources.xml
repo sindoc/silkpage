@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<appendix id="resources">
+  <title>Resources</title>
+  <para>
+    This appendix provides the resource references mentioned explicitly
+    in this document. In addition, a sampling of resources for additional 
+    information about XML, XSL and CSS is provided.
+  </para>
+
+<section id="res:silkpage.latest" xreflabel="Latest Version of SilkPage">
+  <?dbhtml filename="silkpage.latest.html"?>
+  <title>Latest Version of SilkPage</title>
+  <titleabbrev id="ttl:silkpage.latest">Latest Version of SilkPage</titleabbrev>
+  <para>
+    The most recent version of SilkPage Software and its guide 
+    (that is this document) can be found at:
+  </para>
+  <variablelist>
+    <varlistentry id="res:silkpage.software">
+      <term>
+        <ulink url="http://silkpage.markupware.com/download/index.html">
+          SilkPage Software
+         </ulink>
+      </term>
+      <listitem>
+        <para>
+	  SilkPage Software download page.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:silkpage.docs">
+      <term>
+        <ulink url="http://silkpage.markupware.com/docs/index.html">
+          SilkPage Documentation
+         </ulink>
+      </term>
+      <listitem>
+        <para>
+	  The most up-to-date version of this document.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+</section>
+
+<section id="res:requiredDownload">
+  <?dbhtml filename="resources.requiredDownload.html"?>
+  <title>Prerequisite Software Resources</title>
+  
+  <variablelist>
+    <varlistentry id="res:ant" xreflabel="Ant">
+      <term>
+        <ulink url="http://ant.apache.org">
+          Apache Ant
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          Apache Ant is a Java-based build tool. In theory, it is kind of like 
+          Make, but without Make's wrinkles.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:java" xreflabel="Java">
+      <term>
+        <ulink url="http://java.sun.com/j2se">Java (J2SE)</ulink>
+      </term>
+      <listitem>
+        <para>
+          Java 2 Platform, Standard Edition (J2SE) provides a complete 
+          environment for applications development on desktops and servers. 
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry id="res:docbook.xsl" xreflabel="DocBook XSL Stylesheets">
+      <term>
+        <ulink url="http://docbook.sourceforge.net/projects/xsl/index.html">
+          DocBook XSL Stylesheets
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          These are XSL stylesheets for the DocBook DTD and its derivatives 
+          (Simplified DocBook, etc.). If you use them to generate PDF/print 
+          documents or Web/HTML content, consider including the button above 
+          somewhere in your documents (so that your reader will know the 
+          documents were built using DocBook).
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>
+
+<section id="res:spec">
+  <?dbhtml filename="resources.spec.html"?>
+  <title>Specifications</title>
+
+  <variablelist>
+    <varlistentry id="res:spec.css1" xreflabel="spec.css1">
+      <term>
+        <ulink url="http://www.w3.org/TR/REC-CSS1">
+          Cascading Style Sheets, Level 1
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          Specifies level 1 of the Cascading Style Sheet mechanism (CSS1).
+          Covers all the basic properties and simple selectors which work 
+          reliably in most modern browsers.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:spec.css2" xreflabel="CSS2 Specification">
+      <term>
+        <ulink url="http://www.w3.org/TR/CSS21">
+          Cascading Style Sheets, Level 2 (Revision 1)
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          Specifies level 2 (Revision 1) of the Cascading Style Sheet 
+          mechanism (CSS2.1). Released after CSS1, adds a whole new set of 
+          powerful features such as selectors, visibility properties,
+          media types and positioning.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:spec.xhml" xreflabel="XHML 1.0 Specification">
+      <term>
+        <ulink url="http://www.w3.org/TR/xhtml1">XHML 1.0</ulink>
+      </term>
+      <listitem>
+        <para>
+          The specification for XML which behaves just like HTML in all 
+          browsers. Follows a stricter rule set, and thus, is easier to 
+          error-check using common HTML validators.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:spec.xml" xreflabel="XML Specification">
+      <term>
+        <ulink url="http://www.w3.org/TR/REC-xml/">XML 1.0</ulink>
+      </term>
+      <listitem>
+        <para>
+          The W3C technical recommendation that defines XML 1.0.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:spec.cat" xreflabel="Catalogs Specification">
+      <term>
+      <ulink url="http://oasis-open.org/committees/entity/spec-2001-08-06.html">
+        XML Catalogs Specification
+      </ulink>
+      </term>
+      <listitem>
+        <para>
+          Oasis XML Catalogs Specification.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+</section>
+
+<section id="res:tutorials">
+  <?dbhtml filename="resources.tutorials.html"?>
+  <title>Tutorials and Introductory Materials</title>
+
+  <variablelist>
+
+    <varlistentry id="res:tutorials.css.meyer">
+      <term>
+        <ulink url="http://www.meyerweb.com/eric/css">
+          CSS Reference Pages
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          CSS articles, references and books. (by Eric Meyer)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:tutorials.css.zen">
+      <term>
+        <ulink url="http://www.csszengarden.com">
+          Zen Garden
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          A demonstration of what can be accomplished visually through 
+          CSS-based design. 
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:tutorials.xml.walsh.intro">
+      <term>
+        <ulink url="http://nwalsh.com/docs/articles/xml">
+          A Technical Introduction to XML
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          A close look at the ins-and-outs of XML. (by Norman Walsh)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="res:tutorials.xml.stayton.xsl">
+      <term>
+        <ulink url="http://www.sagehill.net/docbookxsl/index.html">
+         DocBook XSL: The Complete Guide (Second Edition)
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          It's the definitive guide to using the DocBook XSL stylesheets. 
+          (by Bob Stayton)
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+</section>
+</appendix>

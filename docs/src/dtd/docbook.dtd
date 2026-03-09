@@ -1,0 +1,22 @@
+<!-- ====================================================================== -->
+<!-- MarkupWare XML Docsm, DocBook DTD V1.0
+     Copyright (C) 2004 MarkupWare Team.
+     http://www.markupware.com/xml/docs/
+
+     $Id: docbook.dtd,v 1.1.1.1 2005-07-28 22:08:03 sina Exp $
+
+     Please direct all questions and comments about this DTD to
+     MarkupWare Team, <docs@markupware.com>.
+
+     Common declaration:
+
+     <?xml version="1.0"?>
+     <!DOCTYPE preface PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+       "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+                                                                            -->
+<!-- ====================================================================== -->
+
+<!-- In this version, we use full DocBook -->
+<!ENTITY % docbook.dtd PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+%docbook.dtd;

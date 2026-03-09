@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary PUBLIC "-//MarkupWare//DTD Docs XML V1.0//EN"
+  "http://www.markupware.com/xml/docs/1.0/dtd/docbook.dtd">
+
+<glossary id="gls">
+<title>Glossary</title>
+<!--
+<para>
+Online resources.
+</para>
+-->
+<glossdiv>
+<title>Terms</title>
+<glossentry id="gls:tidy" xreflabel="Tidy">
+  <glossterm>
+    <ulink url="http://www.w3.org/People/Raggett/tidy">
+      TIDY
+    </ulink>
+  </glossterm>
+  <glossdef>
+    <para>
+       TIDY is a free utility from W3C to fix HTML/XHTML mistakes automatically
+       and tidy up sloppy editing into nicely layed out markup
+    </para>
+    <glossseealso otherterm="gls:xhtml">XHTML</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:docbook.website" xreflabel="DocBook Website">
+  <glossterm>
+    <ulink url="http://docbook.sourceforge.net/projects/website/index.html">
+      DocBook Website
+    </ulink>
+  </glossterm>
+  <glossdef>
+    <para>
+      The Website doctype and stylesheets are for making websites (like this 
+      one). If you generate a website using Website, consider including the 
+      button above in your site (so that your visitors will know you built it 
+      using DocBook).
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:docbook.xsl" xreflabel="DocBook XSL Stylesheets">
+  <glossterm>
+    <ulink url="http://docbook.sourceforge.net/projects/xsl/index.html">
+      DocBook XSL Stylesheets
+    </ulink>
+  </glossterm>
+  <glossdef>
+    <para>
+      These are XSL stylesheets for the DocBook DTD and its derivatives 
+      (Simplified DocBook, etc.). If you use them to generate PDF/print 
+      documents or Web/HTML content, consider including the button above 
+      somewhere in your documents (so that your reader will know the documents 
+      were built using DocBook).
+    </para>
+    <glossseealso otherterm="gls:xsl">XSL</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:wasp" xreflabel="Web Standards">
+  <glossterm>
+    <ulink url="http://www.webstandards.org">
+      Web Standards
+    </ulink>
+  </glossterm>
+  <acronym>WASP</acronym>
+  <glossdef>
+    <para>
+      Founded in 1998, The Web Standards Project (WaSP) fights for standards 
+      that reduce the cost and complexity of development while increasing the 
+      accessibility and long-term viability of any site published on the Web.
+      We work with browser companies, authoring tool makers, and our peers to 
+      deliver the true power of standards to this medium.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:ant" xreflabel="Ant">
+  <glossterm>
+    <ulink url="http://ant.apache.org">
+      Apache Ant
+    </ulink>
+  </glossterm>
+  <acronym>Ant</acronym>
+  <glossdef>
+    <para>
+      Ant is a Java-based build tool. In theory, it is kind of like Make,
+      but without Make's wrinkles.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:java">
+  <glossterm>
+    <ulink url="http://java.sun.com/j2se">
+      Java (J2SE)
+    </ulink>
+  </glossterm>
+  <acronym>J2SE</acronym>
+  <glossdef>
+    <para>
+      Java 2 Standard Edition.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:xml" xreflabel="XML">
+  <glossterm>
+    <ulink url="http://w3.org/XML/">
+       Extensible Markup Language (XML)
+    </ulink>
+  </glossterm>
+  <acronym>XML</acronym>
+  <glossdef>
+    <para>
+      Extensible Markup Language (XML) is a simple, very flexible text format 
+      derived from SGML (ISO 8879). Originally designed to meet the challenges 
+      of large-scale electronic publishing, XML is also playing an increasingly
+      important role in the exchange of a wide variety of data on the Web and 
+      elsewhere.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:xsl">
+  <glossterm>
+    <ulink url="http://w3.org/Style/XSL">
+      Extensible Stylesheet Language Family (XSL)
+    </ulink>
+  </glossterm>
+  <acronym>XSL</acronym>
+  <glossdef>
+    <para>
+      XSL is a family of recommendations for defining XML document 
+      transformation and presentation.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:css" xreflabel="CSS">
+  <glossterm>
+    <ulink url="http://w3.org/Style/CSS">
+      Cascading Style Sheets
+    </ulink>
+  </glossterm>
+  <acronym>CSS</acronym>
+  <glossdef>
+    <para>
+      Cascading Style Sheets (CSS) is a simple mechanism for adding style 
+      (e.g. fonts, colors, spacing) to Web documents.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:xhtml" xreflabel="XHTML">
+  <glossterm>
+    <ulink url="http://w3.org/MarkUp/">
+      HyperText Markup Language (XHTML)
+    </ulink>
+  </glossterm>
+  <acronym>XHTML</acronym>
+  <glossdef>
+    <para>
+      XHTML 2 is a general-purpose markup language designed for representing 
+      documents for a wide range of purposes across the World Wide Web. To this
+      end it does not attempt to be all things to all people, supplying every 
+      possible markup idiom, but to supply a generally useful set of elements.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:rdf" xreflabel="RDF">
+  <glossterm>
+      Resource Description Framework (RDF)
+  </glossterm>
+  <acronym>RDF</acronym>
+  <glossdef>
+    <para>
+      World-Wide Web, specification, data (RDF) A specification
+      being developed in 2000 by the W3C as a foundation for
+      processing meta-data regarding resources on the Internet,
+      including the World-Wide Web.
+    </para>
+    <glossseealso otherterm="gls:rss">RSS</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:rss" xreflabel="RSS">
+  <glossterm>
+      Really Simple Syndication (RSS)
+  </glossterm>
+  <acronym>RSS</acronym>
+  <glossdef>
+    <para>
+      Really Simple Syndication (RSS) is a lightweight XML format designed for 
+      sharing headlines and other Web content.
+    </para>
+    <glossseealso otherterm="gls:rdf">RDF</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:w3c" xreflabel="W3C">
+  <glossterm>
+      <ulink url="http://www.w3.org">World Wide Web (W3C)</ulink>
+  </glossterm>
+  <acronym>W3C</acronym>
+  <glossdef>
+    <para>
+     The World Wide Web Consortium (W3C) develops interoperable technologies 
+     (specifications, guidelines, software, and tools) to lead the Web to its 
+     full potential.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:url" xreflabel="url">
+  <glossterm>
+      Uniform Resource Locator (URL)
+  </glossterm>
+  <acronym>URL</acronym>
+  <glossdef>
+    <para>
+      Uniform Resource Locator (URL) specified by <acronym>W3C</acronym>.
+    </para>
+    <glossseealso otherterm="gls:w3c">W3C</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:firefox" xreflabel="FireFox">
+  <glossterm>
+      FireFox
+  </glossterm>
+  <glossdef>
+    <para>
+     The <ulink url="http://www.mozilla.org">Mozilla</ulink> based Web Browser. 
+    </para>
+    <glossseealso otherterm="gls:browser">Web Browser</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry id="gls:browser" xreflabel="Web Browser">
+  <glossterm>
+      Web Browser
+  </glossterm>
+  <glossdef>
+    <para>
+       A program used to view HTML documents. Some examples include: 
+        <ulink url="http://www.mozilla.org/products/firefox">FireFox</ulink>,
+        <ulink url="http://www.mozilla.org/products/mozilla1.x">Mozilla</ulink>,
+        <ulink url="http://www.opera.com">Opera</ulink>,
+        <ulink url="http://www.apple.com/safari">Safari</ulink>
+    </para>
+    <glossseealso otherterm="gls:xhtml">HTML</glossseealso>
+  </glossdef>
+</glossentry>
+
+</glossdiv>
+
+</glossary>
+
