@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>3.3.&#160;SilkPage Directory Structure</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="installSilkPage.html" title=
+"3.&#160;Installation Tasks" />
+<link rel="prev" href="installation.unpacking.html" title=
+"3.2.&#160;Installing SilkPage Distribution" />
+<link rel="next" href="usage.html" title=
+"Chapter&#160;2.&#160;Usage" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">3.3.&#160;SilkPage Directory
+Structure</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"installation.unpacking.html">Prev</a>&#160;</td>
+<th width="60%" align="center">3.&#160;Installation Tasks</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"usage.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="install.dir.structure" id=
+"install.dir.structure"></a>3.3.&#160;SilkPage Directory
+Structure</h3>
+</div>
+</div>
+</div>
+<p>This section gives an overview of the SilkPage directories and
+the files they contain. Assuming the SilkPage software is installed
+at <b>silkpage<em class=
+"replaceable"><code>-VERSION</code></em></b>, here are some of the
+most important directories:</p>
+<pre class="programlisting">
+
+
+                              [siklpage-VERSION] - $SILKPAGE_HOME
+                                     |
+          +-------------+------------+------------------------+
+          |             |            |                        |
+        [cfg]         [docs]      [share]                   [src]
+                                     |                        |
+        catalog.xml           +------+-----+       +----------+----------+
+                              |            |       |          |          |  
+        tidy.properties     [lib]      [tools]   [css]      [xml]      [xsl]
+     
+
+    
+</pre>
+<div class="variablelist">
+<p class="title"><b>SilkPage Directories</b></p>
+<dl>
+<dt><a name="silkpage.home.dir" id="silkpage.home.dir"></a>
+<span class="term"><b><code class=
+"envar">$SILKPAGE_HOME</code></b></span></dt>
+<dd>
+<p>The installation directory of SilkPage software, refered to as
+<b><code class="envar">$SILKPAGE_HOME</code></b> here after.</p>
+</dd>
+<dt><a name="silkpage.cfg.dir" id=
+"silkpage.cfg.dir"></a><span class="term"><b>cfg/</b></span></dt>
+<dd>
+<p>The configuration directory of the SilkPage software.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><a href=
+"configFilesGlobal.html#gfiles.catalog.xml"><b>catalog.xml</b></a>
+used in order to perform Entity and URI resolution.</p>
+</li>
+<li>
+<p><a href="gfiles.tidy.properties.html"><b>tidy.properties</b></a>
+contains <span class="application">Tidy</span> properties that are
+fed to <span class="application">Tidy</span> when it's run by
+SilkPage to validate the XHTML output.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>docs/</b></span></dt>
+<dd>
+<p>Contains SilkPage User Guide and documentation.</p>
+</dd>
+<dt><span class="term"><b>share/</b></span></dt>
+<dd>
+<p>Contains resource files used by SilkPage.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>lib/</b> contains code libraries.</p>
+</li>
+<li>
+<p><b>tools/</b> contains middleware and tools including
+<span class="application">DocBook Website</span> and <span class=
+"application">DocBook XSL</span> stylesheets.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>src/</b></span></dt>
+<dd>
+<p>Contains SilkPage source files.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>css/</b> contains a set of CSS stylesheets that are used to
+control the XHTML style and presentation.</p>
+</li>
+<li>
+<p><b>xml/</b> contains <span class="application">Ant</span> based
+build instructions used to generate your Website.</p>
+</li>
+<li>
+<p><b>xsl/</b> contains a set of XSL stylesheets used to output
+XHTML.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"installation.unpacking.html">Prev</a>&#160;</td>
+<td width="20%" align="center"><a accesskey="u" href=
+"installSilkPage.html">Up</a></td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"usage.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">3.2.&#160;Installing
+SilkPage Distribution&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">
+&#160;Chapter&#160;2.&#160;Usage</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

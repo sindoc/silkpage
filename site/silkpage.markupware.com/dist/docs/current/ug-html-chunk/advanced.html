@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>4.&#160;Advanced Features</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="usage.html" title=
+"Chapter&#160;2.&#160;Usage" />
+<link rel="prev" href="publish.html" title=
+"3.&#160;Site Publishing" />
+<link rel="next" href="feeds.html" title=
+"4.2.&#160;XML Feed Integration" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">4.&#160;Advanced Features</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"publish.html">Prev</a>&#160;</td>
+<th width="60%" align="center">Chapter&#160;2.&#160;Usage</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"feeds.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="advanced" id=
+"advanced"></a>4.&#160;Advanced Features</h2>
+</div>
+</div>
+</div>
+<p>As Web sites become increasingly sophisticated, they demand
+advanced requirements such as XML Feed integration, metadata
+rendering, etc. SilkPage is designed so that it's easy to customize
+to fit your special requirements. You can customize SilkPage at XSL
+and CSS layers. This section covers SilkPage customization and
+advanced features such as XML and Feed integration.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="customization" id=
+"customization"></a>4.1.&#160;Site Customization</h3>
+</div>
+</div>
+</div>
+<p>SilkPage allows stylesheet customization for a particular
+Website. That is customizing with XSL as well as CSS stylesheets.
+These customizations are integrated to SilkPage via <span class=
+"emphasis"><em>themes</em></span>. SilkPage provides two types of
+themes:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><span class="emphasis"><em>XSL Theme</em></span>: a set of XSL
+stylesheet grouped into a directory. This directory name is used by
+SilkPage to identify the desired XSL theme and use it when
+generating XHTML output.</p>
+</li>
+<li>
+<p><span class="emphasis"><em>CSS Theme</em></span>: a set of CSS
+stylesheet grouped into a directory. directory name is used by
+SilkPage to identify the desired CSS theme and use it when
+presenting XHTML output.</p>
+</li>
+</ul>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="xsl" id="xsl"></a>4.1.1.&#160;XSL Driven
+Customization Via XSL Themes</h4>
+</div>
+</div>
+</div>
+<p>As indicated in the previous section, you can define and your
+own XSL theme and have SilkPage use it to generate your
+Website.</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p>Write your desired XSL stylesheets and put them in a directory.
+The name of this directory is used to identify your newly created
+XSL theme.</p>
+</li>
+<li>
+<p>install it by copying the directory to <b><code class=
+"envar">$SILKPAGE_HOME</code>/src/xsl</b> . Note that <code class=
+"envar">$SILKPAGE_HOME</code> is the install directory of the
+SilkPage software.</p>
+</li>
+<li>
+<p>set the value of the configuration parameter: <a href=
+"silkpage.adapt.xsl.theme.html" title=
+"silkpage.adapt.xsl.theme"><span class=
+"refentrytitle">silkpage.adapt.xsl.theme</span></a> to your newly
+created theme.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="css" id="css"></a>4.1.2.&#160;CSS Driven
+Customization Via CSS Themes</h4>
+</div>
+</div>
+</div>
+<p>Like XSL themes, a new CSS theme can be defined and used as
+follows:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p>Write your desired CSS stylesheets and put them in a directory.
+The name of this directory is used to identify your newly created
+CSS theme.</p>
+</li>
+<li>
+<p>install it by copying the directory to <b><code class=
+"envar">$SILKPAGE_HOME</code>/src/css</b>. Note that
+<b><code class="envar">$SILKPAGE_HOME</code></b> is the install
+directory of the SilkPage software.</p>
+</li>
+<li>
+<p>set the value of the configuration parameter: <a href=
+"silkpage.adapt.css.theme.html" title=
+"silkpage.adapt.css.theme"><span class=
+"refentrytitle">silkpage.adapt.css.theme</span></a> to your newly
+created theme.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"publish.html">Prev</a>&#160;</td>
+<td width="20%" align="center"><a accesskey="u" href=
+"usage.html">Up</a></td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"feeds.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">3.&#160;Site
+Publishing&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">&#160;4.2.&#160;XML Feed
+Integration</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

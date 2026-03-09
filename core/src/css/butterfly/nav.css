@@ -1,0 +1,130 @@
+/* mozilla.org Cavendish Template Styles
+ * Initial Design by Daniel Burka and Steven Garrity
+*/
+
+/* Sidebar */
+
+#nav:before {
+	line-height: 0.1;
+	font-size: 1px;
+	background: transparent url("../../images/menu_tr.gif") no-repeat top right;
+	margin: 0;
+	height: 9px;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	content: url("../../images/key-point_tl.gif");
+	}
+#nav {
+	float: left;
+	width: 120px;
+	margin-bottom: 1em;
+	background: #E0E9E9;
+	}
+#nav:after {
+	display: block;
+	clear: both;
+	padding-top: 0;
+	line-height: 0.1;
+	font-size: 1px;
+		content:  url("../../images/key-point_bl.gif");
+		margin: 0 0 0 0;
+		height: 8px;
+		background: transparent url("../../images/menu_br.gif") scroll no-repeat bottom right ;
+		border-top: 1px solid #fff;
+	}
+	
+	#nav, #nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#nav {
+		margin-bottom: 1em;
+	}	
+	#nav li {
+		display: inline;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#nav li span { /* used for un-linked menu items */
+		display: block;
+		padding: 6px 10px;
+		font-weight: bold;
+		color: #666;
+	}
+
+	#nav li span#configParent, #nav li span #configuration {
+		display: inline;
+		font-weight: normal;
+		padding: 0;
+	}
+	
+	#nav li a {
+		display: block;
+		padding: 6px 10px;
+		text-decoration: none;
+		background: #EDF2F2;
+		border-bottom: 1px solid #ddd;
+		border-top: 1px solid #fff;
+		border-right: 1px solid #ddd;
+	}
+
+	#nav li a:hover {
+		background: #E0E9E9;
+	}
+	
+	#nav li li a {
+		padding: 4px 8px 4px 20px;
+	}
+	
+#nav .current {
+	color: #000;
+	padding: 6px 10px;
+	}
+
+	#oN {
+		background-color: #E0E9E9;
+	}
+	#oN:hover {
+		background-color: #C6DCDC;
+	}
+
+#navigation ul {
+	padding: 3px 0; 
+	margin: 0;
+	border-bottom: 1px solid #778;
+	font: bold 12px Verdana, sans-serif;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	}
+#navigation li {
+	list-style: none; margin: 0;
+	display: inline;
+	}
+
+#navigation li a {
+	padding: 3px 0.5em; margin-left: 3px;
+	border: 1px solid #778; 
+	border-bottom: none;
+	background: #DDE;
+	text-decoration: none;
+	}
+
+#navigation li a:link {
+	color: #448;
+	}
+
+#navigation li a:visited {
+	color: #667;
+	}
+
+#navigation li a:hover {
+	color: #000; background: #AAE;
+	border-color: #227;
+	}
+
+/* "current tab" style */
+#navigation li a#current {background: white; border-bottom: 1px solid white;}
+
+

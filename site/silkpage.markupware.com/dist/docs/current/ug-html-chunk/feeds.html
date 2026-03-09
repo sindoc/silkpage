@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>4.2.&#160;XML Feed Integration</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="advanced.html" title=
+"4.&#160;Advanced Features" />
+<link rel="prev" href="advanced.html" title=
+"4.&#160;Advanced Features" />
+<link rel="next" href="rdf.html" title=
+"4.3.&#160;RDF Integration" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">4.2.&#160;XML Feed Integration</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"advanced.html">Prev</a>&#160;</td>
+<th width="60%" align="center">4.&#160;Advanced Features</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"rdf.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="feeds" id="feeds"></a>4.2.&#160;XML Feed
+Integration</h3>
+</div>
+</div>
+</div>
+<p>A <span class="emphasis"><em>feed</em></span> is a wrapper for
+pieces of regularly and sequentially-updated content such as news
+headlines, articles, weblog posts, and so on. <span class=
+"application">Atom</span> and <span class="application">RSS</span>
+are the two flavours of XML feeds. They are both supported by
+SilkPage. Once integrated into your site, a news reader application
+such as Bloglines, RSSOwl, or even <a href=
+"gls.html#gls:firefox">FireFox</a> can be used to automatically
+check your list of feeds. This enables your visitors to know what's
+new on your site.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="feeds.rss" id=
+"feeds.rss"></a>4.2.1.&#160;RSS Feed Integration</h4>
+</div>
+</div>
+</div>
+<p>RSS is an application of XML, that provides an open method of
+syndicating and aggregating Web content. Using RSS files, you can
+create a data feed that supplies headlines, links, and article
+summaries from your Website.</p>
+<div class="example"><a name="ex:feeds.rss" id="ex:feeds.rss"></a>
+<p class="title"><b>Example&#160;2.8.&#160;RSS 1.0 Feed</b></p>
+<pre class="programlisting">
+      
+&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"&gt;
+
+&lt;channel rdf:about="http://www.markupware.com/"&gt;
+  &lt;title&gt;MarkupWare Projects&lt;/title&gt;
+  &lt;link&gt;http://www.markupware.com/projects/&lt;/link&gt;
+  &lt;description&gt;MarkupWare project portfolio&lt;/description&gt;
+  &lt;dc:language&gt;en-us&lt;/dc:language&gt;
+  &lt;dc:rights&gt;Copyright &amp;#169; MarkupWare&lt;/dc:rights&gt;
+
+  &lt;items&gt;
+    &lt;rdf:Seq&gt;
+      &lt;rdf:li rdf:resource="http://www.markupware.com/projects#silkpage"/&gt;
+    &lt;/rdf:Seq&gt;
+  &lt;/items&gt;
+&lt;/channel&gt;
+
+&lt;item rdf:about="http://www.markupware.com/projects#silkpage"&gt;
+  &lt;title&gt;SilkPage Project&lt;/title&gt;
+  &lt;link&gt;http://silkpage.markupware.com&lt;/link&gt;
+  &lt;dc:date&gt;2004-09-04&lt;/dc:date&gt;
+  &lt;description&gt;
+    SilkPage is an XML based Web publishing framework that has evolved from 
+    the Docbook Website. With strong foundations in XML, it is a publishing 
+    framework with a focus on web standards and usability. SilkPage provides 
+    a framework for publishing structured and standard compliant websites in 
+    XML. It is particularly suited to publish personal websites, though it 
+    is by no means limited to them.
+  &lt;/description&gt;
+&lt;/item&gt;
+
+&lt;/rdf:RDF&gt;
+
+    
+</pre></div>
+<p>The above example, defines a RSS 1.0 compliant feed for the
+project section of the MarkupWare Website. Based on the above
+source, SilkPage generates proper XHTML output page with a link to
+the RSS feed. The label of this link can be changed by setting the
+value of the configuration parameter <a href="sources.rss10.html"
+title="sources.rss10"><span class=
+"refentrytitle">sources.rss10</span></a>.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="feeds.atom" id=
+"feeds.atom"></a>4.2.2.&#160;Atom Feed Integration</h4>
+</div>
+</div>
+</div>
+<p>RSS is an application of XML, that provides an open method of
+syndicating and aggregating Web content. Using RSS files, you can
+create a data feed that supplies headlines, links, and article
+summaries from your Website.</p>
+<div class="example"><a name="ex:feeds.atom" id=
+"ex:feeds.atom"></a>
+<p class="title"><b>Example&#160;2.9.&#160;Atom Feed</b></p>
+<pre class="programlisting">
+      
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
+  &lt;title&gt;MarkupWare Projects&lt;/title&gt;
+  &lt;subtitle&gt;MarkupWare project portfolio&lt;/subtitle&gt;
+  &lt;link rel="alternate" type="text/html" 
+        href="http://www.markupware.com/projects/"/&gt;
+  &lt;link rel="self" type="application/atom+xml" 
+        href="http://www.markupware.com/feeds/projects.xml"/&gt;
+  &lt;id&gt;http://www.markupware.com/feeds/projects.xml&lt;/id&gt;
+  &lt;updated&gt;2006-01-26T11:26:54+01:00&lt;/atom:updated&gt;
+  &lt;author&gt;
+    &lt;atom:name&gt;MarkupWare Team&lt;/atom:name&gt;
+  &lt;/atom:author&gt;
+  &lt;dc:language&gt;en-us&lt;/dc:language&gt;
+  &lt;dc:rights&gt;Copyright &amp;#169; MarkupWare&lt;/dc:rights&gt;
+ 
+ &lt;entry&gt;
+   &lt;title type="text"&gt;SilkPage&lt;/title&gt;
+   &lt;id&gt;http://www.markupware.com/projects#silkpage&lt;/id&gt;
+   &lt;link rel="alternate" type="text/html" 
+         href="http://silkpage.markupware.com/"/&gt;
+    &lt;published&gt;2004-12-20T20:19:41+01:00&lt;/published&gt;
+    &lt;updated&gt;2005-07-15T23:34:34+01:00&lt;/updated&gt;
+    &lt;content type="text"&gt;
+      SilkPage is an XML based Web publishing framework that has evolved from 
+      the Docbook Website. With strong foundations in XML, it is a publishing 
+      framework with a focus on web standards and usability. SilkPage provides 
+      a framework for publishing structured and standard compliant websites in 
+      XML. It is particularly suited to publish personal websites, though it 
+      is by no means limited to them.
+    &lt;/content&gt;
+  &lt;/entry&gt;
+&lt;/feed&gt;
+
+      
+    
+</pre></div>
+<p>The above example, defines an Atom compliant feed for the
+project section of the MarkupWare Website. Based on the above
+source, SilkPage generates proper XHTML output page with a link to
+the Atom feed. The label of this link can be changed by setting the
+value of the configuration parameter <a href="sources.atom.html"
+title="sources.atom"><span class=
+"refentrytitle">sources.atom</span></a>.</p>
+</div>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"advanced.html">Prev</a>&#160;</td>
+<td width="20%" align="center"><a accesskey="u" href=
+"advanced.html">Up</a></td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"rdf.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">4.&#160;Advanced
+Features&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">&#160;4.3.&#160;RDF
+Integration</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

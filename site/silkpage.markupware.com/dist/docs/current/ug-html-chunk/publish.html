@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>3.&#160;Site Publishing</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="usage.html" title=
+"Chapter&#160;2.&#160;Usage" />
+<link rel="prev" href="create.content.example.html" title=
+"2.2.&#160;Examples" />
+<link rel="next" href="advanced.html" title=
+"4.&#160;Advanced Features" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">3.&#160;Site Publishing</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"create.content.example.html">Prev</a>&#160;</td>
+<th width="60%" align="center">Chapter&#160;2.&#160;Usage</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"advanced.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="publish" id=
+"publish"></a>3.&#160;Site Publishing</h2>
+</div>
+</div>
+</div>
+<p>SilkPage uses <a href="gls.html#gls:ant">Ant</a> to automate
+your site generation, validation and upload.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p>Based on your XML content, SilkPage <span class=
+"emphasis"><em>generates</em></span> XHTML output.</p>
+</li>
+<li>
+<p>SilkPage uses <a href="" target="_top">Tidy</a> to <span class=
+"emphasis"><em>validate</em></span> and eventually fix the
+generated XHTML.</p>
+</li>
+<li>
+<p>SilkPage facilitates the <span class=
+"emphasis"><em>upload</em></span> of your Website by using a
+<span class="application">FTP</span> based file transfer. Assuming
+that you have used the <em class=
+"parameter"><code>scratch</code></em> target like it was shown in
+<a href="usage.html#ex:create.site.scratch" title=
+"Example&#160;2.1.&#160;Create Site Scratch">Example&#160;2.1,
+&#8220;Create Site Scratch&#8221;</a>, you need to run SilkPage
+with the <em class="parameter"><code>preview</code></em> target to
+have the draft version of your Website generated.</p>
+</li>
+</ul>
+</div>
+<div class="example"><a name="ex:site.preview" id=
+"ex:site.preview"></a>
+<p class="title"><b>Example&#160;2.6.&#160;Drafting your
+Website</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> <em class=
+"replaceable"><code>coolsite</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> preview</p>
+</div>
+</div>
+<p>As shown in the above example, you can generate a draft version
+of your Website locally. This local version will be used to upload
+your Website when running SilkPage with the <em class=
+"parameter"><code>publish</code></em> target. In order to publish
+your Website online, you need to run SilkPage with the <em class=
+"parameter"><code>publish</code></em> target, as shown in <a href=
+"publish.html#ex:site.publish" title=
+"Example&#160;2.7.&#160;Publishing your Website Online">Example&#160;2.7,
+&#8220;Publishing your Website Online&#8221;</a>.</p>
+<div class="example"><a name="ex:site.publish" id=
+"ex:site.publish"></a>
+<p class="title"><b>Example&#160;2.7.&#160;Publishing your Website
+Online</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> <em class=
+"replaceable"><code>coolsite</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> publish</p>
+</div>
+</div>
+<p>Refer to <a href="commands.html" title=
+"Appendix&#160;C.&#160;Command Line Options">Appendix&#160;C,
+<i>Command Line Options</i></a> for detailed information about
+SilkPage command line options.</p>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"create.content.example.html">Prev</a>&#160;</td>
+<td width="20%" align="center"><a accesskey="u" href=
+"usage.html">Up</a></td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"advanced.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">
+2.2.&#160;Examples&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">&#160;4.&#160;Advanced
+Features</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

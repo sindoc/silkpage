@@ -1,0 +1,589 @@
+<?xml version="1.0"?>
+<!--
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Main tasks used by SilkPage to build a given website.
+   Copyright (c) 2004 MarkupWare.  All rights reserved.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       Set the properties related to the source tree
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<project default="installLocal">
+
+<property name="src.dir" value="${basedir}"/>
+<property name="src.cfg.dir" value="${src.dir}/cfg"/>
+<property name="src.src.dir" value="${src.dir}/src"/>
+<property name="src.xsl.dir" value="${src.src.dir}/xsl"/>
+<property name="src.css.dir" value="${src.src.dir}/css"/>
+<property name="src.schema.dir" value="${src.src.dir}/schema"/>
+<property name="src.xml.dir" value="${src.src.dir}/xml/${lang}"/>
+<property name="src.schema.dir"	value="${src.src.dir}/schema"/>
+<property name="src.dtd.dir" value="${src.schema.dir}/dtd"/>
+
+<property name="src.share.dir" value="${src.dir}/share"/>
+<property name="src.tools.dir" value="${src.share.dir}/tools"/>
+
+<property name="src.lib.dir" value="${src.share.dir}/lib"/>
+<property name="src.img.dir" value="${src.dir}/images"/>
+<property name="src.graphics.dir" value="${src.img.dir}/graphics"/>
+<property name="java.lib.dir" value="${src.lib.dir}/java"/>
+
+<property name="xsl.autolayout.stylesheet" value="autolayout.xsl"/>
+<property name="xsl.website-targets.stylesheet" value="website-targets.xsl"/>
+
+<property name="dtd.silkpage.main.module" value="silkpage.dtd"/>
+
+<property name="xml.layout.file" value="layout.xml"/>
+<property name="xml.layout.transformed.file" value="autolayout.xml"/>
+
+<property name="dtd.website.custom.file" value="website.dtd"/>
+
+<!--
+<property name="xslt.java.processor.class" 
+  value="net.sf.saxon.Transform"/>
+-->
+<property name="xslt.java.processor.class" 
+  value="com.icl.saxon.StyleSheet"/>
+
+<property name="xslt.java.processor.param" 
+  value="saxon.extensions=1"/>
+<property name="xml.resolver.reader.class" 
+  value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+<property name="xml.resolver.catalog.class" 
+  value="org.apache.xml.resolver.tools.CatalogResolver"/>
+<property name="fo.java.processor.class"
+  value="org.apache.fop.tools.anttasks.Fop"/>
+
+<property name="docbook.website.xsl" value="${docbook.website.home}/xsl"/>
+<property name="docbook.website.schema" value="${docbook.website.home}/schema"/>
+<property name="docbook.website.dtd" value="${docbook.website.schema}/dtd"/>
+
+<property name="build.xsl.dir" value="${build.dir}/xsl"/>
+<property name="build.xml.dir" value="${build.dir}/xml/${lang}"/>
+<property name="build.css.dir" value="${build.dir}/css"/>
+<property name="build.schema.dir" value="${build.dir}/schema"/>
+<property name="build.html.dir" value="${build.dir}/html"/>
+<property name="build.html.tidy.dir" value="${build.html.dir}/tidy"/>
+<property name="build.sh.dir" value="${build.dir}/sh"/>
+<property name="dist.css.dir" value="${dist.dir}/css"/>
+<property name="dist.graphics.dir" value="${dist.dir}/graphics"/>
+<property name="build.dtd.dir" value="${build.schema.dir}/dtd"/>
+
+  <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       Main Catolog
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+  <xmlcatalog id="mainCatalog">
+    <dtd
+        publicId="-//Norman Walsh//DTD Website Autolayout V2.4.1//EN"
+        location="${docbook.website.dtd}/autolayout.dtd"/>
+    <dtd
+        publicId="-//Norman Walsh//DTD Website Layout V2.4.1//EN"
+        location="${docbook.website.dtd}/layout.dtd"/>
+  </xmlcatalog>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	  Compilation Classpath
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+
+<path id="classpath">
+   <pathelement path="${java.lib.dir}/resolver-1_0.jar"/>
+   <pathelement path="${java.lib.dir}/saxon-6_5_3.jar"/>
+   <pathelement path="${java.lib.dir}/saxon-ext-6.4.jar"/>
+   <pathelement path="${build.dir}"/>
+</path>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       scratch: creates a scratch website based on the silkpage tamplate
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="scratch">
+  <property name="site.home.dir" value="${java.io.tmpdir}/${site.id}"/>
+  <property name="url" value="www.${site.id}.com"/>
+  <delete dir="${site.home.dir}"/>
+  <mkdir dir="${site.home.dir}"/>
+  <mkdir dir="${url}"/>
+  <copy toDir="${site.home.dir}" filtering="true">
+    <fileset dir="./../template/site/default"/>
+    <filterset>
+      <filter token="site.id" value="${site.id}"/>
+      <filter token="default.url" value="${default.url}"/>
+      <filter token="silkpage.home.dir" value="${user.dir}"/>
+    </filterset>
+  </copy>
+  <move file="${site.home.dir}/src/css/silkpage.css" 
+    tofile="${site.home.dir}/src/css/${site.id}.css"/>
+</target>
+
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       transformLayout: creates the main layout based on 'layout.xml'.
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target 
+	name="transformLayout" 
+	depends="init" 
+	description="creates the main layout based on 'layout.xml'.">
+
+ <xslt 
+	in="${build.xml.dir}/${xml.layout.file}"
+    	out="${build.xml.dir}/${xml.layout.transformed.file}"
+    	style="${docbook.website.xsl}/${xsl.autolayout.stylesheet}">
+    <xmlcatalog refid="mainCatalog"/>
+ </xslt>
+
+ </target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       transformWebsite:  create the website.
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="transformWebsite" depends="transformLayout"
+ description="create the website.">
+  <java classname="${xslt.java.processor.class}"
+	fork="yes"
+	dir="${build.xml.dir}"
+	failonerror="true">
+    <classpath refid="classpath"/>
+    <arg line="-o home.html"/>
+    <arg line="-x ${xml.resolver.reader.class}"/>
+    <arg line="-y ${xml.resolver.reader.class}"/>
+    <arg line="-r ${xml.resolver.catalog.class}"/>
+    <arg line="${xml.layout.transformed.file}"/>
+    <arg line="${silkpage.adapt.xsl.main}"/>
+    <arg line="site.lang=${lang}"/>
+    <arg line="website.database.document=${silkpage.website.database.document}"/>
+    <arg line="acronyms.database.document=${silkpage.acronyms.database.document}"/>
+    <arg line="${xslt.java.processor.param}"/>
+  </java>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       tidy: performs the HTML verfication and correction using JTidy.
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="tidy" if="tidy.enabled"
+ description="performes the HTML verfication and correction using JTidy.">
+  <mkdir dir="${build.html.tidy.dir}"/>
+  <echo message="Tidy properties: ${src.cfg.dir}/tidy.properties"/>
+  <tidy destdir="${build.html.tidy.dir}" 
+    properties="${src.cfg.dir}/tidy.properties">
+    <fileset dir="${build.html.dir}"/>
+  </tidy>
+</target>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       distWeb: builds the 'web' distribution of the website.
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target 
+	name="distWeb" 
+	depends="transformWebsite, copyHTMLFiles, tidy, copyCSSFiles"
+	description="builds the 'web' distribution of the website.">
+   <!--
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Copy Cleaned up HTML files
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    -->
+   <mkdir dir="${dist.dir}"/>
+   <copy toDir="${dist.dir}" filtering="true">
+      <fileset dir="${build.html.tidy.dir}"/>
+   </copy>
+   <!--
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Conditionally copy images, PDF, RTF, GZ and ZIP files.
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    -->
+   <antcall target="copyUserCSSFiles"/>
+   <antcall target="copyGraphics"/>
+   <antcall target="copyUserGraphics"/>
+   <antcall target="copyXMLSourceFiles"/>
+   <antcall target="copyRSSFiles"/>
+   <antcall target="copyPNGFiles"/>
+   <antcall target="copyPHPFiles"/>
+   <antcall target="copyRDFFiles"/>
+   <antcall target="copyPDFFiles"/>
+   <antcall target="copyTeXFiles"/>
+   <antcall target="copyRTFFiles"/>
+   <antcall target="copyCompressedFiles"/>
+   <mkdir dir="${deploy.dir}"/>
+   <property name="distfile" value="${deploy.dir}/${build.tag}_web.zip"/>
+   <zip destfile="${distfile}" basedir="${dist.dir}"/>
+</target>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       distSrc: builds the 'src' distribution of the website.
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="distSrc" depends="clean,genBuildTag"
+ description="builds the 'source' distribution of the website.">
+  <mkdir dir="${dist.dir}"/>
+  <mkdir dir="${deploy.dir}"/>
+  <copy toDir="${dist.dir}">
+    <fileset dir="${src.dir}" excludes="**/CVS"/>
+  </copy>
+  <property name="distfile" value="${deploy.dir}/${build.tag}_src.zip"/>
+  <zip destfile="${distfile}" basedir="${dist.dir}"/>
+</target>
+
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       installLocal: installs the 'web' distribution in a local directory
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="installLocal" depends="distWeb"
+ description="installs the 'web' distribution in a local directory">
+  <mkdir dir="${install.local.dir}"/>
+  <unzip src="${distfile}" dest="${install.local.dir}"/>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       installRemote: installs the 'web' distribution into a remote directory
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="installRemote" depends="upload"
+ description="installs the 'web' distribution into a remote directory">
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       upload: FTP the website files to the remote website.
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="upload" depends="installLocal"
+ description="FTP the website files to the remote website.">
+   <ftp 
+     server="${ftp.server}"
+     port="${ftp.port}"
+     remotedir="${ftp.remotedir}"
+     userid="${ftp.userid}"
+     password="${ftp.password}"
+     depends="${ftp.depends}"
+     passive="${ftp.passive}"
+     binary="${ftp.binary}">
+     <fileset dir="${ftp.localdir}"/>
+   </ftp>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             Fetch Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="fetch" depends="init" if="fetch.enabled">
+   <cvs cvsRoot="${cvs.root}"
+      package="${cvs.module}" dest="${temp.dir}/${uid}"/>
+   <copy encoding="${default.encoding}" toDir="${src.dir}" filtering="true">
+      <fileset dir="${cvs.work.dir}"/>
+   </copy>
+</target>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             Init. Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="init" depends="clean,genBuildTag">
+
+  <taskdef name="tidy" classname="org.w3c.tidy.ant.JTidyTask">
+    <classpath>
+      <pathelement location="${java.lib.dir}/jtidy-r8.jar"/>
+    </classpath>
+  </taskdef>
+
+  <tstamp>
+    <format property="now" pattern="yyyy-MM-dd'T'hhmm"/>
+  </tstamp>
+
+  <property name="build.tag" value="${uid}-${now}"/>
+
+  <available 
+	file="${src.graphics.dir}" 
+	type="dir" 
+	property="src.graphics.dir.exists"/>
+
+  <available 
+	file="${user.graphics.dir}" 
+	type="dir" 
+	property="user.graphics.dir.exists"/>  
+
+  <available 
+	file="${user.css.dir}" 
+	type="dir" 
+	property="user.css.dir.exists"/>   
+
+  <mkdir dir="${build.dir}"/>
+  <copy 
+	encoding="${default.encoding}" 
+	toDir="${build.xml.dir}" 
+	filtering="true">
+    <fileset 
+	dir="${src.xml.dir}" 
+	excludes="**/*.zip,**/*.gz,**/*.pdf,**/*.rtf,**/*.ps,**/*.png"/>
+  </copy>
+
+  <copy 
+	encoding="${default.encoding}" 
+	toDir="${build.xml.dir}">
+    <fileset 
+	dir="${src.xml.dir}" 
+	includes="**/*.zip,**/*.gz,**/*.pdf,**/*.rtf,**/*.ps,**/*.png"/>
+  </copy>
+
+  <copy 
+	encoding="${default.encoding}" 
+	toDir="${build.xsl.dir}" 
+	filtering="true">
+    <fileset dir="${src.xsl.dir}"/>
+  </copy>
+
+  <copy 
+	encoding="${default.encoding}" 
+	toDir="${build.schema.dir}" 
+	filtering="true">
+    <fileset dir="${src.schema.dir}"/>
+  </copy>
+
+  <copy 
+	encoding="${default.encoding}" 
+	toDir="${build.css.dir}" 
+	filtering="true">
+    <fileset dir="${src.css.dir}"/>
+  </copy>
+
+  <copy 
+	encoding="${default.encoding}" 
+	toDir="${build.dir}" 
+	filtering="true">
+    <fileset dir="${src.cfg.dir}"/>
+  </copy>
+
+  <condition property="isUnix">
+    <os family="unix"/>
+  </condition>
+  <condition property="isWin">
+    <os family="windows"/>
+  </condition>
+
+  <property name="os.name" value="${os.name}"/>
+  <property name="user.name" value="${user.name}"/>
+  <property name="temp.dir" value="${java.io.tmpdir}"/>
+
+  <filter filtersfile="cfg/acronyms.properties"/>
+  <filter filtersfile="cfg/token.properties"/>
+  <antcall target="substitute"/>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             Substitite Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="substitute" depends="substitute.win,substitute.unix"/>
+
+<target name="substitute.win" if="isWin">
+  <replace 
+	file="${build.dir}/catalog.xml"
+      	token="@docbook.xsl.dir@"
+     	value="/${docbook.xsl.home}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@docbook.website.dir@" 
+	value="/${docbook.website.home}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@docbook.xml.dir@" 
+	value="${docbook.xml.home}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@silkpage.xsl.dir@" 
+	value="/${build.xsl.dir}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@silkpage.xsl.theme@" 
+	value="/${build.xsl.dir}/${silkpage.adapt.xsl.theme}/main.xsl"/>
+</target>
+
+<target name="substitute.unix" if="isUnix">
+  <replace 
+	file="${build.dir}/catalog.xml"
+      	token="@docbook.xsl.dir@"
+     	value="${docbook.xsl.home}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@docbook.website.dir@" 
+	value="${docbook.website.home}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@docbook.xml.dir@" 
+	value="${docbook.xml.home}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@silkpage.xsl.dir@" 
+	value="${build.xsl.dir}"/>
+  <replace 
+	file="${build.dir}/catalog.xml" 
+	token="@silkpage.xsl.theme@" 
+	value="${build.xsl.dir}/${silkpage.adapt.xsl.theme}/main.xsl"/>
+</target>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             Config Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="config">
+  <echo message="@product.name@ (@app.release.number@)"/>
+  <echo message="user.name: ${user.name}"/>
+  <echo message="os.name: ${os.name}"/>
+  <echo message="temp.dir: ${java.io.tmpdir}"/>
+  <property name="docbook.website.path"
+    value="../../../share/tools/docbook-website"/>
+  <property name="docbook.xsl.path"
+    value="../../../share/tools/docbook-xsl"/>
+  <available file="${docbook.website.path}" type="dir"
+    property="docbook.website.present"/>
+  <available file="${docbook.xsl.path}" type="dir"
+    property="docbook.xsl.present"/>
+  <echo message="DocBook Website installed ? ${docbook.website.present}"/>
+  <echo message="DocBook XSL installed ? ${docbook.xsl.present}"/>
+</target>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             Clean Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="clean"
+   description="Delete old build, deploy and dist directories">
+   <delete dir="${deploy.dir}"/>
+   <delete dir="${dist.dir}"/>
+   <delete dir="${build.dir}"/>
+</target>
+
+<target name="copyHTMLFiles">
+   <mkdir dir="${build.html.dir}"/>
+   <copy toDir="${build.html.dir}"
+      encoding="${compile.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.html, **/*.php"/>
+   </copy>
+</target>
+
+<target name="copyXMLSourceFiles" if="copyXmlSourceFiles.enabled">
+   <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.xml"/>
+   </copy>
+</target>
+
+<target name="copyRSSFiles" if="copyRSSFiles.enabled">
+   <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.rss"/>
+   </copy>
+</target>
+
+
+<target name="copyPHPFiles" if="copyPHPFiles.enabled">
+   <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.php"/>
+   </copy>
+</target>
+
+<target name="copyPNGFiles" if="copyPNGFiles.enabled">
+   <copy toDir="${dist.dir}">
+      <fileset dir="${build.xml.dir}" includes="**/*.png"/>
+   </copy>
+</target>
+
+<target name="copyPDFFiles" if="copyPdfFiles.enabled">
+   <copy toDir="${dist.dir}">
+      <fileset dir="${build.xml.dir}" includes="**/*.pdf"/>
+   </copy>
+</target>
+
+<target name="copyRDFFiles" if="copyRDFFiles.enabled">
+   <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.rdf"/>
+   </copy>
+</target>
+
+<target name="copyTeXFiles" if="copyTexFiles.enabled">
+   <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.tex"/>
+   </copy>
+</target>
+
+<target name="copyRTFFiles" if="copyRtfFiles.enabled">
+   <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${build.xml.dir}" includes="**/*.rtf"/>
+   </copy>
+</target>
+
+<target name="copyCompressedFiles" if="copyCompressedFiles.enabled">
+   <copy toDir="${dist.dir}">
+      <fileset dir="${build.xml.dir}" includes="**/*.zip,**/*.gz"/>
+   </copy>
+</target>
+
+<target name="copyGraphics" if="src.graphics.dir.exists">
+   <copy toDir="${dist.graphics.dir}">
+      <fileset dir="${src.graphics.dir}"
+               includes="**/*.gif, **/*.png, **/*.jpg"/>
+   </copy>
+</target>
+
+<target name="copyUserGraphics" if="user.graphics.dir.exists">
+   <copy toDir="${dist.graphics.dir}">
+      <fileset dir="${user.graphics.dir}"/>
+   </copy>
+</target>
+
+<target name="copyUserCSSFiles" if="user.css.dir.exists">
+   <copy 
+	toDir="${dist.css.dir}">
+      <fileset dir="${user.css.dir}"
+               includes="**/*.css"/>
+   </copy>
+</target>
+
+<target name="copyCSSFiles">
+  <mkdir dir="${dist.css.dir}"/>
+  <copy 
+	toDir="${dist.css.dir}/${silkpage.adapt.css.theme}">
+  <fileset 
+	dir="${build.css.dir}/${silkpage.adapt.css.theme}" 
+	includes="**/*.css"/>
+   </copy>
+  <copy 
+	toDir="${dist.css.dir}/common">
+  <fileset 
+	dir="${build.css.dir}/common" 
+	includes="**/*.css"/>
+   </copy>
+</target>
+
+<target name="genBuildTag">
+   <tstamp>
+      <format property="now" pattern="yyyy-MM-dd'T'hhmm"/>
+   </tstamp>
+   <property name="build.tag" value="${now}_${url}"/>
+</target>
+
+<target name="usage">
+<echo>
++-------------------------------------------------+
+| type 'ant -projecthelp' to see the main targets |
+| http://silkpage.markupware.com/docs/index.html  |
++-------------------------------------------------+
+</echo>
+</target>
+</project>
+

@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>Chapter&#160;2.&#160;Usage</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="index.html" title="SilkPage User Guide" />
+<link rel="prev" href="install.dir.structure.html" title=
+"3.3.&#160;SilkPage Directory Structure" />
+<link rel="next" href="content.html" title=
+"2.&#160;Site Content Management" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">Chapter&#160;2.&#160;Usage</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"install.dir.structure.html">Prev</a>&#160;</td>
+<th width="60%" align="center">&#160;</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"content.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="chapter" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title"><a name="usage" id=
+"usage"></a>Chapter&#160;2.&#160;Usage</h2>
+</div>
+</div>
+</div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="usage.html#creation">1. Site
+Creation</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="usage.html#create.site">1.1.
+Create Site Scratch</a></span></dt>
+<dt><span class="section"><a href="usage.html#create.layout">1.2.
+Create Site Layout</a></span></dt>
+<dt><span class="section"><a href="usage.html#create.page">1.3.
+Create Site Pages</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="content.html">2. Site Content
+Management</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href=
+"content.html#create.content.elements">2.1. Main
+Elements</a></span></dt>
+<dt><span class="section"><a href=
+"create.content.example.html">2.2. Examples</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="publish.html">3. Site
+Publishing</a></span></dt>
+<dt><span class="section"><a href="advanced.html">4. Advanced
+Features</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href=
+"advanced.html#customization">4.1. Site
+Customization</a></span></dt>
+<dt><span class="section"><a href="feeds.html">4.2. XML Feed
+Integration</a></span></dt>
+<dt><span class="section"><a href="rdf.html">4.3. RDF
+Integration</a></span></dt>
+<dt><span class="section"><a href="sitemap.html">4.4. Auto Sitemap
+Generation</a></span></dt>
+</dl>
+</dd>
+</dl>
+</div>
+<hr />
+<p>This chapter contains step-by-step instructions for getting
+started with SilkPage. The following steps summarize the overall
+process of creating and publishing a Website using SilkPage.</p>
+<div class="orderedlist"><a name="silkpage.nutshell" id=
+"silkpage.nutshell"></a>
+<ol type="1">
+<li>
+<p><a href="usage.html#create.site" title=
+"1.1.&#160;Create Site Scratch">Section&#160;1.1, &#8220;Create
+Site Scratch&#8221;</a> Create a brand new site from scratch</p>
+</li>
+<li>
+<p><a href="usage.html#create.layout" title=
+"1.2.&#160;Create Site Layout">Section&#160;1.2, &#8220;Create Site
+Layout&#8221;</a> Structure your Website by organizing your XML
+content</p>
+</li>
+<li>
+<p><a href="usage.html#create.page" title=
+"1.3.&#160;Create Site Pages">Section&#160;1.3, &#8220;Create Site
+Pages&#8221;</a> Create XML source pages and content</p>
+</li>
+<li>
+<p><a href="publish.html" title=
+"3.&#160;Site Publishing">Section&#160;3, &#8220;Site
+Publishing&#8221;</a> Publish your Website</p>
+</li>
+<li>
+<p><a href="advanced.html#customization" title=
+"4.1.&#160;Site Customization">Section&#160;4.1, &#8220;Site
+Customization&#8221;</a> Customize your Website elements and
+appearance to fit your specific needs</p>
+</li>
+</ol>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="creation" id=
+"creation"></a>1.&#160;Site Creation</h2>
+</div>
+</div>
+</div>
+<p>A website is a collection of XML pages organized, for the
+purposes of navigation, into one or more hierarchies. That is the
+Website blueprint. This section describes the process of making a
+blueprint for your Website.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.site" id=
+"create.site"></a>1.1.&#160;Create Site Scratch</h3>
+</div>
+</div>
+</div>
+<p>To begin, you need to have your Website basic skeleton. To
+create the skeleton of your Website, you need to run the SilkPage
+with the <em class="parameter"><code>scratch</code></em> target.
+When running the SilkPage with the <em class=
+"parameter"><code>scratch</code></em> target, you also need to
+provide a <em class="parameter"><code>site.id</code></em> as shown
+in <a href="usage.html#ex:create.site.scratch" title=
+"Example&#160;2.1.&#160;Create Site Scratch">Example&#160;2.1,
+&#8220;Create Site Scratch&#8221;</a>.</p>
+<div class="example"><a name="ex:create.site.scratch" id=
+"ex:create.site.scratch"></a>
+<p class="title"><b>Example&#160;2.1.&#160;Create Site
+Scratch</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> silkpage-<em class=
+"replaceable"><code>VERSION</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class="option">-f</code>
+src/xml/build/tasks.xml -Dsite.id="<em class=
+"replaceable"><code>coolsite</code></em>" scratch</p>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="site.skel.structure" id=
+"site.skel.structure"></a>1.1.1.&#160;Scratch Website Directory
+Structure</h4>
+</div>
+</div>
+</div>
+<p>This section gives an overview of your scratch Website
+directories that are generated by SilkPage using the <em class=
+"parameter"><code>scratch</code></em> target. Assuming that
+<em class="parameter"><code><em class=
+"replaceable"><code>coolsite</code></em></code></em> has been
+provided as the value of the <em class=
+"parameter"><code>site.id</code></em>, here is the directory
+structure that is generated by SilkPage.</p>
+<pre class="programlisting">
+
+
+                    [coolsite] - $SITE_HOME
+                         |
+          +--------------+-------------+------------+----------------+
+          |              |             |            |                |
+   build.properties   build.xml      [src]        [img]            [cfg]
+                                       |                           catalog.xml
+                      +----------------+----------------+        
+                      |                |                |
+                    [css]            [xml]            [xsl]
+                    coolsite.css       |              config.xsl
+                                     [en]             param.xsl
+                                     index.xml        rdf.xsl
+                                     about.xml
+                                     layout.xml
+                                     sitemap.xml
+                                     glossary.xml
+                                     contact.xml
+                                     contact-send.php
+                                     contact-sent.xml
+                                     search.xml
+                                     feeds.xml
+                                     projects.xml
+                                     docs.xml
+
+      
+</pre>
+<div class="variablelist">
+<p class="title"><b>Scratch Website Directories</b></p>
+<dl>
+<dt><a name="site.home.dir" id="site.home.dir"></a> <span class=
+"term"><b><code class="envar">$SITE_HOME</code></b></span></dt>
+<dd>
+<p>is the root directory of the generated directory structure. This
+directory is refered to as <b><code class=
+"envar">$SITE_HOME</code></b> here after.</p>
+<p>and your Website themes in terms of CSS and XSL stylesheets.</p>
+</dd>
+<dt><span class="term"><a href=
+"configFilesInstance.html#ifiles.build.properties"><b>build.properties</b></a></span></dt>
+<dd>
+<p>Contains build properties of your Website such as your Website
+URL and your website themes in terms of CSS and XSL
+stylesheets.</p>
+</dd>
+<dt><span class="term"><b>build.xml</b></span></dt>
+<dd>
+<p>Contains build instructions used by <a href=
+"gls.html#gls:ant">Ant</a> to build your Website. It contains the
+required targets that let you <em class=
+"parameter"><code>preview</code></em>, <em class=
+"parameter"><code>publish</code></em> and <em class=
+"parameter"><code>upload</code></em> your Website.</p>
+</dd>
+<dt><span class="term"><b>src/</b></span></dt>
+<dd>
+<p>The root directory for your Website content where all source
+files are kept.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>css/</b></p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><a href="ifiles.siteid.css.html"><b>siteid.css</b></a> for your
+main Website CSS stylesheet to control your Website style.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><b>xml/</b> The root directory for your Website XML content.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><b>en/</b> The root directory for your Website XML content in
+English. Of course, you could translate your Website content in
+other languages. For example, to add the French translation, you
+need to translate your XML content in French and put it under the
+<b>fr/</b> ditrctory.</p>
+<div class="itemizedlist">
+<ul type="square">
+<li>
+<p><b>index.xml</b> your Website main index page.</p>
+</li>
+<li>
+<p><b>layout.xml</b> describes the layout and structure of your
+Website as well as your Website navigation.</p>
+</li>
+<li>
+<p><b>sitemap.xml</b> contains instructions to generate your
+Website sitemap based on the <b>layout.xml</b>.</p>
+</li>
+<li>
+<p><b>glossary.xml</b> contains a collection of your web site terms
+and brief descriptions or definitions of those terms. Once you
+refer to a term in your site content, SilkPage transforms it to an
+HTML acronym. For example to refere to XML as an acronym, you write
+<code class="sgmltag-element">acronym</code> XML <code class=
+"sgmltag-element">/acronym</code>. Also see <a href=
+"silkpage.acronyms.database.document.html" title=
+"silkpage.acronyms.database.document"><span class=
+"refentrytitle">silkpage.acronyms.database.document</span></a>
+configuration parameter.</p>
+</li>
+<li>
+<p><b>search.xml</b>, <b>contact.xml</b>, <b>feeds.xml</b>, etc.
+also exist in this directory, serving as webpage examples.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><b>xsl/</b></p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><a href="ifiles.config.xsl.html"><b>config.xsl</b></a> contains
+XSL based customization templates.</p>
+</li>
+<li>
+<p><a href="ifiles.param.xsl.html"><b>param.xsl</b></a> contains
+XSL based configuration parameters.</p>
+</li>
+<li>
+<p><a href="ifiles.rdf.xsl.html"><b>rdf.xsl</b></a> is used as a
+driver stylesheet to generate RDF metadata for each XML source.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>cfg/</b></span></dt>
+<dd>
+<div class="itemizedlist">
+<p>The directory for build configuration files</p>
+<ul type="disc">
+<li>
+<p><a href="ifiles.catalog.xml.html"><b>catalog.xml</b></a></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>img/</b></span></dt>
+<dd>
+<p>The directory graphical images of the website</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.layout" id=
+"create.layout"></a>1.2.&#160;Create Site Layout</h3>
+</div>
+</div>
+</div>
+<p>After generating the scratch version of your Website, you need
+to layout your Website and define your required structure. The site
+layout feature provides a mapping between the XML source files and
+the generated HTML files. The XML source files can be stored in
+multiple directories. Note that, the physical location of the XML
+source files do not reflect the site logical hierarchy. The
+<code class="sgmltag-attribute">dir</code> attribute of the
+<code class="sgmltag-element">tocentry</code> element can be used
+to create any set of directory structure for the HTML output. As
+shown in <a href="usage.html#site.skel.structure" title=
+"1.1.1.&#160;Scratch Website Directory Structure">Section&#160;1.1.1,
+&#8220;Scratch Website Directory Structure&#8221;</a>, there is a
+scratch layout file (<b>layout.xml</b>) generated for your Website
+that can be used as the basis to define the structure of your
+Website.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.layout.elements" id=
+"create.layout.elements"></a>1.2.1.&#160;Main Elements</h4>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-element">layout</code>: the root element of
+the site table of content.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">config</code>: optional elements
+specifying global configuration information for the whole site. A
+<code class="sgmltag-element">config</code> element is defined by a
+pair of <code class="sgmltag-attribute">param</code> and
+<code class="sgmltag-attribute">value</code>. This is a global
+element. That is it applies to every page of the Website.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">copyright</code>: defines
+copyright information in the footer of each page. This is a global
+element. That is it applies to every page of the Website.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">style</code>: specifies a CSS
+stylesheet used by all HTML pages of the site. This is a global
+element. That is it applies to every page of the Website.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">toc</code>: the site layout top
+level element. It specifies the site home page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">tocentry</code>: the hierarchy of
+<code class="sgmltag-element">tocentry</code> elements in a
+<code class="sgmltag-element">toc</code> describes the logical
+navigation hierarchy of the Website. Each entry must identify the
+XML document (containing a <code class=
+"sgmltag-element">webpage</code>) that it represents and may
+identify the directory and filename where the file will appear in
+the HTML Website.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-attribute">page</code>: attribute specifies
+the XML source file used to generate the corresponding HTML
+file.</p>
+</li>
+<li>
+<p><code class="sgmltag-attribute">filename</code>: specifies the
+HTML output filename. If a <code class=
+"sgmltag-attribute">filename</code> is not specified, index.html
+will be used.</p>
+</li>
+<li>
+<p><code class="sgmltag-attribute">dir</code>: specifies the output
+directory where the HTML output is generated. if <code class=
+"sgmltag-attribute">dir</code> is not specified, the files will
+appear in the currently inherited directory (or in the root, if no
+directory is specified anywhere in the <code class=
+"sgmltag-element">tocentry</code> ancestry).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code class="sgmltag-element">notoc</code>: pages identified
+with <code class="sgmltag-element">notoc</code> elements instead of
+<code class="sgmltag-element">tocentry</code> will be in the
+Website but will not appear in any hierarchy.</p>
+</li>
+</ul>
+</div>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">output-root</h3>
+<p><code class="sgmltag-attribute">dir</code> attribute can be
+specified using relative or absolute paths. If relative path is
+used, it's taken as relative to the <code class=
+"sgmltag-attribute">dir</code> value of any ancestor <code class=
+"sgmltag-element">tocentry</code> elements. However, if the
+absolute path is chosen, it's taken as relative to the <em class=
+"parameter"><code>output-root</code></em> parameter whose value is
+set to <code class="sgmltag-attvalue">"."</code> by default.</p>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.layout.example" id=
+"create.layout.example"></a>1.2.2.&#160;Examples</h4>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.layout.sample" id=
+"ex:create.layout.sample"></a>
+<p class="title"><b>Example&#160;2.2.&#160;Site Layout</b></p>
+<pre class="programlisting">
+
+
+&lt;!DOCTYPE layout PUBLIC "-//Norman Walsh//DTD Website Layout V2.4.0//EN"
+"http://docbook.sourceforge.net/release/Website/2.4.0/schema/dtd/layout.dtd"&gt;
+&lt;layout&gt;
+&lt;config param="footlink" value="sitemap" altval="Sitemap"/&gt;
+&lt;config param="footlink" value="aboutContact" altval="Contact"/&gt;
+&lt;config param="title" value="SilkPage"/&gt;
+
+&lt;copyright&gt;
+&lt;year&gt;2004&lt;/year&gt;
+&lt;holder role="aboutLicense"&gt;SilkPage&lt;/holder&gt;
+&lt;/copyright&gt;
+
+&lt;headlink rel="icon" href="graphics/gif/silkpage_icon.gif" type="image/gif"/&gt;
+&lt;style src="css/silkpage.css" type="text/css"/&gt;
+
+&lt;toc page="index.xml" filename="index.html"&gt;
+&lt;tocentry page="about/index.xml" dir="about" filename="index.html"&gt;
+&lt;tocentry page="about/colophon.xml" filename="colophon.html"/&gt;
+&lt;tocentry page="about/contact.xml" filename="contact.html"/&gt;
+&lt;/tocentry&gt;
+&lt;tocentry page="docs/index.xml" dir="docs" filename="index.html"/&gt;
+&lt;tocentry page="downloads/index.xml" dir="downloads" filename="index.html"/&gt;
+&lt;/toc&gt;
+
+&lt;notoc page="sitemap.xml" filename="sitemap.html"/&gt;
+&lt;/layout&gt;
+
+</pre></div>
+<p>The above <b>layout.xml</b> file, specifies seven pages for its
+Website. Using this layout file, the hierarchical structure of the
+Website is a main page index.html with three subordinate (about,
+docs and downloads) pages that are:</p>
+<a name="ex:create.layout.output.dir" id=
+"ex:create.layout.output.dir"></a>
+<pre class="programlisting">
+
+
+      
+                                   [root_dir]
+                                       |
+          +--------------+-------------+---------------+---------------+
+          |              |             |               |               |
+      index.html     sitemap.xml    [about]          [docs]        [downloads]
+                                    index.html       index.html    index.html
+                                    colophon.html
+                                    contact.html
+
+   
+</pre>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p><b>index.html</b> generated from <b>index.xml</b> content.</p>
+</li>
+<li>
+<p><b>about/index.html</b> generated from <b>about/index.xml</b>
+content.</p>
+</li>
+<li>
+<p><b>about/colophon.html</b> generated from
+<b>about/colophon.xml</b> content.</p>
+</li>
+<li>
+<p><b>about/contact.html</b> generated from
+<b>about/contact.xml</b> content.</p>
+</li>
+<li>
+<p><b>docs/index.html</b> generated from <b>docs/index.xml</b>
+conent.</p>
+</li>
+<li>
+<p><b>downloads/index.html</b> generated from
+<b>downloads/index.xml</b> conent.</p>
+</li>
+<li>
+<p><b>sitemap.html</b> generated from <b>sitemap.xml</b>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.page" id=
+"create.page"></a>1.3.&#160;Create Site Pages</h3>
+</div>
+</div>
+</div>
+<p>Once your Website structure and layout is defined, you need to
+create the corresponding pages in XML. That is your Website
+content. A SilkPage page is written using DocBook and Website
+elements. For each Web page there is a corresponding XML file. Each
+page consists primarily of three sections:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p><span class="emphasis"><em>Root</em></span>: must start with
+<code class="sgmltag-element">webpage</code> and followed by any
+optional <code class="sgmltag-element">config</code> elements.</p>
+</li>
+<li>
+<p><span class="emphasis"><em>Head</em></span>: header
+information.</p>
+</li>
+<li>
+<p><span class="emphasis"><em>Body</em></span>: page content marked
+up with DocBook and Website elements.</p>
+</li>
+</ol>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.page.head" id=
+"create.page.head"></a>1.3.1.&#160;Create the Page Head</h4>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.head.elements" id=
+"create.page.head.elements"></a>1.3.1.1.&#160;Main Elements</h5>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-element">webpage</code>: specifies the page
+root element; its <code class="sgmltag-attribute">id</code> must be
+unique in the scope of the site.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">config</code>: specifies metadata
+information in the generated HTML output.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">head</code>: contains the page
+head information:</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-element">title</code>: specifies the title
+of the generated HTML page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">summary</code>: used in the title
+attribute of the generated HTML page with the exception of the home
+page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">keyword</code>: specifies metadata
+information for the page.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.head.example" id=
+"create.page.head.example"></a>1.3.1.2.&#160;Examples</h5>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.page.head.sample" id=
+"ex:create.page.head.sample"></a>
+<p class="title"><b>Example&#160;2.3.&#160;Page Head</b></p>
+<pre class="programlisting">
+
+&lt;?xml version="1.0"&gt;
+&lt;!DOCTYPE  webpage ...&gt;
+&lt;webpage id="home"&gt;
+  &lt;config param="rcsdate" value="$Date: 2006/04/17 16:26:47 $"/&gt;
+  &lt;head&gt;
+    &lt;title&gt;SilkPage&lt;/title&gt;
+    &lt;summary&gt;An XML based Publishing Framework for Web&lt;/summary&gt;
+    &lt;keywords&gt;Markup, web standards, W3C, XML, XSL, CSS, XHTML&lt;/keywords&gt;
+  &lt;/head&gt;
+&lt;/webpage&gt;
+
+        
+</pre></div>
+<p>In the above example, the header information of the SilkPage
+Website is specified as follows:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-attribute">home</code> is the unique
+identifier of the home page.</p>
+</li>
+<li>
+<p><em class="parameter"><code>rcsdate</code></em> specifies the
+last modification date of the page. The value of this parameter is
+set to <span class="emphasis"><em>$Date: 2006/04/17 16:26:47
+$</em></span> that is a <span class="application">CVS</span>
+substitution keyword. Using this approach, SilkPage generates the
+last modification timestamp of the home page at the bottom of the
+XHTML output page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">title</code> specifies the page
+main title.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">summary</code> provides a short
+description for the SilkPage framework.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">keyword</code> provides some
+metadata information used by some search engines.</p>
+</li>
+</ul>
+</div>
+<p>In addition to what's specified in the above example, SilkPage
+generates several other optional links in the XHTML output page as
+follows:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>XML Source.&#160;</b> Links to the XML source of the page.
+The lable of this link can be changed by setting the value of the
+configuration parameter <a href="sources.xml.html" title=
+"sources.xml"><span class=
+"refentrytitle">sources.xml</span></a>.</p>
+</li>
+<li>
+<p><b>RDF metadata.&#160;</b> Links to the RDF metadata of the
+page. The lable of this link can be changed by setting the value of
+the configuration parameter <a href="sources.rdf.html" title=
+"sources.rdf"><span class=
+"refentrytitle">sources.rdf</span></a>.</p>
+</li>
+<li>
+<p><b>RSS Feed.&#160;</b> Links to the RSS feed of the page. The
+lable of this link can be changed by setting the value of the
+configuration parameter <a href="sources.rss10.html" title=
+"sources.rss10"><span class=
+"refentrytitle">sources.rss10</span></a>.</p>
+</li>
+<li>
+<p><b>Atom Feed.&#160;</b> Links to the Atom feed(s) of the page.
+The lable of this link can be changed by setting the value of the
+configuration parameter <a href="sources.atom.html" title=
+"sources.atom"><span class=
+"refentrytitle">sources.atom</span></a>.</p>
+</li>
+<li>
+<p><b>DOAP Source.&#160;</b> Links to the DOAP source, included in
+the XML source. The lable of this link can be changed by setting
+the value of the configuration parameter <a href=
+"sources.doap.html" title="sources.doap"><span class=
+"refentrytitle">sources.doap</span></a>.</p>
+</li>
+<li>
+<p><b>URFM.&#160;</b> Links to the URFM file included in the XML
+source. The lable of this link can be changed by setting the value
+of the configuration parameter <a href="sources.urfm.html" title=
+"sources.urfm"><span class=
+"refentrytitle">sources.urfm</span></a>.</p>
+</li>
+<li>
+<p><b>FOAF.&#160;</b> Links to the FOAF file included in the XML
+source. The lable of this link can be changed by setting the value
+of the configuration parameter <a href="sources.foaf.html" title=
+"sources.foaf"><span class=
+"refentrytitle">sources.foaf</span></a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.page.body" id=
+"create.page.body"></a>1.3.2.&#160;Create the Page Body</h4>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.body.elements" id=
+"create.page.body.elements"></a>1.3.2.1.&#160;Main Elements</h5>
+</div>
+</div>
+</div>
+<p>The page content is marked up using <span class=
+"application">DocBook Website</span> elements defined in
+<b>website.dtd</b>. Refer to the online documentation of <a href=
+"http://www.oasis-open.org/docbook/xml/simple/sdocbook/" target=
+"_top">Simplified DocBook DTD</a> for avilable elements and their
+syntax.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.body.example" id=
+"create.page.body.example"></a>1.3.2.2.&#160;Examples</h5>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.page.body.sample" id=
+"ex:create.page.body.sample"></a>
+<p class="title"><b>Example&#160;2.4.&#160;Page Body</b></p>
+<pre class="programlisting">
+
+&lt;?xml version="1.0"&gt;
+&lt;!DOCTYPE  webpage ...&gt;
+&lt;webpage id="home"&gt;
+  &lt;config param="desc" value="The home index page"/&gt;
+  &lt;config param="rcsdate" value="$Date: 2006/04/17 16:26:47 $"/&gt;
+  &lt;head&gt;
+    &lt;title&gt;SilkPage&lt;/title&gt;
+    &lt;summary&gt;An XML based Publishing Framework for Web&lt;/summary&gt;
+    &lt;keywords&gt;Markup, web standards, W3C, XML, XSL, CSS, XHTML&lt;/keywords&gt;
+  &lt;/head&gt;
+  &lt;para&gt;
+    SilkPage is an XML based Web publishing framework that has evolved from
+    the Docbook Website. With strong foundations in XML, it is a publishing 
+    framework with a focus on web standards and usability. 
+    SilkPage provides a framework for publishing structured and standrad 
+    compliant websites in XML. It is particularly suited to publish personal
+    websites, though it is by no means limited to them.
+  &lt;/para&gt;
+  &lt;sidebar&gt;
+  &lt;variablelist&gt;
+    &lt;title&gt;Key Features&lt;/title&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Conent Management&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          XML based content management.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;WaSP Compliant&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+           Web Standards (WaSP) compliant XHTML output in addition to XML and
+           PDF outputs.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Content Feeds Support&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          Integrated XML and RSS feed generation.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Separate Presentation Model&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          Customization via XSL and CSS customization layers.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Cross Platform Support&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          Cross platform support via industry standards.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+  &lt;/variablelist&gt;
+  &lt;/sidebar&gt;
+&lt;/webpage&gt;
+
+        
+</pre></div>
+<p>In the above example the <code class=
+"sgmltag-element">para</code> element is used to describe the
+SilkPage framework briefly. In addition, the <code class=
+"sgmltag-element">sidebar</code> element is used to list the key
+features of the SilkPage framework.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"install.dir.structure.html">Prev</a>&#160;</td>
+<td width="20%" align="center">&#160;</td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"content.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">3.3.&#160;SilkPage
+Directory Structure&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">&#160;2.&#160;Site
+Content Management</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

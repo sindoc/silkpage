@@ -1,0 +1,115 @@
+/*
+-----------------------------------------------
+blogger ie5 styles
+author:   douglas bowman
+version:  21 Jan 2004
+
+-----------------------------------------------
+NOTE:
+
+This style sheet is targeted only at IE5/win
+to compensate for its broken CSS box model and
+incorrect base font size for keywords.
+It is served via the Mid Pass Filter created
+and documented by Tantek Celik:
+http://tantek.com/CSS/Examples/midpass.html
+
+Styles for this browser are maintained here
+to keep the main style sheet as clean as
+possible.
+
+----------------------------------------------- */
+
+
+html body {
+  font-size:x-small;
+  }
+
+
+/* Page Structure
+----------------------------------------------- */
+#m3 {
+  width:710px;
+  }
+.sp #secondary {
+  width:265px;
+  padding-right:25px;
+  }
+.sp #primary {
+  float:none;
+  }
+#newsblock {
+  width:415px;
+  }
+#promoblock {
+  width:265px;
+  }
+
+
+/* Header
+----------------------------------------------- */
+#h3 {
+  width:750px;
+  }
+#header #logo {
+  }
+
+
+/* Sign in
+----------------------------------------------- */
+#header form {
+  width:320px;
+  }
+
+
+/* Sign in
+----------------------------------------------- */
+#home #primary li a {
+  width:100px;
+  }
+
+
+/* Nav
+----------------------------------------------- */
+.nav strong, .nav a {
+  float:none;
+  width:auto;
+  margin-right:0;
+  }
+.nav strong img, .nav a img {
+  display:inline;
+  }
+#navtour strong, #navtour a {
+  margin-right:0;
+  }
+
+
+/* Progress
+----------------------------------------------- */
+#progress ol li {
+  display:inline;
+  background-image:none;
+  margin:0 4px 0 0;
+  padding:0 20px 0 0;
+  }
+#progress strong, html #progress a, html #progress em {
+  float:left;
+  display:block;
+  padding:5px 5px 5px 28px;
+  margin-bottom:10px;
+  }
+
+
+/* Tables
+----------------------------------------------- */
+table {
+  width:auto;
+  }
+
+
+/* Modules
+----------------------------------------------- */
+
+
+/* Miscellaneous
+----------------------------------------------- */

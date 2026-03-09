@@ -1,0 +1,4243 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>SilkPage User Guide</title>
+<link rel="stylesheet" href="css/single.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div class="book" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h1 class="title"><a name="silkpage-userguide" id=
+"silkpage-userguide"></a>SilkPage User Guide</h1>
+</div>
+<div><!-- 
+      $Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp $
+     --></div>
+<div>
+<p class="copyright">Copyright © 2004, 2005, 2006 <a href=
+"http://www.markupware.com/" target="_top">MarkupWare</a></p>
+</div>
+<div>
+<div class="legalnotice"><a name="id2496281" id="id2496281"></a>
+<p>Permission is granted to copy, distribute and/or modify SilkPage
+Documentation under the terms of the GNU Free Documentation
+License, Version 1.1 or any later version published by the Free
+Software Foundation. A copy of the license is available at <a href=
+"http://www.gnu.org/copyleft/fdl.html" target=
+"_top">http://www.gnu.org/copyleft/fdl.html</a></p>
+</div>
+</div>
+</div>
+<hr /></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="preface"><a href=
+"#introduction">Introduction</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#silkpage">1. What is
+SilkPage?</a></span></dt>
+<dt><span class="section"><a href="#typography">2. Notation and
+Typographical Conventions</a></span></dt>
+</dl>
+</dd>
+<dt><span class="chapter"><a href="#installation">1. Installation
+and Setup</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#requirements">1. System
+Requirement</a></span></dt>
+<dt><span class="section"><a href="#prerequisite">2. Prerequisite
+Software</a></span></dt>
+<dt><span class="section"><a href="#installSilkPage">3.
+Installation Tasks</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href=
+"#installation.downloadfiles">3.1. SilkPage Distribution
+Download</a></span></dt>
+<dt><span class="section"><a href="#installation.unpacking">3.2.
+Installing SilkPage Distribution</a></span></dt>
+<dt><span class="section"><a href="#install.dir.structure">3.3.
+SilkPage Directory Structure</a></span></dt>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt><span class="chapter"><a href="#usage">2. Usage</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#creation">1. Site
+Creation</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#create.site">1.1. Create Site
+Scratch</a></span></dt>
+<dt><span class="section"><a href="#create.layout">1.2. Create Site
+Layout</a></span></dt>
+<dt><span class="section"><a href="#create.page">1.3. Create Site
+Pages</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#content">2. Site Content
+Management</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#create.content.elements">2.1.
+Main Elements</a></span></dt>
+<dt><span class="section"><a href="#create.content.example">2.2.
+Examples</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#publish">3. Site
+Publishing</a></span></dt>
+<dt><span class="section"><a href="#advanced">4. Advanced
+Features</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#customization">4.1. Site
+Customization</a></span></dt>
+<dt><span class="section"><a href="#feeds">4.2. XML Feed
+Integration</a></span></dt>
+<dt><span class="section"><a href="#rdf">4.3. RDF
+Integration</a></span></dt>
+<dt><span class="section"><a href="#sitemap">4.4. Auto Sitemap
+Generation</a></span></dt>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt><span class="appendix"><a href="#configFilesGlobal">A. Global
+Configuration Files</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#gfiles.catalog.xml">1.
+<b>catalog.xml</b></a></span></dt>
+<dt><span class="section"><a href="#gfiles.tidy.properties">2.
+<b>tidy.properties</b></a></span></dt>
+</dl>
+</dd>
+<dt><span class="appendix"><a href="#configFilesInstance">B.
+Instance Configuration Files</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#ifiles.build.properties">1.
+<b>build.properties</b></a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#custom.param">1.1. XSL and CSS
+Customization Parameters</a></span></dt>
+<dt><span class="section"><a href="#docbook.home.param">1.2.
+DocBook Parameters</a></span></dt>
+<dt><span class="section"><a href="#ftp.param">1.3. FTP
+Parameters</a></span></dt>
+<dt><span class="section"><a href="#general.param">1.4. General
+Parameters</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#ifiles.siteid.css">2.
+<b>siteid.css</b></a></span></dt>
+<dt><span class="section"><a href="#ifiles.param.xsl">3.
+<b>param.xsl</b></a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#search.param">3.1. Search Field
+Parameters</a></span></dt>
+<dt><span class="section"><a href=
+"#config.label.param.xmlfeeds">3.2. Page Source Link Items
+Parameters</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#ifiles.config.xsl">4.
+<b>config.xsl</b></a></span></dt>
+<dt><span class="section"><a href="#ifiles.rdf.xsl">5.
+<b>rdf.xsl</b></a></span></dt>
+<dt><span class="section"><a href="#ifiles.catalog.xml">6.
+<b>catalog.xml</b></a></span></dt>
+</dl>
+</dd>
+<dt><span class="appendix"><a href="#commands">C. Command Line
+Options</a></span></dt>
+<dd>
+<dl>
+<dt><span class="refentrytitle"><a href="#ant">ant</a></span>
+<span class="refpurpose">- Processes SilkPage command line targets
+options used for generating and publishing websites.</span></dt>
+</dl>
+</dd>
+<dt><span class="appendix"><a href="#faq">D. Frequently Asked
+Questions</a></span></dt>
+<dt><span class="appendix"><a href="#resources">E.
+Resources</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#res:silkpage.latest">1. Latest
+Version of SilkPage</a></span></dt>
+<dt><span class="section"><a href="#res:requiredDownload">2.
+Prerequisite Software Resources</a></span></dt>
+<dt><span class="section"><a href="#res:spec">3.
+Specifications</a></span></dt>
+<dt><span class="section"><a href="#res:tutorials">4. Tutorials and
+Introductory Materials</a></span></dt>
+</dl>
+</dd>
+<dt><span class="glossary"><a href="#gls">Glossary</a></span></dt>
+</dl>
+</div>
+<div class="list-of-examples">
+<p><b>List of Examples</b></p>
+<dl>
+<dt>1.1. <a href="#install.gnu">Installing SilkPage</a></dt>
+<dt>2.1. <a href="#ex:create.site.scratch">Create Site
+Scratch</a></dt>
+<dt>2.2. <a href="#ex:create.layout.sample">Site Layout</a></dt>
+<dt>2.3. <a href="#ex:create.page.head.sample">Page Head</a></dt>
+<dt>2.4. <a href="#ex:create.page.body.sample">Page Body</a></dt>
+<dt>2.5. <a href="#ex:create.content.sample">Linking Content Pages
+and Elements</a></dt>
+<dt>2.6. <a href="#ex:site.preview">Drafting your Website</a></dt>
+<dt>2.7. <a href="#ex:site.publish">Publishing your Website
+Online</a></dt>
+<dt>2.8. <a href="#ex:feeds.rss">RSS 1.0 Feed</a></dt>
+<dt>2.9. <a href="#ex:feeds.atom">Atom Feed</a></dt>
+</dl>
+</div>
+<div class="preface" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title"><a name="introduction" id=
+"introduction"></a>Introduction</h2>
+</div>
+</div>
+</div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="#silkpage">1. What is
+SilkPage?</a></span></dt>
+<dt><span class="section"><a href="#typography">2. Notation and
+Typographical Conventions</a></span></dt>
+</dl>
+</div>
+<hr />
+<p>This document contains useful information to assist you during
+the installation, customization and usage of SilkPage.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="silkpage" id=
+"silkpage"></a>1.&#160;What is SilkPage?</h2>
+</div>
+</div>
+</div>
+<p>SilkPage is an XML based Web publishing framework that has
+evolved from the Docbook Website. With strong foundations in XML,
+it is a publishing framework with a focus on web standards and
+usability. SilkPage provides a framework for publishing structured
+and standard compliant websites in XML. It is particularly suited
+to publish personal websites, though it is by no means limited to
+them.</p>
+<div class="variablelist"><a name="silkpage.features" id=
+"silkpage.features"></a>
+<p class="title"><b>Key Features</b></p>
+<dl>
+<dt><span class="term">Conent Management</span></dt>
+<dd>
+<p>XML based content management.</p>
+</dd>
+<dt><span class="term">WaSP Compliant</span></dt>
+<dd>
+<p>Web Standards (WaSP) compliant XHTML output.</p>
+</dd>
+<dt><span class="term">Accessibilty</span></dt>
+<dd>
+<p>SilkPage is developed with accessibility and usability in
+mind.</p>
+</dd>
+<dt><span class="term">Separate Presentation Model</span></dt>
+<dd>
+<p>Customization via XSL and CSS customization layers.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="typography" id=
+"typography"></a>2.&#160;Notation and Typographical
+Conventions</h2>
+</div>
+</div>
+</div>
+<p>There is a systematic usage of typography and highlighting in
+this document. Different styles are defined as follows:</p>
+<div class="variablelist">
+<p class="title"><b>Typography Styles</b></p>
+<dl>
+<dt><span class="term"><code class=
+"sgmltag-element">element</code></span></dt>
+<dd>
+<p>An XML element.</p>
+</dd>
+<dt><span class="term"><code class=
+"sgmltag-attribute">attribute</code></span></dt>
+<dd>
+<p>An XML attribute.</p>
+</dd>
+<dt><span class="term"><b>filename</b></span></dt>
+<dd>
+<p>Paths, directory and file names.</p>
+</dd>
+<dt><span class="term"><span class=
+"application">application</span></span></dt>
+<dd>
+<p>Programs and software application names.</p>
+</dd>
+<dd>
+<div class="cmdsynopsis">
+<p><span class="term"><code class="command">command</code>
+synopsis</span></p>
+</div>
+</dd>
+<dd>
+<p>Shell commands that are executed by the user</p>
+</dd>
+<dt><span class="term"><strong class="userinput"><code>User
+Input</code></strong></span></dt>
+<dd>
+<p>Text that the user has to type.</p>
+</dd>
+<dt><span class="term"><code class="computeroutput">Computer
+output</code></span></dt>
+<dd>
+<p>Text displayed by the computer on the command line.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="chapter" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title"><a name="installation" id=
+"installation"></a>Chapter&#160;1.&#160;Installation and Setup</h2>
+</div>
+</div>
+</div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="#requirements">1. System
+Requirement</a></span></dt>
+<dt><span class="section"><a href="#prerequisite">2. Prerequisite
+Software</a></span></dt>
+<dt><span class="section"><a href="#installSilkPage">3.
+Installation Tasks</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href=
+"#installation.downloadfiles">3.1. SilkPage Distribution
+Download</a></span></dt>
+<dt><span class="section"><a href="#installation.unpacking">3.2.
+Installing SilkPage Distribution</a></span></dt>
+<dt><span class="section"><a href="#install.dir.structure">3.3.
+SilkPage Directory Structure</a></span></dt>
+</dl>
+</dd>
+</dl>
+</div>
+<hr />
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="requirements" id=
+"requirements"></a>1.&#160;System Requirement</h2>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>CPU.&#160;</b> <span class="trademark">Intel</span>®
+<span class="trademark">Pentium</span>® II or higher processor</p>
+</li>
+<li>
+<p><b>Memory.&#160;</b>32 MB RAM</p>
+</li>
+<li>
+<p><b>Disk Space.&#160;</b>20 MB</p>
+</li>
+<li>
+<p><b>Network.&#160;</b> Internet connection and a <a href=
+"#gls:browser">Web Browser</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="prerequisite" id=
+"prerequisite"></a>2.&#160;Prerequisite Software</h2>
+</div>
+</div>
+</div>
+<p>Prior to installing SilkPage, you must first install the
+following application software and middleware. Detailed
+instructions for installing and using the below mentioned
+applications are beyond the scope of this document. However, you'll
+find appropriate instructions in the corresponding URL(s).</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p>Download and Install <a href="#gls:java"></a> <a href=
+"http://java.sun.com/j2se" target="_top">Java (J2SE)</a></p>
+</li>
+<li>
+<p>Download and Install <a href="#gls:ant">Ant</a></p>
+</li>
+<li>
+<p>Download and Install <a href="#gls:docbook.xsl">DocBook XSL
+Stylesheets</a> (optional)</p>
+</li>
+<li>
+<p>Download and Install <a href="#gls:docbook.website">DocBook
+Website</a> (optional)</p>
+</li>
+<li>
+<p>Download <a href="#res:silkpage.latest">Latest Version of
+SilkPage</a></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="installSilkPage" id=
+"installSilkPage"></a>3.&#160;Installation Tasks</h2>
+</div>
+</div>
+</div>
+<p>This section covers the SilkPage installation tasks. <em class=
+"replaceable"><code>VERSION</code></em> corresponds to the current
+version of the SilkPage software.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="installation.downloadfiles" id=
+"installation.downloadfiles"></a>3.1.&#160;SilkPage Distribution
+Download</h3>
+</div>
+</div>
+</div>
+<p>SilkPage comes in two bundles:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>silkpage-<em class=
+"replaceable"><code>VERSION</code></em>.zip</b> only includes
+SilkPage distribution. If you choose this download file, you also
+need to download the required DocBook resources mentioned in
+<a href="#prerequisite" title=
+"2.&#160;Prerequisite Software">Section&#160;2, &#8220;Prerequisite
+Software&#8221;</a>.</p>
+</li>
+<li>
+<p><b>silkpage-<em class=
+"replaceable"><code>VERSION</code></em>-plus.zip</b> in addition to
+SilkPage distribution, it also includes the required DocBook
+resources. It's recommended that you choose this download file as
+it includes all the required DocBook resources.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="installation.unpacking" id=
+"installation.unpacking"></a>3.2.&#160;Installing SilkPage
+Distribution</h3>
+</div>
+</div>
+</div>
+<p>To install SilkPage you only need to unpack the SilkPage
+distribution file. Unpacking the download file should result the
+directory structure shown in <a href="#install.dir.structure"
+title="3.3.&#160;SilkPage Directory Structure">Section&#160;3.3,
+&#8220;SilkPage Directory Structure&#8221;</a>. Once unpacked, you
+can test the SilkPage installation by running the <em class=
+"parameter"><code>config</code></em> target as shown in <a href=
+"#install.gnu" title=
+"Example&#160;1.1.&#160;Installing SilkPage">Example&#160;1.1,
+&#8220;Installing SilkPage&#8221;</a>.</p>
+<div class="example"><a name="install.gnu" id="install.gnu"></a>
+<p class="title"><b>Example&#160;1.1.&#160;Installing
+SilkPage</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">unzip</code> silkpage-<em class=
+"replaceable"><code>VERSION</code></em>-plus.zip</p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> silkpage-<em class=
+"replaceable"><code>VERSION</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class="option">-f</code>
+src/xml/build/tasks.xml config</p>
+</div>
+<pre class="programlisting">
+
+   config:
+     [echo] SilkPage (VERSION)
+     [echo] user.name: jhe
+     [echo] os.name: Linux
+     [echo] temp.dir: /tmp
+     [echo] DocBook Website installed ? true
+     [echo] DocBook XSL installed ? true
+
+    
+</pre></div>
+<p>Refer to <a href="#commands" title=
+"Appendix&#160;C.&#160;Command Line Options">Appendix&#160;C,
+<i>Command Line Options</i></a> for detailed information about
+SilkPage command line options. For troubleshooting, refer to
+<a href="#faq:install" title="Installation">Q &amp; A&#160;D.3,
+&#8220;Installation&#8221;</a>.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="install.dir.structure" id=
+"install.dir.structure"></a>3.3.&#160;SilkPage Directory
+Structure</h3>
+</div>
+</div>
+</div>
+<p>This section gives an overview of the SilkPage directories and
+the files they contain. Assuming the SilkPage software is installed
+at <b>silkpage<em class=
+"replaceable"><code>-VERSION</code></em></b>, here are some of the
+most important directories:</p>
+<pre class="programlisting">
+
+
+                              [siklpage-VERSION] - $SILKPAGE_HOME
+                                     |
+          +-------------+------------+------------------------+
+          |             |            |                        |
+        [cfg]         [docs]      [share]                   [src]
+                                     |                        |
+        catalog.xml           +------+-----+       +----------+----------+
+                              |            |       |          |          |  
+        tidy.properties     [lib]      [tools]   [css]      [xml]      [xsl]
+     
+
+    
+</pre>
+<div class="variablelist">
+<p class="title"><b>SilkPage Directories</b></p>
+<dl>
+<dt><a name="silkpage.home.dir" id="silkpage.home.dir"></a>
+<span class="term"><b><code class=
+"envar">$SILKPAGE_HOME</code></b></span></dt>
+<dd>
+<p>The installation directory of SilkPage software, refered to as
+<b><code class="envar">$SILKPAGE_HOME</code></b> here after.</p>
+</dd>
+<dt><a name="silkpage.cfg.dir" id=
+"silkpage.cfg.dir"></a><span class="term"><b>cfg/</b></span></dt>
+<dd>
+<p>The configuration directory of the SilkPage software.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><a href="#gfiles.catalog.xml"><b>catalog.xml</b></a> used in
+order to perform Entity and URI resolution.</p>
+</li>
+<li>
+<p><a href="#gfiles.tidy.properties"><b>tidy.properties</b></a>
+contains <span class="application">Tidy</span> properties that are
+fed to <span class="application">Tidy</span> when it's run by
+SilkPage to validate the XHTML output.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>docs/</b></span></dt>
+<dd>
+<p>Contains SilkPage User Guide and documentation.</p>
+</dd>
+<dt><span class="term"><b>share/</b></span></dt>
+<dd>
+<p>Contains resource files used by SilkPage.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>lib/</b> contains code libraries.</p>
+</li>
+<li>
+<p><b>tools/</b> contains middleware and tools including
+<span class="application">DocBook Website</span> and <span class=
+"application">DocBook XSL</span> stylesheets.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>src/</b></span></dt>
+<dd>
+<p>Contains SilkPage source files.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>css/</b> contains a set of CSS stylesheets that are used to
+control the XHTML style and presentation.</p>
+</li>
+<li>
+<p><b>xml/</b> contains <span class="application">Ant</span> based
+build instructions used to generate your Website.</p>
+</li>
+<li>
+<p><b>xsl/</b> contains a set of XSL stylesheets used to output
+XHTML.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="chapter" lang="en" xml:lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title"><a name="usage" id=
+"usage"></a>Chapter&#160;2.&#160;Usage</h2>
+</div>
+</div>
+</div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="#creation">1. Site
+Creation</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#create.site">1.1. Create Site
+Scratch</a></span></dt>
+<dt><span class="section"><a href="#create.layout">1.2. Create Site
+Layout</a></span></dt>
+<dt><span class="section"><a href="#create.page">1.3. Create Site
+Pages</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#content">2. Site Content
+Management</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#create.content.elements">2.1.
+Main Elements</a></span></dt>
+<dt><span class="section"><a href="#create.content.example">2.2.
+Examples</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#publish">3. Site
+Publishing</a></span></dt>
+<dt><span class="section"><a href="#advanced">4. Advanced
+Features</a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#customization">4.1. Site
+Customization</a></span></dt>
+<dt><span class="section"><a href="#feeds">4.2. XML Feed
+Integration</a></span></dt>
+<dt><span class="section"><a href="#rdf">4.3. RDF
+Integration</a></span></dt>
+<dt><span class="section"><a href="#sitemap">4.4. Auto Sitemap
+Generation</a></span></dt>
+</dl>
+</dd>
+</dl>
+</div>
+<hr />
+<p>This chapter contains step-by-step instructions for getting
+started with SilkPage. The following steps summarize the overall
+process of creating and publishing a Website using SilkPage.</p>
+<div class="orderedlist"><a name="silkpage.nutshell" id=
+"silkpage.nutshell"></a>
+<ol type="1">
+<li>
+<p><a href="#create.site" title=
+"1.1.&#160;Create Site Scratch">Section&#160;1.1, &#8220;Create
+Site Scratch&#8221;</a> Create a brand new site from scratch</p>
+</li>
+<li>
+<p><a href="#create.layout" title=
+"1.2.&#160;Create Site Layout">Section&#160;1.2, &#8220;Create Site
+Layout&#8221;</a> Structure your Website by organizing your XML
+content</p>
+</li>
+<li>
+<p><a href="#create.page" title=
+"1.3.&#160;Create Site Pages">Section&#160;1.3, &#8220;Create Site
+Pages&#8221;</a> Create XML source pages and content</p>
+</li>
+<li>
+<p><a href="#publish" title=
+"3.&#160;Site Publishing">Section&#160;3, &#8220;Site
+Publishing&#8221;</a> Publish your Website</p>
+</li>
+<li>
+<p><a href="#customization" title=
+"4.1.&#160;Site Customization">Section&#160;4.1, &#8220;Site
+Customization&#8221;</a> Customize your Website elements and
+appearance to fit your specific needs</p>
+</li>
+</ol>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="creation" id=
+"creation"></a>1.&#160;Site Creation</h2>
+</div>
+</div>
+</div>
+<p>A website is a collection of XML pages organized, for the
+purposes of navigation, into one or more hierarchies. That is the
+Website blueprint. This section describes the process of making a
+blueprint for your Website.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.site" id=
+"create.site"></a>1.1.&#160;Create Site Scratch</h3>
+</div>
+</div>
+</div>
+<p>To begin, you need to have your Website basic skeleton. To
+create the skeleton of your Website, you need to run the SilkPage
+with the <em class="parameter"><code>scratch</code></em> target.
+When running the SilkPage with the <em class=
+"parameter"><code>scratch</code></em> target, you also need to
+provide a <em class="parameter"><code>site.id</code></em> as shown
+in <a href="#ex:create.site.scratch" title=
+"Example&#160;2.1.&#160;Create Site Scratch">Example&#160;2.1,
+&#8220;Create Site Scratch&#8221;</a>.</p>
+<div class="example"><a name="ex:create.site.scratch" id=
+"ex:create.site.scratch"></a>
+<p class="title"><b>Example&#160;2.1.&#160;Create Site
+Scratch</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> silkpage-<em class=
+"replaceable"><code>VERSION</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class="option">-f</code>
+src/xml/build/tasks.xml -Dsite.id="<em class=
+"replaceable"><code>coolsite</code></em>" scratch</p>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="site.skel.structure" id=
+"site.skel.structure"></a>1.1.1.&#160;Scratch Website Directory
+Structure</h4>
+</div>
+</div>
+</div>
+<p>This section gives an overview of your scratch Website
+directories that are generated by SilkPage using the <em class=
+"parameter"><code>scratch</code></em> target. Assuming that
+<em class="parameter"><code><em class=
+"replaceable"><code>coolsite</code></em></code></em> has been
+provided as the value of the <em class=
+"parameter"><code>site.id</code></em>, here is the directory
+structure that is generated by SilkPage.</p>
+<pre class="programlisting">
+
+
+                    [coolsite] - $SITE_HOME
+                         |
+          +--------------+-------------+------------+----------------+
+          |              |             |            |                |
+   build.properties   build.xml      [src]        [img]            [cfg]
+                                       |                           catalog.xml
+                      +----------------+----------------+        
+                      |                |                |
+                    [css]            [xml]            [xsl]
+                    coolsite.css       |              config.xsl
+                                     [en]             param.xsl
+                                     index.xml        rdf.xsl
+                                     about.xml
+                                     layout.xml
+                                     sitemap.xml
+                                     glossary.xml
+                                     contact.xml
+                                     contact-send.php
+                                     contact-sent.xml
+                                     search.xml
+                                     feeds.xml
+                                     projects.xml
+                                     docs.xml
+
+      
+</pre>
+<div class="variablelist">
+<p class="title"><b>Scratch Website Directories</b></p>
+<dl>
+<dt><a name="site.home.dir" id="site.home.dir"></a> <span class=
+"term"><b><code class="envar">$SITE_HOME</code></b></span></dt>
+<dd>
+<p>is the root directory of the generated directory structure. This
+directory is refered to as <b><code class=
+"envar">$SITE_HOME</code></b> here after.</p>
+<p>and your Website themes in terms of CSS and XSL stylesheets.</p>
+</dd>
+<dt><span class="term"><a href=
+"#ifiles.build.properties"><b>build.properties</b></a></span></dt>
+<dd>
+<p>Contains build properties of your Website such as your Website
+URL and your website themes in terms of CSS and XSL
+stylesheets.</p>
+</dd>
+<dt><span class="term"><b>build.xml</b></span></dt>
+<dd>
+<p>Contains build instructions used by <a href="#gls:ant">Ant</a>
+to build your Website. It contains the required targets that let
+you <em class="parameter"><code>preview</code></em>, <em class=
+"parameter"><code>publish</code></em> and <em class=
+"parameter"><code>upload</code></em> your Website.</p>
+</dd>
+<dt><span class="term"><b>src/</b></span></dt>
+<dd>
+<p>The root directory for your Website content where all source
+files are kept.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>css/</b></p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><a href="#ifiles.siteid.css"><b>siteid.css</b></a> for your main
+Website CSS stylesheet to control your Website style.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><b>xml/</b> The root directory for your Website XML content.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><b>en/</b> The root directory for your Website XML content in
+English. Of course, you could translate your Website content in
+other languages. For example, to add the French translation, you
+need to translate your XML content in French and put it under the
+<b>fr/</b> ditrctory.</p>
+<div class="itemizedlist">
+<ul type="square">
+<li>
+<p><b>index.xml</b> your Website main index page.</p>
+</li>
+<li>
+<p><b>layout.xml</b> describes the layout and structure of your
+Website as well as your Website navigation.</p>
+</li>
+<li>
+<p><b>sitemap.xml</b> contains instructions to generate your
+Website sitemap based on the <b>layout.xml</b>.</p>
+</li>
+<li>
+<p><b>glossary.xml</b> contains a collection of your web site terms
+and brief descriptions or definitions of those terms. Once you
+refer to a term in your site content, SilkPage transforms it to an
+HTML acronym. For example to refere to XML as an acronym, you write
+<code class="sgmltag-element">acronym</code> XML <code class=
+"sgmltag-element">/acronym</code>. Also see <a href=
+"#silkpage.acronyms.database.document" title=
+"silkpage.acronyms.database.document"><span class=
+"refentrytitle">silkpage.acronyms.database.document</span></a>
+configuration parameter.</p>
+</li>
+<li>
+<p><b>search.xml</b>, <b>contact.xml</b>, <b>feeds.xml</b>, etc.
+also exist in this directory, serving as webpage examples.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><b>xsl/</b></p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><a href="#ifiles.config.xsl"><b>config.xsl</b></a> contains XSL
+based customization templates.</p>
+</li>
+<li>
+<p><a href="#ifiles.param.xsl"><b>param.xsl</b></a> contains XSL
+based configuration parameters.</p>
+</li>
+<li>
+<p><a href="#ifiles.rdf.xsl"><b>rdf.xsl</b></a> is used as a driver
+stylesheet to generate RDF metadata for each XML source.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>cfg/</b></span></dt>
+<dd>
+<div class="itemizedlist">
+<p>The directory for build configuration files</p>
+<ul type="disc">
+<li>
+<p><a href="#ifiles.catalog.xml"><b>catalog.xml</b></a></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt><span class="term"><b>img/</b></span></dt>
+<dd>
+<p>The directory graphical images of the website</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.layout" id=
+"create.layout"></a>1.2.&#160;Create Site Layout</h3>
+</div>
+</div>
+</div>
+<p>After generating the scratch version of your Website, you need
+to layout your Website and define your required structure. The site
+layout feature provides a mapping between the XML source files and
+the generated HTML files. The XML source files can be stored in
+multiple directories. Note that, the physical location of the XML
+source files do not reflect the site logical hierarchy. The
+<code class="sgmltag-attribute">dir</code> attribute of the
+<code class="sgmltag-element">tocentry</code> element can be used
+to create any set of directory structure for the HTML output. As
+shown in <a href="#site.skel.structure" title=
+"1.1.1.&#160;Scratch Website Directory Structure">Section&#160;1.1.1,
+&#8220;Scratch Website Directory Structure&#8221;</a>, there is a
+scratch layout file (<b>layout.xml</b>) generated for your Website
+that can be used as the basis to define the structure of your
+Website.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.layout.elements" id=
+"create.layout.elements"></a>1.2.1.&#160;Main Elements</h4>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-element">layout</code>: the root element of
+the site table of content.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">config</code>: optional elements
+specifying global configuration information for the whole site. A
+<code class="sgmltag-element">config</code> element is defined by a
+pair of <code class="sgmltag-attribute">param</code> and
+<code class="sgmltag-attribute">value</code>. This is a global
+element. That is it applies to every page of the Website.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">copyright</code>: defines
+copyright information in the footer of each page. This is a global
+element. That is it applies to every page of the Website.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">style</code>: specifies a CSS
+stylesheet used by all HTML pages of the site. This is a global
+element. That is it applies to every page of the Website.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">toc</code>: the site layout top
+level element. It specifies the site home page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">tocentry</code>: the hierarchy of
+<code class="sgmltag-element">tocentry</code> elements in a
+<code class="sgmltag-element">toc</code> describes the logical
+navigation hierarchy of the Website. Each entry must identify the
+XML document (containing a <code class=
+"sgmltag-element">webpage</code>) that it represents and may
+identify the directory and filename where the file will appear in
+the HTML Website.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-attribute">page</code>: attribute specifies
+the XML source file used to generate the corresponding HTML
+file.</p>
+</li>
+<li>
+<p><code class="sgmltag-attribute">filename</code>: specifies the
+HTML output filename. If a <code class=
+"sgmltag-attribute">filename</code> is not specified, index.html
+will be used.</p>
+</li>
+<li>
+<p><code class="sgmltag-attribute">dir</code>: specifies the output
+directory where the HTML output is generated. if <code class=
+"sgmltag-attribute">dir</code> is not specified, the files will
+appear in the currently inherited directory (or in the root, if no
+directory is specified anywhere in the <code class=
+"sgmltag-element">tocentry</code> ancestry).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code class="sgmltag-element">notoc</code>: pages identified
+with <code class="sgmltag-element">notoc</code> elements instead of
+<code class="sgmltag-element">tocentry</code> will be in the
+Website but will not appear in any hierarchy.</p>
+</li>
+</ul>
+</div>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">output-root</h3>
+<p><code class="sgmltag-attribute">dir</code> attribute can be
+specified using relative or absolute paths. If relative path is
+used, it's taken as relative to the <code class=
+"sgmltag-attribute">dir</code> value of any ancestor <code class=
+"sgmltag-element">tocentry</code> elements. However, if the
+absolute path is chosen, it's taken as relative to the <em class=
+"parameter"><code>output-root</code></em> parameter whose value is
+set to <code class="sgmltag-attvalue">"."</code> by default.</p>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.layout.example" id=
+"create.layout.example"></a>1.2.2.&#160;Examples</h4>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.layout.sample" id=
+"ex:create.layout.sample"></a>
+<p class="title"><b>Example&#160;2.2.&#160;Site Layout</b></p>
+<pre class="programlisting">
+
+
+&lt;!DOCTYPE layout PUBLIC "-//Norman Walsh//DTD Website Layout V2.4.0//EN"
+"http://docbook.sourceforge.net/release/Website/2.4.0/schema/dtd/layout.dtd"&gt;
+&lt;layout&gt;
+&lt;config param="footlink" value="sitemap" altval="Sitemap"/&gt;
+&lt;config param="footlink" value="aboutContact" altval="Contact"/&gt;
+&lt;config param="title" value="SilkPage"/&gt;
+
+&lt;copyright&gt;
+&lt;year&gt;2004&lt;/year&gt;
+&lt;holder role="aboutLicense"&gt;SilkPage&lt;/holder&gt;
+&lt;/copyright&gt;
+
+&lt;headlink rel="icon" href="graphics/gif/silkpage_icon.gif" type="image/gif"/&gt;
+&lt;style src="css/silkpage.css" type="text/css"/&gt;
+
+&lt;toc page="index.xml" filename="index.html"&gt;
+&lt;tocentry page="about/index.xml" dir="about" filename="index.html"&gt;
+&lt;tocentry page="about/colophon.xml" filename="colophon.html"/&gt;
+&lt;tocentry page="about/contact.xml" filename="contact.html"/&gt;
+&lt;/tocentry&gt;
+&lt;tocentry page="docs/index.xml" dir="docs" filename="index.html"/&gt;
+&lt;tocentry page="downloads/index.xml" dir="downloads" filename="index.html"/&gt;
+&lt;/toc&gt;
+
+&lt;notoc page="sitemap.xml" filename="sitemap.html"/&gt;
+&lt;/layout&gt;
+
+</pre></div>
+<p>The above <b>layout.xml</b> file, specifies seven pages for its
+Website. Using this layout file, the hierarchical structure of the
+Website is a main page index.html with three subordinate (about,
+docs and downloads) pages that are:</p>
+<a name="ex:create.layout.output.dir" id=
+"ex:create.layout.output.dir"></a>
+<pre class="programlisting">
+
+
+      
+                                   [root_dir]
+                                       |
+          +--------------+-------------+---------------+---------------+
+          |              |             |               |               |
+      index.html     sitemap.xml    [about]          [docs]        [downloads]
+                                    index.html       index.html    index.html
+                                    colophon.html
+                                    contact.html
+
+   
+</pre>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p><b>index.html</b> generated from <b>index.xml</b> content.</p>
+</li>
+<li>
+<p><b>about/index.html</b> generated from <b>about/index.xml</b>
+content.</p>
+</li>
+<li>
+<p><b>about/colophon.html</b> generated from
+<b>about/colophon.xml</b> content.</p>
+</li>
+<li>
+<p><b>about/contact.html</b> generated from
+<b>about/contact.xml</b> content.</p>
+</li>
+<li>
+<p><b>docs/index.html</b> generated from <b>docs/index.xml</b>
+conent.</p>
+</li>
+<li>
+<p><b>downloads/index.html</b> generated from
+<b>downloads/index.xml</b> conent.</p>
+</li>
+<li>
+<p><b>sitemap.html</b> generated from <b>sitemap.xml</b>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.page" id=
+"create.page"></a>1.3.&#160;Create Site Pages</h3>
+</div>
+</div>
+</div>
+<p>Once your Website structure and layout is defined, you need to
+create the corresponding pages in XML. That is your Website
+content. A SilkPage page is written using DocBook and Website
+elements. For each Web page there is a corresponding XML file. Each
+page consists primarily of three sections:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p><span class="emphasis"><em>Root</em></span>: must start with
+<code class="sgmltag-element">webpage</code> and followed by any
+optional <code class="sgmltag-element">config</code> elements.</p>
+</li>
+<li>
+<p><span class="emphasis"><em>Head</em></span>: header
+information.</p>
+</li>
+<li>
+<p><span class="emphasis"><em>Body</em></span>: page content marked
+up with DocBook and Website elements.</p>
+</li>
+</ol>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.page.head" id=
+"create.page.head"></a>1.3.1.&#160;Create the Page Head</h4>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.head.elements" id=
+"create.page.head.elements"></a>1.3.1.1.&#160;Main Elements</h5>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-element">webpage</code>: specifies the page
+root element; its <code class="sgmltag-attribute">id</code> must be
+unique in the scope of the site.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">config</code>: specifies metadata
+information in the generated HTML output.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">head</code>: contains the page
+head information:</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-element">title</code>: specifies the title
+of the generated HTML page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">summary</code>: used in the title
+attribute of the generated HTML page with the exception of the home
+page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">keyword</code>: specifies metadata
+information for the page.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.head.example" id=
+"create.page.head.example"></a>1.3.1.2.&#160;Examples</h5>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.page.head.sample" id=
+"ex:create.page.head.sample"></a>
+<p class="title"><b>Example&#160;2.3.&#160;Page Head</b></p>
+<pre class="programlisting">
+
+&lt;?xml version="1.0"&gt;
+&lt;!DOCTYPE  webpage ...&gt;
+&lt;webpage id="home"&gt;
+  &lt;config param="rcsdate" value="$Date: 2006/04/17 16:26:47 $"/&gt;
+  &lt;head&gt;
+    &lt;title&gt;SilkPage&lt;/title&gt;
+    &lt;summary&gt;An XML based Publishing Framework for Web&lt;/summary&gt;
+    &lt;keywords&gt;Markup, web standards, W3C, XML, XSL, CSS, XHTML&lt;/keywords&gt;
+  &lt;/head&gt;
+&lt;/webpage&gt;
+
+        
+</pre></div>
+<p>In the above example, the header information of the SilkPage
+Website is specified as follows:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-attribute">home</code> is the unique
+identifier of the home page.</p>
+</li>
+<li>
+<p><em class="parameter"><code>rcsdate</code></em> specifies the
+last modification date of the page. The value of this parameter is
+set to <span class="emphasis"><em>$Date: 2006/04/17 16:26:47
+$</em></span> that is a <span class="application">CVS</span>
+substitution keyword. Using this approach, SilkPage generates the
+last modification timestamp of the home page at the bottom of the
+XHTML output page.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">title</code> specifies the page
+main title.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">summary</code> provides a short
+description for the SilkPage framework.</p>
+</li>
+<li>
+<p><code class="sgmltag-element">keyword</code> provides some
+metadata information used by some search engines.</p>
+</li>
+</ul>
+</div>
+<p>In addition to what's specified in the above example, SilkPage
+generates several other optional links in the XHTML output page as
+follows:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><b>XML Source.&#160;</b> Links to the XML source of the page.
+The lable of this link can be changed by setting the value of the
+configuration parameter <a href="#sources.xml" title=
+"sources.xml"><span class=
+"refentrytitle">sources.xml</span></a>.</p>
+</li>
+<li>
+<p><b>RDF metadata.&#160;</b> Links to the RDF metadata of the
+page. The lable of this link can be changed by setting the value of
+the configuration parameter <a href="#sources.rdf" title=
+"sources.rdf"><span class=
+"refentrytitle">sources.rdf</span></a>.</p>
+</li>
+<li>
+<p><b>RSS Feed.&#160;</b> Links to the RSS feed of the page. The
+lable of this link can be changed by setting the value of the
+configuration parameter <a href="#sources.rss10" title=
+"sources.rss10"><span class=
+"refentrytitle">sources.rss10</span></a>.</p>
+</li>
+<li>
+<p><b>Atom Feed.&#160;</b> Links to the Atom feed(s) of the page.
+The lable of this link can be changed by setting the value of the
+configuration parameter <a href="#sources.atom" title=
+"sources.atom"><span class=
+"refentrytitle">sources.atom</span></a>.</p>
+</li>
+<li>
+<p><b>DOAP Source.&#160;</b> Links to the DOAP source, included in
+the XML source. The lable of this link can be changed by setting
+the value of the configuration parameter <a href="#sources.doap"
+title="sources.doap"><span class=
+"refentrytitle">sources.doap</span></a>.</p>
+</li>
+<li>
+<p><b>URFM.&#160;</b> Links to the URFM file included in the XML
+source. The lable of this link can be changed by setting the value
+of the configuration parameter <a href="#sources.urfm" title=
+"sources.urfm"><span class=
+"refentrytitle">sources.urfm</span></a>.</p>
+</li>
+<li>
+<p><b>FOAF.&#160;</b> Links to the FOAF file included in the XML
+source. The lable of this link can be changed by setting the value
+of the configuration parameter <a href="#sources.foaf" title=
+"sources.foaf"><span class=
+"refentrytitle">sources.foaf</span></a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="create.page.body" id=
+"create.page.body"></a>1.3.2.&#160;Create the Page Body</h4>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.body.elements" id=
+"create.page.body.elements"></a>1.3.2.1.&#160;Main Elements</h5>
+</div>
+</div>
+</div>
+<p>The page content is marked up using <span class=
+"application">DocBook Website</span> elements defined in
+<b>website.dtd</b>. Refer to the online documentation of <a href=
+"http://www.oasis-open.org/docbook/xml/simple/sdocbook/" target=
+"_top">Simplified DocBook DTD</a> for avilable elements and their
+syntax.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h5 class="title"><a name="create.page.body.example" id=
+"create.page.body.example"></a>1.3.2.2.&#160;Examples</h5>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.page.body.sample" id=
+"ex:create.page.body.sample"></a>
+<p class="title"><b>Example&#160;2.4.&#160;Page Body</b></p>
+<pre class="programlisting">
+
+&lt;?xml version="1.0"&gt;
+&lt;!DOCTYPE  webpage ...&gt;
+&lt;webpage id="home"&gt;
+  &lt;config param="desc" value="The home index page"/&gt;
+  &lt;config param="rcsdate" value="$Date: 2006/04/17 16:26:47 $"/&gt;
+  &lt;head&gt;
+    &lt;title&gt;SilkPage&lt;/title&gt;
+    &lt;summary&gt;An XML based Publishing Framework for Web&lt;/summary&gt;
+    &lt;keywords&gt;Markup, web standards, W3C, XML, XSL, CSS, XHTML&lt;/keywords&gt;
+  &lt;/head&gt;
+  &lt;para&gt;
+    SilkPage is an XML based Web publishing framework that has evolved from
+    the Docbook Website. With strong foundations in XML, it is a publishing 
+    framework with a focus on web standards and usability. 
+    SilkPage provides a framework for publishing structured and standrad 
+    compliant websites in XML. It is particularly suited to publish personal
+    websites, though it is by no means limited to them.
+  &lt;/para&gt;
+  &lt;sidebar&gt;
+  &lt;variablelist&gt;
+    &lt;title&gt;Key Features&lt;/title&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Conent Management&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          XML based content management.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;WaSP Compliant&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+           Web Standards (WaSP) compliant XHTML output in addition to XML and
+           PDF outputs.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Content Feeds Support&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          Integrated XML and RSS feed generation.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Separate Presentation Model&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          Customization via XSL and CSS customization layers.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+    &lt;varlistentry&gt;
+      &lt;term&gt;Cross Platform Support&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;
+          Cross platform support via industry standards.
+        &lt;/para&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+  &lt;/variablelist&gt;
+  &lt;/sidebar&gt;
+&lt;/webpage&gt;
+
+        
+</pre></div>
+<p>In the above example the <code class=
+"sgmltag-element">para</code> element is used to describe the
+SilkPage framework briefly. In addition, the <code class=
+"sgmltag-element">sidebar</code> element is used to list the key
+features of the SilkPage framework.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="content" id=
+"content"></a>2.&#160;Site Content Management</h2>
+</div>
+</div>
+</div>
+<p>SilkPage maintains metadata information about your site
+architecture, pages and their links. This information is kept in
+the <b>layout.xml</b> discussed in <a href="#create.layout" title=
+"1.2.&#160;Create Site Layout">Section&#160;1.2, &#8220;Create Site
+Layout&#8221;</a>. Using this approach, SilkPage separates, the
+site content from its logical structure. Site pages and documents
+are linked using <code class="sgmltag-element">olink</code> that
+makes it possible to locate the target element in the site content
+and generate the site links automatically. <code class=
+"sgmltag-element">olink</code>s are resolved from a database of
+targets that is maintained by SilkPage. This solution reduces link
+maintenance of your Website significantly.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.content.elements" id=
+"create.content.elements"></a>2.1.&#160;Main Elements</h3>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-element">olink</code>: the main element for
+linking pages and elements.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-attribute">targetdoc</code> the
+<code class="sgmltag-attribute">id</code> of the target
+<code class="sgmltag-element">webpage</code> that must exist and
+its <code class="sgmltag-attribute">id</code> must be unique.</p>
+</li>
+<li>
+<p><code class="sgmltag-attribute">targetptr</code> the
+<code class="sgmltag-attribute">id</code> attribute value of the
+target element within the target <code class=
+"sgmltag-element">webpage</code>. In order to link to the top of a
+given page, the value of the <code class=
+"sgmltag-attribute">targetptr</code> must be the same as the
+<code class="sgmltag-attribute">targetdoc</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code class="sgmltag-element">ulink</code>: mainly used to
+directly link to external HTML pages and documents. Such links are
+not verified while processing, so they require manual maintainance
+in order to be valid URLs. Therefore, it's bad idea to use
+<code class="sgmltag-element">ulink</code> to link directly to the
+generated XHTML pages; if you change the hierarchy or rename a
+page, the link will become stale. With <code class=
+"sgmltag-element">olink</code> this won't happen.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-attribute">url</code> the URL of the target
+HTML document.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.content.example" id=
+"create.content.example"></a>2.2.&#160;Examples</h3>
+</div>
+</div>
+</div>
+<div class="example"><a name="ex:create.content.sample" id=
+"ex:create.content.sample"></a>
+<p class="title"><b>Example&#160;2.5.&#160;Linking Content Pages
+and Elements</b></p>
+<pre class="programlisting">
+
+&lt;para&gt;
+SilkPage is an XML based Web publishing framework that has evolved from the
+&lt;ulink url="http://sourceforge.net/projects/docbook"&gt;Docbook Website&lt;/ulink&gt;.
+With strong foundations in XML, it is a publishing framework with a focus on
+web standards and usability. It's mainly used to 
+publish personal and Websites. Refer to the SilkPage
+&lt;olink targetdoc="docs"&gt;User Guide&lt;/olink&gt; for more information.
+&lt;/para&gt;
+
+</pre></div>
+<p>In the above example, a <code class=
+"sgmltag-element">ulink</code> is used to link to the <span class=
+"application">DocBook Website</span>. However, to link to the main
+index page of the documentation, a <code class=
+"sgmltag-element">olink</code> is used. Note that you don't have to
+do anything special to the page you're linking to. The only
+important thing is a valid entity id, in this case <code class=
+"sgmltag-attribute">docs</code>.</p>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="publish" id=
+"publish"></a>3.&#160;Site Publishing</h2>
+</div>
+</div>
+</div>
+<p>SilkPage uses <a href="#gls:ant">Ant</a> to automate your site
+generation, validation and upload.</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p>Based on your XML content, SilkPage <span class=
+"emphasis"><em>generates</em></span> XHTML output.</p>
+</li>
+<li>
+<p>SilkPage uses <a href="" target="_top">Tidy</a> to <span class=
+"emphasis"><em>validate</em></span> and eventually fix the
+generated XHTML.</p>
+</li>
+<li>
+<p>SilkPage facilitates the <span class=
+"emphasis"><em>upload</em></span> of your Website by using a
+<span class="application">FTP</span> based file transfer. Assuming
+that you have used the <em class=
+"parameter"><code>scratch</code></em> target like it was shown in
+<a href="#ex:create.site.scratch" title=
+"Example&#160;2.1.&#160;Create Site Scratch">Example&#160;2.1,
+&#8220;Create Site Scratch&#8221;</a>, you need to run SilkPage
+with the <em class="parameter"><code>preview</code></em> target to
+have the draft version of your Website generated.</p>
+</li>
+</ul>
+</div>
+<div class="example"><a name="ex:site.preview" id=
+"ex:site.preview"></a>
+<p class="title"><b>Example&#160;2.6.&#160;Drafting your
+Website</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> <em class=
+"replaceable"><code>coolsite</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> preview</p>
+</div>
+</div>
+<p>As shown in the above example, you can generate a draft version
+of your Website locally. This local version will be used to upload
+your Website when running SilkPage with the <em class=
+"parameter"><code>publish</code></em> target. In order to publish
+your Website online, you need to run SilkPage with the <em class=
+"parameter"><code>publish</code></em> target, as shown in <a href=
+"#ex:site.publish" title=
+"Example&#160;2.7.&#160;Publishing your Website Online">Example&#160;2.7,
+&#8220;Publishing your Website Online&#8221;</a>.</p>
+<div class="example"><a name="ex:site.publish" id=
+"ex:site.publish"></a>
+<p class="title"><b>Example&#160;2.7.&#160;Publishing your Website
+Online</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> <em class=
+"replaceable"><code>coolsite</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> publish</p>
+</div>
+</div>
+<p>Refer to <a href="#commands" title=
+"Appendix&#160;C.&#160;Command Line Options">Appendix&#160;C,
+<i>Command Line Options</i></a> for detailed information about
+SilkPage command line options.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="advanced" id=
+"advanced"></a>4.&#160;Advanced Features</h2>
+</div>
+</div>
+</div>
+<p>As Web sites become increasingly sophisticated, they demand
+advanced requirements such as XML Feed integration, metadata
+rendering, etc. SilkPage is designed so that it's easy to customize
+to fit your special requirements. You can customize SilkPage at XSL
+and CSS layers. This section covers SilkPage customization and
+advanced features such as XML and Feed integration.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="customization" id=
+"customization"></a>4.1.&#160;Site Customization</h3>
+</div>
+</div>
+</div>
+<p>SilkPage allows stylesheet customization for a particular
+Website. That is customizing with XSL as well as CSS stylesheets.
+These customizations are integrated to SilkPage via <span class=
+"emphasis"><em>themes</em></span>. SilkPage provides two types of
+themes:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><span class="emphasis"><em>XSL Theme</em></span>: a set of XSL
+stylesheet grouped into a directory. This directory name is used by
+SilkPage to identify the desired XSL theme and use it when
+generating XHTML output.</p>
+</li>
+<li>
+<p><span class="emphasis"><em>CSS Theme</em></span>: a set of CSS
+stylesheet grouped into a directory. directory name is used by
+SilkPage to identify the desired CSS theme and use it when
+presenting XHTML output.</p>
+</li>
+</ul>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="xsl" id="xsl"></a>4.1.1.&#160;XSL Driven
+Customization Via XSL Themes</h4>
+</div>
+</div>
+</div>
+<p>As indicated in the previous section, you can define and your
+own XSL theme and have SilkPage use it to generate your
+Website.</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p>Write your desired XSL stylesheets and put them in a directory.
+The name of this directory is used to identify your newly created
+XSL theme.</p>
+</li>
+<li>
+<p>install it by copying the directory to <b><code class=
+"envar">$SILKPAGE_HOME</code>/src/xsl</b> . Note that <code class=
+"envar">$SILKPAGE_HOME</code> is the install directory of the
+SilkPage software.</p>
+</li>
+<li>
+<p>set the value of the configuration parameter: <a href=
+"#silkpage.adapt.xsl.theme" title=
+"silkpage.adapt.xsl.theme"><span class=
+"refentrytitle">silkpage.adapt.xsl.theme</span></a> to your newly
+created theme.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="css" id="css"></a>4.1.2.&#160;CSS Driven
+Customization Via CSS Themes</h4>
+</div>
+</div>
+</div>
+<p>Like XSL themes, a new CSS theme can be defined and used as
+follows:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p>Write your desired CSS stylesheets and put them in a directory.
+The name of this directory is used to identify your newly created
+CSS theme.</p>
+</li>
+<li>
+<p>install it by copying the directory to <b><code class=
+"envar">$SILKPAGE_HOME</code>/src/css</b>. Note that
+<b><code class="envar">$SILKPAGE_HOME</code></b> is the install
+directory of the SilkPage software.</p>
+</li>
+<li>
+<p>set the value of the configuration parameter: <a href=
+"#silkpage.adapt.css.theme" title=
+"silkpage.adapt.css.theme"><span class=
+"refentrytitle">silkpage.adapt.css.theme</span></a> to your newly
+created theme.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="feeds" id="feeds"></a>4.2.&#160;XML Feed
+Integration</h3>
+</div>
+</div>
+</div>
+<p>A <span class="emphasis"><em>feed</em></span> is a wrapper for
+pieces of regularly and sequentially-updated content such as news
+headlines, articles, weblog posts, and so on. <span class=
+"application">Atom</span> and <span class="application">RSS</span>
+are the two flavours of XML feeds. They are both supported by
+SilkPage. Once integrated into your site, a news reader application
+such as Bloglines, RSSOwl, or even <a href=
+"#gls:firefox">FireFox</a> can be used to automatically check your
+list of feeds. This enables your visitors to know what's new on
+your site.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="feeds.rss" id=
+"feeds.rss"></a>4.2.1.&#160;RSS Feed Integration</h4>
+</div>
+</div>
+</div>
+<p>RSS is an application of XML, that provides an open method of
+syndicating and aggregating Web content. Using RSS files, you can
+create a data feed that supplies headlines, links, and article
+summaries from your Website.</p>
+<div class="example"><a name="ex:feeds.rss" id="ex:feeds.rss"></a>
+<p class="title"><b>Example&#160;2.8.&#160;RSS 1.0 Feed</b></p>
+<pre class="programlisting">
+      
+&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"&gt;
+
+&lt;channel rdf:about="http://www.markupware.com/"&gt;
+  &lt;title&gt;MarkupWare Projects&lt;/title&gt;
+  &lt;link&gt;http://www.markupware.com/projects/&lt;/link&gt;
+  &lt;description&gt;MarkupWare project portfolio&lt;/description&gt;
+  &lt;dc:language&gt;en-us&lt;/dc:language&gt;
+  &lt;dc:rights&gt;Copyright &amp;#169; MarkupWare&lt;/dc:rights&gt;
+
+  &lt;items&gt;
+    &lt;rdf:Seq&gt;
+      &lt;rdf:li rdf:resource="http://www.markupware.com/projects#silkpage"/&gt;
+    &lt;/rdf:Seq&gt;
+  &lt;/items&gt;
+&lt;/channel&gt;
+
+&lt;item rdf:about="http://www.markupware.com/projects#silkpage"&gt;
+  &lt;title&gt;SilkPage Project&lt;/title&gt;
+  &lt;link&gt;http://silkpage.markupware.com&lt;/link&gt;
+  &lt;dc:date&gt;2004-09-04&lt;/dc:date&gt;
+  &lt;description&gt;
+    SilkPage is an XML based Web publishing framework that has evolved from 
+    the Docbook Website. With strong foundations in XML, it is a publishing 
+    framework with a focus on web standards and usability. SilkPage provides 
+    a framework for publishing structured and standard compliant websites in 
+    XML. It is particularly suited to publish personal websites, though it 
+    is by no means limited to them.
+  &lt;/description&gt;
+&lt;/item&gt;
+
+&lt;/rdf:RDF&gt;
+
+    
+</pre></div>
+<p>The above example, defines a RSS 1.0 compliant feed for the
+project section of the MarkupWare Website. Based on the above
+source, SilkPage generates proper XHTML output page with a link to
+the RSS feed. The label of this link can be changed by setting the
+value of the configuration parameter <a href="#sources.rss10"
+title="sources.rss10"><span class=
+"refentrytitle">sources.rss10</span></a>.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h4 class="title"><a name="feeds.atom" id=
+"feeds.atom"></a>4.2.2.&#160;Atom Feed Integration</h4>
+</div>
+</div>
+</div>
+<p>RSS is an application of XML, that provides an open method of
+syndicating and aggregating Web content. Using RSS files, you can
+create a data feed that supplies headlines, links, and article
+summaries from your Website.</p>
+<div class="example"><a name="ex:feeds.atom" id=
+"ex:feeds.atom"></a>
+<p class="title"><b>Example&#160;2.9.&#160;Atom Feed</b></p>
+<pre class="programlisting">
+      
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
+  &lt;title&gt;MarkupWare Projects&lt;/title&gt;
+  &lt;subtitle&gt;MarkupWare project portfolio&lt;/subtitle&gt;
+  &lt;link rel="alternate" type="text/html" 
+        href="http://www.markupware.com/projects/"/&gt;
+  &lt;link rel="self" type="application/atom+xml" 
+        href="http://www.markupware.com/feeds/projects.xml"/&gt;
+  &lt;id&gt;http://www.markupware.com/feeds/projects.xml&lt;/id&gt;
+  &lt;updated&gt;2006-01-26T11:26:54+01:00&lt;/atom:updated&gt;
+  &lt;author&gt;
+    &lt;atom:name&gt;MarkupWare Team&lt;/atom:name&gt;
+  &lt;/atom:author&gt;
+  &lt;dc:language&gt;en-us&lt;/dc:language&gt;
+  &lt;dc:rights&gt;Copyright &amp;#169; MarkupWare&lt;/dc:rights&gt;
+ 
+ &lt;entry&gt;
+   &lt;title type="text"&gt;SilkPage&lt;/title&gt;
+   &lt;id&gt;http://www.markupware.com/projects#silkpage&lt;/id&gt;
+   &lt;link rel="alternate" type="text/html" 
+         href="http://silkpage.markupware.com/"/&gt;
+    &lt;published&gt;2004-12-20T20:19:41+01:00&lt;/published&gt;
+    &lt;updated&gt;2005-07-15T23:34:34+01:00&lt;/updated&gt;
+    &lt;content type="text"&gt;
+      SilkPage is an XML based Web publishing framework that has evolved from 
+      the Docbook Website. With strong foundations in XML, it is a publishing 
+      framework with a focus on web standards and usability. SilkPage provides 
+      a framework for publishing structured and standard compliant websites in 
+      XML. It is particularly suited to publish personal websites, though it 
+      is by no means limited to them.
+    &lt;/content&gt;
+  &lt;/entry&gt;
+&lt;/feed&gt;
+
+      
+    
+</pre></div>
+<p>The above example, defines an Atom compliant feed for the
+project section of the MarkupWare Website. Based on the above
+source, SilkPage generates proper XHTML output page with a link to
+the Atom feed. The label of this link can be changed by setting the
+value of the configuration parameter <a href="#sources.atom" title=
+"sources.atom"><span class=
+"refentrytitle">sources.atom</span></a>.</p>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="rdf" id="rdf"></a>4.3.&#160;RDF
+Integration</h3>
+</div>
+</div>
+</div>
+<p><a href="#gls:rdf">RDF</a> is the World-Wide Web, specification,
+data (RDF). A specification being developed in 2000 by the <a href=
+"#gls:w3c">W3C</a> as a foundation for processing meta-data
+regarding resources on the Internet, including the World-Wide Web.
+SilkPage generates <span class="acronym">RDF</span> (along with a
+link pointed to the generated <span class="acronym">RDF</span>) for
+each page of your Website based on the XML content of the page. The
+label of the RDF link can be changed by setting the value of the
+configuration parameter <a href="#sources.rdf" title=
+"sources.rdf"><span class=
+"refentrytitle">sources.rdf</span></a>.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="sitemap" id="sitemap"></a>4.4.&#160;Auto
+Sitemap Generation</h3>
+</div>
+</div>
+</div>
+<p>Sitemap is an important help for your Website visitors to find
+their way around your site. SilkPage generates and maintains your
+Website sitemap. A <code class="sgmltag-element">config</code>
+element should be added to the <b>layout.xml</b> in order to have
+the sitemap generated (See <a href="#ex:create.layout.sample"
+title="Example&#160;2.2.&#160;Site Layout">Example&#160;2.2,
+&#8220;Site Layout&#8221;</a>). SilkPage maintains and provides a
+link to your Website sitemap.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>A <code class="sgmltag-element">tocentry</code> or <code class=
+"sgmltag-element">notoc</code> must be added to the
+<b>layout.xml</b>, pointing to <b>sitemap.xml</b> contained in your
+Website source directory.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="appendix" lang="en" xml:lang="en">
+<div class="appendix-titlepage"></div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="#gfiles.catalog.xml">1.
+<b>catalog.xml</b></a></span></dt>
+<dt><span class="section"><a href="#gfiles.tidy.properties">2.
+<b>tidy.properties</b></a></span></dt>
+</dl>
+</div>
+<hr />
+<p>This section describe each of the global configuration parameter
+used in SilkPage. This information is most useful when configuring
+SilkPage globally after the installation.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="gfiles.catalog.xml"
+id="gfiles.catalog.xml"></a>1.&#160; <b><code class=
+"envar">$SILKPAGE_HOME</code>/cfg/catalog.xml</b></h2>
+</div>
+</div>
+</div>
+<p>It is a catalog of public resources such as DTDs or entities
+that are referenced in an XML document. It's typically used to make
+web references to resources point to a locally cached copy of the
+resource. SilkPage uses this catalog to perform Entity and URI
+resolution. Please refer to the <a href="#res:spec.cat">Catalogs
+Specification</a> for more information about the usage and syntax
+of <a href="#silkpage.cfg.dir"><b>cfg/</b></a>
+<b>catalog.xml</b>.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name=
+"gfiles.tidy.properties" id="gfiles.tidy.properties"></a>2.&#160;
+<b><code class=
+"envar">$SILKPAGE_HOME</code>/cfg/tidy.properties</b></h2>
+</div>
+</div>
+</div>
+<p>SilkPage uses <span class="application">Tidy</span> to validate
+and cleanup the XHTML output. <b>tidy.properties</b> is located in
+the <a href="#silkpage.cfg.dir"><b>cfg/</b></a> directory and it is
+the <span class="application">Tidy</span> confiuration file to
+control its parameters. To find out about the <span class=
+"application">Tidy</span> parameters and options that can be
+defined in <b>tidy.properties</b>, please refere to <a href=
+"#gls:tidy">Tidy</a> Website.</p>
+</div>
+</div>
+<div class="appendix" lang="en" xml:lang="en">
+<div class="appendix-titlepage"></div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="#ifiles.build.properties">1.
+<b>build.properties</b></a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#custom.param">1.1. XSL and CSS
+Customization Parameters</a></span></dt>
+<dt><span class="section"><a href="#docbook.home.param">1.2.
+DocBook Parameters</a></span></dt>
+<dt><span class="section"><a href="#ftp.param">1.3. FTP
+Parameters</a></span></dt>
+<dt><span class="section"><a href="#general.param">1.4. General
+Parameters</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#ifiles.siteid.css">2.
+<b>siteid.css</b></a></span></dt>
+<dt><span class="section"><a href="#ifiles.param.xsl">3.
+<b>param.xsl</b></a></span></dt>
+<dd>
+<dl>
+<dt><span class="section"><a href="#search.param">3.1. Search Field
+Parameters</a></span></dt>
+<dt><span class="section"><a href=
+"#config.label.param.xmlfeeds">3.2. Page Source Link Items
+Parameters</a></span></dt>
+</dl>
+</dd>
+<dt><span class="section"><a href="#ifiles.config.xsl">4.
+<b>config.xsl</b></a></span></dt>
+<dt><span class="section"><a href="#ifiles.rdf.xsl">5.
+<b>rdf.xsl</b></a></span></dt>
+<dt><span class="section"><a href="#ifiles.catalog.xml">6.
+<b>catalog.xml</b></a></span></dt>
+</dl>
+</div>
+<hr />
+<p>This section describe each of the configuration parameter used
+by SilkPage to publish an instance of your website. This
+information is most useful when publishing a particular instance of
+a Website.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name=
+"ifiles.build.properties" id=
+"ifiles.build.properties"></a>1.&#160;<b><code class=
+"envar">$SITE_HOME</code>/build.properties</b></h2>
+</div>
+</div>
+</div>
+<p><a href="#site.home.dir"><b><code class=
+"envar">$SITE_HOME</code></b></a> <b>/build.properties</b> contains
+main configuration of an instance website.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="custom.param" id=
+"custom.param"></a>1.1.&#160;XSL and CSS Customization
+Parameters</h3>
+</div>
+</div>
+</div>
+<p>This section covers the customization and configuration
+parameters at the XSL and CSS layers. SilkPage uses <span class=
+"emphasis"><em>SilkPage XSL Themes</em></span> to process and
+generate your website. You may either use the default XSL themes or
+plug in yours. Likewise, <span class="emphasis"><em>SilkPage CSS
+Themes</em></span> are used in order to present your website.
+Again, you may either use default SilkPage CSS Themes or define and
+use yours.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name=
+"silkpage.adapt.xsl.main" id="silkpage.adapt.xsl.main"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>silkpage.adapt.xsl.main</code></em>
+&#8212; XSL configuration parameters and customization
+templates</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+        <em class=
+"parameter"><code>silkpage.adapt.xsl.main</code></em>=<b>
+        ${user.xsl.dir}/config.xsl</b>
+      
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2533254"
+id="id2533254"></a>
+<h2>Description</h2>
+<p>Specifies the main XSL configuration parameters and
+customization templates used when generating your website. Refer to
+<a href="#ifiles.config.xsl"><b>config.xsl</b></a> and <a href=
+"#ifiles.param.xsl"><b>param.xsl</b></a> to learn about the
+configuration parameters and templates of this file.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="silkpage.adapt.xsl.rdf" id="silkpage.adapt.xsl.rdf"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>silkpage.adapt.xsl.rdf</code></em>
+&#8212; XSL configuration parameters related to RDF output</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+        <em class=
+"parameter"><code>silkpage.adapt.xsl.rdf</code></em>=<b>
+        ${user.xsl.dir}/rdf.xsl</b>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2533332"
+id="id2533332"></a>
+<h2>Description</h2>
+<p>Specifies the main XSL configuration parameters used when
+generating your RDF metadata for your website. Refer to <a href=
+"#ifiles.rdf.xsl"><b>rdf.xsl</b></a> to learn about the
+configuration parameters of this file.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="silkpage.adapt.css.theme" id=
+"silkpage.adapt.css.theme"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>silkpage.adapt.css.theme</code></em>
+&#8212; Specifies the CSS Theme used to generate your website.
+SilkPage comes with some pre-defined CSS Themes that you can
+select. However, you can write your own CSS Theme and install it
+under <b><code class="envar">$SILKPAGE_HOME</code>/src/css</b> .
+Note that <code class="envar">$SILKPAGE_HOME</code> is the install
+directory of the SilkPage software. Currently, SilkPage includes
+the following CSS themes.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>silkpage.adapt.css.theme</code></em>=<em class=
+"replaceable"><code>CSS Theme</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2528981"
+id="id2528981"></a>
+<h2>CSS Themes</h2>
+<div class="cmdsynopsis">
+<p>gimp</p>
+</div>
+<div class="cmdsynopsis">
+<p>mozilla</p>
+</div>
+<div class="cmdsynopsis">
+<p>silkpage</p>
+</div>
+<div class="cmdsynopsis">
+<p>xwtk</p>
+</div>
+<div class="cmdsynopsis">
+<p>markupware</p>
+</div>
+<div class="cmdsynopsis">
+<p>phenix</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="silkpage.adapt.xsl.theme" id=
+"silkpage.adapt.xsl.theme"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>silkpage.adapt.xsl.theme</code></em>
+&#8212; Specifies the XSL Theme used to generate your website.
+SilkPage comes with some pre-defined XSL Themes that you can
+select. However, you can write your own XSL Theme and install it
+under <b><code class="envar">$SILKPAGE_HOME</code>/src/xsl</b>.
+Note that <code class="envar">$SILKPAGE_HOME</code> is the install
+directory of the SilkPage software. Currently, SilkPage includes
+the following XSL themes.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>silkpage.adapt.xsl.theme</code></em>=<em class=
+"replaceable"><code>XSL Theme</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2532316"
+id="id2532316"></a>
+<h2>XSL Themes</h2>
+<div class="cmdsynopsis">
+<p>gimp</p>
+</div>
+<div class="cmdsynopsis">
+<p>mozilla</p>
+</div>
+<div class="cmdsynopsis">
+<p>silkpage</p>
+</div>
+<div class="cmdsynopsis">
+<p>xwtk</p>
+</div>
+<div class="cmdsynopsis">
+<p>markupware</p>
+</div>
+<div class="cmdsynopsis">
+<p>ala</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="docbook.home.param" id=
+"docbook.home.param"></a>1.2.&#160;DocBook Parameters</h3>
+</div>
+</div>
+</div>
+<p>This section covers configuration parameters related to DocBook
+resources. That is the installation directories of the required
+DocBook resources.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name=
+"docbook.xsl.home" id="docbook.xsl.home"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>docbook.xsl.home</code></em> &#8212;
+<span class="application">Docbook XSL Stylesheets</span>
+installation directory.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>docbook.xsl.home</code></em>=<b><em class=
+"replaceable"><code>fullpath</code></em></b>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2532453"
+id="id2532453"></a>
+<h2>Description</h2>
+<p>Specifies the installation directory of the <span class=
+"application">DocBook XSL Stylesheets</span>. This should be a
+fully qualified path.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="docbook.website.home" id="docbook.website.home"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>docbook.website.home</code></em>
+&#8212; <span class="application">Docbook Website DTD and
+Stylesheets</span> installation directory.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>docbook.website.home</code></em>=<b><em class=
+"replaceable"><code>fullpath</code></em></b>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2536929"
+id="id2536929"></a>
+<h2>Description</h2>
+<p>Specifies the installation directory of the <span class=
+"application">DocBook Website DTD and Stylesheets</span>. This
+should be a fully qualified path.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="docbook.website.db" id="docbook.website.db"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class=
+"parameter"><code>silkpage.website.database.document</code></em>
+&#8212; An internal database for resolving links.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>silkpage.website.database.document</code></em>=<b><em class="replaceable"><code>fullfilename</code></em></b>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2536999"
+id="id2536999"></a>
+<h2>Description</h2>
+<p>Specifies the fully qualified name to an auto-generated database
+file used by SilkPage for resolving links. This should be a fully
+qualified path. On Windows platorms, the path MUST start with a
+'/'.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="silkpage.acronyms.database.document" id=
+"silkpage.acronyms.database.document"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class=
+"parameter"><code>silkpage.acronyms.database.document</code></em>
+&#8212; The global glossary file for resolving terms and
+acronyms.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>silkpage.acronyms.database.document</code></em>=<b><em class="replaceable"><code>fullfilename</code></em></b>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2537067"
+id="id2537067"></a>
+<h2>Description</h2>
+<p>Specifies the fully qualified name to the site glossary file.
+This file may contain a collection of terms and brief descriptions
+or definitions of those terms. Once you refer to a term in your
+site content, SilkPage transforms it to an HTML acronym.</p>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="ftp.param" id=
+"ftp.param"></a>1.3.&#160;FTP Parameters</h3>
+</div>
+</div>
+</div>
+<p>This section covers the configuration parameters used by the FTP
+task. This task is used when running SilkPage with the <em class=
+"parameter"><code>publish</code></em> target. That is when
+publishing your Website online.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name="ftp.server"
+id="ftp.server"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.server</code></em> &#8212;
+Specifying ftp server address</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.server</code></em>=<em class=
+"replaceable"><code>FTP Hosts erver</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2537153"
+id="id2537153"></a>
+<h2>Description</h2>
+<p>The address of the remote ftp server where you Website is
+located.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.port" id="ftp.port"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.port</code></em> &#8212;
+Specifying FTP Port</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.port</code></em>=<em class=
+"replaceable"><code>number</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555356"
+id="id2555356"></a>
+<h2>Description</h2>
+<p>The port number of the remote ftp server. Defaults to port
+21.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.remotedir" id="ftp.remotedir"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.remotedir</code></em> &#8212;
+Specifying where your website will be located the ftp server</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>ftp.remotedir</code></em>=<em class="replaceable"><code>path</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555410"
+id="id2555410"></a>
+<h2>Description</h2>
+<p>Remote directory on the ftp server. That is your home directory
+on the Web server.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.userid" id="ftp.userid"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.userid</code></em> &#8212; The
+login id to use on the ftp server.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.userid</code></em>=<em class=
+"replaceable"><code>userid</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555463"
+id="id2555463"></a>
+<h2>Description</h2>
+<p>Specifies the login id to use on the ftp server.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.password" id="ftp.password"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.password</code></em> &#8212; The
+login password to use on the ftp server.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.password</code></em>=<em class=
+"replaceable"><code>password</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555516"
+id="id2555516"></a>
+<h2>Description</h2>
+<p>Specifies the login password to use on the ftp server.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.depends" id="ftp.depends"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.depends</code></em> &#8212;
+Transfers only new or changed files if set to "yes". Defaults to
+"no".</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.depends</code></em>=<em class=
+"replaceable"><code>yes|no</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555570"
+id="id2555570"></a>
+<h2>Description</h2>
+<p>If specified transfers only new or changed files if set to
+"yes". Defaults to "no".</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.passive" id="ftp.passive"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.passive</code></em> &#8212;
+Specifies passive-mode ("yes") transfers. Defaults to "no".</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.passive</code></em>=<em class=
+"replaceable"><code>yes|no</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555624"
+id="id2555624"></a>
+<h2>Description</h2>
+<p>Specifies passive-mode ("yes") transfers. Defaults to "no".</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.binary" id="ftp.binary"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.binary</code></em> &#8212;
+Specifies binary-mode ("yes") or text-mode ("no") transfers.
+Defaults to "yes".</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.binary</code></em>=<em class=
+"replaceable"><code>yes|no</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555678"
+id="id2555678"></a>
+<h2>Description</h2>
+<p>Specifies binary-mode ("yes") or text-mode ("no") transfers.
+Defaults to "yes".</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="ftp.localdir" id="ftp.localdir"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>ftp.localdir</code></em> &#8212; The
+local directory where XHTML files are located. By default, it's set
+to <b>${dist.dir}</b>. It's recommended not to change the value of
+this parameter.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>ftp.localdir</code></em>=<em class=
+"replaceable"><code>fullpath</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555741"
+id="id2555741"></a>
+<h2>Description</h2>
+<p>The local directory where XHTML files are located. By default,
+it's set to <b>${dist.dir}</b>. It's recommended not to change the
+value of this parameter.</p>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="general.param" id=
+"general.param"></a>1.4.&#160;General Parameters</h3>
+</div>
+</div>
+</div>
+<p>This section covers the general configuration parameters that
+are used when running SilkPage with variuos targets.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name=
+"general.default.encoding" id="general.default.encoding"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>default.encoding</code></em> &#8212;
+The encoding used by various tasks. Defaults to <em class=
+"parameter"><code>UTF-8</code></em>. Please refer to <a href=
+"http://www.iana.org/assignments/character-sets" target=
+"_top">Character Sets and Encoding</a> to learn more about avaiable
+encoding.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>default.encoding</code></em>=<em class=
+"replaceable"><code>encoding</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555829"
+id="id2555829"></a>
+<h2>Description</h2>
+<p>The encoding used by various Ant tasks.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="general.default.lang" id="general.default.lang"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>default.lang</code></em> &#8212; The
+ISO language code used to locate the XML source files.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>default.lang</code></em>=<em class=
+"replaceable"><code>ISO Language Code</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555882"
+id="id2555882"></a>
+<h2>Description</h2>
+<p>The ISO language code used to locate the XML source files.
+Defaults to <em class="parameter"><code>en</code></em>. Please
+refer to <a href=
+"http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt" target=
+"_top">Code for the representation of names of languages</a> to
+learn more about avaiable ISO 639 language codes.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="general.default.temp.dir" id=
+"general.default.temp.dir"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>default.temp.dir</code></em> &#8212;
+The temporary directory used for performing the build tasks.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class=
+"parameter"><code>default.temp.dir</code></em>=<em class=
+"replaceable"><code>fullpath</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2555950"
+id="id2555950"></a>
+<h2>Description</h2>
+<p>The temporary directory used for performing the build tasks.
+Defaults to the default temp. directory of your local host.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="general.default.url" id="general.default.url"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>default.url</code></em> &#8212; Your
+Website URL.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+    <em class="parameter"><code>default.url</code></em>=<em class=
+"replaceable"><code>URL</code></em>
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556003"
+id="id2556003"></a>
+<h2>Description</h2>
+<p>Your Website URL. Defaults to the <em class=
+"parameter"><code>site.id</code></em> that you provide when running
+SilkPage with <em class="parameter"><code>scratch</code></em>
+target.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="ifiles.siteid.css"
+id="ifiles.siteid.css"></a>2.&#160;<b><code class=
+"envar">$SITE_HOME</code>/src/css/siteid.css</b></h2>
+</div>
+</div>
+</div>
+<p>When running SilkPage with the <em class=
+"parameter"><code>scratch</code></em> target, it generates (among
+other things) a default CSS stylesheet for your Website. The name
+of the CSS styleshhet is based on the <em class=
+"parameter"><code>siteid</code></em> argument that you provide when
+running SilkPage with the <em class=
+"parameter"><code>scratch</code></em> target. This styleshhet
+contains one <code class="literal">import</code> declaration that
+is an instruction to import some other default style sheets from
+the <span class="emphasis"><em>SilkPage CSS Themes</em></span> .
+You may modify the <code class="literal">import</code> declaration
+and instruct it to import your own CSS stylesheets. You can even
+add your CSS stylesheets globally by defining your own CSS Theme
+and instruct SilkPage to use your CSS themes instead of its
+default. Refer to <a href="#custom.param" title=
+"1.1.&#160;XSL and CSS Customization Parameters">Section&#160;1.1,
+&#8220;XSL and CSS Customization Parameters&#8221;</a> to learn how
+you can customize SilkPage by adding your CSS themes.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="ifiles.param.xsl"
+id="ifiles.param.xsl"></a>3.&#160; <b><code class=
+"envar">$SITE_HOME</code>/src/xsl/param.xsl</b></h2>
+</div>
+</div>
+</div>
+<p><a href="#site.home.dir"><b><code class=
+"envar">$SITE_HOME</code></b></a> <b>/src/xsl/param.xsl</b> is the
+main XSL configuration parameter file used by SilkPage when
+processing your XML sources.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="search.param" id=
+"search.param"></a>3.1.&#160;Search Field Parameters</h3>
+</div>
+</div>
+</div>
+<p>SilkPage can generate a <a href="http://www.google.com" target=
+"_top">Google</a> based seearch field for your Website. This
+section covers this search field and its associated parameters.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name=
+"search.pages.search-box" id="search.pages.search-box"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>pages.search-box</code></em> &#8212;
+Enables/Disables the generation of the search field for your
+Website. Defaults to 1, that is enabled.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="pages.search-box" select="1"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556202"
+id="id2556202"></a>
+<h2>Description</h2>
+<p>Specifies</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="pages.search.input-label" id=
+"pages.search.input-label"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>pages.search.input-label</code></em>
+&#8212; Specifies the label text that is displayed right before the
+search field.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="pages.search.input-label" select="''"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556247"
+id="id2556247"></a>
+<h2>Description</h2>
+<p>Specifies the label text that is displayed right before the
+search field. Defaults to an empty label.</p>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="pages.search.submit-label" id=
+"pages.search.submit-label"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class=
+"parameter"><code>pages.search.submit-label</code></em> &#8212;
+Specifies the label text that is displayed as the search submit
+button label.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="pages.search.submit-label" select="Search"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556295"
+id="id2556295"></a>
+<h2>Description</h2>
+<p>Specifies the label text that is displayed as the search submit
+button label. Defaults to <span class=
+"emphasis"><em>Search</em></span> label.</p>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="config.label.param.xmlfeeds" id=
+"config.label.param.xmlfeeds"></a>3.2.&#160;Page Source Link Items
+Parameters</h3>
+</div>
+</div>
+</div>
+<p>If instructed, SilkPage generates link items for XML source and
+RDF metadata for each generated Webpage and link items for Atom
+feeds when specified, in XHTML format. This section covers the
+configuration parameters for these link items.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name="sources.rdf"
+id="sources.rdf"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.rdf</code></em> &#8212;
+Specifies the text for the RDF metadata link item. Defaults to
+"RDF" label.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+        &lt;xsl:param name="sources.rdf" select="RDF"/&gt;
+      
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556395"
+id="id2556395"></a>
+<h2>Description</h2>
+<p>Specifies the text for the RDF metadata link item. Defaults to
+"RDF" label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="sources.rss10" id="sources.rss10"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.rss10</code></em> &#8212;
+Specifies the text for the RSS feed link item.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+      &lt;xsl:param name="sources.rss10" select="RSS"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556448"
+id="id2556448"></a>
+<h2>Description</h2>
+<p>Specifies the text for the RSS feed link item. Defaults to "RSS"
+label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="sources.xml" id="sources.xml"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.xml</code></em> &#8212;
+Specifies the text for the XML source link item.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="sources.xml" select="XML"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556501"
+id="id2556501"></a>
+<h2>Description</h2>
+<p>Specifies the text for the XML source link item. Defaults to
+"XML" label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="sources.urfm" id="sources.urfm"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.urfm</code></em> &#8212;
+Specifies the text for the URFM source link item.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="sources.urfm" select="URFM"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556554"
+id="id2556554"></a>
+<h2>Description</h2>
+<p>Specifies the text for the URFM source link item. Defaults to
+"URFM" label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="sources.doap" id="sources.doap"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.doap</code></em> &#8212;
+Specifies the text for the DOAP source link item.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="sources.doap" select="DOAP"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556607"
+id="id2556607"></a>
+<h2>Description</h2>
+<p>Specifies the text for the DOAP source link item. Defaults to
+"DOAP" label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="sources.foaf" id="sources.foaf"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.foaf</code></em> &#8212;
+Specifies the text for the FOAF source link item.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="sources.foaf" select="FOAF"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556660"
+id="id2556660"></a>
+<h2>Description</h2>
+<p>Specifies the text for the FOAF source link item. Defaults to
+"FOAF" label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+<div class="refentry" lang="en" xml:lang="en">
+<div class="refentry.separator">
+<hr /></div>
+<a name="sources.atom" id="sources.atom"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>sources.atom</code></em> &#8212;
+Specifies the text for the Atom feed link item.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+&lt;xsl:param name="sources.atom" select="Atom"/&gt;
+    
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556713"
+id="id2556713"></a>
+<h2>Description</h2>
+<p>Specifies the text for the Atom source link item. Defaults to
+"Atom" label.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>This parameter also controls the generation of this link item.
+If no value is specified for this parameter, the link won't be
+displayed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="ifiles.config.xsl"
+id="ifiles.config.xsl"></a>4.&#160; <b><code class=
+"envar">$SITE_HOME</code>/src/xsl/config.xsl</b></h2>
+</div>
+</div>
+</div>
+<p><a href="#site.home.dir"><b><code class=
+"envar">$SITE_HOME</code></b></a> <b>/src/xsl/config.xsl</b> is the
+main XSL customization templates file used by SilkPage when
+processing your XML sources.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name=
+"user.search-box" id="user.search-box"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p><em class="parameter"><code>user.search-box</code></em> &#8212;
+Defines an XSL template containing your Website specific
+information that is used by Google when searhing your Website.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+          &lt;xsl:template name="user.search-box"&gt; ... &lt;/xsl:template&gt;
+        
+</pre></div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="id2556812"
+id="id2556812"></a>
+<h2>Description</h2>
+<p>Defines an XSL template containing your Website specific
+information that is used by Google when searhing your Website. By
+default, the URL of your Website specified in <a href=
+"#general.default.url" title="default.url"><span class=
+"refentrytitle">default.url</span></a> is used in this
+template.</p>
+</div>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="ifiles.rdf.xsl" id=
+"ifiles.rdf.xsl"></a>5.&#160; <b><code class=
+"envar">$SITE_HOME</code>/src/xsl/rdf.xsl</b></h2>
+</div>
+</div>
+</div>
+<p><a href="#site.home.dir"><b><code class=
+"envar">$SITE_HOME</code></b></a> <b>/src/xsl/rdf.xsl</b> is used
+as a driver stylesheet to generate RDF metadata for each XML
+source.</p>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="ifiles.catalog.xml"
+id="ifiles.catalog.xml"></a>6.&#160;<b><code class=
+"envar">$SITE_HOME</code>/cfg/catalog.xml</b></h2>
+</div>
+</div>
+</div>
+<p>It is a catalog of public resources such as DTDs or entities
+that are referenced in an XML document. It's typically used to make
+web references to resources point to a locally cached copy of the
+resource. SilkPage uses this catalog to perform Entity and URI
+resolution. Please refer to the <a href="#res:spec.cat">Catalogs
+Specification</a> for more information about the usage and syntax
+of <a href="#silkpage.cfg.dir"><b>cfg/</b></a>
+<b>catalog.xml</b>.</p>
+</div>
+</div>
+<div class="appendix" lang="en" xml:lang="en">
+<div class="appendix-titlepage"></div>
+<p>This section covers the complete list of command line targets
+and options of SilkPage used to publish websites. SilkPage command
+is based on <a href="#gls:ant">Ant</a>. Before running SilkPage
+tragets, make sure that you have installed the Prerequisite
+software listed in <a href="#prerequisite" title=
+"2.&#160;Prerequisite Software">Section&#160;2, &#8220;Prerequisite
+Software&#8221;</a>. Moreover, refer to <a href=
+"#ifiles.build.properties" title=
+"1.&#160;$SITE_HOME/build.properties">Section&#160;1, &#8220;
+<b>build.properties</b>&#8221;</a> in order to learn about
+parameters' configuration that may effect the command line
+targets.</p>
+<div class="refentry" lang="en" xml:lang="en"><a name="ant" id=
+"ant"></a>
+<div class="titlepage"></div>
+<div class="refnamediv">
+<h2>Name</h2>
+<p>ant &#8212; Processes SilkPage command line targets options used
+for generating and publishing websites.</p>
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> [config] [preview] [publish]
+[scratch]<br /></p>
+</div>
+</div>
+<div class="refsect1" lang="en" xml:lang="en"><a name="ant.targets"
+id="ant.targets"></a>
+<h2>Targets</h2>
+<div class="refsect2" lang="en" xml:lang="en"><a name=
+"target.scratch" id="target.scratch"></a>
+<h3><em class="parameter"><code>scratch</code></em></h3>
+<p>uses the pre-defined SilkPage templates to generate the first
+draft of your website in XML format. This target must be executed
+in the <a href="#silkpage.home.dir"><b><code class=
+"envar">$SILKPAGE_HOME</code></b></a> directory and takes two
+arguments:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<div class="cmdsynopsis">
+<p><code class="option">-f</code> src/xml/build/tasks.xml</p>
+</div>
+</li>
+<li>
+<div class="cmdsynopsis">
+<p><code class="option">-Dsite.id=<em class=
+"replaceable"><code>identifier</code></em></code></p>
+</div>
+</li>
+</ol>
+</div>
+<p>Once executed, it generates the directory structure shown in
+<a href="#site.skel.structure" title=
+"1.1.1.&#160;Scratch Website Directory Structure">Section&#160;1.1.1,
+&#8220;Scratch Website Directory Structure&#8221;</a> that can be
+used as a start point for your website development.</p>
+<p><a name="target.scratch.example" id=
+"target.scratch.example"></a><b>Full command line:&#160;</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class="option">-f</code>
+src/xml/build/tasks.xml <code class="option">-Dsite.id=<em class=
+"replaceable"><code>identifier</code></em></code> scratch</p>
+</div>
+</div>
+<div class="refsect2" lang="en" xml:lang="en"><a name=
+"target.preview" id="target.preview"></a>
+<h3><em class="parameter"><code>preview</code></em></h3>
+<p>After executing the <a href="#target.scratch" title=
+"scratch">the section called &#8220;<em class=
+"parameter"><code>scratch</code></em>&#8221;</a> target, you need
+to change directory to <a href="#site.home.dir"><b><code class=
+"envar">$SITE_HOME</code></b></a> and execute the preview target in
+order to generate and install a local copy of your website in XHTML
+format. The local website is installed relative to the
+<b>temp.dir</b> directory. If not specified, the local host
+<span class="emphasis"><em>default temp dir</em></span> is
+used.</p>
+<p><a name="target.preview.example" id=
+"target.preview.example"></a><b>Full command line:&#160;</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> preview</p>
+</div>
+</div>
+<div class="refsect2" lang="en" xml:lang="en"><a name=
+"target.publish" id="target.publish"></a>
+<h3><em class="parameter"><code>publish</code></em></h3>
+<p>generates a local copy of your website and publishes it online
+by uploading the generated files. Before executing this target,
+make sure that you have set the configuration parameters of
+<a href="#ftp.param" title=
+"1.3.&#160;FTP Parameters">Section&#160;1.3, &#8220;FTP
+Parameters&#8221;</a>. This target must be executed in the <a href=
+"#site.home.dir"><b><code class="envar">$SITE_HOME</code></b></a>
+directory and takes two arguments that are the login and password
+of the FTP server of your website:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<div class="cmdsynopsis">
+<p><code class="option">-Dftp.userid=<em class=
+"replaceable"><code>login</code></em></code></p>
+</div>
+</li>
+<li>
+<div class="cmdsynopsis">
+<p><code class="option">-Dftp.password=<em class=
+"replaceable"><code>password</code></em></code></p>
+</div>
+</li>
+</ol>
+</div>
+<p><a name="target.publish.example" id=
+"target.publish.example"></a><b>Full command line:&#160;</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class=
+"option">-Dftp.userid=<em class=
+"replaceable"><code>login</code></em></code> <code class=
+"option">-Dftp.password=<em class=
+"replaceable"><code>password</code></em></code> publish</p>
+</div>
+</div>
+<div class="refsect2" lang="en" xml:lang="en"><a name=
+"target.config" id="target.config"></a>
+<h3><em class="parameter"><code>config</code></em></h3>
+<p>prints configuration information about the SilkPage and its
+prerequisite software mentioned in <a href="#prerequisite" title=
+"2.&#160;Prerequisite Software">Section&#160;2, &#8220;Prerequisite
+Software&#8221;</a>. This target must be executed in <a href=
+"#silkpage.home.dir"><b><code class=
+"envar">$SILKPAGE_HOME</code></b></a> directory and takes the
+following argument:</p>
+<div class="cmdsynopsis">
+<p><code class="option">-f</code> src/xml/build/tasks.xml</p>
+</div>
+<p><a name="target.config.example" id=
+"target.config.example"></a><b>Full command line:&#160;</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class="option">-f</code>
+src/xml/build/tasks.xml config</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="appendix" lang="en" xml:lang="en">
+<div class="appendix-titlepage"></div>
+<p>This FAQ is provided with the hopes to be helpful for users
+using SilkPage. The information is updated as the questions and
+answers becomes appearant to the SilkPage team.</p>
+<div class="qandaset">
+<dl>
+<dt>D.1. <a href="#faq:general">General Information</a></dt>
+<dd>
+<dl>
+<dt><a href="#id2519148">What is SilkPage</a></dt>
+<dt><a href="#id2542778">For whom is SilkPage intended</a></dt>
+<dt><a href="#id2514490">I don't know anything about XML, can I
+still use SilkPage</a></dt>
+<dt><a href="#id2551258">What are the differeces between SilkPage
+and DocBook Website</a></dt>
+<dt><a href="#silkpage.base">On what is SilkPage based</a></dt>
+<dt><a href="#id2542707">What is the relation between SilkPage
+releases and DocBook Website</a></dt>
+</dl>
+</dd>
+<dt>D.2. <a href="#faq:usage">Usage and Customization</a></dt>
+<dd>
+<dl>
+<dt><a href="#id2551904">How do I create my first Website</a></dt>
+<dt><a href="#id2511061">How do I migerate my website from DocBook
+Website to SilkPage</a></dt>
+<dt><a href="#id2511812">How can I change the link labels of the
+footer items generated by SilkPage</a></dt>
+<dt><a href="#id2541506">SilkPage generates a Google based search
+field for my website, how can I turn it off</a></dt>
+<dt><a href="#id2514104">What is RSS</a></dt>
+<dt><a href="#faq:usage.rss.versions">What are all RSS formats and
+versions ? Which one should I choose</a></dt>
+</dl>
+</dd>
+<dt>D.3. <a href="#faq:install">Installation</a></dt>
+<dd>
+<dl>
+<dt><a href="#id2512795">What is required to run SilkPage</a></dt>
+<dt><a href="#id2541119">How do I install the SilkPage
+software</a></dt>
+<dt><a href="#id2517762">On what platforms SilkPage can be
+installed and run</a></dt>
+<dt><a href="#id2460412">I can't even run SilkPage with the config
+target to test my installation, what's wrong</a></dt>
+</dl>
+</dd>
+</dl>
+<table border="0" summary="Q and A Set">
+<col align="left" width="1%" />
+<tbody>
+<tr class="qandadiv">
+<td align="left" valign="top" colspan="2"><a name="faq:general" id=
+"faq:general"></a>
+<h3 class="title"><a name="faq:general" id="faq:general"></a>D.1.
+General Information</h3>
+</td>
+</tr>
+<tr class="toc" colspan="2">
+<td align="left" valign="top" colspan="2">
+<dl>
+<dt><a href="#id2519148">What is SilkPage</a></dt>
+<dt><a href="#id2542778">For whom is SilkPage intended</a></dt>
+<dt><a href="#id2514490">I don't know anything about XML, can I
+still use SilkPage</a></dt>
+<dt><a href="#id2551258">What are the differeces between SilkPage
+and DocBook Website</a></dt>
+<dt><a href="#silkpage.base">On what is SilkPage based</a></dt>
+<dt><a href="#id2542707">What is the relation between SilkPage
+releases and DocBook Website</a></dt>
+</dl>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2519148" id=
+"id2519148"></a><a name="id2519150" id="id2519150"></a></td>
+<td align="left" valign="top">
+<p><b>What is SilkPage</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>Refer to <a href="#silkpage" title=
+"1.&#160;What is SilkPage?">Section&#160;1, &#8220;What is
+SilkPage?&#8221;</a> section.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2542778" id=
+"id2542778"></a><a name="id2542781" id="id2542781"></a></td>
+<td align="left" valign="top">
+<p><b>For whom is SilkPage intended</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>SilkPage is for everyone who believes in Open Standards, XML and
+quality. The only pre-requisite to use SilkPage is some basic
+knowledge of XML, to be able to encode your website content. While
+the SilkPage software is well documented, it's (cuurently) based on
+a command line executions. If you can't sand command line
+executions, then SilkPage is not for you.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2514490" id=
+"id2514490"></a><a name="id2514492" id="id2514492"></a></td>
+<td align="left" valign="top">
+<p><b>I don't know anything about XML, can I still use
+SilkPage</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>No, to use SilkPage, you need to provide your Website content in
+XML format. Therefore, you need to know the XML (very) basics.
+Refer to <a href="#res:tutorials.xml.walsh.intro"></a> <a href=
+"http://nwalsh.com/docs/articles/xml" target="_top">A Technical
+Introduction to XML</a> to get started.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2551258" id=
+"id2551258"></a><a name="id2551260" id="id2551260"></a></td>
+<td align="left" valign="top">
+<p><b>What are the differeces between SilkPage and DocBook
+Website</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>SilkPage is based on DocBook Website. Both applications share
+almost the identical features, such as Website publishing. However,
+SilkPage provides some extra features:</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p>Generates <a href="#gls:wasp">Web Standards</a> (WaSP) compliant
+XHTML output</p>
+</li>
+<li>
+<p>Provides a better Customization via <a href="#gls:xsl"></a>
+<a href="http://www.w3.org/Style/XSL" target="_top">Extensible
+Stylesheet Language Family (XSL)</a> and <a href="#gls:css">CSS</a>
+customization layers.</p>
+</li>
+<li>
+<p>Prvides a better support for XML feeds such as <a href=
+"#gls:rss">RSS</a> and <a href="#gls:rdf">RDF</a>.</p>
+</li>
+<li>
+<p>Automates the build and website publising by using <a href=
+"#ant" title="ant"><span class="refentrytitle">ant</span></a>
+tasks.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="silkpage.base" id=
+"silkpage.base"></a><a name="id2513220" id="id2513220"></a></td>
+<td align="left" valign="top">
+<p><b>On what is SilkPage based</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>SilkPage is mainly based on <a href=
+"#gls:docbook.website">DocBook Website</a>.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2542707" id=
+"id2542707"></a><a name="id2542709" id="id2542709"></a></td>
+<td align="left" valign="top">
+<p><b>What is the relation between SilkPage releases and
+<span class="application">DocBook Website</span></b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>Piror to every release, SilkPage team takes the current version
+of <a href="#gls:docbook.website">DocBook Website</a> releases,
+makes modifications (if necessary), and prepares its own release.
+The DocBook Website output may have a different look/feel than
+SilkPage output. Moreover, SilkPage provides extra features not
+present in DocBook Website.</p>
+</td>
+</tr>
+<tr class="qandadiv">
+<td align="left" valign="top" colspan="2"><a name="faq:usage" id=
+"faq:usage"></a>
+<h3 class="title"><a name="faq:usage" id="faq:usage"></a>D.2. Usage
+and Customization</h3>
+</td>
+</tr>
+<tr class="toc" colspan="2">
+<td align="left" valign="top" colspan="2">
+<dl>
+<dt><a href="#id2551904">How do I create my first Website</a></dt>
+<dt><a href="#id2511061">How do I migerate my website from DocBook
+Website to SilkPage</a></dt>
+<dt><a href="#id2511812">How can I change the link labels of the
+footer items generated by SilkPage</a></dt>
+<dt><a href="#id2541506">SilkPage generates a Google based search
+field for my website, how can I turn it off</a></dt>
+<dt><a href="#id2514104">What is RSS</a></dt>
+<dt><a href="#faq:usage.rss.versions">What are all RSS formats and
+versions ? Which one should I choose</a></dt>
+</dl>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2551904" id=
+"id2551904"></a><a name="id2551907" id="id2551907"></a></td>
+<td align="left" valign="top">
+<p><b>How do I create my first Website</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<div class="orderedlist"><a name="faq:silkpage.nutshell" id=
+"faq:silkpage.nutshell"></a>
+<ol type="1">
+<li>
+<p><a href="#create.site" title=
+"1.1.&#160;Create Site Scratch">Section&#160;1.1, &#8220;Create
+Site Scratch&#8221;</a> Create a brand new site from scratch</p>
+</li>
+<li>
+<p><a href="#create.layout" title=
+"1.2.&#160;Create Site Layout">Section&#160;1.2, &#8220;Create Site
+Layout&#8221;</a> Structure your Website by organizing your XML
+content</p>
+</li>
+<li>
+<p><a href="#create.page" title=
+"1.3.&#160;Create Site Pages">Section&#160;1.3, &#8220;Create Site
+Pages&#8221;</a> Create XML source pages and content</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2511061" id=
+"id2511061"></a><a name="id2511064" id="id2511064"></a></td>
+<td align="left" valign="top">
+<p><b>How do I migerate my website from <span class=
+"application">DocBook Website</span> to SilkPage</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>SilkPage is based on <a href="#gls:docbook.website">DocBook
+Website</a>. The only thing you need to do to port your website to
+SilkPage is to copy the content of your website under <a href=
+"#silkpage.home.dir"><b><code class=
+"envar">$SILKPAGE_HOME</code></b></a> <b>/src/en</b>. Note that
+<em class="parameter"><code>en</code></em> is the two letter ISO
+code for languages. You can use the language of your choice. Refer
+to <a href="#general.default.lang" title=
+"default.lang"><span class="refentrytitle">default.lang</span></a>
+for valid language codes.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2511812" id=
+"id2511812"></a><a name="id2511814" id="id2511814"></a></td>
+<td align="left" valign="top">
+<p><b>How can I change the link labels of the footer items
+generated by SilkPage</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>Refer to <a href="#config.label.param.xmlfeeds" title=
+"3.2.&#160;Page Source Link Items Parameters">Section&#160;3.2,
+&#8220;Page Source Link Items Parameters&#8221;</a> to learn how
+you can control this feature.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2541506" id=
+"id2541506"></a><a name="id2541508" id="id2541508"></a></td>
+<td align="left" valign="top">
+<p><b>SilkPage generates a Google based search field for my
+website, how can I turn it off</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>Refer to <a href="#search.param" title=
+"3.1.&#160;Search Field Parameters">Section&#160;3.1, &#8220;Search
+Field Parameters&#8221;</a> to learn how you can control this
+feature.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2514104" id=
+"id2514104"></a><a name="id2514106" id="id2514106"></a></td>
+<td align="left" valign="top">
+<p><b>What is RSS</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>RSS is a format for syndicating news and the content of
+news-like sites, including major news sites like Wired,
+news-oriented community sites like Slashdot, and personal weblogs.
+Refer to <a href="http://www.faganfinder.com/search/rss.shtml"
+target="_top">All About RSS</a> for a complete desciption.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="faq:usage.rss.versions" id=
+"faq:usage.rss.versions"></a><a name="id2510632" id=
+"id2510632"></a></td>
+<td align="left" valign="top">
+<p><b>What are all RSS formats and versions ? Which one should I
+choose</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>There are 0.90 and 0.91 by <a href=
+"http://www.rssboard.org/rss-0-9-1-netscape" target=
+"_top">Netscape</a> , 1.0 by <a href=
+"http://groups.yahoo.com/group/rss-dev" target="_top">RSS-DEV</a>
+and 0.9x and 2.0 by <a href="http://www.userland.com/" target=
+"_top">UserLand Software</a> . Refer to the <a href=
+"http://www.xml.com/lpt/a/2002/12/18/dive-into-xml.html" target=
+"_top">What's RSS Article</a> to find out more.</p>
+</td>
+</tr>
+<tr class="qandadiv">
+<td align="left" valign="top" colspan="2"><a name="faq:install" id=
+"faq:install"></a>
+<h3 class="title"><a name="faq:install" id="faq:install"></a>D.3.
+Installation</h3>
+</td>
+</tr>
+<tr class="toc" colspan="2">
+<td align="left" valign="top" colspan="2">
+<dl>
+<dt><a href="#id2512795">What is required to run SilkPage</a></dt>
+<dt><a href="#id2541119">How do I install the SilkPage
+software</a></dt>
+<dt><a href="#id2517762">On what platforms SilkPage can be
+installed and run</a></dt>
+<dt><a href="#id2460412">I can't even run SilkPage with the config
+target to test my installation, what's wrong</a></dt>
+</dl>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2512795" id=
+"id2512795"></a><a name="id2512797" id="id2512797"></a></td>
+<td align="left" valign="top">
+<p><b>What is required to run SilkPage</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>Refer to <a href="#requirements" title=
+"1.&#160;System Requirement">Section&#160;1, &#8220;System
+Requirement&#8221;</a>.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2541119" id=
+"id2541119"></a><a name="id2541121" id="id2541121"></a></td>
+<td align="left" valign="top">
+<p><b>How do I install the SilkPage software</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>It's simple, for all platforms you can download the .zip archive
+file and unpack it on the hard disk using your favorite tool. See
+<a href="#installation.unpacking" title=
+"3.2.&#160;Installing SilkPage Distribution">Section&#160;3.2,
+&#8220;Installing SilkPage Distribution&#8221;</a> for more
+information.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2517762" id=
+"id2517762"></a><a name="id2517764" id="id2517764"></a></td>
+<td align="left" valign="top">
+<p><b>On what platforms SilkPage can be installed and run</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>Any operating system supporting Java (J2SE), Standard Edition.
+However, it should be mentioned that we use GNU/Linux as our
+reference operating system.</p>
+</td>
+</tr>
+<tr class="question">
+<td align="left" valign="top"><a name="id2460412" id=
+"id2460412"></a><a name="id2460414" id="id2460414"></a></td>
+<td align="left" valign="top">
+<p><b>I can't even run SilkPage with the <em class=
+"parameter"><code>config</code></em> target to test my
+installation, what's wrong</b></p>
+</td>
+</tr>
+<tr class="answer">
+<td align="left" valign="top"></td>
+<td align="left" valign="top">
+<p>The most common hiccup is when <code class=
+"envar">$JAVA_HOME</code> or/and <code class=
+"envar">$ANT_HOME</code> are not set. Make sure that you have done
+the following before installing and running SilkPage:</p>
+<div class="orderedlist">
+<ol type="1">
+<li>
+<p>Download the J2SE release (version 1.4 or later) from: <a href=
+"http://java.sun.com/j2se" target=
+"_top">http://java.sun.com/j2se</a></p>
+</li>
+<li>
+<p>Install the J2SE according to the instructions included with the
+release.</p>
+</li>
+<li>
+<p>Set an environment variable <code class=
+"envar">$JAVA_HOME</code> to the pathname of the directory into
+which you installed the J2SE release.</p>
+</li>
+<li>
+<p>Download the <a href="#ant" title="ant"><span class=
+"refentrytitle">ant</span></a> release (version 1.6.1 or later)
+from: <a href="http://ant.apache.org" target=
+"_top">http://ant.apache.org</a></p>
+</li>
+<li>
+<p>Install Ant according to the instructions included with the
+release.</p>
+</li>
+<li>
+<p>Set an environment variable <code class="envar">$ANT_HOME</code>
+to the pathname of the directory into which you installed the ANT
+release.</p>
+</li>
+</ol>
+</div>
+<p>In addition, make sure that <a href="#docbook.home.param" title=
+"1.2.&#160;DocBook Parameters">Section&#160;1.2, &#8220;DocBook
+Parameters&#8221;</a> are set correctly.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="appendix" lang="en" xml:lang="en">
+<div class="appendix-titlepage"></div>
+<div class="toc">
+<h2>Table of Contents</h2>
+<dl>
+<dt><span class="section"><a href="#res:silkpage.latest">1. Latest
+Version of SilkPage</a></span></dt>
+<dt><span class="section"><a href="#res:requiredDownload">2.
+Prerequisite Software Resources</a></span></dt>
+<dt><span class="section"><a href="#res:spec">3.
+Specifications</a></span></dt>
+<dt><span class="section"><a href="#res:tutorials">4. Tutorials and
+Introductory Materials</a></span></dt>
+</dl>
+</div>
+<hr />
+<p>This appendix provides the resource references mentioned
+explicitly in this document. In addition, a sampling of resources
+for additional information about XML, XSL and CSS is provided.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="res:silkpage.latest"
+id="res:silkpage.latest"></a>1.&#160;Latest Version of
+SilkPage</h2>
+</div>
+</div>
+</div>
+<p>The most recent version of SilkPage Software and its guide (that
+is this document) can be found at:</p>
+<div class="variablelist">
+<dl>
+<dt><a name="res:silkpage.core" id="res:silkpage.core"></a>
+<span class="term"><a href="http://silkpage.markupware.com/core/"
+target="_top">SilkPage Software</a></span></dt>
+<dd>
+<p>SilkPage Core distribution.</p>
+</dd>
+<dt><a name="res:silkpage.docs" id="res:silkpage.docs"></a>
+<span class="term"><a href="http://silkpage.markupware.com/docs/"
+target="_top">SilkPage Documentation</a></span></dt>
+<dd>
+<p>The most up-to-date version of this document.</p>
+</dd>
+<dt><a name="res:silkpage.templates" id=
+"res:silkpage.templates"></a> <span class="term"><a href=
+"http://silkpage.markupware.com/templates/" target="_top">SilkPage
+Templates</a></span></dt>
+<dd>
+<p>SilkPage Templates distribution.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name=
+"res:requiredDownload" id=
+"res:requiredDownload"></a>2.&#160;Prerequisite Software
+Resources</h2>
+</div>
+</div>
+</div>
+<div class="variablelist">
+<dl>
+<dt><a name="res:ant" id="res:ant"></a> <span class="term"><a href=
+"http://ant.apache.org" target="_top">Apache Ant</a></span></dt>
+<dd>
+<p>Apache Ant is a Java-based build tool. In theory, it is kind of
+like Make, but without Make's wrinkles.</p>
+</dd>
+<dt><a name="res:java" id="res:java"></a> <span class=
+"term"><a href="http://java.sun.com/javase/" target="_top">Java
+SE</a></span></dt>
+<dd>
+<p>Java Platform, Standard Edition (Java SE, formerly known as
+J2SE) offers a complete environment for application development and
+deployment on desktops and servers.</p>
+</dd>
+<dt><a name="res:docbook.xsl" id="res:docbook.xsl"></a>
+<span class="term"><a href=
+"http://docbook.sourceforge.net/projects/xsl/index.html" target=
+"_top">DocBook XSL Stylesheets</a></span></dt>
+<dd>
+<p>The DocBook XSL stylesheets are a set of stylesheets for use
+with an XSLT engine (such as xsltproc or Saxon) for transforming
+DocBook XML documents into other DocBook output formats, such as
+HTML, PDF, Microsoft HTML Help, and man pages.</p>
+</dd>
+<dt><a name="res:software.saxon" id="res:software.saxon"></a>
+<span class="term"><a href="http://saxon.sourceforge.net/" target=
+"_top">SAXON, the XSLT and XQuery Processor</a></span></dt>
+<dd>
+<p>Saxon is an Open Source Java XSLT and XQuery processor created
+by Michael Kay.</p>
+</dd>
+<dt><a name="res:software.xmlcatalogs" id=
+"res:software.xmlcatalogs"></a> <span class="term"><a href=
+"http://xml.apache.org/commons/components/resolver/" target=
+"_top">Apache XML Commons Resolver package</a></span></dt>
+<dd>
+<p>An XML Entity and URI Resolver donated by Norman Walsh to the
+Apache Software Foundation.</p>
+</dd>
+<dt><a name="res:software.jtidy" id="res:software.jtidy"></a>
+<span class="term"><a href="http://jtidy.sourceforge.net/" target=
+"_top">JTidy</a></span></dt>
+<dd>
+<p>JTidy is a Java port of HTML Tidy, a syntax checker and pretty
+printer for HTML.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="res:spec" id=
+"res:spec"></a>3.&#160;Specifications</h2>
+</div>
+</div>
+</div>
+<div class="variablelist">
+<dl>
+<dt><a name="res:spec.css1" id="res:spec.css1"></a> <span class=
+"term"><a href="http://www.w3.org/TR/REC-CSS1" target=
+"_top">Cascading Style Sheets, Level 1</a></span></dt>
+<dd>
+<p>Specifies level 1 of the Cascading Style Sheet mechanism (CSS1).
+Covers all the basic properties and simple selectors which work
+reliably in most modern browsers.</p>
+</dd>
+<dt><a name="res:spec.css2" id="res:spec.css2"></a> <span class=
+"term"><a href="http://www.w3.org/TR/CSS21" target="_top">Cascading
+Style Sheets, Level 2 (Revision 1)</a></span></dt>
+<dd>
+<p>Specifies level 2 (Revision 1) of the Cascading Style Sheet
+mechanism (CSS2.1). Released after CSS1, adds a whole new set of
+powerful features such as selectors, visibility properties, media
+types and positioning.</p>
+</dd>
+<dt><a name="res:spec.xhtml" id="res:spec.xhtml"></a> <span class=
+"term"><a href="http://www.w3.org/TR/xhtml1/" target="_top">XHTML
+1.0</a></span></dt>
+<dd>
+<p>The specification for XML which behaves just like HTML in all
+browsers. Follows a stricter rule set, and thus, is easier to
+error-check using common HTML validators.</p>
+</dd>
+<dt><a name="res:spec.xml" id="res:spec.xml"></a> <span class=
+"term"><a href="http://www.w3.org/TR/REC-xml/" target="_top">XML
+1.0</a></span></dt>
+<dd>
+<p>The W3C technical recommendation that defines XML 1.0.</p>
+</dd>
+<dt><a name="res:spec.atom" id="res:spec.atom"></a> <span class=
+"term"><a href=
+"http://www.atomenabled.org/developers/syndication/atom-format-spec.php"
+target="_top">The Atom Syndication Format</a></span></dt>
+<dd>
+<p>The specification for Atom, an XML-based Web content and
+metadata syndication format.</p>
+</dd>
+<dt><a name="res:spec.foaf" id="res:spec.foaf"></a> <span class=
+"term"><a href="http://xmlns.com/foaf/0.1/" target="_top">FOAF
+Vocabulary Specification</a></span></dt>
+<dd>
+<p>This document is produced as part of the RDFWeb FOAF project, to
+provide authoritative documentation of the contents, status and
+purpose of the RDF/XML vocabulary and document formats known
+informally as 'FOAF'.</p>
+</dd>
+<dt><a name="res:spec.rss10" id="res:spec.rss10"></a> <span class=
+"term"><a href="http://web.resource.org/rss/1.0/" target="_top">RDF
+Site Summary (RSS) 1.0</a></span></dt>
+<dd>
+<p>This documents describes RSS, the web syndication format as an
+RDF vocabulary.</p>
+</dd>
+<dt><a name="res:spec.rdf.xml" id="res:spec.rdf.xml"></a>
+<span class="term"><a href=
+"http://www.w3.org/TR/rdf-syntax-grammar/" target="_top">RDF/XML
+Syntax Specification</a></span></dt>
+<dd>
+<p>This document defines an XML syntax for RDF called RDF/XML in
+terms of Namespaces in XML, the XML Information Set and XML
+Base.</p>
+</dd>
+<dt><a name="res:spec.xml.ns" id="res:spec.xml.ns"></a>
+<span class="term"><a href=
+"http://www.w3.org/TR/1999/REC-xml-names-19990114/" target=
+"_top">Namespaces in XML</a></span></dt>
+<dd>
+<p>This document defines namespaces in XML.</p>
+</dd>
+<dt><a name="res:spec.xml.infoset" id="res:spec.xml.infoset"></a>
+<span class="term"><a href=
+"http://www.w3.org/TR/2001/REC-xml-infoset-20011024/" target=
+"_top">XML Information Set</a></span></dt>
+<dd>
+<p>This specification provides a set of definitions for use in
+other specifications that need to refer to the information in an
+XML document.</p>
+</dd>
+<dt><a name="res:spec.xslt" id="res:spec.xslt"></a> <span class=
+"term"><a href="http://www.w3.org/TR/xslt" target="_top">XSL
+Transformations (XSLT) Version 1.0</a></span></dt>
+<dd>
+<p>This specification defines the syntax and semantics of XSLT,
+which is a language for transforming XML documents into other XML
+documents.</p>
+</dd>
+<dt><a name="res:spec.cat" id="res:spec.cat"></a> <span class=
+"term"><a href=
+"http://www.oasis-open.org/committees/download.php/14809/xml-catalogs.html"
+target="_top">XML Catalogs Specification</a></span></dt>
+<dd>
+<p>OASIS XML Catalogs V 1.1 Specification.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="res:tutorials" id=
+"res:tutorials"></a>4.&#160;Tutorials and Introductory
+Materials</h2>
+</div>
+</div>
+</div>
+<div class="variablelist">
+<dl>
+<dt><a name="res:tutorials.css.meyer" id=
+"res:tutorials.css.meyer"></a> <span class="term"><a href=
+"http://www.meyerweb.com/eric/css" target="_top">CSS Reference
+Pages</a></span></dt>
+<dd>
+<p>CSS articles, references and books. (by Eric Meyer)</p>
+</dd>
+<dt><a name="res:tutorials.css.zen" id="res:tutorials.css.zen"></a>
+<span class="term"><a href="http://www.csszengarden.com" target=
+"_top">Zen Garden</a></span></dt>
+<dd>
+<p>A demonstration of what can be accomplished visually through
+CSS-based design.</p>
+</dd>
+<dt><a name="res:tutorials.xml.walsh.intro" id=
+"res:tutorials.xml.walsh.intro"></a> <span class="term"><a href=
+"http://nwalsh.com/docs/articles/xml" target="_top">A Technical
+Introduction to XML</a></span></dt>
+<dd>
+<p>A close look at the ins-and-outs of XML. (by Norman Walsh)</p>
+</dd>
+<dt><a name="res:tutorials.xml.stayton.xsl" id=
+"res:tutorials.xml.stayton.xsl"></a> <span class="term"><a href=
+"http://www.sagehill.net/docbookxsl/index.html" target=
+"_top">DocBook XSL: The Complete Guide (Second
+Edition)</a></span></dt>
+<dd>
+<p>It's the definitive guide to using the DocBook XSL stylesheets.
+(by Bob Stayton)</p>
+</dd>
+<dt><a name="res:tutorials.atom.atomenabled" id=
+"res:tutorials.atom.atomenabled"></a> <span class="term"><a href=
+"http://www.atomenabled.org/developers/syndication/" target=
+"_top">Atom Syndication Format - Introduction</a></span></dt>
+<dd>
+<p>This document focuses on <a href="#res:spec.atom">The Atom
+Standard</a> produced by the IETF AtomPub Working Group.</p>
+</dd>
+<dt><a name="res:tutorials.doap.ibm" id=
+"res:tutorials.doap.ibm"></a> <span class="term"><a href=
+"http://www-128.ibm.com/developerworks/xml/library/x-osproj3/"
+target="_top">Describe open source projects with
+XML</a></span></dt>
+<dd>
+<p>Edd Dumbill continues the development of a vocabulary for
+describing open source software projects, presenting a schema for
+the <a href="http://usefulinc.com/doap" target="_top">new
+vocabulary</a> and example project descriptions.</p>
+</dd>
+<dt><a name="res:tutorials.rss.mnot" id=
+"res:tutorials.rss.mnot"></a> <span class="term"><a href=
+"http://www.mnot.net/rss/tutorial/" target="_top">RSS
+Tutorial</a></span></dt>
+<dd>
+<p>This tutorial explains the features and benefits of a Web format
+called RSS, and gives a brief technical overview of it.</p>
+</dd>
+<dt><a name="res:tutorials.rdf.tbray" id=
+"res:tutorials.rdf.tbray"></a> <span class="term"><a href=
+"http://www.xml.com/pub/a/2001/01/24/rdf.html" target="_top">What
+Is RDF</a></span></dt>
+<dd>
+<p>In this document, Tim Bray and Dan Brickley explain why RDF and
+metadata are essential to processing information on the Web.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="glossary">
+<div class="glossary-titlepage">
+<div>
+<div>
+<h2 class="title"><a name="gls" id="gls"></a>Glossary</h2>
+</div>
+</div>
+</div>
+<div class="glossdiv">
+<h3 class="title">Terms</h3>
+<dl>
+<dt><a name="gls:tidy" id="gls:tidy"></a> <a href=
+"http://www.w3.org/People/Raggett/tidy" target="_top">TIDY</a></dt>
+<dd>
+<p>TIDY is a free utility from W3C to fix HTML/XHTML mistakes
+automatically and tidy up sloppy editing into nicely layed out
+markup</p>
+<p>See Also <a href="#gls:xhtml"></a> <a href=
+"http://www.w3.org/MarkUp/" target="_top">HyperText Markup Language
+(XHTML)</a> .</p>
+</dd>
+<dt><a name="gls:docbook.website" id="gls:docbook.website"></a>
+<a href=
+"http://docbook.sourceforge.net/projects/website/index.html"
+target="_top">DocBook Website</a></dt>
+<dd>
+<p>The Website doctype and stylesheets are for making websites
+(like this one). If you generate a website using Website, consider
+including the button above in your site (so that your visitors will
+know you built it using DocBook).</p>
+</dd>
+<dt><a name="gls:docbook.xsl" id="gls:docbook.xsl"></a> <a href=
+"http://docbook.sourceforge.net/projects/xsl/index.html" target=
+"_top">DocBook XSL Stylesheets</a></dt>
+<dd>
+<p>These are XSL stylesheets for the DocBook DTD and its
+derivatives (Simplified DocBook, etc.). If you use them to generate
+PDF/print documents or Web/HTML content, consider including the
+button above somewhere in your documents (so that your reader will
+know the documents were built using DocBook).</p>
+<p>See Also <a href="#gls:xsl"></a> <a href=
+"http://www.w3.org/Style/XSL" target="_top">Extensible Stylesheet
+Language Family (XSL)</a> .</p>
+</dd>
+<dt><a name="gls:wasp" id="gls:wasp"></a> <a href=
+"http://www.webstandards.org" target="_top">Web Standards</a></dt>
+<dd>
+<p>Founded in 1998, The Web Standards Project (WaSP) fights for
+standards that reduce the cost and complexity of development while
+increasing the accessibility and long-term viability of any site
+published on the Web. We work with browser companies, authoring
+tool makers, and our peers to deliver the true power of standards
+to this medium.</p>
+</dd>
+<dt><a name="gls:ant" id="gls:ant"></a> <a href=
+"http://ant.apache.org" target="_top">Apache Ant</a></dt>
+<dd>
+<p>Ant is a Java-based build tool. In theory, it is kind of like
+Make, but without Make's wrinkles.</p>
+</dd>
+<dt><a name="gls:java" id="gls:java"></a> <a href=
+"http://java.sun.com/j2se" target="_top">Java (J2SE)</a></dt>
+<dd>
+<p>Java 2 Standard Edition.</p>
+</dd>
+<dt><a name="gls:xml" id="gls:xml"></a> <a href=
+"http://www.w3.org/XML/" target="_top">Extensible Markup Language
+(XML)</a></dt>
+<dd>
+<p>Extensible Markup Language (XML) is a simple, very flexible text
+format derived from SGML (ISO 8879). Originally designed to meet
+the challenges of large-scale electronic publishing, XML is also
+playing an increasingly important role in the exchange of a wide
+variety of data on the Web and elsewhere.</p>
+</dd>
+<dt><a name="gls:xsl" id="gls:xsl"></a> <a href=
+"http://www.w3.org/Style/XSL" target="_top">Extensible Stylesheet
+Language Family (XSL)</a></dt>
+<dd>
+<p>XSL is a family of recommendations for defining XML document
+transformation and presentation.</p>
+</dd>
+<dt><a name="gls:css" id="gls:css"></a> <a href=
+"http://www.w3.org/Style/CSS" target="_top">Cascading Style
+Sheets</a></dt>
+<dd>
+<p>Cascading Style Sheets (CSS) is a simple mechanism for adding
+style (e.g. fonts, colors, spacing) to Web documents.</p>
+</dd>
+<dt><a name="gls:xhtml" id="gls:xhtml"></a> <a href=
+"http://www.w3.org/MarkUp/" target="_top">HyperText Markup Language
+(XHTML)</a></dt>
+<dd>
+<p>XHTML 2 is a general-purpose markup language designed for
+representing documents for a wide range of purposes across the
+World Wide Web. To this end it does not attempt to be all things to
+all people, supplying every possible markup idiom, but to supply a
+generally useful set of elements.</p>
+</dd>
+<dt><a name="gls:rdf" id="gls:rdf"></a> Resource Description
+Framework (RDF)</dt>
+<dd>
+<p>World-Wide Web, specification, data (RDF) A specification being
+developed in 2000 by the W3C as a foundation for processing
+meta-data regarding resources on the Internet, including the
+World-Wide Web.</p>
+<p>See Also <a href="#gls:rss">Really Simple Syndication (RSS)</a>
+.</p>
+</dd>
+<dt><a name="gls:rss" id="gls:rss"></a> Really Simple Syndication
+(RSS)</dt>
+<dd>
+<p>Really Simple Syndication (RSS) is a lightweight XML format
+designed for sharing headlines and other Web content.</p>
+<p>See Also <a href="#gls:rdf">Resource Description Framework
+(RDF)</a> .</p>
+</dd>
+<dt><a name="gls:w3c" id="gls:w3c"></a> <a href="http://www.w3.org"
+target="_top">World Wide Web (W3C)</a></dt>
+<dd>
+<p>The World Wide Web Consortium (W3C) develops interoperable
+technologies (specifications, guidelines, software, and tools) to
+lead the Web to its full potential.</p>
+</dd>
+<dt><a name="gls:url" id="gls:url"></a> Uniform Resource Locator
+(URL)</dt>
+<dd>
+<p>Uniform Resource Locator (URL) specified by <span class=
+"acronym">W3C</span>.</p>
+<p>See Also <a href="#gls:w3c"></a><a href="http://www.w3.org"
+target="_top">World Wide Web (W3C)</a> .</p>
+</dd>
+<dt><a name="gls:firefox" id="gls:firefox"></a> FireFox</dt>
+<dd>
+<p>The <a href="http://www.mozilla.org" target="_top">Mozilla</a>
+based Web Browser.</p>
+<p>See Also <a href="#gls:browser">Web Browser</a> .</p>
+</dd>
+<dt><a name="gls:browser" id="gls:browser"></a> Web Browser</dt>
+<dd>
+<p>A program used to view HTML documents. Some examples include:
+<a href="http://www.mozilla.org/products/firefox" target=
+"_top">FireFox</a>, <a href=
+"http://www.mozilla.org/products/mozilla1.x" target=
+"_top">Mozilla</a>, <a href="http://www.opera.com" target=
+"_top">Opera</a>, <a href="http://www.apple.com/safari" target=
+"_top">Safari</a></p>
+<p>See Also <a href="#gls:xhtml"></a> <a href=
+"http://www.w3.org/MarkUp/" target="_top">HyperText Markup Language
+(XHTML)</a> .</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="colophon" lang="en" xml:lang="en">
+<h2 class="title"><a name="id2514796" id=
+"id2514796"></a>Colophon</h2>
+<p>This document was prepared using <a href=
+"http://docbook.sourceforge.net/projects/xsl/" target=
+"_top">DocBook XSL Stylesheets</a>. The main font is helvetica,
+arial and sans-serif. The DocBook XSL was refined and customized by
+<a href="http://sina.khakbaz.com/" target="_top">Sina K.
+Heshmati</a> which in turn, was drived from the style by <a href=
+"http://nwalsh.com/people/ndw/" target="_top">Norman Walsh</a> . In
+addition, the visual markup is controlled by a single CSS
+stylesheet prepared by <a href="http://javad.khakbaz.com/"
+target="_top">Javad K. Heshmati</a>. The final version of this
+document was produced by running a single Makefile on a Dell
+Latitude running the <a href="http://www.ubuntu.com/" target=
+"_top">Ubuntu</a> distribution of the <a href="http://www.gnu.org/"
+target="_top">GNU/Linux</a> operating system.</p>
+</div>
+</div>
+</body>
+</html>

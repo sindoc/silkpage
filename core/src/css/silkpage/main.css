@@ -1,0 +1,21 @@
+/* CSS
+-------------------------------------------------------------------
+# rdf:
+# dc:title Main CSS Styling
+# dc:date 2004-12-20
+# cvs:date $Date: 2005-07-28 22:05:46 $
+# dc:creator Douglas Bowman
+# dc:rights Copyright &#169; 2004 MarkupWare.
+# dc:description SilkPage Main CSS Stylesheet.
+# dc:author MarkupWare Team
+---------------------------------------------------------------- */
+
+@import url("base.css");
+@import url("../common/main.css");
+
+
+/* Mid-pass filter (after styles)
+----------------------------------------------- */
+@media tty {
+  i{content: "\";/*" "*/}} @import '../common/ie5win.css'; /*";}
+}/* */

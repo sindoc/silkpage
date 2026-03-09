@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>3.2.&#160;Installing SilkPage Distribution</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="installSilkPage.html" title=
+"3.&#160;Installation Tasks" />
+<link rel="prev" href="installSilkPage.html" title=
+"3.&#160;Installation Tasks" />
+<link rel="next" href="install.dir.structure.html" title=
+"3.3.&#160;SilkPage Directory Structure" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">3.2.&#160;Installing SilkPage
+Distribution</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"installSilkPage.html">Prev</a>&#160;</td>
+<th width="60%" align="center">3.&#160;Installation Tasks</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"install.dir.structure.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="installation.unpacking" id=
+"installation.unpacking"></a>3.2.&#160;Installing SilkPage
+Distribution</h3>
+</div>
+</div>
+</div>
+<p>To install SilkPage you only need to unpack the SilkPage
+distribution file. Unpacking the download file should result the
+directory structure shown in <a href="install.dir.structure.html"
+title="3.3.&#160;SilkPage Directory Structure">Section&#160;3.3,
+&#8220;SilkPage Directory Structure&#8221;</a>. Once unpacked, you
+can test the SilkPage installation by running the <em class=
+"parameter"><code>config</code></em> target as shown in <a href=
+"installation.unpacking.html#install.gnu" title=
+"Example&#160;1.1.&#160;Installing SilkPage">Example&#160;1.1,
+&#8220;Installing SilkPage&#8221;</a>.</p>
+<div class="example"><a name="install.gnu" id="install.gnu"></a>
+<p class="title"><b>Example&#160;1.1.&#160;Installing
+SilkPage</b></p>
+<div class="cmdsynopsis">
+<p><code class="command">unzip</code> silkpage-<em class=
+"replaceable"><code>VERSION</code></em>-plus.zip</p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">cd</code> silkpage-<em class=
+"replaceable"><code>VERSION</code></em></p>
+</div>
+<div class="cmdsynopsis">
+<p><code class="command">ant</code> <code class="option">-f</code>
+src/xml/build/tasks.xml config</p>
+</div>
+<pre class="programlisting">
+
+   config:
+     [echo] SilkPage (VERSION)
+     [echo] user.name: jhe
+     [echo] os.name: Linux
+     [echo] temp.dir: /tmp
+     [echo] DocBook Website installed ? true
+     [echo] DocBook XSL installed ? true
+
+    
+</pre></div>
+<p>Refer to <a href="commands.html" title=
+"Appendix&#160;C.&#160;Command Line Options">Appendix&#160;C,
+<i>Command Line Options</i></a> for detailed information about
+SilkPage command line options. For troubleshooting, refer to
+<a href="faq.html#faq:install" title="Installation">Q &amp;
+A&#160;D.3, &#8220;Installation&#8221;</a>.</p>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"installSilkPage.html">Prev</a>&#160;</td>
+<td width="20%" align="center"><a accesskey="u" href=
+"installSilkPage.html">Up</a></td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"install.dir.structure.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">3.&#160;Installation
+Tasks&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">&#160;3.3.&#160;SilkPage
+Directory Structure</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

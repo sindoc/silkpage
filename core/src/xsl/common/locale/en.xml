@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<l10n xmlns="http://docbook.sourceforge.net/xmlns/l10n/1.0" 
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      xmlns:cvs="http://www.markupware.com/metadata/cvs#" 
+      language="en" 
+      english-language-name="English">
+
+  <rdf:Description rdf:about="http://silkpage.markupware.com/release/core/current/src/xsl/common/locale/en.xml">
+    <rdf:type rdf:resource="http://www.markupware.com/metadata/taxonomy#XSL"/>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+    <dc:format>application/xml</dc:format>
+    <dc:title>SilkPage Core XSLT, Common English Locale</dc:title>
+    <cvs:date>$Date: 2005-07-28 22:05:55 $</cvs:date>
+    <dc:rights>Copyright &#xA9; 2004 MarkupWare.</dc:rights>
+  </rdf:Description>
+
+  <gentext key="SkipNavigation" text="Skip Navigation"/>
+  <gentext key="Compliance" text="Compliance"/>
+  <gentext key="SilkPaged" text="SilkPaged"/>
+  <gentext key="SilkPage" text="SilkPage"/>
+  <gentext key="LastUpdated" text="Last Published"/>
+  <gentext key="XHTML" text="XHTML"/>
+  <gentext key="CSS" text="CSS"/>
+  <gentext key="508" text="508"/>
+  <gentext key="Validate" text="Validate"/>
+  <gentext key="Feedback" text="Feedback"/>
+  <gentext key="Webpage" text="Webpage"/>
+  <gentext key="AdditionalInfo" text="Additional Info"/>
+  <gentext key="Syndication" text="Syndication"/>
+  <gentext key="Contribution" text="Contribution"/>
+  <gentext key="Contributions" text="Contributions"/>
+  <gentext key="ViewSrc" text="Sources"/>
+  <gentext key="Conformance" text="Conformance"/>
+  <gentext key="address" text="By Post"/>
+  <gentext key="phone" text="Voice"/>
+  <gentext key="fax" text="Fax"/>
+  <gentext key="email" text="Email"/>
+  <gentext key="Created" text="Creation"/>
+  <gentext key="Feed" text="Feed"/>
+  <gentext key="FeedSubscribe" text="Subscribe"/>
+  <gentext key="FeedTopic" text="Topic"/>
+  <gentext key="FeedDescription" text="Description"/>
+  <gentext key="FeedCompliance" text="Compliance"/>
+  <gentext key="FeedRSS" text="RSS"/>
+  <gentext key="FeedAtom" text="Atom"/>
+  <gentext key="FeedBlogLines" text="Bloglines"/>
+  <gentext key="FeedLanguage" text="Language"/>
+  <gentext key="FeedLastPublished" text="Pubdate"/>
+  <gentext key="FeedFormat" text="Format"/>
+  <gentext key="FeedSize" text="Size"/>
+
+   <context name="title">
+      <template name="webpage" text="%t"/>
+   </context>
+
+   <context name="xref">
+      <template name="webpage" text="%t"/>
+   </context>
+
+   <context name="datetime">
+      <template name="news-archive-format" text="Y-m-d"/>
+      <template name="news-sidebar-format" text="b d, Y"/>
+      <template name="feed-format" text="B d, Y"/>
+   </context>
+
+   <context name="URFM">
+      <template name="name" text="Name"/>
+      <template name="shortdesc" text="Short Description"/>
+      <template name="releases" text="Releases"/>
+      <template name="release" text="Release"/>
+      <template name="Release" text="Release"/>
+      <template name="description" text="Description"/>
+      <template name="files" text="Files"/>
+      <template name="file" text="File"/>
+      <template name="File" text="File"/>
+      <template name="license" text="License"/>
+      <template name="packages" text="Packages"/>
+      <template name="package" text="Package"/>
+      <template name="revision" text="Revision"/>
+      <template name="version" text="Version"/>
+      <template name="Package" text="Package"/>
+      <template name="created" text="Created"/>
+      <template name="status" text="Status"/>
+      <template name="basename" text="Download File"/>
+      <template name="language" text="Language"/>
+      <template name="format" text="Format"/>
+      <template name="size" text="Size"/>
+      <template name="extension" text="Extension"/>
+      <template name="Download" text="Download"/>
+      <template name="SourceDist" text="Source"/>
+      <template name="BinaryDist" text="Binary"/>
+      <template name="type" text="Type"/>
+      <template name="Dist-type" text="Distribution"/>
+      <template name="ReleaseDate" text="Released on"/>
+      <template name="http://purl.org/urfm/Kilobyte" text="KB"/>
+      <template name="http://purl.org/urfm/Megabyte" text="MB"/>
+      <template name="http://purl.org/urfm/Gigabyte" text="GB"/>
+   </context>
+
+   <context name="DOAP">
+      <template name="name" text="Name"/>
+      <template name="shortname" text="Unix Name"/>
+      <template name="homepage" text="URL"/>
+      <template name="created" text="Last Published"/>
+      <template name="description" text="Description"/>
+      <template name="os" text="Operrating System(s)"/>
+      <template name="shortdesc" text="Short Description"/>
+      <template name="license" text="License"/>
+      <template name="download-page" text="Download Page"/>
+      <template name="maintainer" text="Maintainer"/>
+      <template name="programming-language" text="Programming Language"/>
+      <template name="download-page" text="Download Page"/>
+      <template name="download-mirror" text="Download Mirror"/>
+      <template name="category" text="Categories"/>
+      <template name="http://usefulinc.com/doap/licenses/gpl" text="GNU General Public License, Version 2"/>
+      <template name="http://usefulinc.com/doap/licenses/gfdl" text="GNU Free Documentation License"/>
+      <template name="http://creativecommons.org/licenses/by-nc-sa/2.0/" text="Creative Commons Attribution-NonCommercial-ShareAlike 2.0"/>
+   </context>
+
+   <context name="FOAF">
+     <template name="name" text="Name"/>
+     <template name="homepage" text="URL"/>
+     <template name="maker" text="Sponsors"/>
+   </context>
+
+   <context name="DC">
+     <template name="description" text="Short Description"/>
+     <template name="title" text="Title"/>
+     <template name="Date" text="Date"/>
+   </context>
+
+   <context name="Directive">
+     <template name="arrowleft" text="&#187;"/>
+     <template name="arrowtop" text="&#187;"/>
+   </context>
+
+   <context name="Languages">
+     <template name="en" text="English"/>
+     <template name="fr" text="French"/>
+     <template name="fa" text="Farsi"/>
+     <template name="es" text="Spanish"/>
+     <template name="nl" text="Dutch"/>
+   </context>
+
+</l10n>

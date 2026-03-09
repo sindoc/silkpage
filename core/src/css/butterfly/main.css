@@ -1,0 +1,101 @@
+
+@import url("header.css");
+@import url("footer.css");
+@import url("base.css");
+@import url("nav.css");
+
+/* tabbed styles */
+
+body.onecol #mainContent {
+	margin-left: 0;
+	margin-right: 0;
+	}
+
+body.threecol #mainContent {
+	margin-left: 17%;
+	margin-right: 25%;
+	}
+
+body.twocol.sidebar #mainContent {
+	margin-left: 0;
+	margin-right: 25%;
+	}
+
+body.twocol.secnav #mainContent {
+	margin-left: 17%;
+	margin-right: 0;
+	}
+
+#viewsrc {
+	float: right;
+	padding: 3px 0; 
+	margin: 0;
+	}
+#viewsrc li {
+	list-style: none; 
+	margin: 0;
+	display: inline;
+	}
+
+#viewsrc li a {
+	padding: 3px 0.5em; 
+	margin-left: 3px;
+	border-bottom: none;
+	text-decoration: none;
+	}
+
+/* sidebar */
+
+#sidebar {
+	float: right;
+	width: 23%;
+	background: #E0E9E9;
+	padding-bottom: 1em;
+	}
+
+#sidebar p.title, #sidebar h3 {
+	text-transform: none;
+	letter-spacing: 5px;
+	margin-top: 0;
+	color: #fff;
+	padding: 2px 5px;
+	background: navy;
+	text-shadow: 2px 3px 3px #896;
+	text-align: center;
+	}
+
+#sidebar dl, #sidebar dl p {
+	margin: 0 8px; 
+	font-size: 10px; 
+	line-height: 1.4;
+	}
+
+#sidebar dt, #sidebar dd {
+	margin: 0; 
+	padding: 0 0 0 7px;
+	}
+#sidebar dt {
+	color: navy; 
+	font: normal 13px Helvetica, Arial, sans-serif; 
+	letter-spacing: -0.3px; 
+	text-transform: none;
+	background: url(../deco-li.gif) 0 4px no-repeat; 
+	}
+#sidebar dd p {
+	margin: 0 0 10px 5px;
+	}
+
+#sidebar .variablelist {
+	margin: 0;
+	}
+
+#search {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 12px 20px 0 0;
+	margin: 0; /* need for IE Mac */
+	text-align: right; /* need for IE Mac */
+	white-space: nowrap; /* for Opera */
+        }
+

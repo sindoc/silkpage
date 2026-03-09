@@ -1,0 +1,235 @@
+/* This is the stylesheet of http://developer.gimp.org/ and should
+ * only be changed by the designer or the website maintainer. Remember
+ * that changes done here will change the appearance on the whole site
+ * so keep a backup of this file while working with it. Niklas */
+
+body {
+  background: white;
+  color: black;
+  font-family: arial,helvetica,sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  background: transparent;
+  color: #566e41;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover	{
+  background: transparent;
+  color: #991e1e;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+img {
+  border: none;
+}
+
+img.map {
+  margin: 0px;
+  padding: 0px;
+}
+
+p.images img {
+  border: solid black 2px;
+}
+
+p.framelessimages,
+p.images {
+  text-align: center;
+}
+
+p {
+  margin: 1.33em 0px;
+  margin-left: 40px;
+  margin-right: 40px;
+  text-align: justify;
+}
+
+li {
+  margin-left: 40px;
+  margin-right: 40px;
+  text-align: justify;
+}
+
+td {
+  padding: 5px 5px 0px 0px;
+}
+
+td.main {
+  padding: 10px;
+  vertical-align: top;
+  width: 100%;
+}
+
+td.map {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  background: #dce5d4;
+  color: black;
+  border-style: solid;
+  border-color: #a9b3a1;
+  border-width: 1px;
+  padding: 5px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 110%;
+  text-align: center;
+}
+
+h2 {
+  font-weight: bold;
+  clear: both;
+  font-size: 110%;
+}
+
+h3 {
+  font-weight: bold;
+  clear: both;
+  font-size: 105%;
+}
+
+td.menu {
+  background: #dce5d4;
+  color: black;
+  border-style: solid;
+  border-color: #a9b3a1;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+table.layout {
+  clear: both;
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+div.titlebar {
+  background-image: url("../../graphics/gimp-barbg.png");
+  background-repeat: repeat-x;
+  height: 100px;
+}
+
+div.informaltable table {
+  margin: 0px;
+  margin-left: 40px;
+  margin-right: 40px;
+  border-collapse: collapse;
+}
+
+div.informaltable table tr td, div.informaltable table tr th {
+  padding: 5px;
+}
+
+div.qandaset dl {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+div.qandaset dl dl {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+tr.question p, tr.answer p {
+  margin-left: 0px;
+  margin-right: 40px;
+}
+
+tr.answer li {
+  margin-left: 0px;
+  margin-right: 40px;
+}
+
+tr.answer li p {
+  margin: 0px;
+}
+
+tr.answer li li {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+img.titlebarleft {
+  float: left;
+}
+
+img.titlebarright {
+  float: right;
+}
+
+div.linkbar, div.navbar {
+  clear: both;
+  background: #dce5d4;
+  color: black;
+  border: solid #a9b3a1;
+  border-width: 1px 0px 1px 0px;
+  padding: 5px 5px 5px 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+span.footerleft {
+  float: left;
+  padding: 20px;
+}
+
+span.footerright {
+  float: right;
+  padding: 20px;
+}
+
+span.shrink1 {
+  padding-left: 10px;
+  font-size: 95%;
+}
+
+span.shrink2 {
+  padding-left: 20px;
+  font-size: 90%;
+}
+
+span.shrink3 {
+  padding-left: 30px;
+  font-size: 85%;
+}
+
+div.rss dd p {
+  white-space: pre;
+  border-width: 0px;
+  padding: 0px;
+}
+
+div.rss img {
+  border: none;
+  float: right;
+}
+
+@media print {
+
+div.navbar, div.linkbar, td.menu {
+  display: none
+}
+
+td.main {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+}

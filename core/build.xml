@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<!--
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   $Id: build.xml,v 1.1.1.1 2005-07-28 22:05:44 sina Exp $
+   Build instructions to build SilkPage.
+   Copyright (c) 2004 MarkupWare. All rights reserved.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<!--
+      type 'build -projecthelp' to see main argets.
+-->
+<project name="SilkPage" default="all" basedir=".">
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         Set up properties for the distribution area
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<property file="build.properties"/>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	  Compilation Classpath
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<path id="classpath">
+   <fileset dir="${java.lib.dir}">
+      <include name="*.jar"/>
+   </fileset>
+</path>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     dist Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="dist" depends="init"
+   description="Create source distribution">
+   <mkdir dir="${dist.dir}"/>
+   <antcall target="copyBuildFiles"/>
+   <antcall target="copySrcDir"/>
+   <antcall target="copyCfgDir"/>
+   <antcall target="copyImgDir"/>
+   <antcall target="copyShareDir"/>
+   <antcall target="copyDocsDir"/>
+   <antcall target="copyTemplateModule"/>
+   <antcall target="copyDocsModule"/>
+   <antcall target="replaceVersionInfo"/>
+   <property name="dist.file" value="${deploy.dir}/${dist.tag}.zip"/>
+   <antcall target="packDistFile"/>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     distAll Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="distAll" depends="init"
+   description="Create source distribution">
+   <mkdir dir="${dist.dir}"/>
+   <antcall target="copyBuildFiles"/>
+   <antcall target="copySrcDir"/>
+   <antcall target="copyCfgDir"/>
+   <antcall target="copyImgDir"/>
+   <antcall target="copyShareDir"/>
+   <antcall target="copyDocsDir"/>
+   <antcall target="copyTemplateModule"/>
+   <antcall target="copyDocsModule"/>
+   <antcall target="unpackDocBookWebsite"/>
+   <antcall target="unpackDocBookXsl"/>
+   <antcall target="replaceVersionInfo"/>
+   <property name="dist.file" value="${deploy.dir}/${dist.tag}-plus.zip"/>
+   <antcall target="packDistFile"/>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     deploy Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="deploy" depends="dist"
+   description="Deploys project distribution.">
+   <mkdir dir="${deploy.dir}"/>
+   <copy file="${dist.dir}/src/xml/build/install.xml"
+         tofile="${deploy.dir}/install.xml">
+	<filterset refid="installFilterSet"/>
+   </copy>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       docs.changeLog: Keeps ChangeLog up-to-date within documentation 
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="docs.changeLog" 
+        if="docs.changeLog.enabled"
+        description="Keeps ChangeLog up-to-date within documentation">
+
+  <cvschangelog dir="${user.dir}"
+                destfile="${build.cfg.dir}/${changeLog.basename}.xml"/>
+
+  <style in="${build.cfg.dir}/${changeLog.basename}.xml" 
+         out="${build.docs.dir}/${changeLog.basename}.html" 
+         style="${ant.home}/etc/changelog.xsl">
+    <param name="title" expression="${product.name} ChangeLog"/>
+    <param name="module" expression="${app.release.name}"/>
+    <param name="cvsweb" expression="http://cvs.sourceforge.net/viewcvs.py/"/>
+   </style>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       install: package installation
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="install" depends="installParameters,dist"
+ description="installs SilkPage core  in a local directory">
+  <delete dir="${install.dir}"/>
+  <mkdir dir="${install.dir}"/>
+  <unzip src="${dist.file}" dest="${install.dir}"/>
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     Init. Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="init" depends="clean,genDistTag">
+   <tstamp>
+      <format property="now" pattern="yyyy-MM-dd'T'hhmm"/>
+   </tstamp>
+   <mkdir dir="${build.xml.dir}"/>
+   <copy encoding="${default.encoding}" 
+         toDir="${build.xsl.dir}" 
+         filtering="true">
+         <fileset dir="${src.xsl.dir}"/>
+   </copy>
+   <copy encoding="${default.encoding}" 
+         toDir="${build.cfg.dir}" 
+         filtering="true">
+         <fileset dir="${src.cfg.dir}"/>
+   </copy>
+
+   <property name="os.name" value="${os.name}"/> 
+   <property name="user.name" value="${user.name}"/> 
+   <property name="temp.dir" value="${java.io.tmpdir}"/> 
+
+   <filter filtersfile="build.properties"/>
+
+   <echo message=""/>
+   <echo message="Building ${product.name} @ ${now}"/>
+   <echo message="user.name: ${user.name}"/>
+   <echo message="os.name: ${os.name}"/>
+   <echo message="temp.dir: ${temp.dir}"/>
+   <echo message=""/>
+
+   <available file="${src.src.dir}" type="dir" property="src.dir.exists"/>
+   <available file="${src.cfg.dir}" type="dir" property="cfg.dir.exists"/>
+   <available file="${src.img.dir}" type="dir" property="img.dir.exists"/>
+   <available file="${src.share.dir}" type="dir" property="share.dir.exists"/>
+   <available file="${docbook-website-zip.file}" type="file" 
+     property="docbook-website-zip.file.exists"/>
+   <available file="${docbook-xsl-zip.file}" type="file" 
+     property="docbook-xsl-zip.file.exists"/>
+
+</target>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     All Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="all" depends="dist"
+   description="Clean build and dist directories, then compile"/>
+
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     Clean Target
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="clean"
+   description="Delete old build and dist directories">
+   <delete dir="${temp.dir}/${app.release.name}"/>
+   <delete dir="${deploy.dir}"/>
+</target>
+ <!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         		     Helper Targets
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  -->
+<target name="genDistTag">
+   <property name="dist.tag"
+      value="${dist.tag}"/>
+</target>
+
+<target name="copyBuildFiles">
+   <copy file="${src.dir}/build.xml" tofile="${dist.dir}/build.xml"/>
+   <copy file="${src.dir}/build.properties" tofile="${dist.dir}/build.properties"/>
+</target>
+
+<target name="copySrcDir" if="src.dir.exists">
+   <mkdir dir="${dist.src.dir}"/>
+   <copy todir="${dist.src.dir}" filtering="true">
+      <fileset dir="${src.src.dir}"/>
+   </copy>
+</target>
+
+<target name="copyImgDir" if="img.dir.exists">
+   <mkdir dir="${dist.img.dir}"/>
+   <copy  todir="${dist.img.dir}">
+      <fileset dir="${src.img.dir}"/>
+   </copy>
+</target>
+
+<target name="copyCfgDir" if="cfg.dir.exists">
+   <mkdir dir="${dist.cfg.dir}"/>
+   <copy  todir="${dist.cfg.dir}" filtering="true">
+      <fileset dir="${src.cfg.dir}"/>
+   </copy>
+</target>
+
+<target name="copyDocsDir" if="docs.dir.exists">
+   <mkdir dir="${dist.docs.dir}"/>
+   <copy  todir="${dist.docs.dir}" filtering="true">
+      <fileset dir="${build.docs.dir}"/>
+   </copy>
+</target>
+
+<target name="copyShareDir" if="share.dir.exists">
+   <mkdir dir="${dist.share.dir}"/>
+   <copy todir="${dist.share.dir}">
+      <fileset dir="${src.share.dir}"/>
+   </copy>
+</target>
+
+<target name="unpackDocBookWebsite" if="docbook-website-zip.file.exists">
+   <mkdir dir="${dist.dir}/share/tools"/>
+   <unzip src="${docbook-website-zip.file}" dest="${dist.dir}/share/tools"/>
+</target>
+
+<target name="unpackDocBookXsl" if="docbook-xsl-zip.file.exists">
+   <mkdir dir="${dist.dir}/share/tools"/>
+   <unzip src="${docbook-xsl-zip.file}" dest="${dist.dir}/share/tools"/>
+</target>
+
+<target name="fetchTemplateModule">
+  <property name="cvs.template.module" 
+    value="markupware/projects/silkpage/template"/>
+  <cvs cvsRoot="${cvs.root}"
+       package="${cvs.template.module}"
+       dest="${temp.dir}"/>
+</target>
+<target name="copyTemplateModule" depends="fetchTemplateModule">
+  <mkdir dir="${dist.dir}/src/xml/template"/>
+  <copy todir="${dist.dir}/src/xml/template">
+     <fileset dir="${temp.dir}/${cvs.template.module}"/>
+  </copy>
+</target>
+
+<target name="fetchDocsModule">
+  <property name="cvs.docs.module" 
+    value="markupware/projects/silkpage/docs"/>
+  <cvs cvsRoot="${cvs.root}"
+       package="${cvs.docs.module}"
+       dest="${temp.dir}"/>
+</target>
+<target name="copyDocsModule" depends="fetchDocsModule">
+  <property name="silkpage.docs.dir" value="${temp.dir}/silkpage-docs"/>
+  <property name="silkpage.docs.file" value="${silkpage.docs.dir}/silkpage-docs.zip"/>
+  <delete dir="${silkpage.docs.dir}"/>
+  <exec dir="${temp.dir}/${cvs.docs.module}" executable="make"/>
+  <unzip src="${silkpage.docs.file}" dest="${dist.docs.dir}"/>
+</target>
+
+<target name="packDistFile">
+   <mkdir dir="${deploy.dir}"/>
+   <zip destfile="${dist.file}">
+     <zipfileset dir="${dist.dir}" 
+       prefix="${app.release.name}_${app.release.number}"/>
+   </zip>
+</target>
+
+<target name="replaceVersionInfo">
+  <replace file="${dist.dir}/src/xml/build/tasks.xml" token="@product.name@" 
+    value="${product.name}"/>
+  <replace file="${dist.dir}/src/xml/build/tasks.xml" 
+    token="@app.release.number@" value="${app.release.number}"/>
+</target>
+
+
+<target name="installParameters">
+  <echo message=""/>
+  <echo message="Please enter required information to install ${product.name}."/>
+  <echo message=""/>
+  <echo message="Installation directory."/>
+  <echo message=""/>
+  <echo message="Example: ${user.local.dir}/${install.endorsed.dir}"/>
+  <input
+    message="Where do you want to install ${product.name}?"
+    addproperty="install.dir"
+    defaultvalue="${user.local.dir}/${install.endorsed.dir}"/>
+</target>
+
+</project>

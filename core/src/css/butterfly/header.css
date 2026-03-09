@@ -1,0 +1,30 @@
+
+/* Header */
+
+	#header {
+		position: relative;
+		background: navy;
+		min-height: 39px;
+		padding: 0;
+		voice-family: "\"}\"";
+		voice-family: inherit;
+		height: 1em;
+		padding: 15px 0;
+	} 
+	
+	#header h1 {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		margin: 0;
+		font-size: 2px;
+		height: 8px;
+	}
+	#header h1 a {
+		display: block;
+		width: 204px;
+		height: 55px;
+		background: transparent url("/tmp/www.markupware.com/install/graphics/logo/gif/org_logo.gif") no-repeat;
+		text-indent: -700em;
+		text-decoration: none;
+	}

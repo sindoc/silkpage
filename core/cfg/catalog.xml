@@ -1,0 +1,50 @@
+<?xml version="1.0"?> 
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <nextCatalog catalog="@docbook.website.dir@/catalog.xml"/>
+<!--  
+FIXME
+-->
+
+<group xml:base="common/"
+       id="docbook-xsl"
+       prefer="public">
+
+  <public
+    publicId="-//Norman Walsh//DTD DocBook Olink Summary V2.0//EN"
+    uri="targetdatabase.dtd"/>
+
+</group>
+
+  <rewriteURI
+    uriStartString="http://silkpage.markupware.com/release/core/current/src/xsl/theme.xsl"
+    rewritePrefix="@silkpage.xsl.theme@"/>
+
+  <rewriteURI
+    uriStartString="http://silkpage.markupware.com/release/core/current/src/xsl"
+    rewritePrefix="@silkpage.xsl.dir@"/>
+
+  <rewriteURI
+    uriStartString="http://docbook.sourceforge.net/release/xsl/current"
+    rewritePrefix="@docbook.xsl.dir@"/>
+
+  <rewriteURI 
+    uriStartString="http://docbook.sourceforge.net/release/website/current"
+    rewritePrefix="@docbook.website.dir@"/>
+
+  <rewriteSystem 
+    systemIdStartString="http://docbook.sourceforge.net/release/xsl/current"
+    rewritePrefix="@docbook.xsl.dir@"/>
+
+  <rewriteSystem 
+    systemIdStartString="http://docbook.sourceforge.net/release/website/2.4.1"
+    rewritePrefix="@docbook.website.dir@"/>
+
+  <rewriteSystem 
+    systemIdStartString="http://www.oasis-open.org/docbook/xml/4.3"
+    rewritePrefix="@docbook.xml.dir@"/>
+
+  <rewriteSystem 
+    systemIdStartString="http://www.oasis-open.org/docbook/xml/4.2"
+    rewritePrefix="@docbook.xml.dir@"/>
+
+</catalog>

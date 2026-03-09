@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st August 2004), see www.w3.org" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1" />
+<title>2.&#160;Site Content Management</title>
+<link rel="stylesheet" href="css/chunk.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1" />
+<link rel="start" href="index.html" title="SilkPage User Guide" />
+<link rel="up" href="usage.html" title=
+"Chapter&#160;2.&#160;Usage" />
+<link rel="prev" href="usage.html" title=
+"Chapter&#160;2.&#160;Usage" />
+<link rel="next" href="create.content.example.html" title=
+"2.2.&#160;Examples" />
+<meta name="cvsinfo" content=
+"Id: main.xml,v 1.2 2006/04/17 16:26:46 sina Exp" />
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
+alink="#0000FF">
+<div id="header">
+<h1><a href="http://silkpage.markupware.com/docs/user-guide/"
+title="SilkPage - User Guide Page">SilkPage User Guide</a></h1>
+<div id="navparent"><a href="http://silkpage.markupware.com" title=
+"SilkPage Home Page"><span>SilkPage</span></a><a href=
+"http://silkpage.markupware.com/docs" title=
+"SilkPage - Documentation Page"><span>Documentation</span></a></div>
+</div>
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">2.&#160;Site Content Management</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href=
+"usage.html">Prev</a>&#160;</td>
+<th width="60%" align="center">Chapter&#160;2.&#160;Usage</th>
+<td width="20%" align="right">&#160;<a accesskey="n" href=
+"create.content.example.html">Next</a></td>
+</tr>
+</table>
+<hr /></div>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="content" id=
+"content"></a>2.&#160;Site Content Management</h2>
+</div>
+</div>
+</div>
+<p>SilkPage maintains metadata information about your site
+architecture, pages and their links. This information is kept in
+the <b>layout.xml</b> discussed in <a href=
+"usage.html#create.layout" title=
+"1.2.&#160;Create Site Layout">Section&#160;1.2, &#8220;Create Site
+Layout&#8221;</a>. Using this approach, SilkPage separates, the
+site content from its logical structure. Site pages and documents
+are linked using <code class="sgmltag-element">olink</code> that
+makes it possible to locate the target element in the site content
+and generate the site links automatically. <code class=
+"sgmltag-element">olink</code>s are resolved from a database of
+targets that is maintained by SilkPage. This solution reduces link
+maintenance of your Website significantly.</p>
+<div class="section" lang="en" xml:lang="en">
+<div class="section-titlepage">
+<div>
+<div>
+<h3 class="title"><a name="create.content.elements" id=
+"create.content.elements"></a>2.1.&#160;Main Elements</h3>
+</div>
+</div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p><code class="sgmltag-element">olink</code>: the main element for
+linking pages and elements.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-attribute">targetdoc</code> the
+<code class="sgmltag-attribute">id</code> of the target
+<code class="sgmltag-element">webpage</code> that must exist and
+its <code class="sgmltag-attribute">id</code> must be unique.</p>
+</li>
+<li>
+<p><code class="sgmltag-attribute">targetptr</code> the
+<code class="sgmltag-attribute">id</code> attribute value of the
+target element within the target <code class=
+"sgmltag-element">webpage</code>. In order to link to the top of a
+given page, the value of the <code class=
+"sgmltag-attribute">targetptr</code> must be the same as the
+<code class="sgmltag-attribute">targetdoc</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code class="sgmltag-element">ulink</code>: mainly used to
+directly link to external HTML pages and documents. Such links are
+not verified while processing, so they require manual maintainance
+in order to be valid URLs. Therefore, it's bad idea to use
+<code class="sgmltag-element">ulink</code> to link directly to the
+generated XHTML pages; if you change the hierarchy or rename a
+page, the link will become stale. With <code class=
+"sgmltag-element">olink</code> this won't happen.</p>
+<div class="itemizedlist">
+<ul type="circle">
+<li>
+<p><code class="sgmltag-attribute">url</code> the URL of the target
+HTML document.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="navfooter">
+<hr />
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href=
+"usage.html">Prev</a>&#160;</td>
+<td width="20%" align="center"><a accesskey="u" href=
+"usage.html">Up</a></td>
+<td width="40%" align="right">&#160;<a accesskey="n" href=
+"create.content.example.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">
+Chapter&#160;2.&#160;Usage&#160;</td>
+<td width="20%" align="center"><a accesskey="h" href=
+"index.html">Home</a></td>
+<td width="40%" align="right" valign="top">
+&#160;2.2.&#160;Examples</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

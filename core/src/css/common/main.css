@@ -1,0 +1,497 @@
+/* CSS
+-------------------------------------------------------------------
+# rdf:
+# dc:title Main CSS Styling
+# dc:date 2004-12-20
+# cvs:date $Date: 2005-07-28 22:05:45 $
+# dc:creator Douglas Bowman
+# dc:rights Copyright &#169; 2004 MarkupWare.
+# dc:description Common Main CSS Stylesheet.
+# dc:author MarkupWare Team
+---------------------------------------------------------------- */
+
+
+/* Page Structure
+----------------------------------------------- */
+#body {
+	width: 710px;
+	padding: 10px 0 15px;
+	margin: 0 auto;
+	text-align: left;
+	}
+
+
+/* Accessibility Tweaks
+----------------------------------------------- */
+
+#header p.access {
+        position: absolute;
+        left: -999px;
+        width: 990px;
+        }
+
+hr.access {
+        display: none;
+        }
+
+div.titlepage h1, div.titlepage h2, div.titlepage h3 {
+        clear: none;
+        }
+
+#search label {
+        display: none;
+        }
+
+div.error {
+	border: 1px solid red;
+  	padding: 5px;
+}
+
+/* Tables
+----------------------------------------------- */
+table {
+        font-size: 100%;
+        width: 100%;
+        }
+
+th, td {
+        padding: 5px 10px;
+        text-align: left;
+	}
+
+/* Miscellanous
+----------------------------------------------- */
+
+p {
+  	margin: 0 0 .75em;
+  	line-height: 1.5em;
+  	}
+p strong {
+  	color: #000;
+  	}
+
+ul {
+  	margin: 0 0 1em;
+  	padding: 0;
+  	list-style: none;
+  	}
+ul li {
+  	margin: 0 5px .2em;
+  	padding: 0 0 0 20px;
+  	line-height: 1.2em;
+  	background: url('../../graphics/gif/bullet.gif') no-repeat 0 .5em;
+  	}
+	
+dl {
+  	margin: 0;
+  	font-size: 93%;
+  	line-height: 1.5em;
+  	}
+
+dt {
+  	margin-right: 10px;
+  	}
+
+dd {
+  	margin: 0 0 12px 15px;
+  	}
+
+form {
+  	margin: 0;
+  	}
+
+table label {
+  	margin-right: 5px;
+  	}
+
+input, textarea {
+	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #485F5F;
+	margin: 5px 5px 5px 0px;
+	padding: 2px;
+	margin-left: 5px;
+	border: 1px solid #999999;
+	background: #fff;
+	}
+
+input[type="submit"], button {
+	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin: 5px 5px 5px 0px;
+	padding: 2px 7px;
+	}
+
+label:hover {
+	cursor: pointer;
+	}
+
+body.onecol #content {
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	}
+
+body.twocol.secnav #content {
+	margin-left: 150px;
+	margin-right: 0;
+  	}
+
+body.threecol #sidebar {
+	margin-top: 2.5em;
+	width: 160px;
+	}
+
+body.threecol #content {
+	float: left;
+	width: 380px;
+	margin: 0 15px;
+  }
+
+body.threecol #secnav {
+	float: left;
+  	}
+
+body.twocol.sidebar #content {
+	float: left;
+	margin-right: 15px;
+	width: 480px;
+  	}
+
+body.twocol.sidebar #sidebar {
+	float: left;
+  	}
+
+#search div {
+	top: -26px;
+	position: relative;
+	float: right;
+	right: 0;
+	margin: 0; /* need for IE Mac */
+	text-align: right; /* need for IE Mac */
+	white-space: nowrap; /* for Opera */
+	}
+
+/* Sidebar
+----------------------------------------------- */
+#sidebar {
+	margin-top: 34px;
+	float: left;
+	width: 200px;
+	}
+
+#sidebar p.title, #sidebar h3 {
+	text-decoration: none;
+	text-transform: Capitalize;	
+	letter-spacing: 3px;
+	margin-top: 0;
+	padding: 2px 5px;
+	text-shadow: 2px 3px 3px #896;
+	text-align: center;
+	font-size: 93%;
+	}
+
+#sidebar dl, #sidebar dl p {
+  	margin: 0 8px; 
+	font-size: 10px; 
+  	line-height: 1.4;
+  	}
+
+#sidebar dt, #sidebar dd {
+  	margin: 0; 
+  	padding: 0 0 0 7px;
+  	}
+
+#sidebar dd p {
+  	margin: 0 0 10px 0;
+  	}
+
+#sidebar div {
+	margin-bottom: 1em;
+	}
+
+#sidebar dt {
+	font: bold 13px Helvetica, Arial, sans-serif; 
+	letter-spacing: -0.3px; 
+	text-transform: none;
+	text-decoration: none;
+	}
+
+#sidebar a {
+	border-bottom: none;
+	}
+
+#sidebar dl.address dt {
+        padding: 3px;
+        }
+
+#sidebar dl.address dd {
+        font-style: italic;
+        padding: 3px;
+        }
+
+/* -- Front Page -- */
+.home #sidebar.news p.title {
+	text-align: center;
+	text-transform: uppercase;
+	}
+
+.home #sidebar.news dl {
+	text-decoration: none;
+	margin-top: 0;
+	padding: 2px 5px;
+	text-align: left;
+	font-size: 99%;
+	}
+
+.home #sidebar.news p {
+        padding-left: 8px;
+	}
+
+.home #sidebar.news dt {
+	margin-bottom: 8px;
+	}
+
+.home #sidebar.news p.title {
+	border-top: none;
+	}
+
+.home #sidebar.news dd.date {
+	float: left;
+	text-align: center;
+	line-height: 1.1em;
+	padding: 2px 1px 5px 1px;
+	width: 2.2em;
+	margin: 0 0.5em 1em 0;
+	}
+
+.home #sidebar.news>p.desc {
+	display: none;
+	}
+
+/* Secondary Navigation
+----------------------------------------------- */
+
+#secnav ul {
+	float: left;
+	width: 130px;
+	list-style: none;
+	margin: 2.5em 0 0 0;
+  	}
+
+#secnav li {
+	display: inline;
+	padding: 0;
+	margin: 0;
+	background: none;
+  	}
+	
+#secnav li a, #secnav li.current {
+	font-weight: bold;
+	display: block;
+	padding: 4px 6px;
+	text-decoration: none;
+  	}
+
+#secnav li li a {
+	padding: 4px 8px 4px 20px;
+  	}
+
+/* Primary Navigation
+----------------------------------------------- */
+
+#primnav li a, #primnav .current {
+        border-right: none;
+        margin-right: 5px;
+        text-decoration: none;
+        text-align: center;
+        font-weight: normal;
+        letter-spacing: 1px;
+        line-height: 2.2em;
+        font-size: xx-small;
+        voice-family: "\"}\"";
+        voice-family: inherit;
+        font-size: x-small;
+        display: block;
+        }
+
+#primnav ul {
+	clear: both;
+	border: 0;
+	margin-bottom: 13px;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+	}
+
+#primnav li {
+	display: block;
+	float: left;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	width: 18%;
+	background: none;
+	}
+
+/* Sitemap
+----------------------------------------------- */
+/*
+
+.sitemap .current {
+	font-weight: bold;
+	}
+
+.sitemap .summary {
+	padding-right: 2em;
+	float: left;
+	}
+
+.sitemap li {
+	background: none;
+	}
+
+.sitemap .formats span {
+	background: none;
+	margin: 0 3px 0 0;
+	padding: 0;
+	list-style: none;
+	display: inline;
+	}
+.sitemap a {
+	text-decoration: none;
+	border-bottom: none;
+	font-weight: bold;
+	}
+*/
+
+/*
+.sitemap .formats a:link, .sitemap .formats a:visited {
+	padding: 0 6px 0 8px;
+	font-size: 6pt;
+	font-weight: normal;
+	letter-spacing: 3px;
+	}
+
+.sitemap .formats a:hover {
+	text-decoration: none;
+	}
+*/
+#footer {
+	clear: both;
+	padding: 15px 0 0;
+	}
+
+#footer .right 	{
+	float: right;
+	}
+
+#footer div {
+	margin: 0;
+	padding: 7px 20px;
+	text-align: center;
+	line-height: 1.2em;
+	font-size: 93%;
+	}
+
+#footer .updated, #footer .copyright, #footer .viewsrc, #footer .compliance {
+	text-align: left;
+	margin: 8px 0 4px 0;
+	padding: 0;
+	font-size: x-small;
+	}
+
+/* Team
+----------------------------------------------- */
+.team div.she h2, .team div.jhe h2, .team div.ehe h2 {
+	margin-top: .5em;
+	text-align: right;
+	}
+
+.team div.she h2 span a, .team div.jhe h2 span a, .team div.ehe h2 span a {
+	padding: 2px 10px;
+	border-bottom: none;
+	font-size: 10pt;
+	background: none;
+	}
+
+.team div.she h2 a:hover, .team div.jhe h2 a:hover, .team div.ehe h2 a:hover {
+	background-color: #dddddd;
+	text-decoration: none;
+	}
+
+.team #content div h3 span {
+	display: block;
+	margin: 0;
+	padding: 0;
+	text-indent: -9999px;
+	}
+
+.team div h3 {
+        display: block;
+        float: left;
+        margin: 0 10px 10px 0;
+        padding: 0;
+        width: 90px;
+        height: 120px;
+	border: 1px solid #826C55;
+	}
+
+.team div h3 span {
+	display: block;
+	margin: 0; 
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-decoration: none;
+	}
+
+.team div.jhe h3 {
+	background: transparent url(../../graphics/jpg/jhe_photo.jpg) top left no-repeat;
+	}
+
+.team div.ehe h3 {
+	background: transparent url(../../graphics/jpg/ehe_photo.jpg) top left no-repeat;
+	}
+
+.team div.she h3 {
+	background: transparent url(../../graphics/jpg/she_photo.jpg) top left no-repeat;
+	}
+
+table, table tr th, table tr th, table tr td {
+        font-size:    x-small;
+        voice-family: "\"}\"";
+        voice-family: inherit;
+        font-size:    small;
+        }
+
+table tbody tr th {
+        padding: 5px;
+        vertical-align: middle;
+        }
+
+table {
+        width: 100%;
+        margin: .5em .2em .8em .2em;
+        }
+a.mime-zip {
+	background: url(../../graphics/gif/zip.gif) left no-repeat;
+	}
+
+.basename a span {
+	margin-left: 20px;
+	}
+
+table tbody .basename a:hover {
+	text-decoration: none;
+	}
+
+table tbody .basename a {
+	line-height: 15px;
+	margin-left: 5px;
+	}
+
+

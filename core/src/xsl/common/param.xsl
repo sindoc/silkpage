@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:html='http://www.w3.org/1999/xhtml'
+                xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
+                exclude-result-prefixes="doc html"
+                version="1.0">
+
+<xsl:output method="html"/>
+
+<!-- ==================================================================== -->
+
+<xsl:param name="site.url" select="''"/>
+<xsl:param name="site.lang" select="''"/>
+<xsl:param name="site.id" select="''"/>
+<xsl:param name="output.method" select="'xhtml10'"/>
+
+<xsl:param name="site.publisher.url" select="'http://silkpage.markupware.com/docs/silkpaged.html'"/>
+<xsl:param name="markupware.url" select="'http://www.markupware.com'"/>
+<xsl:param name="markupware.taxonomy.url">
+  <xsl:value-of select="$markupware.url"/>
+  <xsl:text>/metadata/taxonomy</xsl:text>
+</xsl:param>
+<xsl:param name="pages.search-box" select="''"/>
+<xsl:param name="pages.search.input-label">Example.org</xsl:param>
+
+<xsl:param name="atom.label">atom</xsl:param>
+<xsl:param name="foaf.label">foaf</xsl:param>
+<xsl:param name="doap.label">doap</xsl:param>
+<xsl:param name="rss.label">rss</xsl:param>
+<xsl:param name="urfm.label">urfm</xsl:param>
+<xsl:param name="rdf.label">rdf</xsl:param>
+<xsl:param name="xml.label">xml</xsl:param>
+
+<xsl:param name="viewsrc.rdf">RDF</xsl:param>
+<xsl:param name="viewsrc.urfm">URFM</xsl:param>
+<xsl:param name="viewsrc.foaf">FOAF</xsl:param>
+<xsl:param name="viewsrc.doap">DOAP</xsl:param>
+<xsl:param name="viewsrc.atom">Atom</xsl:param>
+<xsl:param name="viewsrc.rss">RSS</xsl:param>
+<xsl:param name="viewsrc.xml">XML</xsl:param>
+
+<xsl:param name="viewsrc.label">viewsrc</xsl:param>
+
+<xsl:param name="sitemap.pageformats" select="'0'"/>
+
+<xsl:param name="rdf.ext">.rdf.xml</xsl:param>
+<xsl:param name="hrml.ext">.html</xsl:param>
+<xsl:param name="output-root" select="$site.url"/>
+
+<xsl:param name="right.label">right</xsl:param>
+<xsl:param name="left.label">left</xsl:param>
+<xsl:param name="meta.label">meta</xsl:param>
+<xsl:param name="title.label">title</xsl:param>
+<xsl:param name="feedback.label">feedback</xsl:param>
+<xsl:param name="homelink.label">home</xsl:param>
+<xsl:param name="header.label">header</xsl:param>
+<xsl:param name="compliance.label">compliance</xsl:param>
+<xsl:param name="updated.label">updated</xsl:param>
+<xsl:param name="address.label">address</xsl:param>
+<xsl:param name="copyright.label">copyright</xsl:param>
+<xsl:param name="headitems.label">headitems</xsl:param>
+<xsl:param name="headitem.label">headitem</xsl:param>
+<xsl:param name="footitems.label">footitems</xsl:param>
+<xsl:param name="footitem.label">footitem</xsl:param>
+<xsl:param name="footer.label">footer</xsl:param>
+<xsl:param name="sitemap.label">sitemap</xsl:param>
+<xsl:param name="feeds.label">feeds</xsl:param>
+<xsl:param name="sponsors.label">sponsors</xsl:param>
+<xsl:param name="sponsor.label">sponsor</xsl:param>
+<xsl:param name="partner.label">sponsor</xsl:param>
+<xsl:param name="body.label">body</xsl:param>
+<xsl:param name="content.label">content</xsl:param>
+<xsl:param name="description.label">desc</xsl:param>
+<xsl:param name="primnav.label">primnav</xsl:param>
+<xsl:param name="sidebar.label">sidebar</xsl:param>
+<xsl:param name="secnav.label">secnav</xsl:param>
+<xsl:param name="secnav.linkwrapper">strong</xsl:param>
+<xsl:param name="nav.current.label">current</xsl:param>
+<xsl:param name="nav.ancestor.label">ancestor</xsl:param>
+<xsl:param name="news.archive.label" select="'newsArchives'"/>
+<xsl:param name="xhtml.validator.url" select="'http://validator.w3.org/check/referer'"/>
+<xsl:param name="css.validator.url" select="'http://jigsaw.w3.org/css-validator/check/referer'"/>
+
+<xsl:param name="access.validator.url">
+  <xsl:text>http://bobby.watchfire.com/bobby/bobbyServlet?URL=</xsl:text>
+  <xsl:value-of select="$site.url"/>
+  <xsl:text>&amp;output=Submit&amp;gl=sec508</xsl:text>
+</xsl:param>
+
+<xsl:param name="access.key.home" select="'1'"/>
+<xsl:param name="access.key.content" select="'2'"/>
+<xsl:param name="access.key.searchbox" select="'4'"/>
+<xsl:param name="access.key.feedback" select="'9'"/>
+<xsl:param name="access.key.statement" select="'0'"/>
+<xsl:param name="access.class" select="'access'"/>
+<xsl:param name="access.skipnav" select="1"/>
+<xsl:param name="css.decoration" select="0"/>
+<xsl:param name="feeds.subscribe.bloglines" select="'http://www.bloglines.com/sub/'"/>
+<xsl:param name="biblioentry.item.separator" select="':'"/>
+
+<xsl:param name="process.external-url" select="'1'"/>
+<xsl:param name="namespace.foaf" select="'http://xmlns.com/foaf/0.1/'"/>
+<xsl:param name="namespace.doap" select="'http://usefulinc.com/ns/doap#'"/>
+<xsl:param name="namespace.rss" select="'http://purl.org/rss/1.0/'"/>
+<xsl:param name="namespace.urfm" select="'http://purl.org/urfm/'"/>
+<xsl:param name="namespace.atom" select="'http://www.w3.org/2005/Atom'"/>
+<xsl:param name="urfm.type.document" select="'http://xmlns.com/wordnet/1.6/Document'"/>
+<xsl:param name="urfm.type.package.Software" select="'http://purl.org/dc/dcmitype/Software'"/>
+<xsl:param name="urfm.type.file.SourceDist" select="'http://purl.org/urfm/SourceDist'"/>
+<xsl:param name="urfm.type.file.BinaryDist" select="'http://purl.org/urfm/BinaryDist'"/>
+<xsl:param name="urfm.files.table.border" select="'0'"/>
+<xsl:param name="feeds.table.border" select="'0'"/>
+<xsl:param name="sponsors.table.border" select="'0'"/>
+
+</xsl:stylesheet>

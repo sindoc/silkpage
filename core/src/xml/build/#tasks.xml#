@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<!--
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Main tasks used by SilkPage to build a given website.
+   Copyright (c) 2006 MarkupWare.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<project name="silkpage-transform" default="website">
+
+<property name="temp.dir" value="${java.io.tmpdir}"/>
+<property name="base.dir" value="${basedir}"/>
+<property name="cfg.dir" value="${base.dir}/cfg"/>
+<property name="src.dir" value="${base.dir}/src"/>
+<property name="src.xsl.dir" value="${src.dir}/xsl"/>
+<property name="src.css.dir" value="${src.dir}/css"/>
+<property name="src.xml.dir" value="${src.dir}/xml"/>
+<property name="share.dir" value="${base.dir}/share"/>
+<property name="tools.dir" value="${share.dir}/tools"/>
+<property name="lib.dir" value="${share.dir}/lib"/>
+<property name="java.lib.dir" value="${lib.dir}/java"/>
+
+<property name="xsl.autolayout.style" value="autolayout.xsl"/>
+<property name="xsl.website-targets.stylesheet" value="website-targets.xsl"/>
+<property name="xml.layout" value="layout.xml"/>
+<property name="xml.autolayout" value="autolayout.xml"/>
+<property name="tidy.properties.file" value="${cfg.dir}/tidy.properties"/>
+<property name="xslt.java.processor.class" 
+	  value="com.icl.saxon.StyleSheet"/>
+
+<property name="xslt.java.processor.param" 
+	  value="use.extensions=1"/>
+<property name="xml.resolver.reader.class" 
+	  value="org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+<property name="xml.resolver.catalog.class" 
+	  value="org.apache.xml.resolver.tools.CatalogResolver"/>
+<property name="fo.java.processor.class"
+	  value="org.apache.fop.tools.anttasks.Fop"/>
+
+<property name="docbook.website.xsl" value="${docbook.website.home}/xsl"/>
+<property name="docbook.website.dtd" value="${docbook.website.home}/schema/dtd"/>
+
+<property name="build.dir" value="${temp.dir}/${url}/build"/>
+<property name="build.tidy.dir" value="${build.dir}/tidy"/>
+<property name="dist.dir" value="${temp.dir}/${url}/dist"/>
+<property name="dist.css.dir" value="${dist.dir}/css"/>
+<property name="dist.img.dir" value="${dist.dir}/img"/>
+<property name="dist.php.dir" value="${dist.dir}/php"/>
+
+<condition property="isUnix">
+  <os family="unix"/>
+</condition>
+<condition property="isWin">
+  <os family="windows"/>
+</condition>
+
+<pathconvert targetos="unix" property="silkpage.home.dir.win" dirsep="/">
+  <path>
+    <pathelement location="${user.dir}"/>
+  </path>
+</pathconvert>
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Catalog
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--> 
+<xmlcatalog id="catalog">
+  <dtd publicId="-//Norman Walsh//DTD Website Autolayout V2.4.1//EN"
+       location="${docbook.website.dtd}/autolayout.dtd"/>
+  <dtd publicId="-//Norman Walsh//DTD Website Layout V2.4.1//EN"
+       location="${docbook.website.dtd}/layout.dtd"/>
+</xmlcatalog>
+
+<!--
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       Compilation Classpath
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<path id="classpath">
+  <pathelement path="${java.lib.dir}/resolver-1_0.jar"/>
+  <pathelement path="${java.lib.dir}/saxon-6_5_3.jar"/>
+  <pathelement path="${docbook.xsl.home}/extensions/saxon653.jar"/>
+  <pathelement path="${build.dir}"/>
+</path>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    processLayout: creates the main layout based on 'layout.xml'.
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<target name="processLayout" depends="init" 
+	description="creates the main layout based on 'layout.xml'.">
+  <xslt in="${user.xml.dir}/${xml.layout}"
+	out="${user.xml.dir}/${xml.autolayout}"
+	style="${docbook.website.xsl}/${xsl.autolayout.style}">
+    <xmlcatalog refid="catalog"/>
+  </xslt>
+</target>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    generateWebsite:  transforms XML sources into HTML
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<target name="generateWebsite" depends="processLayout"
+	description="transforms XML sources into HTML.">
+  <java classname="${xslt.java.processor.class}"
+	fork="yes"
+	dir="${user.xml.dir}"
+	failonerror="true">
+    <classpath refid="classpath"/>
+    <arg line="-x ${xml.resolver.reader.class}"/>
+    <arg line="-y ${xml.resolver.reader.class}"/>
+    <arg line="-r ${xml.resolver.catalog.class}"/>
+    <arg line="${xml.autolayout}"/>
+    <arg line="${silkpage.adapt.xsl.main}"/>
+    <arg line="site.lang=${lang}"/>
+    <arg line="website.database.document=${silkpage.website.database.document}"/>
+    <arg line="acronyms.database.document=${silkpage.acronyms.database.document}"/>
+    <arg line="output-root=${dist.dir}"/>
+    <arg line="${xslt.java.processor.param}"/>
+  </java>
+</target>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    generateRDF: generates RDF metadata for  each XML  source
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<target name="generateRDF" depends="processLayout"
+	description="generates RDF metadata for each XML source.">
+  <java classname="${xslt.java.processor.class}"
+	fork="yes"
+	dir="${user.xml.dir}"
+	failonerror="true">
+    <classpath refid="classpath"/>
+    <arg line="-x ${xml.resolver.reader.class}"/>
+    <arg line="-y ${xml.resolver.reader.class}"/>
+    <arg line="-r ${xml.resolver.catalog.class}"/>
+    <arg line="${xml.autolayout}"/>
+    <arg line="${silkpage.adapt.xsl.rdf}"/>
+    <arg line="site.lang=${lang}"/>
+    <arg line="website.database.document=${silkpage.website.database.document}"/>
+    <arg line="acronyms.database.document=${silkpage.acronyms.database.document}"/>
+    <arg line="output-root=${dist.dir}"/>
+    <arg line="${xslt.java.processor.param}"/>
+  </java>
+</target>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    tidy: performs the HTML verfication and correction using JTidy.
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<target name="tidy" if="tidy.enabled"
+	description="performes the HTML verfication and correction using JTidy.">
+  <echo message="Tidy properties: ${tidy.properties.file}"/>
+  <mkdir dir="${build.tidy.dir}"/>
+  <copy toDir="${build.tidy.dir}" encoding="${default.encoding}">
+    <fileset dir="${dist.dir}" includes="**/*.html,**/*.php"/>
+  </copy>
+  <tidy destdir="${dist.dir}" failonerror="yes"
+	properties="${tidy.properties.file}">
+    <fileset dir="${build.tidy.dir}" 
+	     includes="**/*.html,**/*.php"
+	     excludes="${tidy.exclude.pattern}"/>
+  </tidy>
+</target>
+
+ <!--
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     upload: FTP the website files to the remote website.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -->
+ <target name="uploadWebsite"
+	 description="FTP the website files to the remote website.">
+   <ftp server="${ftp.server}"
+	port="${ftp.port}"
+	remotedir="${ftp.remotedir}"
+	userid="${ftp.userid}"
+	password="${ftp.password}"
+	depends="${ftp.depends}"
+	passive="${ftp.passive}"
+	binary="${ftp.binary}">
+     <fileset dir="${ftp.localdir}"/>
+   </ftp>
+ </target>
+ 
+ <!-- 
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      website: generates and deploys the website.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -->
+<target name="website" depends="generateWebsite,tidy"
+	description="generates and deploys the website">
+  <antcall target="copyXMLSourceTree"/>
+  <antcall target="copyCSSFiles"/>
+  <antcall target="copyUserCSSFiles"/>
+  <antcall target="copyUserGraphics"/>
+  <antcall target="copyUserPHP"/>
+</target>
+
+<!-- 
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     websiteMetadata: generates and deploys metadata for the website.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<target name="websiteMetadata" depends="generateRDF"
+	description="generates and deploys metadata for the website">
+</target>
+
+<!-- 
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Init. Target
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<target name="init" depends="clean">
+  
+  <taskdef name="tidy" classname="org.w3c.tidy.ant.JTidyTask">
+    <classpath>
+      <pathelement location="${java.lib.dir}/jtidy.jar"/>
+    </classpath>
+  </taskdef>
+
+  <mkdir dir="${dist.dir}"/>
+  <available file="${user.xml.catalog}" 
+	     type="file" 
+	     property="user.xml.catalog.exists"/>  
+  
+  <available file="${user.php.dir}" 
+	     type="dir" 
+	     property="user.php.dir.exists"/>  
+  
+  <available file="${user.img.dir}" 
+	     type="dir" 
+	     property="user.img.dir.exists"/>  
+  
+  <available file="${user.css.dir}" 
+	     type="dir" 
+	     property="user.css.dir.exists"/>   
+  
+  <antcall target="copyXMLCatalogProperties"/>
+  <antcall target="copyXMLCatalog"/>
+  <antcall target="copyUserXMLCatalog"/>
+  <antcall target="catalogPath"/>
+ </target>
+ 
+ <!--
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     scratch: creates a scratch website based on the silkpage tamplate
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -->
+ <target name="scratch">
+
+   <property name="site.home.dir" value="${temp.dir}/${site.id}"/>
+   <property name="url" value="www.${site.id}.com"/>
+   <delete dir="${site.home.dir}"/>
+   <mkdir dir="${site.home.dir}"/>
+   <copy toDir="${site.home.dir}">
+     <fileset dir="./../templates/site/default"/>
+   </copy>
+   <antcall target="replaceTemplateTokens"/>
+   <move file="${site.home.dir}/src/css/silkpage.css" 
+	 tofile="${site.home.dir}/src/css/${site.id}.css"/>
+ </target>
+ 
+ <!--
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Config Target
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -->
+ <target name="config">
+   <echo message="SilkPage Core (0_5_1)"/>
+   <echo message="user.name: ${user.name}"/>
+   <echo message="os.name: ${os.name}"/>
+   <echo message="temp.dir: ${temp.dir}"/>
+   <property name="docbook.website.path"
+	     value="../../../share/tools/docbook-website"/>
+   <property name="docbook.xsl.path"
+	     value="../../../share/tools/docbook-xsl"/>
+   <available file="${docbook.website.path}" type="dir"
+	      property="docbook.website.present"/>
+   <available file="${docbook.xsl.path}" type="dir"
+	      property="docbook.xsl.present"/>
+   <echo message="DocBook Website installed ? ${docbook.website.present}"/>
+   <echo message="DocBook XSL installed ? ${docbook.xsl.present}"/>
+ </target>
+ 
+ <!--
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Path Replacements
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -->
+ 
+<target name="replaceTemplateTokens" 
+	depends="replaceTemplateTokens.win,replaceTemplateTokens.unix">
+  <replace dir="${site.home.dir}"
+	   token="@site.id@"
+	   value="${site.id}"
+	   includes="**/*.properties, **/*.xml, **/*.xsl, **/*.css"/>
+</target>
+
+<target name="replaceTemplateTokens.win" if="isWin">
+  <replace file="${site.home.dir}/build.properties"
+	   token="@silkpage.home.dir@"
+	   value="/${silkpage.home.dir.win}"/>
+</target>
+
+<target name="replaceTemplateTokens.unix" if="isUnix">
+  <replace file="${site.home.dir}/build.properties"
+	   token="@silkpage.home.dir@"
+	   value="${user.dir}"/>
+</target>
+
+<target name="catalogPath">
+  
+  <replace file="${build.dir}/catalog.xml"
+	   token="@docbook.xsl.dir@"
+	   value="${docbook.xsl.home}"/>
+  <replace file="${build.dir}/catalog.xml" 
+	   token="@docbook.website.dir@" 
+	   value="${docbook.website.home}"/>
+  <replace file="${build.dir}/catalog.xml" 
+	   token="@silkpage.xsl.dir@" 
+	   value="${silkpage.home.dir}/src/xsl"/>
+</target>
+
+<target name="copyUserPHP" if="user.php.dir.exists">
+  <copy toDir="${dist.php.dir}">
+    <fileset dir="${user.php.dir}"/>
+  </copy>
+</target>
+
+<target name="copyUserGraphics" if="user.img.dir.exists">
+  <copy toDir="${dist.img.dir}">
+    <fileset dir="${user.img.dir}"/>
+  </copy>
+</target>
+
+<target name="copyUserCSSFiles" if="user.css.dir.exists">
+  <copy toDir="${dist.css.dir}">
+    <fileset dir="${user.css.dir}"
+	     includes="**/*.css"/>
+  </copy>
+</target>
+
+<target name="copyCSSFiles">
+  <mkdir dir="${dist.css.dir}"/>
+  <copy toDir="${dist.css.dir}/${silkpage.adapt.css.theme}">
+    <fileset dir="${src.css.dir}/${silkpage.adapt.css.theme}" 
+	     includes="**/*.css"/>
+  </copy>
+</target>
+
+<target name="copyXMLCatalog">
+  <copy encoding="${default.encoding}" 
+	file="${cfg.dir}/catalog.xml"
+	tofile="${build.dir}/catalog.xml"
+	filtering="true"/>
+</target>
+
+<target name="copyXMLCatalogProperties">
+  <copy encoding="${default.encoding}" 
+	file="${cfg.dir}/CatalogManager.properties"
+	tofile="${build.dir}/CatalogManager.properties"
+	filtering="true"/>
+</target>
+
+<target name="copyUserXMLCatalog" if="user.xml.catalog.exists">
+  <copy encoding="${default.encoding}" 
+	file="${user.xml.catalog}"
+	tofile="${build.dir}/user-catalog.xml"
+	filtering="true"/>
+  <replace 
+      file="${build.dir}/user-catalog.xml" 
+      token="@user.dir@" 
+      value="${user.dir}"/>
+</target>
+
+<target name="copyXMLSourceTree" if="copyXMLSourceTree.enabled">
+  <copy toDir="${dist.dir}" encoding="${default.encoding}">
+    <fileset dir="${user.xml.dir}" excludes="**/CVS,**/.svn"/>
+  </copy>
+</target>
+
+<target name="clean" 
+	description="Delete old build, deploy and dist directories">
+  <delete dir="${build.dir}"/>
+</target>
+
+</project>
