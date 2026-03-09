@@ -1,0 +1,10 @@
+<webpage id="sitemap">
+  <config param="desc" value="Map of site"/>
+  <config param="rcsdate" value="$Date: 2005-07-28 22:09:50 $"/>
+  <head>
+    <title>Sitemap of @site.id@</title>
+    <summary>Generated sitemap</summary>
+    <keywords>SilkPage, MarkupWare, XML, Website, Sitemap, Site Map</keywords>
+  </head>
+  <webtoc/>
+</webpage>
