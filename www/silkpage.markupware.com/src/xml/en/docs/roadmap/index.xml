@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<webpage id="roadmap">
+  <config param="rcsdate" value="$Date: 2008-10-28 23:51:46 $"/>
+  <head>
+    <title>Roadmap</title>
+    <summary>SilkPage release roadmap</summary>
+    <keywords>SilkPage, release, roadmap</keywords>
+  </head>
+
+  <para>
+    This page outlines the roadmap for the upcoming SilkPage releases in an 
+    attempt to define what the SilkPage project is trying to achieve, and how 
+    we plan to achieve it.
+  </para>
+
+  <para>
+    Please bear in mind that as with any open source project, all decisions are
+    made by the community at large - that also includes 
+    <olink targetdoc="participate">you</olink>. If you see 
+    something here you disagree with, or think needs further discussion, then
+    <olink targetdoc='contact'>lets us know</olink>.
+  </para>
+
+  <section id="releases">
+    <title>Releases</title>
+    <para>
+      We are committed to deliver this approximate 
+      release schedule but remember, this is only a guideline, and any given 
+      release may move forward or slip.
+    </para>
+    <table id="releaseTable" frame="none" pgwide="1" role="plain">
+      <title>Release Schedule</title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>Version</entry>
+            <entry>Release Date</entry>
+            <entry>Release Type</entry>
+            <entry>Info Link</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+	    <entry>0.6</entry>
+	    <entry>October 2008 (Released)</entry>
+	    <entry>Stable Build</entry>
+	    <entry><olink targetdoc="downloads">Download</olink></entry>
+          </row>
+          <row>
+	    <entry>0.5</entry>
+	    <entry>April 2006 (Released)</entry>
+	    <entry>Stable Build</entry>
+	    <entry>Archived</entry>
+          </row>
+          <row>
+            <entry>0.4</entry>
+            <entry>July 2005 (Released)</entry>
+            <entry>Stable Build</entry>
+            <entry>Archived</entry>
+          </row>
+          <row>
+            <entry>0.3</entry>
+            <entry>February 2005 (Released)</entry>
+            <entry>Stable Build</entry>
+            <entry>Archived</entry>
+          </row>
+          <row>
+            <entry>0.2</entry>
+            <entry>January 2005 (Released)</entry>
+            <entry>Stable Build</entry>
+            <entry>Archived</entry>
+          </row>
+          <row>
+            <entry>0.1</entry>
+            <entry>December 2004 (Released)</entry>
+            <entry>Stable Build</entry>
+            <entry>Archived</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <sidebar id="releaseTypes">
+  <variablelist>
+    <title>Release Types</title>
+    <varlistentry id="stableBuilds">
+      <term>Stable Builds</term>
+      <listitem>
+        <para>
+          are builds that have been found to be stable enough for most people 
+          to use. They are promoted to become releases  after they have been 
+          tested and used for a few weeks and deemed reasonably stable.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry id="releases">
+      <term>Releases</term>
+      <listitem>
+        <para>
+          are builds that have been declared major releases by the SilkPage 
+          development team.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  </sidebar>
+</webpage>

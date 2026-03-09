@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<webpage id="feeds">
+  <config param="rcsdate" value="$Date: 2006-04-19 13:17:48 $"/>
+  <head>
+    <title>Content Feeds</title>
+    <summary>Content Feeds</summary>
+    <keywords>SilkPage, Feeds, Atom</keywords>
+  </head>
+  <para>
+    The files below contain content feeds for this website.
+    XML feeds can send news headlines on the specific topics you choose 
+    directly to your desktop or online feed aggregator.
+  </para>
+
+  <rss feed="http://www.markupware.com/feeds/projects.xml"/>
+  <rss feed="http://norman.walsh.name/atom/whatsnew-fulltext.xml"/>
+
+  <sidebar id="needhelp">
+    <title>Help</title>
+    <para>
+      <ulink url="http://www.markupware.com/feeds/help.html">Need Help with Feeds?</ulink>
+    </para>
+  </sidebar>
+
+</webpage>

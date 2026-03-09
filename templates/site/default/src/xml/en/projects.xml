@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<webpage id="projects">
+  <config param="rcsdate" value="$Date: 2006-04-08 15:54:17 $"/>
+  <config param="Atom" value="../feeds/projects.xml"/>
+  <head>
+    <title>Projects</title>
+    <summary>MarkupWare projects</summary>
+    <keywords>SilkPage, URFM, Open Source, Markup, Software</keywords>
+  </head>
+  <rss feed="../feeds/projects.xml"/>
+</webpage>

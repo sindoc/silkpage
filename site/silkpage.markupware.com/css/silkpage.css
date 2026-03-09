@@ -1,0 +1,221 @@
+/* CSS
+-------------------------------------------------------------------
+# rdf:
+# dc:title Base CSS Styling
+# cvs:date $Date: 2006-04-18 16:44:50 $
+# cvs:id $Id: silkpage.css,v 1.11 2006-04-18 16:44:50 sina Exp $
+# dc:rights Copyright &#169; 2004 MarkupWare.
+# dc:description MarkupWare Base CSS Stylesheet.
+# dc:author MarkupWare Team
+---------------------------------------------------------------- */
+
+/* Imports Phenix style.
+----------------------------------------------- */
+
+@import url(phenix/main.css);
+
+body { background: #dddddd; }
+
+#header {
+        background:#566e41;
+        height: 90px;
+        }
+
+#header div#title a:hover { border-bottom: 0px; }
+#header div#title a {
+        text-indent: 0px;
+        display: block;
+        text-decoration: none;
+        width: 100px;
+        height: 20px;
+        margin: -23px 15px;
+	padding: 30px 10px;
+	background: none;
+	font-size: 150%;
+	color: #fff;
+        }
+
+#header div#title {
+	margin-top: 23px;
+        }
+
+#footer {
+        background: #fff;
+	color: #789;
+	}
+
+#footer div#footitems {
+        background: #fff;
+        color: #789;
+	border-bottom: 1px solid #ccc;
+        }
+
+#headitems a { color: #fff; }
+#headitems a:hover { background: none; text-decoration: none; }
+
+#headitems { color: #fff; }
+
+#menu ul li a, #menu ul li.current {
+	background: #dce5d4;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 0px;
+	color: #000;
+	}
+
+#menu ul li.current, #menu ul li.ancestor a {
+	border: 1px solid #fff;
+	background: #fff;
+	color: #57160F;
+	}
+
+#menu ul li a:hover {
+	color: #fff;
+	background: #26630A;
+	}
+
+.silkpage h1, .urfm h1, .perspective-semantic-invoice h1,
+.sitemap h1, .search h1 {
+ 	visibility: hidden;
+	margin: -30px;
+	}
+
+.core h2.name, .templates h2.name, .docs h2.name
+{ display: none; }
+
+.team #jhe h3 {background: transparent url(../img/jhe.png) top left no-repeat;}
+.team #she h3 {background: transparent url(../img/she.png) top left no-repeat;}
+
+.search .google a span { visibility: hidden; }
+.search .google a { text-decoration: none; background-image: none; } 
+.search .google { 
+	background: #fff url(../img/google.gif) top right no-repeat;
+	text-align: right;
+	}
+
+/* sitemap */
+.sitemap #maincontent .notoc,
+.sitemap #maincontent .about.summary, 
+.sitemap #maincontent .docs.summary,
+.sitemap #maincontent .downloads.summary,
+.sitemap #maincontent .dev.summary,
+.sitemap #maincontent p.about .hbar,
+.sitemap #maincontent p.docs .hbar,
+.sitemap #maincontent p.dev .hbar,
+.sitemap #maincontent p.downloads .hbar
+{
+	display: none;
+	}
+
+.sitemap #maincontent p.about a, 
+.sitemap #maincontent p.docs a, 
+.sitemap #maincontent p.downloads a, 
+.sitemap #maincontent p.dev a {
+	color: #E97E00; 
+	text-decoration: none;
+	border-bottom: 0px;
+	}
+
+.hbar { margin-left: 5px; }
+
+.sitemap #maincontent .summary { font-size: 88%; }
+.sitemap #maincontent p.about, 
+.sitemap #maincontent p.docs, 
+.sitemap #maincontent p.downloads, 
+.sitemap #maincontent p.dev {
+	border-bottom: 1px solid #ccc; 
+	font-size: 135%;
+	color: #000;
+	}
+
+.sitemap #maincontent li.about, 
+.sitemap #maincontent li.docs, 
+.sitemap #maincontent li.downloads, 
+.sitemap #maincontent li.dev {
+	background-image: none; 
+	margin:0 0 2em 0; 
+	}
+
+a { text-decoration: none; }
+
+#footer div#footitems a, #footer a, a:link, a:visited {
+	color: #358; 
+	border-bottom: 0px; 
+	text-decoration: none; 
+	}
+
+a:hover {
+	color: #c30; 
+	background-color: transparent;
+  	border-bottom: 1px solid #c30;
+  	}
+
+#maincontent a.atom:hover, #maincontent a.rss:hover { background: none; }
+#maincontent a {border-bottom: 1px solid;}
+.home #wrapper,
+.sitemap #wrapper,
+.search #wrapper {
+        width: 784px;
+	}
+
+.silkPaged #wrapper,
+.liveSites #wrapper,
+.templates #wrapper,
+.core #wrapper,
+.downloads #wrapper,
+.sitemap #wrapper,
+.search #wrapper {
+        background-color: #fff;
+        background-image: none;
+        }
+
+.silkPaged #maincontent,
+.liveSites #maincontent,
+.templates #maincontent,
+.core #maincontent,
+.downloads #maincontent,
+.sitemap #maincontent,
+.search #maincontent {
+       width: 95%;
+       padding-top: 2em;
+       }
+ 
+.liveSites #maincontent table caption {
+	display: none;
+	}
+
+h1, h2, h3,
+.sidebar p.title,
+.sidebar p.title a:active,
+.sidebar p.title a:visited,
+caption, legend {
+        color: #566e41;
+        }
+
+.home #news.sidebar p.title { font-size: 75%; padding: 5px; }
+.home #news .feeds { 
+	line-height: 1.5em;
+	padding-top:0px; 
+	padding-left: 22px; 
+	background: url(../img/xml.gif) 0 50% no-repeat; 
+	}
+
+.docs #maincontent div.doap .homepage, 
+.docs #maincontent div.doap .license, 
+.docs #maincontent div.doap .updated, 
+.docs #maincontent div.doap .created, 
+.docs #maincontent div.doap .description h2, 
+.templates #maincontent div.doap .homepage, 
+.templates #maincontent div.doap .license,
+.templates #maincontent div.doap .updated, 
+.templates #maincontent div.doap .created, 
+.templates #maincontent div.doap .description h2
+{ display: none; }
+
+.downloads #maincontent h2.name {
+        font-weight: bold;
+	}
+
+#maincontent .alert {
+	background: url(../img/alert.gif) no-repeat 0 0;
+	}

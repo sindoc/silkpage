@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<webpage id="feedback-sent">
+  <config param="rcsdate" value="$Date: 2006/04/17 10:13:00 $"/>
+  <head>
+    <title>Feedback Sent</title>
+    <summary>Feedback Message Confirmation</summary>
+    <keywords>Feedback, Confirmation</keywords>
+  </head>
+  <para>
+    Thank you for taking the time to provide SilkPage with your feedback.
+    We value your feedback and try to evaluate it as soon as we can.
+  </para>
+  <para><olink targetdoc="feedback">Back to feedback form</olink></para>
+  <para><olink targetdoc="home">Back to Home Page</olink></para>
+
+</webpage>

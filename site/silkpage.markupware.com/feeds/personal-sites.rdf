@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel rdf:about="http://silkpage.markupware.com/feeds/personal-sites.rdf">
+  <title>SilkPage Personal Live Sites</title>
+  <link>http://silkpage.markupware.com/about/live-sites.html#personal</link>
+  <description>
+    List of SilkPage personal live sites.
+  </description>
+  <dc:language>en-us</dc:language>
+  <dc:publisher rdf:resource="http://www.markupware.com/"/>
+  <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+  <dc:identifier>personal-liveSites</dc:identifier>
+  <items>
+  <rdf:Seq>
+    <rdf:li rdf:resource="http://javad.khakbaz.com/"/>
+    <rdf:li rdf:resource="http://sina.khakbaz.com/"/>
+  </rdf:Seq>
+  </items>
+</channel>
+
+<item rdf:about="http://javad.khakbaz.com/">
+  <title>Javad</title>
+  <link>http://javad.khakbaz.com/</link>
+  <dc:date>2005-05-11</dc:date>
+  <dc:category>Personal</dc:category>
+  <description>Javad's Website.</description>
+</item>
+
+<item rdf:about="http://sina.khakbaz.com/">
+  <title>Sina</title>
+  <link>http://sina.khakbaz.com/</link>
+  <dc:date>2005-08-15</dc:date>
+  <dc:category>Personal</dc:category>
+  <description>Sina's Website.</description>
+</item>
+
+</rdf:RDF>
+

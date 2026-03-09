@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns="http://purl.org/urfm/"
+		 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+		 xmlns:doap="http://usefulinc.com/ns/doap#"
+		 xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+  <Channel rdf:about="http://silkpage.markupware.com/download.rdf">
+    <title>SilkPage Download Channel</title>
+    <link>http://silkpage.markupware.com/downloads/</link>
+    <description>
+      This page contains download files of the past as well as the current 
+      releases of SilkPage software, documentation and templates.
+      The most recent release date indicates the current release.
+    </description>
+    <dc:language>en-us</dc:language>
+    <dc:publisher>MarkupWare</dc:publisher>
+    <dc:date>2006-04-17</dc:date>
+    <dc:rights>Copyright &#169; 2006 MarkupWare</dc:rights>
+
+<packages rdf:parseType="Collection">
+
+<Package rdf:about="http://silkpage.markupware.com/core/">
+  <description>
+    <doap:Project rdf:about="http://silkpage.markupware.com/core/doap.rdf"/>
+  </description>
+</Package>
+
+<Package rdf:about="http://silkpage.markupware.com/docs/">
+  <description>
+    <doap:Project rdf:about="http://silkpage.markupware.com/docs/doap.rdf"/>	      
+  </description>
+</Package>
+
+<Package rdf:about="http://silkpage.markupware.com/templates/">
+  <description>
+    <doap:Project rdf:about="http://silkpage.markupware.com/templates/doap.rdf"/>	      
+  </description>
+</Package>
+</packages>
+
+<releases rdf:parseType="Collection">
+
+<Release rdf:about="http://silkpage.markupware.com/release/docs/0.2/">
+  <package rdf:resource="http://silkpage.markupware.com/docs/"/>
+  <revision>0.2</revision>
+  <created>2006-04-17T18:34:34+01:00</created>
+  <link>http://silkpage.markupware.com/release/docs/0.2/</link>
+</Release>
+
+<Release rdf:about="http://silkpage.markupware.com/release/templates/0.2/">
+  <package rdf:resource="http://silkpage.markupware.com/templates/"/>
+  <revision>0.2</revision>
+  <created>2006-04-17T19:25:15+01:00</created>
+  <link>http://silkpage.markupware.com/release/templates/0.2/</link>
+</Release>
+
+<Release rdf:about="http://silkpage.markupware.com/release/core/0.6.0/">
+  <package rdf:resource="http://silkpage.markupware.com/core/"/>
+  <revision>0.6.0</revision>
+  <created>2008-10-28T18:12:45+01:00</created>
+  <notes rdf:resource="http://silkpage.markupware.com/docs/roadmap/features-06/"/> 
+  <link>http://silkpage.markupware.com/release/core/0.6.0/</link>
+</Release>
+
+<Release rdf:about="http://silkpage.markupware.com/release/core/0.5.1/">
+  <package rdf:resource="http://silkpage.markupware.com/core/"/>
+  <revision>0.5.1</revision>
+  <created>2006-04-17T18:12:45+01:00</created>
+  <notes rdf:resource="http://silkpage.markupware.com/docs/roadmap/features-05/"/> 
+  <link>http://silkpage.markupware.com/release/core/0.5.1/</link>
+</Release>
+
+<Release rdf:about="http://silkpage.markupware.com/release/core/0.4.0/">
+  <package rdf:resource="http://silkpage.markupware.com/core/"/>
+  <revision>0.4.0</revision>
+  <created>2005-07-15T23:34:34+01:00</created>
+  <notes rdf:resource="http://silkpage.markupware.com/docs/roadmap/features-04/"/> 
+  <link>http://silkpage.markupware.com/release/core/0.4.0/</link>
+</Release>
+      
+<Release rdf:about="http://silkpage.markupware.com/release/core/0.3.0/">
+  <package rdf:resource="http://silkpage.markupware.com/core/"/>
+  <revision>0.3.0</revision>
+  <created>2005-02-12T17:11:10+01:00</created>
+  <link>http://silkpage.markupware.com/release/core/0.3.0/</link>
+</Release>
+
+</releases>
+
+<files rdf:parseType="Collection">
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.6.0/silkpage-core-0_6_0-plus.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.6.0/"/>
+  <basename>silkpage-core-0_6_0-plus</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>3.7</rdf:value>
+  </size>
+	<link>https://silkpage.dev.java.net/files/documents/2731/115553/silkpage-core-0_6_0-plus.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.6.0/silkpage-core-0_6_0.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.6.0/"/>
+  <basename>silkpage-core-0_6_0</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>1.3</rdf:value>
+  </size>
+  <link>https://silkpage.dev.java.net/files/documents/2731/115262/silkpage-core-0_6_0.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.5.1/silkpage-core-0_5_1.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.5.1/"/>
+  <basename>silkpage-core-0_5_1</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>1.4</rdf:value>
+  </size>
+  <link>https://silkpage.dev.java.net/files/documents/2731/33578/silkpage-core-0_5_1.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.5.1/silkpage-core-0_5_1-plus.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.5.1/"/>
+  <basename>silkpage-core-0_5_1-plus</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>3.8</rdf:value>
+  </size> 
+  <link>https://silkpage.dev.java.net/files/documents/2731/33339/silkpage-core-0_5_1-plus.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.4.0/silkpage-core-0_4_0.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.4.0/"/>
+  <basename>silkpage-core-0_4_0</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>1.9</rdf:value>
+  </size>
+  <link>https://silkpage.dev.java.net/files/documents/2731/39585/silkpage-core-0_4_0.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.4.0/silkpage-core-0_4_0-plus.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.4.0/"/>
+  <basename>silkpage-core-0_4_0-plus</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>4.6</rdf:value>
+  </size> 
+  <link>https://silkpage.dev.java.net/files/documents/2731/39584/silkpage-core-0_4_0-plus.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.3.0/silkpage-core-0_3_0.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.3.0/"/>
+  <basename>silkpage-core-0_3_0</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>1.8</rdf:value>
+  </size> 
+  <link>https://silkpage.dev.java.net/files/documents/2731/39583/silkpage-core-0_3_0.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/core/0.3.0/silkpage-core-0_3_0-plus.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/core/0.3.0/"/>
+  <basename>silkpage-core-0_3_0-plus</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+    <rdf:value>4.4</rdf:value>
+  </size> 
+  <link>https://silkpage.dev.java.net/files/documents/2731/39582/silkpage-core-0_3_0-plus.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/templates/0.2/silkpage-templates-0_2.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/templates/0.2/"/>
+  <basename>silkpage-templates-0_2</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Kilobyte"/>
+    <rdf:value>44</rdf:value>
+  </size>
+  <link>https://silkpage.dev.java.net/files/documents/2731/39592/silkpage-templates-0_2.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/WebResourceDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/docs/0.2/silkpage-docs-0_2-bundle.zip">
+  <release rdf:resource="http://silkpage.markupware.com/release/docs/0.2/"/>
+  <basename>silkpage-docs-0_2-bundle</basename>
+  <extension>.zip</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Kilobyte"/>
+    <rdf:value>256</rdf:value>
+  </size>
+  <link>https://silkpage.dev.java.net/files/documents/2731/39590/silkpage-docs-0_2-bundle.zip</link>
+  <format>application/zip</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/DocsDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/docs/0.2/silkpage-docs-0_2-ug.pdf">
+  <release rdf:resource="http://silkpage.markupware.com/release/docs/0.2/"/>
+  <basename>silkpage-docs-0_2-ug</basename>
+  <extension>.pdf</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Kilobyte"/>
+    <rdf:value>212</rdf:value>
+  </size>
+  <link>https://silkpage.dev.java.net/files/documents/2731/39591/silkpage-docs-0_2-ug.pdf</link>
+  <format>application/pdf</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/DocsDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/docs/0.2/ug-html-single/">
+  <release rdf:resource="http://silkpage.markupware.com/release/docs/0.2/"/>
+  <basename>silkpage-docs-ug</basename>
+  <extension>.html</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Kilobyte"/>
+    <rdf:value>144</rdf:value>
+  </size>
+  <link>http://silkpage.markupware.com/dist/docs/0.2/ug-html-single/silkpage-docs-ug.html</link>
+  <format>application/xhtml+xml</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/DocsWebDist"/>
+</File>
+
+<File rdf:about="http://silkpage.markupware.com/dist/docs/0.2/ug-html-chunk/">
+  <release rdf:resource="http://silkpage.markupware.com/release/docs/0.2/"/>
+  <basename>ug-html-chunk</basename>
+  <extension>/</extension>
+  <size rdf:parseType="Resource">
+    <unit rdf:resource="http://purl.org/urfm/Kilobyte"/>
+    <rdf:value>12</rdf:value>
+  </size>
+  <link>http://silkpage.markupware.com/dist/docs/0.2/ug-html-chunk/</link>
+  <format>application/xhtml+xml</format>
+  <rdf:type rdf:resource="http://purl.org/urfm/DocsWebDist"/>
+</File>
+</files>
+</Channel>
+</rdf:RDF>

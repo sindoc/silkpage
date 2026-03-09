@@ -1,0 +1,35 @@
+#footer	{
+	background-color: #fff;
+	clear: both;
+	border: 0;
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px solid #000;
+	}
+#footer p {
+	font-size: 10px;
+	clear: both;
+	border: 0;
+	padding: 5px 0;
+	}
+#footer p a {
+	clear: both;
+	border: 0;
+	padding: 5px 0;
+	}
+#footitems {
+	padding: 2px 3px 2px 3px;
+	width: 100%;
+	background-repeat: repeat;
+	color: #000;
+	text-align: left;
+	float: left;
+	list-style: none;
+	}
+#footitems a {
+	font-size: 11px;
+	color: #000;
+	border-bottom: none;
+	text-decoration: none;
+	}
+

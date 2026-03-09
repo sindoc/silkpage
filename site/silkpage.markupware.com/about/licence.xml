@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<webpage id="license">
+  <config param="rcsdate" value="$Date: 2011/01/02 17:52:42 $"/>
+  <head>
+    <title>Licensing</title>
+    <summary>About Licensing and Trademarks</summary>
+    <keywords>Licensing, Trademarks</keywords>
+  </head>
+  <para>
+    Copyright &#169; 2004 - 2011
+    <ulink url="http://www.markupware.com/">MarkupWare</ulink>.
+    Feel free to 
+    <olink targetdoc="downloads">download</olink>
+    sources, use them and adapt them to suit you projects.
+  </para>
+  <section id="www">
+    <title>
+      SilkPage Web Site
+    </title>
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Entities: SilkPage web site content and styles.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            License Type: Attribution NonCommercial ShareAlike 2.0
+	  </para>
+        </listitem>
+        <listitem>
+	  <para>
+	    License URL: 
+	    <ulink url="http://creativecommons.org/licenses/by-nc-sa/2.0/"/>
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  <section id="core">
+    <title>
+      SilkPage Core
+    </title>
+    <para>
+      <itemizedlist>
+        <listitem>
+	  <para>
+	    Entities: SilkPage Web Publishing Framework Software
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            License Type: GNU General Public License
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    License URL: 
+            <ulink url="http://www.gnu.org/copyleft/gpl.html"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  <section id="documentation">
+    <title>
+      SilkPage Documentation 
+    </title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Entities: SilkPage Web Publishing Framework Documentation
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            License Type: GNU Free Documentation License
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            License URL: 
+            <ulink url="http://www.gnu.org/copyleft/fdl.html"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  <section id="templates">
+    <title>
+      SilkPage Templates
+    </title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Entities: SilkPage User Templates
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            License Type: Attribution NonCommercial ShareAlike 2.0
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            License URL: 
+	    <ulink url="http://creativecommons.org/licenses/by-nc-sa/2.0/"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+</webpage>

@@ -1,0 +1,9 @@
+<webpage id="templates">
+  <config param="rcsdate" value="$Date: 2006/04/17 10:13:01 $"/>
+  <config param="DOAP" value="doap.rdf"/>
+  <head>
+    <title>SilkPage Templates</title>
+    <summary>SilkPage Templates project</summary>
+    <keywords>SilkPage, Projects, Templates</keywords>
+  </head>
+</webpage>

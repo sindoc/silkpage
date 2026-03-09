@@ -1,0 +1,55 @@
+<webpage id="silkPaged">
+  <config param="rcsdate" value="$Date: 2006-05-01 11:21:54 $"/>
+  <head>
+    <title>SilkPaged</title>
+    <summary>Practical use of the SilkPage icon</summary>
+    <keywords>SilkPage Icon Usage </keywords>
+  </head>
+
+  <para>
+    A page is considered to be <emphasis>SilkPaged</emphasis> if it's generated
+    by the SilkPage Web Publishing Framework. SilkPage output conforms with
+    requirements outlined in  
+    <olink targetdoc="designGoals">
+      SilkPage Design Goals
+    </olink>.
+  </para>
+
+  <para>
+    We are happy to grant you the right to use the SilkPaged Logo on the pages
+    that passed through the SilkPage Publishing Framework. 
+  </para>
+
+  <section id="icons">
+    <title>SilkPaged Icons and Logos</title>
+    <para>
+      SilkPage has no logo, it's yet to be designed, maybe by you. 
+      Your design will be displayed on every page that is SilkPaged. 
+      Please refer to the 
+      <olink targetdoc="logoDesign">Logo Design Guidelines</olink> 
+      to find about the logo requirements.
+    </para>
+
+    <para>
+      No request permission is needed for the SilkPaged logos. However, 
+      SilkPaged logos usage are subject to the following terms:
+    </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        The icons must not be used in any manner in which implies SilkPage or
+        MarkupWare sponsorship of your product.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        The icon must be an active link to 
+        <ulink>http://silkpage.markupware.com/docs/silkpaged/</ulink>
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  </section>
+ 
+</webpage>

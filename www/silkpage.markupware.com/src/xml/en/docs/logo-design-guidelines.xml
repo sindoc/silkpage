@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<webpage id="logoDesign">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:26 $"/>
+  <head>
+    <title>Logo Design Guidelines</title>
+    <summary>SilkPage Logo Design Guidelines</summary>
+    <keywords>Valid XHTML Code, Easy maintenance, Accessibility</keywords>
+  </head>
+  <para>
+    Design our logo. SilkPage logo is meant to be displayed on every page that 
+    is <olink targetdoc="silkPaged">SilkPaged</olink>. As such the logo must be
+    a quality logo. The following criteria should be taken into account 
+    when designing the logo:
+    <itemizedlist>
+      <listitem>
+        <para>
+	  <emphasis>Identity:</emphasis>
+	  demonstrate Silk. Silk is  meant to indicate fine quality. For 
+	  example, one could use a butterfly to identify silk.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Text:</emphasis>
+	  work out the word <emphasis>SilkPage</emphasis> in the logo. 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Color:</emphasis> it's preferred that the logo's color(s) 
+	  match well with the SilkPage's web site colors.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Shape:</emphasis> it should be suitable to be displayed in 
+	  the footer of web pages that are SilkPaged.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Size:</emphasis> at least two sizes are required: 
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		Average: to be displayed on top of SilkPage web site pages.
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		Small: to be displayed in the footer of every page that is 
+		silkpaged.
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+</webpage>

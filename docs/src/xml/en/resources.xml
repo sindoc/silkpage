@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix 
+  xml:id="resources" 
+  xmlns="http://docbook.org/ns/docbook" 
+  xmlns:xl="http://www.w3.org/1999/xlink"
+  version="5.0"
+  >
+  <title>Resources</title>
+  <para>
+    This appendix provides the resource references mentioned explicitly
+    in this document. In addition, a sampling of resources for additional 
+    information about XML, XSL and CSS is provided.
+  </para>
+
+<section xml:id="res.silkpage.latest" xreflabel="Latest Version of SilkPage">
+  <?dbhtml filename="silkpage.latest.html"?>
+  
+  <title>Latest Version of SilkPage</title>
+  <titleabbrev xml:id="ttl.silkpage.latest">Latest Version of SilkPage</titleabbrev>
+  
+  <para>
+    The most recent version of SilkPage Software and its guide (you're reading it now!) can be found at:
+  </para>
+
+<variablelist>
+  <varlistentry xml:id="res.silkpage.core">
+    <term>
+      <link xl:href="http://silkpage.markupware.com/core/">
+	SilkPage Software
+      </link>
+    </term>
+    <listitem>
+      <para>
+	SilkPage Core distribution.
+      </para>
+    </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="res.silkpage.docs">
+    <term>
+      <link xl:href="http://silkpage.markupware.com/docs/">
+	SilkPage Documentation
+      </link>
+    </term>
+    <listitem>
+      <para>
+	The most up-to-date version of this document.
+      </para>
+    </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="res.silkpage.templates">
+    <term>
+      <link xl:href="http://silkpage.markupware.com/templates/">
+	SilkPage Templates
+      </link>
+    </term>
+    <listitem>
+      <para>
+	SilkPage Templates distribution.
+      </para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="res.requiredDownload">
+  <?dbhtml filename="resources.requiredDownload.html"?>
+  <title>Prerequisite Software Resources</title>
+  
+  <variablelist>
+    <varlistentry xml:id="res.ant" xreflabel="Ant">
+      <term>
+        <link xl:href="http://ant.apache.org">
+          Apache Ant
+        </link>
+      </term>
+      <listitem>
+        <para>
+          Apache Ant is a Java-based build tool. In theory, it is kind of like 
+          Make, but without Make's wrinkles.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.java" xreflabel="Java">
+      <term>
+	<link xl:href="http://java.sun.com/javase/">Java SE</link>
+      </term>
+      <listitem>
+	<para>
+	  Java Platform, Standard Edition (Java SE, formerly known as J2SE) 
+	  offers a complete environment for application development and 
+	  deployment on desktops and servers.
+        </para>
+      </listitem>
+    </varlistentry>
+  
+    <varlistentry xml:id="res.docbook.xsl" xreflabel="DocBook XSL Stylesheets">
+      <term>
+	<link xl:href="http://docbook.sourceforge.net/projects/xsl/index.html">
+	  DocBook XSL Stylesheets
+	</link>
+      </term>
+      <listitem>
+        <para>
+	  The DocBook XSL stylesheets are a set of stylesheets for use with 
+	  an XSLT engine (such as xsltproc or Saxon) for transforming DocBook 
+	  XML documents into other DocBook output formats, such as HTML, PDF, 
+	  Microsoft HTML Help, and man pages.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.software.saxon" xreflabel="Saxon">
+      <term>
+	<link xl:href="http://saxon.sourceforge.net/">
+	  SAXON, the XSLT and XQuery Processor
+	</link>
+      </term>
+      <listitem>
+        <para>
+	  Saxon is an Open Source Java XSLT and XQuery processor, 
+	  created by Michael Kay.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.software.xmlcatalogs" xreflabel="">
+      <term>
+	<link xl:href="http://xml.apache.org/commons/components/resolver/">
+	  Apache XML Commons Resolver package
+	</link>
+      </term>
+      <listitem>
+        <para>
+	  An XML Entity and URI Resolver, donated by Norman Walsh to the Apache
+	  Software Foundation.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.software.jtidy" xreflabel="JTidy">
+      <term>
+	<link xl:href="http://jtidy.sourceforge.net/">
+	  JTidy
+	</link>
+      </term>
+      <listitem>
+        <para>
+	  JTidy is a Java port of HTML Tidy, a syntax checker and pretty 
+	  printer for HTML.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</section>
+
+<section xml:id="res.spec">
+  <?dbhtml filename="resources.spec.html"?>
+  <title>Specifications</title>
+  <variablelist>
+    <varlistentry xml:id="res.spec.css1" xreflabel="spec.css1">
+      <term>
+	<link xl:href="http://www.w3.org/TR/REC-CSS1">
+	  Cascading Style Sheets, Level 1
+	</link>
+      </term>
+      <listitem>
+        <para>
+          Specifies level 1 of the Cascading Style Sheet mechanism (CSS1).
+          Covers all the basic properties and simple selectors which work 
+          reliably in most modern browsers.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.css2" xreflabel="CSS2 Specification">
+      <term>
+        <link xl:href="http://www.w3.org/TR/CSS21">
+          Cascading Style Sheets, Level 2 (Revision 1)
+        </link>
+      </term>
+      <listitem>
+        <para>
+          Specifies level 2 (Revision 1) of the Cascading Style Sheet 
+          mechanism (CSS2.1). Released after CSS1, CSS2.1 adds a whole new set of 
+          powerful features such as selectors, visibility properties,
+          media types and positioning.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.xhtml" xreflabel="XHTML 1.0 Specification">
+      <term>
+        <link xl:href="http://www.w3.org/TR/xhtml1/">XHTML 1.0</link>
+      </term>
+      <listitem>
+        <para>
+	    The specification for XML which behaves just like HTML in all 
+	    browsers. XHTML follows a stricter ruleset, and is therefore easier to 
+          check for errors when using HTML validators.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.xml" xreflabel="XML Specification">
+      <term>
+	<link xl:href="http://www.w3.org/TR/REC-xml/">XML 1.0</link>
+      </term>
+      <listitem>
+        <para>
+          The W3C Technical Recommendation that defines XML 1.0.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.atom" xreflabel="The Atom Standard">
+      <term>
+	<link xl:href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">The Atom Syndication Format</link>
+      </term>
+      <listitem>
+        <para>
+	  The specification for Atom, an XML-based Web content and metadata 
+	  syndication format.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.foaf" xreflabel="FOAF Vocabulary Specification">
+      <term>
+	<link xl:href="http://xmlns.com/foaf/0.1/">
+	  FOAF Vocabulary Specification
+	</link>
+      </term>
+      <listitem>
+        <para>
+	  This document is produced as part of the RDFWeb FOAF project, to 
+	  provide authoritative documentation of the contents, status and
+	  purpose of the RDF/XML vocabulary and document formats known 
+	  informally as ‘FOAF’.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.rss10" xreflabel="RSS 1.0">
+      <term>
+	<link xl:href="http://web.resource.org/rss/1.0/">
+	RDF Site Summary (RSS) 1.0</link>
+      </term>
+      <listitem>
+        <para>
+	  This documents describes RSS, the web syndication format as an 
+	  RDF vocabulary.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.rdf.xml" 
+		  xreflabel="RDF/XML Syntax Specification">
+      <term>
+	<link xl:href="http://www.w3.org/TR/rdf-syntax-grammar/">
+	RDF/XML Syntax Specification</link>
+      </term>
+      <listitem>
+        <para>
+	  This document defines an XML syntax for RDF called RDF/XML in 
+	  terms of Namespaces in XML, the XML Information Set and XML Base.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.xml.ns" xreflabel="XML Namespaces">
+      <term>
+	<link xl:href="http://www.w3.org/TR/1999/REC-xml-names-19990114/">
+	Namespaces in XML</link>
+      </term>
+      <listitem>
+        <para>
+	  This document defines namespaces in XML.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.xml.infoset" xreflabel="XML InfoSet">
+      <term>
+	<link xl:href="http://www.w3.org/TR/2001/REC-xml-infoset-20011024/">
+	XML Information Set</link>
+      </term>
+      <listitem>
+        <para>
+	  This specification provides a set of definitions for use in other 
+	  specifications that need to refer to the information in an XML 
+	  document.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.spec.xslt" xreflabel="XSLT 1.0 Specification">
+      <term>
+	<link xl:href="http://www.w3.org/TR/xslt">
+	  XSL Transformations (XSLT) Version 1.0
+	</link>
+      </term>
+      <listitem>
+        <para>
+	  This specification defines the syntax and semantics of XSLT, which 
+	  is a language for transforming XML documents into other XML 
+	  documents.
+        </para>
+      </listitem>
+    </varlistentry>
+
+<!--
+    <varlistentry xml:id="res.spec." xreflabel="">
+      <term>
+	<link xl:href=""></link>
+      </term>
+      <listitem>
+        <para>
+        </para>
+      </listitem>
+    </varlistentry>
+-->
+    <varlistentry xml:id="res.spec.cat" xreflabel="Catalogs Specification">
+      <term>
+	<link xl:href="http://www.oasis-open.org/committees/download.php/14809/xml-catalogs.html">
+	  XML Catalogs Specification
+	</link>
+      </term>
+      <listitem>
+	<para>
+	  OASIS XML Catalogs V 1.1 Specification.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+</section>
+
+<section xml:id="res.tutorials">
+  <?dbhtml filename="resources.tutorials.html"?>
+  <title>Tutorials and Introductory Materials</title>
+
+  <variablelist>
+
+    <varlistentry xml:id="res.tutorials.css.meyer">
+      <term>
+        <link xl:href="http://www.meyerweb.com/eric/css">
+          CSS Reference Pages
+        </link>
+      </term>
+      <listitem>
+        <para>
+          CSS articles, references and books (by Eric Meyer)
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.css.zen">
+      <term>
+        <link xl:href="http://www.csszengarden.com">
+          Zen Garden
+        </link>
+      </term>
+      <listitem>
+        <para>
+          A demonstration of what can be accomplished visually through 
+          CSS-based design. 
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.xml.walsh.intro">
+      <term>
+        <link xl:href="http://nwalsh.com/docs/articles/xml">
+          A Technical Introduction to XML
+        </link>
+      </term>
+      <listitem>
+        <para>
+          A close look at the ins and outs of XML, by Norman Walsh.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.xml.stayton.xsl">
+      <term>
+        <link xl:href="http://www.sagehill.net/docbookxsl/index.html">
+         DocBook XSL: The Complete Guide (Second Edition)
+        </link>
+      </term>
+      <listitem>
+        <para>
+          The definitive guide to using the DocBook XSL stylesheets, by Bob Stayton.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.atom.atomenabled">
+      <term>
+	<link xl:href="http://www.atomenabled.org/developers/syndication/">
+	  Atom Syndication Format—Introduction
+	</link>
+      </term>
+      <listitem>
+	<para>
+	  This document focuses on <xref linkend="res.spec.atom"/> produced by 
+	  the IETF AtomPub Working Group.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.doap.ibm">
+      <term>
+        <link xl:href="http://www-128.ibm.com/developerworks/xml/library/x-osproj3/">Describe open source projects with XML
+	</link>
+      </term>
+      <listitem>
+	<para>
+	  Edd Dumbill continues the development of a vocabulary for 
+	  describing open source software projects, presenting a schema for 
+	  the <link xl:href="http://usefulinc.com/doap">new vocabulary</link>
+	  and example project descriptions.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.rss.mnot">
+      <term>
+        <link xl:href="http://www.mnot.net/rss/tutorial/">
+	  RSS Tutorial
+        </link>
+      </term>
+      <listitem>
+        <para>
+	  This tutorial explains the features and benefits of a Web format 
+	  called RSS, and gives a brief technical overview of it.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="res.tutorials.rdf.tbray">
+      <term>
+        <link xl:href="http://www.xml.com/pub/a/2001/01/24/rdf.html">
+	  What Is RDF</link>
+      </term>
+      <listitem>
+        <para>
+	  In this document, Tim Bray and Dan Brickley explain why RDF and 
+	  metadata are essential to processing information on the Web.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+</section>
+</appendix>

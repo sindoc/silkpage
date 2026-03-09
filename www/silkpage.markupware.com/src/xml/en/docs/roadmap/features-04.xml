@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<webpage id="features-04">
+  <config param="rcsdate" value="$Date: 2006-04-17 14:32:20 $"/>
+  <head>
+    <title>Feature Requirements - SilkPage Core 0.4</title>
+    <summary>SilkPage Feature Requirements</summary>
+    <keywords>SilkPage, release, roadmap</keywords>
+  </head>
+
+  <para>
+    This page documents our goals and requested features for our 0.4
+    release. We need <olink targetdoc="participate">help</olink>!
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+	Make the current version (0.3), stable and bug free. 
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	Improve Accessibility and Usability features.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	Provide 
+	<ulink url="http://www.atomenabled.org">Atom</ulink> support.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	Polish User Guide Documentation.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <section id="stable">
+    <title>Make It Stable</title>
+    <para>
+      Validate the current release on various platforms 
+      (<acronym>GNU</acronym>/Linux, Unix, Windows, Mac 
+      <acronym>OS</acronym>) and make sure that is bug free and
+      stable.
+    </para>
+  </section>
+  
+  <section id="accessibility">
+    <title>Improve Accessibility and Usability Features</title>
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    If style sheets are not supported by the browser, make sure the 
+	    content is still readable and usable.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Make sure that users can skip repetitive navigation links.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Provide a better support for acronyms. (<emphasis>Done</emphasis>)
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  
+  <section id="atom">
+    <title>Support Atom</title>
+    <para>
+      Current release only covers <acronym>RSS</acronym> 1.0. 
+      Also provide support for
+      for <ulink url="http://www.atomenabled.org">Atom</ulink>.
+    </para>
+  </section>
+  
+  <section id="docs">
+    <title>Polish User Guide Documentation</title>
+    <para>
+      Make sure the User Guide is up-to-date.
+    </para>
+  </section>
+  
+  <para>
+     <?arrowleft?> <olink targetdoc="roadmap">Back to Roadmap</olink>
+  </para>
+
+</webpage>

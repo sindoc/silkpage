@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+<webpage id="ant">
+  <config param="rcsdate" value="$Date: 2006-04-19 13:19:31 $"/>
+  <config param="DOAP" value="http://svn.apache.org/repos/asf/ant/core/trunk/doap_Ant.rdf"/>
+  <head>
+    <title>Apache Ant</title>
+    <summary>Project description for Apache Ant</summary>
+    <keywords>
+      SilkPage, Open Source, Free Software, Apache, Ant, DOAP
+    </keywords>
+  </head>
+</webpage>

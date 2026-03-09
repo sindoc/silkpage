@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix xml:id="configFilesInstance" xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink">
+  <title>Instance Configuration Files</title>
+  <para>
+    This section describe each of the configuration parameter used by SilkPage
+    to publish an instance of your website. This information is most useful 
+    when publishing a particular instance of a Website.
+  </para>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    build.properties
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<section xml:id="ifiles.build.properties">
+  <title><filename>SITE_HOME/build.properties</filename></title>
+  <titleabbrev xml:id="ttl.ifiles.build.properties">
+  <filename>build.properties</filename></titleabbrev>
+  <para>
+    <xref linkend="site.home.dir"/><filename>/build.properties</filename> 
+    contains main configuration of an instance website.
+  </para>
+
+  <section xml:id="custom.param">
+    <title>XSL and CSS Customization Parameters</title>
+    <para>
+      This section covers the customization and configuration parameters at 
+      the XSL and CSS layers. SilkPage uses <emphasis>SilkPage XSL Themes
+    </emphasis> to process and generate your website. You can use 
+    the default XSL themes or create your own. Likewise, <emphasis>SilkPage CSS 
+    Themes</emphasis> are used in order to present your website. You're again 
+      free to use SilkPage's default CSS Themes or create CSS tailored to your needs.
+  </para>
+
+  <refentry xml:id="silkpage.adapt.xsl.main">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.xsl.main</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>silkpage.adapt.xsl.main</parameter></refname>
+      <refpurpose>
+	XSL configuration parameters and customization templates
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+      <synopsis>
+	<parameter>silkpage.adapt.xsl.main</parameter>=<filename>
+	${user.xsl.dir}/config.xsl</filename>
+      </synopsis>
+    </refsynopsisdiv>
+
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the main XSL configuration parameters and customization 
+	templates used when generating your website. Refer to 	
+	<xref linkend="ifiles.config.xsl" 
+	endterm="ttl.ifiles.config.xsl"/> and 	
+	<xref linkend="ifiles.param.xsl" 
+	endterm="ttl.ifiles.param.xsl"/> 	
+	to learn about the configuration parameters and templates of this file.
+      </para>
+    </refsect1>
+
+  </refentry>
+
+  <refentry xml:id="silkpage.adapt.xsl.rdf">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.xsl.rdf</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>silkpage.adapt.xsl.rdf</parameter></refname>
+      <refpurpose>
+	XSL configuration parameters related to RDF output
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+      <synopsis>
+	<parameter>silkpage.adapt.xsl.rdf</parameter>=<filename>
+	${user.xsl.dir}/rdf.xsl</filename>
+    </synopsis>
+    </refsynopsisdiv>
+ 
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the main XSL configuration parameters used when generating
+	your RDF metadata for your website. Refer to 	
+	<xref linkend="ifiles.rdf.xsl" 
+	      endterm="ttl.ifiles.rdf.xsl"/> 	
+	to learn about the configuration parameters of this file.
+      </para>
+    </refsect1>
+
+  </refentry>
+
+  <refentry xml:id="silkpage.adapt.css.theme">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.css.theme</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>silkpage.adapt.css.theme</parameter></refname>
+      <refpurpose>
+       Specifies the CSS Theme used to generate your website. SilkPage comes 
+       with some predefined CSS Themes you can choose from. Of course, you can
+       write your own CSS Theme; just install it under 
+       <filename class="directory">
+         SILKPAGE_HOME/src/css
+       </filename>. Note that SILKPAGE_HOME is the install 
+       directory of the SilkPage software. Currently, SilkPage includes the 
+       following CSS themes:
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>silkpage.adapt.css.theme</parameter>=<replaceable>CSS Theme</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>CSS Themes</title>
+      <cmdsynopsis>
+        <arg choice="plain">gimp</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">mozilla</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">silkpage</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">xwtk</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">markupware</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">phenix</arg>
+      </cmdsynopsis>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="silkpage.adapt.xsl.theme">
+    <refmeta>
+      <refentrytitle>silkpage.adapt.xsl.theme</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>silkpage.adapt.xsl.theme</parameter></refname>
+      <refpurpose>
+       Specifies the XSL Theme used to generate your website. SilkPage comes 
+       with some predefined XSL Themes that you can select. Of course, you can
+       write your own XSL Theme; just install it under 
+       <filename class="directory">SILKPAGE_HOME/src/xsl</filename>. Note 
+       that SILKPAGE_HOME is the 
+       install directory of the SilkPage software.
+       Currently, SilkPage includes the following XSL themes.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>silkpage.adapt.xsl.theme</parameter>=<replaceable>XSL Theme</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>XSL Themes</title>
+      <cmdsynopsis>
+        <arg choice="plain">gimp</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">mozilla</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">silkpage</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">xwtk</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">markupware</arg>
+      </cmdsynopsis>
+      <cmdsynopsis>
+        <arg choice="plain">ala</arg>
+      </cmdsynopsis>
+    </refsect1>
+  </refentry>
+
+</section>
+
+<section xml:id="docbook.home.param">
+  <title>DocBook Parameters</title>
+  <para>
+    This section covers DocBook-related configuration parameters.
+  </para>
+
+  <refentry xml:id="docbook.xsl.home">
+    <refmeta>
+      <refentrytitle>docbook.xsl.home</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>docbook.xsl.home</parameter></refname>
+      <refpurpose>
+        <application>Docbook XSL Stylesheets</application> installation directory.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>docbook.xsl.home</parameter>=<filename><replaceable>fullpath</replaceable></filename>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+       	Specifies the installation directory of the 
+	<application>DocBook XSL Stylesheets</application>. 
+	This should be a fully qualified path.
+      </para>
+    </refsect1>
+
+  </refentry>
+
+  <refentry xml:id="docbook.website.home">
+    <refmeta>
+      <refentrytitle>docbook.website.home</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>docbook.website.home</parameter></refname>
+      <refpurpose>
+        <application>Docbook Website DTD and Stylesheets</application> installation directory.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>docbook.website.home</parameter>=<filename><replaceable>fullpath</replaceable></filename>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+       	Specifies the installation directory of the 
+	<application>DocBook Website DTD and Stylesheets</application>. 
+	This should be a fully qualified path.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="docbook.website.db">
+    <refmeta>
+      <refentrytitle>silkpage.website.database.document</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>silkpage.website.database.document</parameter></refname>
+      <refpurpose>
+        An internal database for resolving links.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>silkpage.website.database.document</parameter>=<filename><replaceable>fullfilename</replaceable></filename>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+       	Specifies the fully qualified name to an auto-generated database file
+        used by SilkPage for resolving links. This should be a fully qualified path. 
+        On Windows platorms, the path <emphasis>must</emphasis> start with a '/'.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="silkpage.acronyms.database.document">
+    <refmeta>
+      <refentrytitle>silkpage.acronyms.database.document</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>silkpage.acronyms.database.document</parameter></refname>
+      <refpurpose>
+        The global glossary file for resolving terms and acronyms.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>silkpage.acronyms.database.document</parameter>=<filename><replaceable>fullfilename</replaceable></filename>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+       	Specifies the fully qualified name to the site glossary file. This file
+	    may contain a collection of terms and brief descriptions or definitions
+        of those terms. Once you refer to a term in your site content, SilkPage         
+        transforms it to an HTML acronym. 
+      </para>
+    </refsect1>
+  </refentry>
+
+</section>
+
+<section xml:id="ftp.param">
+  <title>FTP Parameters</title>
+  <para>
+    This section covers the configuration parameters used by the FTP task. This
+    task is used when running SilkPage with the <parameter>publish</parameter>
+    target. That is when publishing your Website online.
+  </para>
+  <refentry xml:id="ftp.server">
+    <refmeta>
+      <refentrytitle>ftp.server</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.server</parameter></refname>
+      <refpurpose>
+	Specifying FTP server address
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.server</parameter>=<replaceable>FTP Hosts erver</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        The address of the remote FTP server where you Website is located.
+      </para>
+    </refsect1>
+  </refentry>
+
+
+  <refentry xml:id="ftp.port">
+    <refmeta>
+      <refentrytitle>ftp.port</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.port</parameter></refname>
+      <refpurpose>
+	Specifying FTP Port
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.port</parameter>=<replaceable>number</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        The port number of the remote FTP server. Defaults to port 21.
+      </para>
+    </refsect1>
+  </refentry>
+
+
+  <refentry xml:id="ftp.remotedir">
+    <refmeta>
+      <refentrytitle>ftp.remotedir</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.remotedir</parameter></refname>
+      <refpurpose>
+         Specifying where your website will be located the FTP server 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.remotedir</parameter>=<replaceable>path</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+         Remote directory on the FTP server. This is your home directory on 
+         the Web server.
+      </para>
+    </refsect1>
+  </refentry>
+
+
+  <refentry xml:id="ftp.userid">
+    <refmeta>
+      <refentrytitle>ftp.userid</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.userid</parameter></refname>
+      <refpurpose>
+        The login id to use on the FTP server.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.userid</parameter>=<replaceable>userid</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the login id to use on the FTP server.
+      </para>
+    </refsect1>
+  </refentry>
+
+
+  <refentry xml:id="ftp.password">
+    <refmeta>
+      <refentrytitle>ftp.password</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.password</parameter></refname>
+      <refpurpose>
+        The login password to use on the FTP server.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.password</parameter>=<replaceable>password</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        Specifies the login password to use on the FTP server.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="ftp.depends">
+    <refmeta>
+      <refentrytitle>ftp.depends</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.depends</parameter></refname>
+      <refpurpose>
+         Transfers only new or changed files if set to “yes”. Defaults to “no”.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.depends</parameter>=<replaceable>yes|no</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	If specified transfers only new or changed files if set to “yes”. 
+        Defaults to “no”.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="ftp.passive">
+    <refmeta>
+      <refentrytitle>ftp.passive</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.passive</parameter></refname>
+      <refpurpose>
+        Specifies passive-mode (“yes”) transfers. Defaults to “no”.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.passive</parameter>=<replaceable>yes|no</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        Specifies passive-mode (“yes”) transfers. Defaults to “no”. 
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="ftp.binary">
+    <refmeta>
+      <refentrytitle>ftp.binary</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.binary</parameter></refname>
+      <refpurpose>
+        Specifies binary-mode (“yes”) or text-mode (“no”) transfers. 
+        Defaults to “yes”.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.binary</parameter>=<replaceable>yes|no</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        Specifies binary-mode (“yes”) or text-mode (“no”) transfers. 
+        Defaults to “yes”.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="ftp.localdir">
+    <refmeta>
+      <refentrytitle>ftp.localdir</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>ftp.localdir</parameter></refname>
+      <refpurpose>
+        The local directory where XHTML files are located. By default, it's set
+        to <filename class="directory">${dist.dir}</filename>. 
+        Changing this parameter is not recommended.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>ftp.localdir</parameter>=<replaceable>fullpath</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        The local directory where XHTML files are located. By default, it's set
+        to <filename class="directory">${dist.dir}</filename>.
+        Changing this parameter is not recommended.
+      </para>
+    </refsect1>
+  </refentry>
+</section>
+
+<section xml:id="general.param">
+  <title>General Parameters</title>
+  <para>
+    This section covers the general configuration parameters that are used when
+    running SilkPage with variuos targets.
+  </para>
+
+  <refentry xml:id="general.default.encoding">
+    <refmeta>
+      <refentrytitle>default.encoding</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>default.encoding</parameter></refname>
+      <refpurpose>
+        The encoding used by various tasks. Defaults to 
+        <parameter>UTF-8</parameter>. Please refer to 
+         <link xl:href="http://www.iana.org/assignments/character-sets">
+           Character Sets and Encoding</link> to learn more about avaiable
+           encoding.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>default.encoding</parameter>=<replaceable>encoding</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        The encoding used by various Ant tasks. 
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="general.default.lang">
+    <refmeta>
+      <refentrytitle>default.lang</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>default.lang</parameter></refname>
+      <refpurpose>
+        The ISO language code used to locate the XML source files. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>default.lang</parameter>=<replaceable>ISO Language Code</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        The ISO language code used to locate the XML source files. Defaults to
+        <parameter>en</parameter>. Please refer to 
+         <link xl:href="http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt">
+           Code for the representation of names of languages</link> to learn 
+           more about avaiable ISO 639 language codes.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="general.default.temp.dir">
+    <refmeta>
+      <refentrytitle>default.temp.dir</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>default.temp.dir</parameter></refname>
+      <refpurpose>
+        The temporary directory used for performing the build tasks. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>default.temp.dir</parameter>=<replaceable>fullpath</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        The temporary directory used for performing the build tasks. Defaults 
+        to the default temp. directory of your local host. 
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="general.default.url">
+    <refmeta>
+      <refentrytitle>default.url</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>default.url</parameter></refname>
+      <refpurpose>
+        Your Website URL. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+    <parameter>default.url</parameter>=<replaceable>URL</replaceable>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        Your Website URL. Defaults to the <parameter>site.id</parameter> that
+        you provide when running SilkPage with <parameter>scratch</parameter>
+        target.
+      </para>
+    </refsect1>
+  </refentry>
+</section>
+
+</section>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    siteid.css
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<section xml:id="ifiles.siteid.css">
+  <title><filename>SITE_HOME/src/css/siteid.css</filename></title>
+  <titleabbrev xml:id="ttl.ifiles.siteid.css">
+  <filename>siteid.css</filename></titleabbrev>
+  <para>
+    When running SilkPage with the <parameter>scratch</parameter> target, it
+    generates (among other things) a default CSS stylesheet for your Website. The name
+    of the CSS styleshhet is based on the <parameter>siteid</parameter> 
+    argument that you provide when running SilkPage with the 
+    <parameter>scratch</parameter> target. This stylesheet contains a single
+    <literal>import</literal> declaration of the default stylesheets from <emphasis>SilkPage's CSS Themes</emphasis>
+    . You can modify the
+    <literal>import</literal> declaration to import your own CSS stylesheets instead. 
+    </para>
+    
+    <para>
+    You can even add your CSS stylesheets globally.  Just define your own CSS Theme 
+    and instruct SilkPage to use your CSS themes instead of 
+    the default. Thereafter, every time you create a website using SilkPage, 
+    it will use your CSS Theme by default!
+    Refer to <xref linkend="custom.param"/> to learn how you can customize 
+    SilkPage by adding your CSS themes.
+  </para>
+  </section>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    param.xsl
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<section xml:id="ifiles.param.xsl">
+  <title>
+    <filename>SITE_HOME/src/xsl/param.xsl</filename>
+  </title>
+  <titleabbrev xml:id="ttl.ifiles.param.xsl">
+  <filename>param.xsl</filename></titleabbrev>
+  <para>
+    <xref linkend="site.home.dir"/><filename>/src/xsl/param.xsl</filename>
+    is the main XSL configuration parameter 
+    file used by SilkPage when processing your XML sources.
+  </para>
+
+<section xml:id="search.param">
+  <title>Search Field Parameters</title>
+  <para>
+    SilkPage can generate a <link xl:href="http://www.google.com">Google</link>
+    based seearch field for your Website. This section covers this search 
+    field and its associated parameters. 
+  </para>
+
+  <refentry xml:id="search.pages.search-box">
+    <refmeta>
+      <refentrytitle>pages.search-box</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>pages.search-box</parameter></refname>
+      <refpurpose>
+        Enables/Disables the generation of the search field for your Website.
+        Defaults to 1 (enabled).
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="pages.search-box" select="1"/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="pages.search.input-label">
+    <refmeta>
+      <refentrytitle>pages.search.input-label</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>pages.search.input-label</parameter></refname>
+      <refpurpose>
+       Specifies the label text that is displayed right before the search field. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="pages.search.input-label" select="''"/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        Specifies the label text that is displayed right before the search field. Defaults to an empty label.
+      </para>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="pages.search.submit-label">
+    <refmeta>
+      <refentrytitle>pages.search.submit-label</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>pages.search.submit-label</parameter></refname>
+      <refpurpose>
+        Specifies the label text that is displayed as the search submit button
+        label.  
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="pages.search.submit-label" select="Search"/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+        Specifies the label text that is displayed as the search submit button
+        label.  Defaults to <emphasis>Search</emphasis> label.
+      </para>
+    </refsect1>
+  </refentry>
+
+</section>
+
+<section xml:id="config.label.param.xmlfeeds">
+  <title>Page Source Link Items Parameters</title>
+  <para>
+    If instructed, SilkPage generates link items for XML source and RDF 
+    metadata for each Webpage it generates.  When specified, it links items for 
+    Atom feeds in XHTML format. This section covers the 
+    configuration parameters for these link items.
+  </para>
+
+  <refentry xml:id="sources.rdf">
+    <refmeta>
+      <refentrytitle>sources.rdf</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.rdf</parameter></refname>
+      <refpurpose>
+	Specifies the text for the RDF metadata link item. Defaults to “RDF”
+        label.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+      <synopsis>
+	<![CDATA[<xsl:param name="sources.rdf" select=“RDF”/>]]>
+      </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the RDF metadata link item. Defaults to “RDF”
+        label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="sources.rss10">
+    <refmeta>
+      <refentrytitle>sources.rss10</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.rss10</parameter></refname>
+      <refpurpose>
+        Specifies the text for the RSS feed link item. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+      <![CDATA[<xsl:param name="sources.rss10" select=“RSS”/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the RSS feed link item. Defaults to “RSS”
+        label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="sources.xml">
+    <refmeta>
+      <refentrytitle>sources.xml</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.xml</parameter></refname>
+      <refpurpose>
+        Specifies the text for the XML source link item. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="sources.xml" select=“XML”/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the XML source link item. Defaults to “XML”
+	label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="sources.urfm">
+    <refmeta>
+      <refentrytitle>sources.urfm</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.urfm</parameter></refname>
+      <refpurpose>
+        Specifies the text for the URFM source link item.
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="sources.urfm" select=“URFM”/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the URFM source link item. Defaults to “URFM”
+	label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="sources.doap">
+    <refmeta>
+      <refentrytitle>sources.doap</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.doap</parameter></refname>
+      <refpurpose>
+        Specifies the text for the DOAP source link item. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="sources.doap" select=“DOAP”/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the DOAP source link item. Defaults to “DOAP”
+	label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="sources.foaf">
+    <refmeta>
+      <refentrytitle>sources.foaf</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.foaf</parameter></refname>
+      <refpurpose>
+        Specifies the text for the FOAF source link item. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="sources.foaf" select=“FOAF”/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the FOAF source link item. Defaults to “FOAF”
+	label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+
+  <refentry xml:id="sources.atom">
+    <refmeta>
+      <refentrytitle>sources.atom</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname><parameter>sources.atom</parameter></refname>
+      <refpurpose>
+        Specifies the text for the Atom feed link item. 
+      </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+    <synopsis>
+<![CDATA[<xsl:param name="sources.atom" select=“Atom”/>]]>
+    </synopsis>
+    </refsynopsisdiv>
+    <refsect1>
+      <title>Description</title>
+      <para>
+	Specifies the text for the Atom source link item. Defaults to “Atom”
+	label.
+      </para>
+      <note><para>
+	This parameter also controls the generation of this link item. If no
+	value is specified for this parameter, the link won't be displayed.
+      </para></note>
+    </refsect1>
+  </refentry>
+</section>
+
+</section>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    config.xsl
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+  <section xml:id="ifiles.config.xsl">
+    <title>
+      <filename>SITE_HOME/src/xsl/config.xsl</filename>
+    </title>
+    <titleabbrev xml:id="ttl.ifiles.config.xsl">
+    <filename>config.xsl</filename></titleabbrev>
+    <para>
+      <xref linkend="site.home.dir"/><filename>/src/xsl/config.xsl</filename>
+      is the main XSL customization file.
+    </para>
+
+    <refentry xml:id="user.search-box">
+      <refmeta>
+	<refentrytitle>user.search-box</refentrytitle>
+      </refmeta>
+      <refnamediv>
+	<refname><parameter>user.search-box</parameter></refname>
+	<refpurpose>
+	  Defines an XSL template with your Website-specific information
+	 for use by Google when crawling your Website. 
+	</refpurpose>
+      </refnamediv>
+      <refsynopsisdiv>
+	<synopsis>
+	  <![CDATA[<xsl:template name="user.search-box"> ... </xsl:template>]]>
+	</synopsis>
+      </refsynopsisdiv>
+      <refsect1>
+	<title>Description</title>
+	<para>
+	  Defines an XSL template containing your Website-specific information
+	  that is used by Google when crawling your Website. By default, the
+	  URL of your Website specified in 
+	  <xref linkend="general.default.url"/> is used in this template. 
+      </para>
+    </refsect1>
+  </refentry>
+
+</section>
+
+<!--
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    rdf.xsl
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<section xml:id="ifiles.rdf.xsl">
+  <title>
+    <filename>SITE_HOME/src/xsl/rdf.xsl</filename>
+  </title>
+  <titleabbrev xml:id="ttl.ifiles.rdf.xsl">
+    <filename>rdf.xsl</filename></titleabbrev>
+  <para>
+  <xref linkend="site.home.dir"/><filename>/src/xsl/rdf.xsl</filename>
+  is used as a driver stylesheet to generate RDF metadata for each XML source.
+  </para>
+</section>
+
+<section xml:id="ifiles.catalog.xml">
+  <title><filename>SITE_HOME/cfg/catalog.xml</filename></title>
+  <titleabbrev xml:id="ttl.ifiles.catalog.xml">
+  <filename>catalog.xml</filename></titleabbrev>
+  <para>
+    It is a catalog of public resources such as DTDs or entities that are 
+    referenced in an XML document. It's typically used to make web 
+    references to resources point to a locally cached copy of the resource.
+    SilkPage uses this catalog to perform Entity and URI resolution.
+    Please refer to the <xref linkend="res.spec.cat"/> for more information 
+    about the usage and syntax of <xref linkend="silkpage.cfg.dir"/>
+    <filename>catalog.xml</filename>.
+  </para>
+</section>
+
+</appendix>

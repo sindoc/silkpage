@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<targetset>
+
+   <document targetdoc="home" baseuri="index.html">
+      <div element="webpage" href="#home" number="" targetptr="home">
+         <ttl>What's SilkPage?</ttl>
+         <xreftext>What's SilkPage?</xreftext>
+         <obj element="sidebar" href="#worthReading" number="" targetptr="worthReading">
+            <ttl>Worth Reading</ttl>
+            <xreftext>Worth Reading</xreftext>
+         </obj>
+         <obj element="varlistentry" href="#phenix" number="" targetptr="phenix">
+            <ttl>???TITLE???</ttl>
+            <xreftext>
+               <a class="ulink" href="http://www.dixite.com/docs/phenix/" target="_top">Phenix Case Study</a>
+            </xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="about" baseuri="index.html" dir="about/">
+      <div element="webpage" href="#about" number="" targetptr="about">
+         <ttl>About</ttl>
+         <xreftext>About</xreftext>
+         <div element="section" href="#mission" number="" targetptr="mission">
+            <ttl>Mission</ttl>
+            <xreftext>the section called “Mission”</xreftext>
+         </div>
+         <div element="section" href="#acknowledgements" number="" targetptr="acknowledgements">
+            <ttl>Acknowledgements</ttl>
+            <xreftext>the section called “Acknowledgements”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="participate" baseuri="index.html" dir="about/participate/">
+      <div element="webpage" href="#participate" number="" targetptr="participate">
+         <ttl>Participate</ttl>
+         <xreftext>Participate</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="colophon" baseuri="index.html" dir="about/colophon/">
+      <div element="webpage" href="#colophon" number="" targetptr="colophon">
+         <ttl>Colophon</ttl>
+         <xreftext>Colophon</xreftext>
+         <obj element="table" href="#publishingReportCard" number="1" targetptr="publishingReportCard">
+            <ttl>Publishing Report Card</ttl>
+            <xreftext>Table 1, “Publishing Report Card”</xreftext>
+         </obj>
+         <div element="section" href="#typography" number="" targetptr="typography">
+            <ttl>Typography</ttl>
+            <xreftext>the section called “Typography”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="license" baseuri="index.html" dir="about/licence/">
+      <div element="webpage" href="#license" number="" targetptr="license">
+         <ttl>Licensing</ttl>
+         <xreftext>Licensing</xreftext>
+         <div element="section" href="#www" number="" targetptr="www">
+            <ttl>
+      SilkPage Web Site
+    </ttl>
+            <xreftext>the section called “
+      SilkPage Web Site
+    ”</xreftext>
+         </div>
+         <div element="section" href="#core" number="" targetptr="core">
+            <ttl>
+      SilkPage Core
+    </ttl>
+            <xreftext>the section called “
+      SilkPage Core
+    ”</xreftext>
+         </div>
+         <div element="section" href="#documentation" number="" targetptr="documentation">
+            <ttl>
+      SilkPage Documentation 
+    </ttl>
+            <xreftext>the section called “
+      SilkPage Documentation 
+    ”</xreftext>
+         </div>
+         <div element="section" href="#templates" number="" targetptr="templates">
+            <ttl>
+      SilkPage Templates
+    </ttl>
+            <xreftext>the section called “
+      SilkPage Templates
+    ”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="team" baseuri="index.html" dir="about/team/">
+      <div element="webpage" href="#team" number="" targetptr="team">
+         <ttl>Silk Team</ttl>
+         <xreftext>Silk Team</xreftext>
+         <div element="section" href="#she" number="" targetptr="she">
+            <ttl>Sina</ttl>
+            <xreftext>the section called “Sina”</xreftext>
+         </div>
+         <div element="section" href="#jhe" number="" targetptr="jhe">
+            <ttl>Javad</ttl>
+            <xreftext>the section called “Javad”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="contact" baseuri="index.php" dir="about/contact/">
+      <div element="webpage" href="#contact" number="" targetptr="contact">
+         <ttl>Contact Us</ttl>
+         <xreftext>Contact Us</xreftext>
+         <obj element="form" href="#contactForm" number="" targetptr="contactForm">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="input" href="#contactForm-name" number="" targetptr="contactForm-name">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="input" href="#contactForm-email" number="" targetptr="contactForm-email">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="input" href="#contactForm-subject" number="" targetptr="contactForm-subject">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="textarea" href="#contactForm-comment" number="" targetptr="contactForm-comment">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="docs" baseuri="index.html" dir="docs/">
+      <div element="webpage" href="#docs" number="" targetptr="docs">
+         <ttl>Documentation</ttl>
+         <xreftext>Documentation</xreftext>
+         <obj element="sidebar" href="#silkpaged" number="" targetptr="silkpaged">
+            <ttl>SilkPaged</ttl>
+            <xreftext>SilkPaged</xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="userGuide" baseuri="index.html" dir="docs/user-guide/">
+      <div element="webpage" href="#userGuide" number="" targetptr="userGuide">
+         <ttl>User Guide</ttl>
+         <xreftext>User Guide</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="designGoals" baseuri="index.html" dir="docs/design-goals/">
+      <div element="webpage" href="#designGoals" number="" targetptr="designGoals">
+         <ttl>Design Goals</ttl>
+         <xreftext>Design Goals</xreftext>
+         <div element="section" href="#cleancode" number="" targetptr="cleancode">
+            <ttl>Valid Code</ttl>
+            <xreftext>the section called “Valid Code”</xreftext>
+         </div>
+         <div element="section" href="#stylesheet" number="" targetptr="stylesheet">
+            <ttl>Stylesheets Use</ttl>
+            <xreftext>the section called “Stylesheets Use”</xreftext>
+         </div>
+         <div element="section" href="#accessibility" number="" targetptr="accessibility">
+            <ttl>Accessibility</ttl>
+            <xreftext>the section called “Accessibility”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="roadmap" baseuri="index.html" dir="docs/roadmap/">
+      <div element="webpage" href="#roadmap" number="" targetptr="roadmap">
+         <ttl>Roadmap</ttl>
+         <xreftext>Roadmap</xreftext>
+         <div element="section" href="#releases" number="" targetptr="releases">
+            <ttl>Releases</ttl>
+            <xreftext>the section called “Releases”</xreftext>
+            <obj element="table" href="#releaseTable" number="1" targetptr="releaseTable">
+               <ttl>Release Schedule</ttl>
+               <xreftext>Table 1, “Release Schedule”</xreftext>
+            </obj>
+         </div>
+         <obj element="sidebar" href="#releaseTypes" number="" targetptr="releaseTypes">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???TITLE???</xreftext>
+         </obj>
+         <obj element="varlistentry" href="#stableBuilds" number="" targetptr="stableBuilds">
+            <ttl>???TITLE???</ttl>
+            <xreftext>Stable Builds</xreftext>
+         </obj>
+         <obj element="varlistentry" href="#releases" number="" targetptr="releases">
+            <ttl>???TITLE???</ttl>
+            <xreftext>Releases</xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="downloads" baseuri="index.html" dir="downloads/">
+      <div element="webpage" href="#downloads" number="" targetptr="downloads">
+         <ttl>Download</ttl>
+         <xreftext>Download</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="dev" baseuri="index.html" dir="dev/">
+      <div element="webpage" href="#dev" number="" targetptr="dev">
+         <ttl>Developers</ttl>
+         <xreftext>Developers</xreftext>
+         <div element="section" href="#cvs-co" number="" targetptr="cvs-co">
+            <ttl>How to checkout SilkPage from java.net</ttl>
+            <xreftext>the section called “How to checkout SilkPage from java.net”</xreftext>
+         </div>
+         <obj element="sidebar" href="#membership" number="" targetptr="membership">
+            <ttl>Membership</ttl>
+            <xreftext>Membership</xreftext>
+         </obj>
+         <obj element="para" href="#javanet" number="" targetptr="javanet">
+            <ttl>???TITLE???</ttl>
+            <xreftext/>
+         </obj>
+         <obj element="sidebar" href="#link" number="" targetptr="link">
+            <ttl>Developer Resources</ttl>
+            <xreftext>Developer Resources</xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="liveSites" baseuri="index.html" dir="about/live-sites/">
+      <div element="webpage" href="#liveSites" number="" targetptr="liveSites">
+         <ttl>Live Sites</ttl>
+         <xreftext>Live Sites</xreftext>
+         <obj element="table" href="#liveSitesTable" number="1" targetptr="liveSitesTable">
+            <ttl>Live Sites</ttl>
+            <xreftext>Table 1, “Live Sites”</xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="logoDesign" baseuri="index.html" dir="docs/logo-design-guidelines/">
+      <div element="webpage" href="#logoDesign" number="" targetptr="logoDesign">
+         <ttl>Logo Design Guidelines</ttl>
+         <xreftext>Logo Design Guidelines</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="silkPaged" baseuri="index.html" dir="docs/silkpaged/">
+      <div element="webpage" href="#silkPaged" number="" targetptr="silkPaged">
+         <ttl>SilkPaged</ttl>
+         <xreftext>SilkPaged</xreftext>
+         <div element="section" href="#icons" number="" targetptr="icons">
+            <ttl>SilkPaged Icons and Logos</ttl>
+            <xreftext>the section called “SilkPaged Icons and Logos”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="sitemap" baseuri="index.html" dir="site/map/">
+      <div element="webpage" href="#sitemap" number="" targetptr="sitemap">
+         <ttl>Sitemap</ttl>
+         <xreftext>Sitemap</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="search" baseuri="index.html" dir="site/search/">
+      <div element="webpage" href="#search" number="" targetptr="search">
+         <ttl>Search</ttl>
+         <xreftext>Search</xreftext>
+         <obj element="form" href="#searchForm" number="" targetptr="searchForm">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="input" href="#searchSilkpage" number="" targetptr="searchSilkpage">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="input" href="#searchText" number="" targetptr="searchText">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+         <obj element="input" href="#searchSubmit" number="" targetptr="searchSubmit">
+            <ttl>???TITLE???</ttl>
+            <xreftext>???</xreftext>
+         </obj>
+      </div>
+   </document>
+
+   <document targetdoc="messageSent" baseuri="sent.html" dir="about/contact/">
+      <div element="webpage" href="#messageSent" number="" targetptr="messageSent">
+         <ttl>Message Sent</ttl>
+         <xreftext>Message Sent</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="features-04" baseuri="index.html" dir="docs/roadmap/features-04/">
+      <div element="webpage" href="#features-04" number="" targetptr="features-04">
+         <ttl>Feature Requirements - SilkPage Core 0.4</ttl>
+         <xreftext>Feature Requirements - SilkPage Core 0.4</xreftext>
+         <div element="section" href="#stable" number="" targetptr="stable">
+            <ttl>Make It Stable</ttl>
+            <xreftext>the section called “Make It Stable”</xreftext>
+         </div>
+         <div element="section" href="#accessibility" number="" targetptr="accessibility">
+            <ttl>Improve Accessibility and Usability Features</ttl>
+            <xreftext>the section called “Improve Accessibility and Usability Features”</xreftext>
+         </div>
+         <div element="section" href="#atom" number="" targetptr="atom">
+            <ttl>Support Atom</ttl>
+            <xreftext>the section called “Support Atom”</xreftext>
+         </div>
+         <div element="section" href="#docs" number="" targetptr="docs">
+            <ttl>Polish User Guide Documentation</ttl>
+            <xreftext>the section called “Polish User Guide Documentation”</xreftext>
+         </div>
+      </div>
+   </document>
+
+   <document targetdoc="features-05" baseuri="index.html" dir="docs/roadmap/features-05/">
+      <div element="webpage" href="#features-05" number="" targetptr="features-05">
+         <ttl>Feature Requirements - SilkPage Core 0.5</ttl>
+         <xreftext>Feature Requirements - SilkPage Core 0.5</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="features-06" baseuri="index.html" dir="docs/roadmap/features-06/">
+      <div element="webpage" href="#features-06" number="" targetptr="features-06">
+         <ttl>Feature Requirements - SilkPage Core 0.6</ttl>
+         <xreftext>Feature Requirements - SilkPage Core 0.6</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="core" baseuri="index.html" dir="core/">
+      <div element="webpage" href="#core" number="" targetptr="core">
+         <ttl>SilkPage Core</ttl>
+         <xreftext>SilkPage Core</xreftext>
+      </div>
+   </document>
+
+   <document targetdoc="templates" baseuri="index.html" dir="templates/">
+      <div element="webpage" href="#templates" number="" targetptr="templates">
+         <ttl>SilkPage Templates</ttl>
+         <xreftext>SilkPage Templates</xreftext>
+      </div>
+   </document>
+</targetset>

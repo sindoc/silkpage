@@ -1,0 +1,14 @@
+<?xml version="1.0"?> 
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <rewriteURI
+      uriStartString="http://silkpage.markupware.com/"
+      rewritePrefix="http://silkpage.markupware.com/"/>
+
+  <rewriteURI
+    uriStartString="http://urfm.markupware.com/"
+    rewritePrefix="http://www.markupware.com/projects/urfm/"/>
+
+  <rewriteURI
+    uriStartString="http://www.markupware.com/"
+    rewritePrefix="http://www.markupware.com/"/>
+</catalog>

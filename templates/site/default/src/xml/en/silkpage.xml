@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<webpage id="silkpage">
+  <config param="rcsdate" value="$Date: 2006-04-08 15:54:17 $"/>
+  <config param="DOAP" value="http://silkpage.markupware.com/doap.rdf"/>
+  <head>
+    <title>SilkPage Core</title>
+    <summary>SilkPage Core</summary>
+    <keywords>
+      Markup, SilkPage, DocBook Website, Open Source, GPL, MarkupWare, XML,
+      XSLT, RDF, RSS, Atom
+    </keywords>
+  </head>
+</webpage>

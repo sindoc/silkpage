@@ -1,0 +1,9 @@
+<?xml version='1.0'?>
+<!DOCTYPE i18n [
+<!ENTITY en SYSTEM "locale/en.xml">
+<!ENTITY fr SYSTEM "locale/fr.xml">
+]>
+<i18n xmlns="http://docbook.sourceforge.net/xmlns/l10n/1.0">
+&en;
+&fr;
+</i18n>

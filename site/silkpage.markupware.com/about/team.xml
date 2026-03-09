@@ -1,0 +1,43 @@
+<webpage id="team">
+  <config param="rcsdate" value="$Date: 2007/10/24 10:49:54 $"/>
+  <head>
+    <title>Silk Team</title>
+    <summary>People behind SilkPage</summary>
+    <keywords>SilkPage team, Javad K. Heshmati, Sina K. Heshmati</keywords>
+  </head>
+
+  <section id="she">
+    <title><ulink url="http://sina.khakbaz.com/">Sina</ulink></title>
+    <subtitle>Sina K. Heshmati</subtitle>
+    <para>
+      Sina enjoys dabbling with just about anything related to Markup and 
+      Semantic Web technologies. He began working with computers in 1996 
+      when he was knee-high to a grasshopper. Unknowingly dubbed 
+      <emphasis>SinDoc</emphasis> by his brother, most of his friends 
+      and family members agree that he spends far too much time in front 
+      of a computer screen learning as much about Web 
+      as possible. He is currently leading the 
+      <ulink url="http://silkpage.markupware.com/">
+      SilkPage</ulink> project for MarkupWare. 
+    </para>
+  </section>
+
+  <section id="jhe">
+    <title><ulink url="http://javad.khakbaz.com/">Javad</ulink></title>
+    <subtitle>Javad K. Heshmati</subtitle>
+    <para>
+      Javad began working with computers in the late 80's. He received his 
+      B.S. degree in Computer Science from Vesalius College and his M.S. degree
+      in software engineering from the V.U.B. university. 
+      He has been involved in object-oriented design and development his 
+      entire career, and has been coding Java since its early days. 
+      Currently, he is a Java architect with 
+      <ulink url="http://www.dixite.com/">Dixite</ulink> in Brussels, Belgium, 
+      where he has designed and implemented Java and <acronym>XML</acronym> 
+      based solutions for customers around the world.  For MarkupWare, Javad 
+      provides <acronym>XML</acronym> 
+      consultancy.
+    </para>
+  </section>
+
+</webpage>

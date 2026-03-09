@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix xml:id="faq" xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink">
+<title>Frequently Asked Questions</title>
+<para>
+  This FAQ is provided to be helpful for users of SilkPage.
+  The information is updated as the questions and answers becomes apparant to
+  the SilkPage team. 
+</para>
+
+<qandaset defaultlabel="none">
+<qandadiv xml:id="faq.general">
+  <title>General Information</title>
+
+<qandaentry>
+  <question>
+    <para>
+      What is SilkPage
+    </para>
+  </question>
+  <answer>
+    <para>
+      Refer to <xref linkend="silkpage"/> section.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      For whom is SilkPage intended
+    </para>
+  </question>
+  <answer>
+    <para>
+      SilkPage is for everyone who believes in Open Standards, XML and quality. 
+      The only prerequisite to use SilkPage is some basic knowledge of 
+      XML, to be able to encode your website content. While the SilkPage 
+      software is well documented, it's (curently) 
+      based on command line execution. If you can't stand using the command line, 
+      then SilkPage is not for you.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      I don't know anything about XML…can I still use SilkPage
+    </para>
+  </question>
+  <answer>
+    <para>
+      Unfortunately, no.  To use SilkPage, you need to provide your Website content in XML 
+      format.  Therefore, you need to know the XML (very) basics. Refer to 
+      <xref linkend="res.tutorials.xml.walsh.intro"/> to get started.  (It's 
+      not as hard as you might think!)
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      What are the differeces between SilkPage and DocBook Website
+    </para>
+  </question>
+  <answer>
+    <para>
+      SilkPage is based on DocBook Website. Both applications share almost the 
+      identical features (such as Website publishing). 
+      However, SilkPage provides some extra features:
+      <itemizedlist>
+        <listitem>
+          <para>
+             Generates <xref linkend="gls.wasp"/> (WaSP) compliant XHTML output
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             Provides better customization via 
+             <xref linkend="gls.xsl"/> and <xref linkend="gls.css"/>
+             customization layers.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             Prvides better support for XML feeds such as 
+             <xref linkend="gls.rss"/> and <xref linkend="gls.rdf"/>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             Automates the build and website publising by using
+             <xref linkend="ant"/> tasks.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry xml:id="silkpage.base">
+  <question>
+    <para>
+     On what is SilkPage based 
+    </para>
+  </question>
+  <answer>
+    <para>
+      SilkPage is mainly based on <xref linkend="gls.docbook.website"/>.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+     What is the relation between SilkPage releases and 
+     <application>DocBook Website</application>
+    </para>
+  </question>
+  <answer>
+    <para>
+     Prior to every release, SilkPage team
+     takes the current version of 
+     <xref linkend="gls.docbook.website"/> releases, makes any necessary 
+      modifications, and prepares its own release. The DocBook Website output 
+     may have a different look/feel than SilkPage output. Moreover, SilkPage
+     provides features that are unavailable in DocBook Website. 
+    </para>
+  </answer>
+</qandaentry>
+
+</qandadiv>
+
+<qandadiv xml:id="faq.usage" xreflabel="FAQ About SilkPage Usage">
+  <title>Usage and Customization</title>
+
+<qandaentry>
+  <question>
+    <para>
+      How do I create my first Website
+    </para>
+  </question>
+  <answer>
+    <para>
+      <orderedlist xml:id="faq.silkpage.nutshell">
+        <listitem>
+          <para>
+            <xref linkend="create.site"/> 
+            Create a brand new site from scratch
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="create.layout"/> 
+              Structure your Website by organizing your XML content
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="create.page"/> 
+            Create XML source pages and content
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      How do I migrate my website from <application>DocBook Website</application>
+      to SilkPage
+    </para>
+  </question>
+  <answer>
+    <para>
+      SilkPage is based on <xref linkend="gls.docbook.website"/>. The only
+      thing you need to do to port your website to SilkPage is to copy the 
+      content of your website under 
+      <xref linkend="silkpage.home.dir"/><filename class="directory">/src/en</filename>.
+      Note that <parameter>en</parameter> is the two letter ISO code for 
+      languages. You can use the language of your choice. Refer to 
+       <xref linkend="general.default.lang"/> for valid language codes.
+    </para>
+  </answer>
+</qandaentry>
+<qandaentry>
+  <question>
+    <para>
+      How can I change the link labels of the footer items generated by 
+      SilkPage
+    </para>
+  </question>
+  <answer>
+    <para>
+      Refer to <xref linkend="config.label.param.xmlfeeds"/> to learn how you
+      can control this feature.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      SilkPage generates a Google-based search field for my website—how can
+      I turn it off
+    </para>
+  </question>
+  <answer>
+    <para>
+      Refer to <xref linkend="search.param"/> to learn how you can control this
+      feature.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      What is RSS 
+    </para>
+  </question>
+  <answer>
+    <para>
+      RSS is a format for syndicating news and the content of news-like sites,
+      including major news sites like Wired, news-oriented community sites like
+      Slashdot, and personal weblogs.  Refer to 
+      <link xl:href="http://www.faganfinder.com/search/rss.shtml">
+        All About RSS
+      </link>
+     for a complete desciption.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry xml:id="faq.usage.rss.versions">
+  <question>
+    <para>
+      With all the RSS formats and versions, which one should I choose
+    </para>
+  </question>
+  <answer>
+    <para>
+      There are 0.90 and 0.91 by
+      <link xl:href="http://www.rssboard.org/rss-0-9-1-netscape">
+        Netscape
+      </link>, 
+      1.0 by 
+      <link xl:href="http://groups.yahoo.com/group/rss-dev">
+        RSS-DEV
+      </link> 
+       and 0.9x and 2.0 by  
+      <link xl:href="http://www.userland.com/">
+        UserLand Software
+      </link>. Refer to the 
+      <link xl:href="http://www.xml.com/lpt/a/2002/12/18/dive-into-xml.html">
+        What's RSS Article
+      </link> to find out more.
+    </para>
+  </answer>
+</qandaentry>
+</qandadiv>
+
+<qandadiv xml:id="faq.install">
+<title>Installation</title>
+
+<qandaentry>
+  <question>
+    <para>
+      What is required to run SilkPage
+    </para>
+  </question>
+  <answer>
+    <para>
+      Refer to <xref linkend="requirements"/>.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      How do I install the SilkPage software
+    </para>
+  </question>
+  <answer>
+    <para>
+       It's easy!  For all platforms, simply download the .zip  archive file 
+       and unpack it to your hard disk. See
+       <xref linkend="installation.unpacking"/> for more information.
+    </para>
+  </answer>
+</qandaentry>
+
+<qandaentry>
+  <question>
+    <para>
+      What platforms can run SilkPage
+    </para>
+  </question>
+  <answer>
+    <para>
+       Any operating system supporting Java (J2SE), Standard Edition. However,
+       it should be mentioned that we use GNU/Linux as our reference operating 
+       system. 
+    </para>
+<!--
+       <itemizedlist>
+         <listitem>
+           <para>
+             GNU/Linux—any distribution
+           </para>
+         </listitem>
+         <listitem>
+           <para>
+             Mac OS X 10.1.1 or later
+           </para>
+         </listitem>
+         <listitem>
+           <para>
+             Unix: Solaris 8 and HP-UX
+           </para>
+         </listitem>
+         <listitem>
+           <para>
+             Windows 95, 98, NT 4.0, 2000, XP, ME
+           </para>
+         </listitem>
+       </itemizedlist>
+-->
+  </answer>
+</qandaentry>
+
+
+<qandaentry>
+  <question>
+    <para>
+      I can't even run SilkPage with the <parameter>config</parameter> target
+      to test my installation!  What's wrong
+    </para>
+  </question>
+  <answer>
+    <para>
+      The most common hiccup is when <envar>JAVA_HOME</envar> or/and 
+      <envar>ANT_HOME</envar> are not set.
+      Make sure that you have done the following before installing and running 
+      SilkPage:
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+           Download the J2SE release (version 1.4 or 
+           later) from: <link xl:href="http://java.sun.com/j2se"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Install the J2SE according to the instructions included with the 
+          release.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+         Set an environment variable <envar>JAVA_HOME</envar> to the 
+         pathname of the directory into which you installed the J2SE release.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+           Download the <xref linkend="ant"/> release (version 1.6.1 or 
+           later) from: <link xl:href="http://ant.apache.org"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Install Ant according to the instructions included with the release.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+         Set an environment variable <envar>ANT_HOME</envar> to the 
+         pathname of the directory into which you installed the ANT release.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+    In addition, make sure that <xref linkend="docbook.home.param"/> are set 
+    correctly.
+    </para>
+  </answer>
+</qandaentry>
+</qandadiv>
+
+</qandaset>
+</appendix>

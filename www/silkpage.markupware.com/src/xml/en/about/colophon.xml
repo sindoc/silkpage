@@ -1,0 +1,95 @@
+<webpage id="colophon">
+  <config param="rcsdate" value="$Date: 2006-04-17 14:03:12 $"/>
+  <head>
+    <title>Colophon</title>
+    <summary>Colophon and Typography</summary>
+    <keywords>Colophon, Typography</keywords>
+  </head>
+
+      <para>
+        This site is 
+        <olink targetdoc="silkPaged">
+          SilkPaged
+        </olink>
+        by the SilkPage
+        <olink targetdoc="team">team</olink>
+        in Verdana and Sans Serif using <olink targetdoc="home">SilkPage</olink>
+        Framework. 
+      </para>
+    
+      <para>
+        In general, we are happy with the software and hardware that we used to 
+        publish and maintain this site. Table below shows our rating of 
+        software and hardware products we used.
+      </para>
+
+      <table id="publishingReportCard" frame="none" pgwide="1" role="plain">
+        <title>Publishing Report Card</title>
+        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Tool</entry>
+              <entry>Grade</entry>
+              <entry>Comment</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <ulink url="http://www.gnu.org">
+                  GNU/Linux
+                </ulink>
+              </entry>
+              <entry>A+</entry>
+              <entry>
+                A great set of software tools and utilities
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <ulink url="http://www.gnu.org/software/emacs/emacs.html">
+                  Emacs
+                </ulink>
+              </entry>
+              <entry>A+</entry>
+              <entry>
+                One of the world's most perfect editors
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <ulink url="http://www.vim.org">
+                  Vim
+                </ulink>
+              </entry>
+              <entry>A</entry>
+              <entry>
+                Plenty fast and great editor
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <olink targetdoc="home">
+                  SilkPage
+                </olink>
+              </entry>
+              <entry>B</entry>
+              <entry>
+                Powerful but some rough edges, to be improved in the next 
+                version
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+     
+
+    <section id="typography">
+      <title>Typography</title>
+      <para>
+        Typefaces, typography and indentation of this site are controlled with 
+        <acronym>CSS</acronym> in an effort to make the text easy to read 
+        and maintain. 
+      </para>
+    </section>
+</webpage>

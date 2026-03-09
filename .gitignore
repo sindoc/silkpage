@@ -1,0 +1,12 @@
+# SVN metadata (safety net)
+.svn/
+
+# Build artifacts
+build/
+dist/
+
+# macOS
+.DS_Store
+
+# Java compiled
+*.class

@@ -1,0 +1,39 @@
+<webpage id="about">
+  <config param="rcsdate" value="$Date: 2006-04-21 15:07:20 $"/>
+  <head>
+    <title>About</title>
+    <summary>
+    This web site follows open standards and accessibility rules
+    </summary>
+    <keywords>SilkPage, Web, XSL, CSS, XML, DocBook</keywords>
+  </head>
+
+  <para>
+    This web site is crafted to follow open standards and to meet 
+    accessibility requirements while being as light as possible to 
+    download at any connection speed. 
+  </para>
+
+  <section id="colophon">
+    <title>Colophon</title>
+    <para>This site is 
+      <ulink url="http://silkpage.markupware.com/docs/silkpaged/">
+      SilkPaged</ulink> by the MarkupWare team 
+      in Verdana and Sans Serif using 
+      <ulink url="http://silkpage.markupware.com/">
+        SilkPage Web Publishing Framework
+      </ulink>.
+    </para>
+  </section>
+
+  <section id="license">
+    <title>Copyright</title>
+    <para>
+      Copyright &#169; 2004, 2005, 2006 MarkupWare. MarkupWare web site 
+      content and styles are licensed under 
+      <ulink url="http://creativecommons.org/licenses/by-nc-sa/2.0/">
+        Attribution NonCommercial ShareAlike
+      </ulink>.
+    </para>
+  </section>
+</webpage>

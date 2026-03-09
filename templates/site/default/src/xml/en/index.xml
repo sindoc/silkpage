@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<webpage id="home">
+  <config param="rcsdate" value="$Date: 2006-04-19 13:19:59 $"/>
+  <head>
+    <title>@site.id@</title>
+    <summary>@site.id@</summary>
+    <keywords>@site.id@</keywords>
+  </head>
+  <section id="resources">
+  <title>SilkPage Online Resources</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+           <ulink url="http://silkpage.markupware.com/docs/user-guide/">
+           User Guide</ulink>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+           <ulink url="http://silkpage.markupware.com/downloads/">
+           Latest Downloads
+           </ulink>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+           <ulink url="http://silkpage.markupware.com/dev/">
+           Developers
+           </ulink>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</webpage>

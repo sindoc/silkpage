@@ -1,0 +1,83 @@
+<webpage id="home">
+  <config param="rcsdate" value="$Date: 2008/10/28 23:51:45 $"/>
+  <config param="footlink" value="contact" altval="Contact"/>
+  <config param="RSS10" value="https://silkpage.dev.java.net/servlets/ProjectNewsRSS"/>
+  <head>
+    <title>What's SilkPage?</title>
+    <summary>An XML based Publishing Framework for Web</summary>
+    <keywords>markup, web standards, W3C, XML, XSL, CSS, XHTML</keywords>
+  </head>
+
+    <para>
+      SilkPage is an <acronym>XML</acronym> based Web publishing 
+			framework that has evolved from the 
+      <ulink url="http://docbook.sourceforge.net/">Docbook Website</ulink>. 
+      With strong foundations in XML, it is a publishing framework with a 
+      focus on web standards and usability. SilkPage provides a framework 
+			for publishing structured and standard compliant websites in 
+      XML. It is particularly suited to publish personal
+      <olink targetdoc="liveSites">websites</olink>, though it is by no 
+			means limited to them. <olink targetdoc="docs">Learn more</olink>
+    </para>
+
+    <variablelist>
+      <title>
+	Key Features
+      </title>
+    <varlistentry>
+      <term>Content Management</term>
+      <listitem>
+        <para>
+          <acronym>XML</acronym> based content management.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><acronym>WaSP</acronym> Compliant</term>
+      <listitem>
+        <para>
+           Web Standards compliant <acronym>XHTML</acronym> output. 
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Accessibility</term>
+      <listitem>
+        <para>
+          SilkPage is developed with accessibility and usability in mind.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Separate Presentation Model</term>
+      <listitem>
+        <para>
+          Customization via <acronym>XSL</acronym> and <acronym>CSS</acronym> customization layers.
+        </para>
+      </listitem>
+    </varlistentry>
+    </variablelist>
+
+  <sidebar id="worthReading">
+    <title>Worth Reading</title>
+
+    <variablelist>
+      <varlistentry>
+	<term><ulink url="http://silkpage.markupware.com/dist/docs/0.2/ug-html-chunk/faq.html"><acronym>FAQ</acronym></ulink></term>
+	<listitem>
+	  <para>
+	    Includes FAQ about installation, Customization and Usage
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry id="phenix">
+	<term><ulink url="http://www.dixite.com/docs/phenix/">Phenix Case Study</ulink></term>
+	<listitem>
+	  <para>
+	    Cover a website make-over using SilkPage
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </sidebar>
+</webpage>

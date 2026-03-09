@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<webpage id="features-06">
+  <config param="rcsdate" value="$Date: 2008-10-28 23:53:59 $"/>
+  <head>
+    <title>Feature Requirements - SilkPage Core 0.6</title>
+    <summary>SilkPage Core 0.6 features</summary>
+    <keywords>SilkPage, Release, Roadmap, Features</keywords>
+  </head>
+  <para>
+    This page documents requested features for the 0.6 release of SilkPage. 
+  </para>
+  <variablelist>
+	<!--
+    <varlistentry>
+      <term>
+      <ulink url="https://silkpage.dev.java.net/issues/show_bug.cgi?id=23">
+      Issue #23</ulink>
+      </term>
+      <listitem><para>
+        Generate hCard, given the DocBook 
+        <sgmltag role="element">address</sgmltag> element.
+        This can be considered a step in the 
+        <ulink url="http://microformats.org/">Microformat</ulink> direction.
+      </para></listitem>
+    </varlistentry>
+		-->
+    <varlistentry>
+      <term>
+      <ulink url="https://silkpage.dev.java.net/issues/show_bug.cgi?id=24">
+      Issue #24</ulink>
+      </term>
+      <listitem>
+      <para>
+        Add a <emphasis>relative size</emphasis> CSS theme.
+      </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <para>
+    <olink targetdoc="roadmap">Back to Roadmap</olink>
+  </para>
+</webpage>

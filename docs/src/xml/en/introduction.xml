@@ -1,0 +1,145 @@
+<preface xmlns="http://docbook.org/ns/docbook">
+  
+  <title>Introduction</title>
+  
+  <para>
+    This document contains useful information to assist you during the 
+    installation, customization and usage of SilkPage.
+  </para>
+
+  <section xml:id="silkpage">
+    <title>What is SilkPage?</title>
+    <para>
+    SilkPage is an <acronym>XML</acronym> based Web publishing framework.  
+    It has evolved from the Docbook Website. With strong foundations in XML, 
+    SilkPage is focused on web standards and usability.</para>
+    
+    <para>
+    SilkPage allows for publishing structured and standards-compliant websites in XML.
+    It is particularly well-suited to publish personal websites—though it is by no 
+    means limited to them.
+  </para>
+
+  <variablelist xml:id="silkpage.features">
+    <title>Key Features</title>
+    <varlistentry>
+      <term>Conent Management</term>
+      <listitem>
+        <para>
+          XML based content management.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>WaSP Compliant</term>
+      <listitem>
+        <para>
+           Web Standards compliant XHTML output.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Accessibilty</term>
+      <listitem>
+        <para>
+          SilkPage is developed with accessibility and usability in mind.
+        </para>
+      </listitem>
+    </varlistentry>
+    <!-- 
+      @question  
+        Why is this commented out?  Isn't feed generation important?  
+    -->
+    <!--
+	<varlistentry>
+	<term>Content Feeds Support</term>
+	<listitem>
+	<para>
+	Integrated XML and RSS feed generation.
+	</para>
+	</listitem>
+	</varlistentry>
+    -->
+    <varlistentry>
+      <term>Separate Presentation Model</term>
+      <listitem>
+        <para>
+          Customizable XSL and CSS layers.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>
+
+<section xml:id="typography">
+  <title>Notation and Typographical Conventions</title>
+  <para>
+    There is a systematic usage of typography and highlighting in this 
+    document. Different styles are defined as follows:
+  </para>
+  <variablelist>
+    <title>Typography Styles</title>
+    <varlistentry>
+      <term role="element">element</term>
+      <listitem>
+        <para>
+          An XML element.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>attribute</term>
+      <listitem>
+        <para>
+          An XML attribute.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><filename>filename</filename></term>
+      <listitem>
+        <para>
+          Paths, directory and file names.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><application>application</application></term>
+      <listitem>
+        <para>
+          Programs and software application names.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+	<command>command</command>
+	</term>
+      <listitem>
+        <para>
+	    Shell commands that are executed by the user.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><userinput>User Input</userinput></term>
+      <listitem>
+        <para>
+          Text typed in by the user.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><computeroutput>Computer output</computeroutput></term>
+      <listitem>
+        <para>
+          Text displayed on the command line.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+</section>
+
+
+</preface>

@@ -1,0 +1,15 @@
+<webpage id="faq">
+  <config param="rcsdate" value="$Date: 2005/07/28 22:02:26 $"/>
+  <head>
+    <title>FAQ</title>
+    <summary>Frequently Asked Questions</summary>
+    <keywords>SilkPage, MarkupWare, XML, Website, Sitemap, Site Map</keywords>
+  </head>
+  <para>
+    This <ulink url="./docs/userguide.html#ch:faq">FAQ</ulink> is provided
+    with the hopes to be helpful for users using SilkPage.
+    The information is updated as the questions and answers becomes appearant to
+    the SilkPage team.
+    <include href="/home/she/ws/cvs/markupware/projects/silkpage/docs/src/xml/en/faq.xml"/>
+  </para>
+</webpage>

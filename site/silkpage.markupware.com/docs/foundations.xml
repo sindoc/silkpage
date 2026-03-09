@@ -1,0 +1,159 @@
+<webpage id="foundations">
+  <config param="rcsdate" value="$Date: 2005/07/28 22:02:26 $"/>
+  <head>
+    <title>Foundations</title>
+    <summary>SilkPage Foundations and Building Blocks</summary>
+    <keywords>XML, XSL, DocBook Website, CSS, XHTML</keywords>
+  </head>
+
+  <section id="middleware">
+    <title>Middleware and Frameworks</title>
+    <variablelist>
+      <varlistentry id="DocbookXSl">
+        <term>
+          <ulink url="http://docbook.sourceforge.net/projects/xsl/index.html">
+            DocBook <acronym>XSL</acronym> Stylesheets
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            These are <acronym>XSL</acronym> stylesheets for the DocBook DTD and its derivatives
+            (Simplified DocBook, etc.). They can be used to generate PDF/print
+            documents or Web/HTML content.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="DocBookWebsite">
+        <term>
+        <ulink url="http://docbook.sourceforge.net/projects/website/index.html">
+            DocBook Website
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            The Website doc-type and stylesheets are for making websites 
+            (like this one). 
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section id="spec">
+    <title>Recommendations, Specifications and Standards</title>
+    <variablelist>
+      <varlistentry id="XML">
+        <term>
+          <ulink url="http://w3.org/XML">
+            Extensible Markup Language (XML)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            Extensible Markup Language (XML) is a simple, very flexible text 
+            format derived from SGML (ISO 8879). Originally designed to meet 
+            the challenges of large-scale electronic publishing, XML is also 
+            playing an increasingly important role in the exchange of a wide 
+            variety of data on the Web and elsewhere.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="XSL">
+        <term>
+          <ulink url="http://w3.org/Style/XSL">
+           Extensible Stylesheet Language Family (XSL)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+             XSL is a family of recommendations for defining XML document
+             transformation and presentation.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="CSS">
+        <term>
+          <ulink url="http://w3.org/Style/CSS">
+            Cascading Style Sheets (CSS)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            Cascading Style Sheets (CSS) is a simple mechanism for adding style
+            (e.g. fonts, colors, spacing) to Web documents.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="XHTML">
+        <term>
+          <ulink url="http://w3.org/MarkUp">
+            HyperText Markup Language (XHTML)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            XHTML 2 is a general-purpose markup language designed for 
+            representing documents for a wide range of purposes across the 
+            World Wide Web. To this end it does not attempt to be all things 
+            to all people, supplying every possible markup idiom, but to 
+            supply a generally useful set of elements.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="RDF">
+        <term>
+          <ulink url="http://w3.org">
+            Resource Description Framework (RDF)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            World-Wide Web, specification, data (RDF) A specification
+            being developed in 2000 by the W3C as a foundation for
+            processing meta-data regarding resources on the Internet,
+            including the World-Wide Web.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="RSS">
+        <term>
+          <ulink url="http://www.userland.com">
+            Really Simple Syndication (RSS)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            Really Simple Syndication (RSS) is a lightweight XML format 
+            designed for sharing headlines and other Web content.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="WaSP">
+        <term>
+          <ulink url="http://www.webstandards.org">
+            Web Standards (WaSP)
+          </ulink>
+        </term>
+        <listitem>
+          <para>
+            Founded in 1998, The Web Standards Project (WaSP) fights for 
+            standards that reduce the cost and complexity of development while 
+            increasing the accessibility and long-term viability of any site 
+            published on the Web. We work with browser companies, authoring 
+            tool makers, and our peers to deliver the true power of standards 
+            to this medium.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </section>
+
+</webpage>

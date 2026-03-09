@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+  <layout>
+
+<config param="headlink" value="sitemap" altval="Site Map"/>
+<config param="headlink" value="search" altval="Search"/>
+
+<config param="footlink" value="feeds" altval="Content Feeds"/>
+
+<config param="title" value="@site.id@"/>
+
+<copyright role="about">
+  <year>2006</year>
+  <holder role="http://www.example.org/">@site.id@</holder>
+</copyright>
+
+<headlink rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
+<style src="css/@site.id@.css" type="text/css" media="screen"/>
+
+<toc page="index.xml" filename="index.html">
+  <tocentry page="about.xml" dir="about" filename="index.html"/>
+  <tocentry page="projects.xml" dir="projects" filename="index.html">
+    <tocentry page="silkpage.xml" dir="silkpage" filename="index.html"/>    
+  </tocentry>
+  <tocentry page="feeds.xml" dir="feeds" filename="index.html"/>
+  <tocentry page="contact.xml" dir="contact" filename="index.php"/>
+</toc>
+
+<notoc page="sitemap.xml" filename="sitemap.html"/>
+<notoc page="contact-sent.xml" dir="contact" filename="sent.html"/>
+<notoc page="search.xml" dir="search" filename="index.html"/>
+</layout>

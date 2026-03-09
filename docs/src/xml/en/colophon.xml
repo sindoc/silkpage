@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colophon xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <?dbhtml filename="colophon.html"?>
+  <para> 
+    This document was prepared using <link xl:href="http://docbook.sourceforge.net/projects/xsl/"> DocBook XSL Stylesheets</link>. 
+    The main fonts are Helvetica, Arial, and sans-serif. 
+    The DocBook XSL was refined and customized by <link xl:href="http://sina.khakbaz.com/"> Sina K. Heshmati</link> which in turn, was drived from the style by <link xl:href="http://nwalsh.com/people/ndw/">Norman Walsh </link>. 
+    In addition, the visual markup is controlled by a single CSS stylesheet prepared by <link xl:href="http://javad.khakbaz.com/">Javad K. Heshmati</link>. 
+    The final version of this document was produced by running a single Makefile on a Dell Latitude running the <link xl:href="http://www.ubuntu.com/">Ubuntu</link> distribution of the <link xl:href="http://www.gnu.org/">GNU/Linux</link> operating system. 
+  </para>
+</colophon>

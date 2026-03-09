@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix xml:id="configFilesGlobal" xmlns="http://docbook.org/ns/docbook">
+  <title>Global Configuration Files</title>
+  <para>
+    This section describe each of the global configuration parameter used in 
+    SilkPage. This information is most useful when configuring SilkPage's 
+    global settings after installation. 
+  </para>
+
+  <section xml:id="gfiles.catalog.xml">
+    <title>
+      <filename>SILKPAGE_HOME/cfg/catalog.xml</filename>
+    </title>
+    <titleabbrev xml:id="ttl.gfiles.catalog.xml">
+    <filename>catalog.xml</filename></titleabbrev>
+    <para>
+      This is a catalog of public resources such as DTDs or entities that are 
+      referenced in an XML document. It's typically used to make web 
+      references to resources point to a locally cached copy of the resource.
+      SilkPage uses this catalog to perform Entity and URI resolution.
+      Please refer to the <xref linkend="res.spec.cat"/> for more information 
+      about the
+      usage and syntax of <xref linkend="silkpage.cfg.dir"/>
+      <filename>catalog.xml</filename>.
+    </para>
+  </section>
+
+  <section xml:id="gfiles.tidy.properties">
+  <title>
+    <filename>SILKPAGE_HOME/cfg/tidy.properties</filename>
+  </title>
+  <titleabbrev xml:id="ttl.gfiles.tidy.properties">
+  <filename>tidy.properties</filename></titleabbrev>
+  <para>
+    SilkPage uses <application>Tidy</application> to validate and cleanup the
+    XHTML output. <filename>tidy.properties</filename> is located in the
+    <xref linkend="silkpage.cfg.dir"/> directory and it is the 
+    <application>Tidy</application>
+    confiuration file to control its parameters. To find out about the 
+    <application>Tidy</application> parameters and options that can be defined
+    in <filename>tidy.properties</filename>, please refer to
+    <xref linkend="gls.tidy"/> Website.
+  </para>
+</section>
+
+</appendix>

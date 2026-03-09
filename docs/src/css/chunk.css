@@ -1,0 +1,78 @@
+/*
+ ------------------------------------------------------------------------------
+ MarkupWare Base Styles for DocBook Generated Documents
+ Version:  $Id: chunk.css,v 1.1.1.1 2005-07-28 22:08:03 sina Exp $
+ ------------------------------------------------------------------------------
+*/
+
+@import url(base.css);
+
+html #header {
+        background: #dce5d4;
+	background: #566e41; 
+	border-bottom : 10px solid #26630A;
+	font-weight : bold;
+	padding-top: 20px;
+	margin: 0;
+	}
+
+#navparent {
+	padding-left: 10px;
+	}
+
+#navparent a {
+        background:#dce5d4;
+        margin-right: 5px;
+        color: #000;
+        text-decoration: none;
+        text-align: center;
+        font-weight: normal;
+        letter-spacing: 1px;
+	padding: 2px 10px;
+        }
+
+#navparent a:hover {
+        color: #fff;
+        background: #26630A;
+        border-bottom: none;
+        }
+
+h1.title, div.legalnotice, .copyright {
+	display: none;
+	}
+
+.navheader, .navfooter {
+	margin : 0px 10px 10px 0px;
+        background: #dce5d4;
+	padding: 5px 20px;
+	width: 100%;
+	border-bottom : 1px dotted #566e41;
+	}
+
+.navfooter {
+	border-top : 10px solid #26630A;
+	}
+
+h2.title {
+	background: #fff;
+	color: #566e41;
+	border: none;
+	border-bottom : 1px dotted #566e41;
+	}
+
+#header h1 a {
+	font-size: 18pt;
+	color: #dce5d4;
+	margin: 10px 14px;
+	display: block;
+	}
+
+#header h1 {
+        top: -26px;
+        position: relative;
+        float: right;
+        right: 0;
+        margin: 0; /* need for IE Mac */
+        text-align: right; /* need for IE Mac */
+        white-space: nowrap; /* for Opera */
+        }

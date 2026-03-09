@@ -1,0 +1,91 @@
+<webpage id="dev">
+  <config param="rcsdate" value="$Date: 2007-03-23 16:12:44 $"/>
+  <head>
+    <title>Developers</title>
+    <summary>SilkPage for developers</summary>
+    <keywords>SilkPage, Developers, CVS, Repository, Mailing List</keywords>
+  </head>
+  <para>
+    SilkPage code repository and issue tracker are hosted at 
+    <ulink url="http://java.net/">java.net</ulink>.
+    To become a developer, please <ulink url="https://silkpage.dev.java.net/">
+    request</ulink> a developer role. As a developer, you can:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+      <olink targetdoc="participate">contribute</olink> to the SilkPage <ulink url="https://silkpage.dev.java.net/source/browse/silkpage/">code repository</ulink>;</para>
+    </listitem>
+    <listitem>
+      <para>
+      <ulink url="https://silkpage.dev.java.net/servlets/ProjectIssues">report</ulink> a bug;</para>
+    </listitem>
+    <listitem>
+      <para>
+	post to SilkPage <ulink url="https://silkpage.dev.java.net/servlets/ProjectMailingListList">mailing-lists</ulink>.</para>
+    </listitem>
+  </itemizedlist>
+  <section id="cvs-co">
+    <title>How to checkout SilkPage from java.net</title>
+      <orderedlist>
+      <listitem>
+	<para>
+	  cvs -d:pserver:guest@cvs.dev.java.net:/cvs login
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+          cvs -d:pserver:guest@cvs.dev.java.net:/cvs co 
+	  silkpage/<replaceable>[modulename]</replaceable>
+	</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <sidebar id='membership'>
+    <title>Membership</title>
+    <para>
+      SilkPage is a registered project at java.net
+    </para>
+    <para id="javanet">
+      <ulink url="http://silkpage.dev.java.net/">
+	<inlinemediaobject>
+	  <imageobject>
+	    <imagedata fileref="../img/javanet_member.gif"/> 
+	  </imageobject> 
+	  <textobject>
+	    <phrase>java.net member</phrase>
+	  </textobject>
+	</inlinemediaobject>
+      </ulink>
+    </para>
+  </sidebar>
+  <sidebar id='link'>
+    <title>Developer Resources</title>
+    <itemizedlist>
+      <listitem><para>
+	<ulink url="https://silkpage.dev.java.net/servlets/ProjectMemberList">
+      Project Membership</ulink></para></listitem>
+      <listitem><para>
+	<ulink url="https://silkpage.dev.java.net/servlets/ProjectNewsList">
+      Announcements</ulink></para></listitem>
+      <listitem><para>
+	<ulink url="https://silkpage.dev.java.net/servlets/ProjectForumView">
+      Discussion forums</ulink></para></listitem>
+      <listitem><para>
+    <ulink url="https://silkpage.dev.java.net/servlets/ProjectMailingListList">
+      Mailing lists</ulink></para></listitem>
+      <listitem><para> 
+       <ulink url="https://silkpage.dev.java.net/servlets/ProjectDocumentList">
+      Documents &amp; files</ulink></para></listitem>
+      <listitem><para>
+	<ulink url="https://silkpage.dev.java.net/servlets/ProjectIssues">
+      Bug Database</ulink></para></listitem>
+      <listitem><para>
+	<ulink url="https://silkpage.dev.java.net/servlets/ProjectSource">
+      CVS Access Options</ulink></para></listitem>
+      <listitem><para>
+	<ulink url="https://silkpage.dev.java.net/source/browse/silkpage/">
+      Browse source code</ulink></para></listitem>
+    </itemizedlist>
+  </sidebar>
+</webpage>

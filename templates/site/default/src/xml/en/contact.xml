@@ -1,0 +1,96 @@
+<webpage id="contact">
+  <config param="rcsdate" value="$Date: 2006-04-08 15:54:16 $"/>
+  <head>
+    <title>Contact Us</title>
+    <summary>How to reach us</summary>
+    <keywords>MarkupWare Contact information</keywords>
+  </head>
+  <para>
+    We really value your feedback about this site and we do change things. 
+    Please fill in all fields below and send us a message.
+    To indicate the type of your feedback, please select the right  
+    <emphasis>category:</emphasis>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>Content, style, grammar:</emphasis>
+          report typos or broken links.
+          If you're referring to a specific page, please give us the exact
+          URL so we can quickly locate and fix the problem. 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>General comment:</emphasis>
+          general suggestions to improve this site. 
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    <?php
+      if (($_GET["komail"]==1) OR ($_GET["notext"]==1) OR ($_GET["ko"]==1)) {
+        $msg='<div class="error"><strong>ERROR: </strong>';
+        $msg.='Please correct the following errors and re-submit your message.<ol>';
+      if ($_GET["komail"]==1)
+        $msg.='<li>Invalid <em>Email</em> address.</li>' ;
+      if ($_GET["notext"]==1)
+        $msg.='<li>Invalid <em>Name</em> or <em>Subject</em> or <em>Comment</em>.</li>' ;
+      if ($_GET["ko"]==1)
+        $msg.='<li>Failed to send your message. Please try later.</li>' ;
+        $msg.='</ol></div>' ;
+      echo $msg;
+      }
+      ??>
+  </para>
+  
+  <form xmlns="http://www.w3.org/1999/xhtml"
+        action="/site/contact-send.php"
+        method="post" id="contactForm">
+    <fieldset>
+      <legend>Contact Form</legend>
+      <p><label for="contactForm-name" accesskey="9">Name: </label><br/>
+      <input id="contactForm-name" name="name" type="text"
+             size="40" tabindex="1"/></p>
+      <p><label for="contactForm-mail">Email: </label><br/>
+      <input name="mail" type="text" id="contactForm-mail"
+             size="40" tabindex="2"/></p>
+      <p><label for="contactForm-category">Category: </label><br/>
+      <select name="category" id="contactForm-category" tabindex="3">
+        <option value="none">
+          Please select one
+        </option>
+        <option value="content">
+           Content, style, grammar
+        </option>
+        <option value="general">
+          General comment
+        </option>
+      </select></p>
+      <p><label for="contactForm-subject">Subject: </label><br/>
+      <input name="subject" type="text" id="contactForm-subject"
+             size="40" tabindex="4"/>
+      </p>
+      <p><label for="contactForm-comment">Comment: </label><br/>
+      <textarea name="comment" id="contactForm-comment"
+                rows="15" cols="40" tabindex="5"/>
+      </p>
+      <p>
+        <input class="button" type="submit" value="send" tabindex="6"/>
+      </p>
+    </fieldset>
+  </form>
+  <sidebar id="also">
+    <title>Reach Us</title>
+    <address>
+      <street>Av. Louise, 179</street>
+      <postcode>1050</postcode>
+      <city>Brussels</city>
+      <country>Belgium</country>
+      <phone>+32 2 640 1382</phone>
+      <fax>+32 2 646 5775</fax>
+      <email>contact@markupware.com</email>
+    </address>
+  </sidebar>
+</webpage>

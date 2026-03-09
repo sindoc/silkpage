@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	 xmlns:doap="http://usefulinc.com/ns/doap#" 
+	 xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	 xmlns:pm="http://www.web-semantics.org/ns/pm#"
+	 xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <rdf:Description rdf:about="http://silkpage.markupware.com/">
+    <dc:title>SilkPage Project Description</dc:title>
+    <dc:description>
+      This RDF file describes SilkPage project.
+    </dc:description>
+    <dc:publisher rdf:resource="http://www.markupware.com/"/>
+    <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+  </rdf:Description>
+
+  <doap:Project>
+    <doap:name>SilkPage</doap:name>
+    <dc:identifier>http://silkpage.markupware.com/</dc:identifier>
+    <doap:shortname>silkpage</doap:shortname>
+    <doap:homepage rdf:resource="http://silkpage.markupware.com/"/>
+    <doap:license rdf:resource="http://usefulinc.com/doap/licenses/gpl"/>
+    <doap:created>2004-12-20T20:19:41+01:00</doap:created>
+    <foaf:maker rdf:resource="http://www.markupware.com/about/sponsors/khakbaz/"/>
+    <foaf:maker rdf:resource="http://www.markupware.com/about/sponsors/javanet/"/>
+    <foaf:maker rdf:resource="http://www.markupware.com/about/sponsors/dixite/"/>
+    <doap:description>
+      SilkPage is an XML based Web publishing framework that has evolved from 
+      the Docbook Website. With strong foundations in XML, it is a publishing 
+      framework with a focus on web standards and usability. SilkPage provides 
+      a framework for publishing structured and standard compliant websites in 
+      XML. It is particularly suited to publish personal websites, though it 
+      is by no means limited to them.
+    </doap:description>
+    <rdf:type rdf:resource="http://purl.org/dc/dcmitype/Software"/>
+    <doap:programming-language>XSLT</doap:programming-language>
+    <doap:os>any</doap:os>
+    <doap:maintainer rdf:resource="http://javad.khakbaz.com/"/>
+    <doap:maintainer rdf:resource="http://sina.khakbaz.com/"/>
+    <doap:download-page rdf:resource="http://silkpage.markupware.com/download.rdf"/>
+    <doap:repository>
+      <doap:CVSRepository>
+	<doap:anon-root>:pserver:guest@cvs.dev.java.net:/cvs</doap:anon-root>
+	<doap:module>silkpage</doap:module>
+	<doap:browse rdf:resource="https://silkpage.dev.java.net/source/browse/silkpage/"/>
+      </doap:CVSRepository>
+    </doap:repository>
+    <doap:bug-database rdf:resource="https://silkpage.dev.java.net/servlets/ProjectIssues"/>
+    <doap:mailing-list rdf:resource="https://silkpage.dev.java.net/servlets/ProjectMailingListList"/>
+    <pm:subProject rdf:resource="http://silkpage.markupware.com/core/doap.rdf"/>
+    <pm:subProject rdf:resource="http://silkpage.markupware.com/docs/doap.rdf"/>
+    <pm:subProject rdf:resource="http://silkpage.markupware.com/templates/doap.rdf"/>
+  </doap:Project>
+  
+  <foaf:Person rdf:about="http://sina.khakbaz.com/">
+    <foaf:name>Sina K. Heshmati</foaf:name>
+    <foaf:nick>sindoc</foaf:nick>
+    <foaf:mbox_sha1sum>f0481938bccb51955c036f97ee71dc11ec0d28c9</foaf:mbox_sha1sum>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://javad.khakbaz.com/">
+    <foaf:name>Javad K. Heshmati</foaf:name>
+    <foaf:nick>kaveh</foaf:nick>
+    <foaf:mbox_sha1sum>e74e1e1e81ccf87d94a752368a1958c22962a08c</foaf:mbox_sha1sum>
+  </foaf:Person>
+
+  <foaf:Organization rdf:about="http://www.markupware.com/about/sponsors/dixite/">
+    <foaf:name>Dixite</foaf:name>
+    <foaf:homepage rdf:resource="http://www.dixite.com/"/>
+    <dc:description>
+      MarkupWare could not exist without the continued and generous support 
+      from Dixite consultants who actively participate in MarkupWare projects. 
+      Dixite is a company committed to open source and provides innovative 
+      solutions based upon Open Source.     
+    </dc:description>
+  </foaf:Organization>
+  
+  <foaf:Organization rdf:about="http://www.markupware.com/about/sponsors/javanet/">
+    <foaf:name>java.net</foaf:name>
+    <foaf:homepage rdf:resource="http://java.net/"/>
+    <dc:description>
+      Project hosting provided by java.net. MarkupWare would like to gratefully
+      thank java.net for hosting its projects.
+    </dc:description>
+  </foaf:Organization>
+
+  <foaf:Organization rdf:about="http://www.markupware.com/about/sponsors/khakbaz/">
+    <foaf:name>Khakbaz Foundation</foaf:name>
+    <foaf:homepage rdf:resource="http://www.khakbaz.com/"/>
+    <dc:description>
+      Server hosting and bandwidth provided by Khakbaz Foundation. MarkupWare 
+      would like to gratefully thank the Khakbaz Foundation. 
+    </dc:description>
+  </foaf:Organization>
+
+</rdf:RDF>
+

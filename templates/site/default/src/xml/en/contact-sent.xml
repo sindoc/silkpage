@@ -1,0 +1,17 @@
+<webpage id="messageSent">
+  <config param="rcsdate" value="$Date: 2006-04-08 15:54:16 $"/>
+  <head>
+    <title>Message Sent</title>
+    <summary>Message Confirmation</summary>
+    <keywords>MarkupWare Contact Confirmation</keywords>
+  </head>
+
+  <para>
+    Thank you for your interest in MarkupWare. Your message has been sent, 
+    we will respond as soon as we can. 
+  </para>
+  <para>
+    <olink targetdoc="contact">Bank to contact form</olink> &#187;
+  </para>
+
+</webpage>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel rdf:about="http://silkpage.markupware.com/feeds/commercial-sites.rdf">
+  <title>SilkPage Commercial Live Sites</title>
+  <link>http://silkpage.markupware.com/about/live-sites.html#commercial</link>
+  <description>
+    List of SilkPage commercial live sites.
+  </description>
+  <dc:language>en-us</dc:language>
+
+  <dc:publisher rdf:resource="http://www.markupware.com/"/>
+  <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+  <dc:identifier>commercial-liveSites</dc:identifier>
+  <items>
+  <rdf:Seq>
+    <rdf:li rdf:resource="http://www.markupware.com/"/>
+    <rdf:li rdf:resource="http://www.dixite.com/"/>
+  </rdf:Seq>
+  </items>
+</channel>
+
+<item rdf:about="http://www.markupware.com/">
+  <title>MarkupWare</title>
+  <link>http://www.markupware.com/</link>
+  <dc:date>2004-12-20</dc:date>
+  <dc:category>Company</dc:category>
+  <description>MarkupWare Website.</description>
+</item>
+
+<item rdf:about="http://www.dixite.com/">
+  <title>Dixite</title>
+  <link>http://www.dixite.com/</link>
+  <dc:date>2005-07-22</dc:date>
+  <dc:category>Company</dc:category>
+  <description>Dixite Website.</description>
+</item>
+
+</rdf:RDF>
+

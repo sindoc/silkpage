@@ -1,0 +1,530 @@
+/*
+ ------------------------------------------------------------------------------
+ MarkupWare Base Styles for DocBook Generated Documents
+ Version:  $Id: base.css,v 1.1.1.1 2005-07-28 22:08:03 sina Exp $
+ ------------------------------------------------------------------------------
+*/
+
+html body {
+	margin: 0; 
+	padding: 0;
+	font: "Trebuchet MS",Verdana,Arial,Sans-serif;
+	color: #333;
+	background: #fff;
+	text-align: left;
+	font-size: 12pt;
+	}
+
+hr {	
+	background-color: #CCCCCC;
+        height: 0px;
+	margin: 0px 0px 0px 10px;
+        border-style: none;
+	}
+
+/*
+ ------------------------------------------------------------------------------
+ Headers, Titles, Titlepages
+ ------------------------------------------------------------------------------
+*/
+
+h1.title {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 24pt;
+	font-weight: bold;
+        color: White;
+        background-color: #566e41;
+	line-height: 1.4em;	
+        margin: 0;
+        padding: 25px;
+        border: 0.3em solid #EEE;
+	}
+
+/* Tables
+----------------------------------------------- */
+
+table {
+        border-width: 0;
+        font-size: 100%;
+        width: 100%;
+        }
+
+td {
+        color: #566e41;
+        font-size: 90%;
+	padding-right: 50px;
+        }
+
+th {
+        color: #566e41;
+        font-size: 90%;
+        text-align: center;
+        }
+
+h2.subtitle {
+	font-size: 18pt;
+	font-weight: bold;
+	margin : 10px;
+        padding: 0px 5px 25px 0;
+        color: #fff;
+	}
+
+.titlepage h2 {
+	font-size: 16pt;
+	font-weight: bold;
+        color: #566e41;
+	line-height: 1.4em;	
+	border-bottom : 1px dotted #566e41;
+	}
+
+.appendix-titlepage h2.title, .glossary-titlepage h2.title, .colophon h2.title {
+        font-style: italic;
+	font-size: 16pt;
+	font-weight: bold;
+        color: #fff;
+        background-color: #566e41;
+	line-height: 1.4em;	
+        margin: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        border: 0.2em solid #EEE;
+}
+
+.section-titlepage h2 {
+	font-size: 14pt;
+	font-weight: bold;
+        color: White;
+        background-color: #566e41;/*#844;*/
+        border: 0.1em solid #EEE;
+	line-height: 1.4em;	
+        margin: 5px;
+        padding-top: 5px;
+        padding-bottom: 3px;
+        padding-left: 3px;
+	}
+
+h2, h2.indexdiv	{
+	font-size: 12pt;
+	font-weight: bold;
+	color:#566e41;
+	}
+h3
+        {
+        font-size: 12pt;
+        font-weight: bold;
+        line-height: 1.4em;
+	color:#566e41;
+        }
+
+h4	
+	{
+	font-size: 12pt;
+	font-weight: bold;
+	color:#566e41;
+	}
+	
+h5	
+	{
+	font-size: 12pt;
+	font-weight: bold;
+	color:#566e41;
+	}
+
+h6	{
+	font-size: 12pt;
+        font-weight: bold;
+	color:#566e41;
+	}
+
+h1.section, h2.section
+	{
+	width: 98%;
+	margin : 10px;
+	font-size: 18pt;
+	font-weight: bold;
+	color: #566e41;
+	}
+
+h2.section 
+	{
+        width: 98%;
+        margin : 10px;
+        border : 1px solid White;
+        font-size: 16pt;
+        font-weight: bold;
+        color: #566e41;
+        }
+
+h3.section 
+	{
+        width: 98%;
+        margin : 10px;
+        border : 1px solid White;
+        font-size: 14pt;
+        font-weight: bold;
+        color: #566e41;
+        }
+
+h4.section, h5.section, h6.section 
+	{
+	width: 98%;
+	margin : 10px;
+	border : 1px solid White;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #566e41;
+	}
+
+div.indexdiv 
+	{
+	width: 98%;
+	margin : 10px;
+	border : 1px solid White;
+	font-size: 12pt;
+	}
+div.chapter	
+	{
+	width: 98%;
+	margin : 0px 0px 0px 0px;
+	}
+
+/* Links
+----------------------------------------------- */
+
+a:link, a:visited {
+        font-weight : bold;
+        text-decoration : none;
+        color: #358;
+        background: transparent;
+        }
+
+a:hover {
+        font-weight : bold;
+        text-decoration : underline;
+        color: #c30;
+        background: transparent;
+        }
+
+a:active {
+        font-weight : bold;
+        text-decoration : none;
+        color: #526968;
+        background: transparent;
+        }
+
+
+strong {
+	color:#000;
+	}
+
+body.book, body.chapter, body.part, body.preface,body.index, body.colophon	{
+	width: 98%;
+	/*margin: 10px;*/
+	border : 1px solid White;
+	}
+
+/*
+ ------------------------------------------------------------------------------
+ Note, Warning, Tip
+ ------------------------------------------------------------------------------
+*/
+.footnotes	
+	{
+	width: 95%;
+	margin : 10px;
+	border : 1px solid #fff;
+	font-size: 12pt;
+	}
+
+.screen	
+	{
+	width: 98%;
+	margin: 0px 20px 0px 0px;
+	font-size: 12pt;
+	}
+
+.tip h3.title:before	
+	{
+	content: "Tip: ";
+        color: #990000;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+
+.tip h3.title 
+	{
+	font-weight: bold;
+	font-size: 14pt;
+        color: #844;
+	border-bottom : 1px dashed #990000;
+	border-top : 1px dashed #990000;
+        padding-left: 5px;
+	}
+
+.warning h3.title:before	
+	{
+	content: "Warning: ";
+        color: #990000;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+
+.caution h3.title:before	
+	{
+	content: "Caution: ";
+        color: #990000;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+
+.note h3.title:before	
+	{
+	content: "Note: ";
+        color: #990000;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+
+.note h3.title {
+	font-weight: bold;
+	font-size: 14pt;
+        color: #844;
+	border-bottom : 1px dashed #990000;
+	border-top : 1px dashed #990000;
+        padding-left: 5px;
+	}
+
+b.othername	
+	{
+	font-size: 18pt;
+	color:#666666;
+	font-weight: bold;
+	margin : 2px;
+	line-height: 1.4em;
+	}
+
+div.copyright p
+	{
+	font-size: 10pt;
+	color:#808080;
+	margin : 2px;
+        padding-bottom: 1px;
+	}
+
+div.legalnotice
+	{
+	font-size: 10pt;
+	color:#808080;
+	margin : 2px;
+        padding-bottom: 1px;
+	}
+
+isbn.isbn	{
+	font-size: 12pt;
+	color:#666666;
+	margin : 10px;
+	line-height: 1.4em;
+	}
+
+div.cmdsynopsis {
+	}
+/*
+ ------------------------------------------------------------------------------
+ TOC
+ ------------------------------------------------------------------------------
+*/
+
+.toc	
+	{
+	font-size: 12pt;
+	margin : 10px 20px 10px 10px;
+	padding-left: 5px;
+	}
+
+.toc dl, dt, dd	
+	{
+	margin-left: 5px;
+	padding: 3px;
+	}
+
+.toc p 
+	{
+        color: #566e41;
+	font-size: 14pt;
+	border-bottom : 1px dotted #566e41;
+	margin : 10px 20px 10px 10px;
+	padding-left: 5px;
+	}
+.list-of-examples p 
+	{
+        color: #566e41;
+	font-size: 14pt;
+	border-bottom : 1px dotted #8C6E41;
+	margin : 10px 20px 10px 10px;
+	padding-left: 5px;
+	}
+
+.list-of-examples dl {
+	margin : 10px 20px 10px 10px;
+	padding-left: 5px;
+	}
+
+.citetitle 
+	{
+	font-size: 12pt;
+	color:#666666;
+	font-weight: bold;
+	}
+
+/*
+ ------------------------------------------------------------------------------
+ SGML elements
+ ------------------------------------------------------------------------------
+*/
+.sgmltag-element, .sgmltag-attribute, .replaceable { 
+	border: 2px dotted #fff;
+        color: #3AA00B;
+	}
+.sgmltag-attribute
+	{
+   	font-style: italic;
+	}
+.sgmltag-element:before 
+	{
+   	content: "<";
+   	}
+
+.sgmltag-element:after 
+	{
+   	content: ">";
+	}
+DIV.section .refentry 
+	{
+  	font: 110% "Andale Mono", Courier, "Courier New", monospace;
+  	margin-left: 0.5em; 
+  	padding-left: 0.5em; 
+  	margin-top: 1em; 
+  	margin-bottom: 1em;
+  	border : 1px dotted #3AA00B;
+  	}
+
+/*
+ ------------------------------------------------------------------------------
+ Examples
+ ------------------------------------------------------------------------------
+*/
+.example
+	{
+  	font: 85% "Andale Mono", Courier, "Courier New", monospace;
+  	margin-left: 0.5em; 
+  	padding-left: 0.5em; 
+  	margin-top: 1em; 
+  	margin-bottom: 1em;
+  	border : 1px solid #3AA00B;
+	}
+
+.example p.title 
+	{
+	padding-left: 0.0em;
+        margin-bottom: 2px;
+        color: #566e41;
+	}
+
+/*
+ ------------------------------------------------------------------------------
+ Tables and Lists
+ ------------------------------------------------------------------------------
+*/
+td, th, .variablelist 
+	{
+	font-size: 12pt;
+	margin : 10px 20px 10px 10px;
+	}
+
+li {
+	font-size: 12pt;
+	}
+
+table {
+	font-size: 12pt;
+	margin : 0px 0px 0px 10px;
+	}
+/*
+ ------------------------------------------------------------------------------
+ Qandaset in Tables
+ ------------------------------------------------------------------------------
+*/
+.qandaset dl {
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	}
+.qandaset table 
+	{
+	border-collapse: collapse;
+	}
+.qandaset tr.toc 
+	{
+	padding-left: 5px;
+	margin: 0;
+  	border: 1px dotted #3AA00B;
+	}
+.qandaset tr.toc td dl dt:before 
+	{
+	content: "Q: ";
+	}
+.qandaset tr.toc td dl dt:after 
+	{
+	content: " ?";
+	}
+.qandaset tr.question td 
+	{
+	padding-top: 10px;
+	}
+.qandaset tr.question td p 
+	{
+	padding-left: 5px;
+	margin: 0;
+	color:#990000;
+	}
+.qandaset tr.question td p:after 
+	{
+	content: " ?";
+	}
+.qandaset tr.question td p:before 
+	{
+	content: "Q: ";
+	font-weight: bold;
+	}	
+.qandaset tr.question td 
+	{
+	padding-left: 5px;
+	margin: 0;
+	}
+.qandaset tr.answer td 
+	{
+	padding-left: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	}
+.qandaset tr.answer td p 
+	{
+	padding-left: 5px;
+	margin: 0;
+	}
+.qandaset tr.question td, .qandaset tr.answer td 
+	{
+	vertical-align: top;
+	}
+.qandaset strong 
+	{
+	text-align: right;
+	}
+
+.preface , .chapter, .section, .refentry, .glossary, .colophon, .appendix, .list-of-examples, .copyright, .legalnotice {
+	padding: 0 0 5px 16px;
+	}
+
+

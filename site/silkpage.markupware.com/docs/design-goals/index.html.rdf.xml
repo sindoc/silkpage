@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="/rdf-html.xsl"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:cc="http://web.resource.org/cc/" xmlns:urfm="http://purl.org/urfm/" xmlns:rss="http://purl.org/rss/1.0/" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <rdf:Description rdf:about="http://silkpage.markupware.com/docs/design-goals.xml">
+      <dc:title>Design Goals</dc:title>
+      <dc:date> 2006-04-17T 16:26</dc:date>
+      <dc:rights>Copyright 2004, 2005, 2006, 2007, 2008, 2009, 2010 MarkupWare (http://www.markupware.com/)</dc:rights>
+      <dc:description>SilkPage Design Goals</dc:description>
+      <rdf:type rdf:resource="http://www.markupware.com/metadata/taxonomy#Webpage"/>
+      <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+      <dc:format>application/xml</dc:format>
+      <dc:identifier>designGoals</dc:identifier>
+      <dc:contributor rdf:resource="http://www.markupware.com/metadata/taxonomy#SilkaPage"/>
+      <dc:creator>SilkTeam</dc:creator>
+      <dc:publisher rdf:resource="http://www.markupware.com/metadata/taxonomy#SilkPage"/>
+      <cc:license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.0/"/>
+   </rdf:Description>
+   <cc:License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.0/">
+      <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+      <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+      <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+      <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+      <cc:requires rdf:resource="http://web.resource.org/cc/Copyleft"/>
+      <cc:prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+   </cc:License>
+</rdf:RDF>

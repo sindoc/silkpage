@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glossary 
+    xml:id="silkpage.default.glossary"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://docbook.org/ns/docbook"
+    version="ipa">
+
+  <title>Glossary</title>
+
+<glossentry xml:id="browser">
+  <glossterm>Web Browser</glossterm>
+  <glossdef>
+    <para>
+       A program used to view <acronym>HTML</acronym> documents. Some examples
+       include: 
+       <link xlink:href="http://www.mozilla.org/products/firefox">FireFox</link>,
+       <link xlink:href="http://www.mozilla.org/products/mozilla1.x">Mozilla</link>,
+       <link xlink:href="http://www.opera.com">Opera</link>,
+       <link xlink:href="http://www.apple.com/safari">Safari</link>
+    </para>
+    <glossseealso otherterm="xhtml"/>
+    <glossseealso otherterm="html"/>
+    <glossseealso otherterm="css"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="os">
+  <glossterm>Operating System</glossterm>
+  <acronym>OS</acronym>
+  <glossdef>
+    <para>
+      A software program, which manages the basic operations of a computer 
+      system. These operations include memory appointment, the order and method
+      of handling tasks, flow of information into and out the main processor 
+      and to peripherals, etc.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="faq">
+  <acronym>FAQ</acronym>
+  <glossterm>Frequently Asked Questions</glossterm>
+  <glossdef>
+    <para>
+      FAQs are documents that list and answer the most common questions on
+      a particular subject.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="xml">
+  <acronym>XML</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/XML/">Extensible Markup Language</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      Extensible Markup Language (XML) is a simple, very flexible text format 
+      derived from SGML (ISO 8879). Originally designed to meet the challenges 
+      of large-scale electronic publishing, XML is also playing an increasingly
+      important role in the exchange of a wide variety of data on the Web and 
+      elsewhere.      
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="xslt">
+  <acronym>XSLT</acronym>
+  <glossterm>
+    <link xlink:href="http://www.w3.org/TR/xslt">XSL Transformations</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      XSL Transformations, a language for transforming XML documents into other
+      XML documents.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="xsl">
+  <acronym>XSL</acronym>
+  <glossterm>
+    <link xlink:href="http://www.w3.org/Style/XSL">Extensible Stylesheet
+    Language Family</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      XSL is a family of recommendations for defining XML document 
+      transformation and presentation.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="css">
+  <acronym>CSS</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/Style/CSS">Cascading Style Sheets</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      Cascading Style Sheets (CSS) is a simple mechanism for adding style 
+      (e.g. fonts, colors, spacing) to Web documents.  
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="html">
+  <acronym>HTML</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/MarkUp/">
+      HyperText Markup Language
+    </link>
+  </glossterm>
+  <glossdef>
+    <para>
+      A text description language related to SGML; it mixes text format markup
+      with plain text content to describe formatted text. HTML is ubiquitous 
+      as the source language for Web pages on the Internet.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="xhtml20">
+  <acronym>XHTML 2.0</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/MarkUp/">
+      Extensible HyperText Markup Language 2.0
+    </link>
+      </glossterm>
+  <glossdef>
+    <para>
+      XHTML 2 is a general-purpose markup language designed for representing 
+      documents for a wide range of purposes across the World Wide Web. To this
+      end it does not attempt to be all things to all people, supplying every 
+      possible markup idiom, but to supply a generally useful set of elements.
+    </para>
+    <glossseealso otherterm="xhtml"/>
+    <glossseealso otherterm="html"/>
+    <glossseealso otherterm="css"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="xhtml">
+  <acronym>XHTML</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/MarkUp/">
+      Extensible HyperText Markup Language
+    </link>
+  </glossterm>
+  <glossdef>
+    <para>
+      An XML lookalike for HTML defined by one of several XHTML DTDs. To use
+      XHTML for everything would of course defeat the purpose of XML, since 
+      the idea of XML is to identify information content, not just tell how
+      to display it. XHTML makes the conversion from HTML to XML, though. 
+    </para>
+    <glossseealso otherterm="xhtml20"/>
+    <glossseealso otherterm="html"/>
+    <glossseealso otherterm="css"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="rdf">
+  <acronym>RDF</acronym>
+  <glossterm>
+    Resource Description Framework
+  </glossterm>
+  <glossdef>
+    <para>
+      A specification being developed in 2000 by the W3C as a foundation
+      for processing metadata regarding resources on the Internet.      
+    </para>
+    <glossseealso otherterm="rss">RSS</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="rss">
+  <acronym>RSS</acronym>
+  <glossterm>RDF Site Summary</glossterm>
+  <glossdef>
+    <para>
+      <acronym>RSS</acronym> is a lightweight multipurpose extensible metadata
+      description and syndication format. <acronym>RSS</acronym> is an 
+      <acronym>XML</acronym> application, conforms to the 
+      <acronym>W3C</acronym>'s <acronym>RDF</acronym> Specification and is 
+      extensible via <acronym>XML</acronym>-namespace and/or 
+      <acronym>RDF</acronym> based modularization.      
+    </para>
+    <glossseealso otherterm="rdf"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="url">
+  <acronym>URL</acronym>
+  <glossterm>Uniform Resource Locator</glossterm>
+  <glossdef>
+    <para>
+      Uniform Resource Locator (URL) specified by <acronym>W3C</acronym>.
+    </para>
+    <glossseealso otherterm="w3c">W3C</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="rtf">
+  <acronym>RTF</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/MarkUp/">
+      Rich Text Format
+    </link>
+  </glossterm>
+  <glossdef>
+    <para>
+      Rich Text Format
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="pdf">
+  <acronym>PDF</acronym>
+  <glossterm>
+    <link xlink:href="http://w3.org/MarkUp/">
+      Portable Document Format
+    </link>
+      </glossterm>
+  <glossdef>
+    <para>
+      Portable Document Format
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="tidy">
+  <acronym>
+    TIDY
+  </acronym>
+  <glossterm>
+    <link xlink:href="http://www.w3.org/People/Raggett/tidy">
+      TIDY
+    </link>
+  </glossterm>
+  <glossdef>
+    <para>
+       TIDY is a free utility from W3C to fix 
+       <acronym>HTML</acronym>/<acronym>XHTML</acronym> mistakes automatically
+       and tidy up sloppy editing into nicely layed out markup
+    </para>
+    <glossseealso otherterm="xhtml"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="docbook.website">
+  <acronym>DocBook Website</acronym>
+  <glossterm>
+    <link xlink:href="http://docbook.sourceforge.net/projects/website/index.html">
+      DocBook Website
+    </link>
+  </glossterm>
+  <glossdef>
+    <para>
+      The Website doctype and stylesheets are for making websites (like this 
+      one). If you generate a website using Website, consider including the 
+      button above in your site (so that your visitors will know you built it 
+      using DocBook).
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="docbook.xsl">
+  <acronym>DocBook XSL Stylesheets</acronym>
+  <glossterm>
+    <para>
+      <link xlink:href="http://docbook.sourceforge.net/projects/xsl/index.html">
+	DocBook XSL Stylesheets
+      </link>      
+    </para>
+  </glossterm>
+  <glossdef>
+    <para>
+      These are <acronym>XSL</acronym> stylesheets for the DocBook 
+      <acronym>DTD</acronym> and its derivatives (Simplified DocBook, etc.). 
+      If you use them to generate <acronym>PDF</acronym>/print documents or 
+      Web/<acronym>HTML</acronym> content, consider including the button above 
+      somewhere in your documents (so that your reader will know the documents 
+      were built using DocBook).
+    </para>
+    <glossseealso otherterm="xsl">XSL</glossseealso>
+    <glossseealso otherterm="xsl">XSLT</glossseealso>
+    <glossseealso otherterm="xsl">FO</glossseealso>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="ant" xreflabel="Ant">
+  <glossterm>
+    <link xlink:href="http://ant.apache.org">
+      Apache Ant
+    </link>
+  </glossterm>
+  <acronym>Ant</acronym>
+  <glossdef>
+    <para>
+      Ant is a Java-based build tool. In theory, it is kind of like Make,
+      but without Make's wrinkles.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="java">
+  <acronym>Java</acronym>
+  <glossterm>
+    <link xlink:href="http://java.sun.com">Java 2 Standard Edition</link>
+  </glossterm>
+  <glossdef>
+    <para>Java 2 Standard Edition.</para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="j2ee">
+  <acronym>J2EE</acronym>
+  <glossterm>
+    <link xlink:href="http://java.sun.com">Java 2 Standard Edition</link>
+  </glossterm>
+  <glossdef>
+    <para>Java 2 Standard Edition.</para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="firefox">
+  <glossterm>FireFox</glossterm>
+  <glossdef>
+    <para>
+     The <link xlink:href="http://www.mozilla.org">Mozilla</link> based Web Browser. 
+    </para>
+    <glossseealso otherterm="browser"/>
+  </glossdef>
+</glossentry>
+
+
+<glossentry xml:id="w3c">
+  <acronym>W3C</acronym>
+  <glossterm>
+    <link xlink:href="http://www.w3.org">World Wide Web Consortium</link>
+  </glossterm>
+  <glossdef>
+    <para>
+     The World Wide Web Consortium (<acronym>W3C</acronym>) develops 
+     interoperable technologies (specifications, guidelines, software, 
+     and tools) to lead the Web to its full potential.      
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="gnu">
+  <acronym>GNU</acronym>
+  <glossterm>
+    <link xlink:href="http://www.gnu.org">GNU's Not Unix</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      A project started by Richard Stallman that has turned into the Free
+      Software Foundation (FSF) to develop and promote alternatives to 
+      proprietary UNIX implementations. GNU software is licensed under the
+      GPL.
+    </para>
+    <glossseealso otherterm="fsf"/>
+    <glossseealso otherterm="gpl"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="asf">
+  <acronym>ASF</acronym>
+  <glossterm>
+    <link xlink:href="http://www.apache.org">Apache Software Foundation</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      The Apache Software Foundation, a non-profit organization.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="fsf">
+  <acronym>FSF</acronym>
+  <glossterm>
+    <link xlink:href="http://www.fsf.org">Free Software Foundation</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      founded in 1985, is dedicated to promoting computer users' right to use,
+      study, copy, modify, and redistribute computer programs. The 
+      <acronym>FSF</acronym> promotes the development and use of free 
+      (as in freedom) software ---particularly the <acronym>GNU</acronym> 
+      operating system(used widely today in its <acronym>GNU</acronym>/Linux
+      variant)---and free (as in freedom) documentation. The FSF also helps to
+      spread awareness of the ethical and political issues of freedom in the 
+      use of software.
+    </para>
+    <glossseealso otherterm="gnu"/>
+    <glossseealso otherterm="gpl"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="wasp">
+  <acronym>WaSP</acronym>
+  <glossterm>
+    <link xlink:href="http://www.webstandards.org">Web Standards Project</link>
+  </glossterm>
+  <glossdef>
+    <para>
+      Founded in 1998, The Web Standards Project (WaSP) fights for standards 
+      that reduce the cost and complexity of development while increasing the 
+      accessibility and long-term viability of any site published on the Web.
+      We work with browser companies, authoring tool makers, and our peers to 
+      deliver the true power of standards to this medium.
+    </para>
+    <glossseealso otherterm="xhtml"/>
+    <glossseealso otherterm="css"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="ram">
+  <glossterm>Random Access Memory</glossterm>
+  <acronym>RAM</acronym>
+  <glossdef>
+    <para>
+      The place in a computer where the operating system, application programs,
+      and data in current use are kept temporarily so that they can be quickly
+      reached by the computer's processor.
+    </para>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="gpl">
+  <acronym>GPL</acronym>
+  <glossterm>General Public License</glossterm>
+  <glossdef>
+    <para>
+      The <acronym>GNU</acronym> Public License provides for free access to 
+      software published its terms. Users are allowed to copy, modify, and 
+      redistribute <acronym>GPL</acronym> software. 
+    </para>
+    <glossseealso otherterm="gnu"/>
+    <glossseealso otherterm="fsf"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="xsl-fo">
+  <acronym>XSL-FO</acronym>
+  <glossterm>XSL Formatting Objects</glossterm>
+  <glossdef>
+    <para>
+      Formatting Objects, the part of the XSL standard used for specifying 
+      typesetting instructions. Also known as XSL-FO.
+    </para>
+    <glossseealso otherterm="xsl"/>
+    <glossseealso otherterm="xslt"/>
+    <glossseealso otherterm="w3c"/>
+    <glossseealso otherterm="fop"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="fop">
+  <acronym>FOP</acronym>
+  <glossterm>Formatting Objects Processor</glossterm>
+  <glossdef>
+    <para>
+      FOP is an XSL-FO processor, which provides the feature to convert XSL-FO-
+      Files to PDF or direct-printable-files. FOP was originally developed by 
+      James Tauber who donated it to the Apache Software Foundation in 1999.
+    </para>
+    <glossseealso otherterm="xsl"/>
+    <glossseealso otherterm="xsl-fo"/>
+    <glossseealso otherterm="asf"/>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="SmartResume">
+  <glossterm>Smart Resume</glossterm>
+  <acronym>SmartResume</acronym>
+  <glossdef>
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="php">
+  <glossterm>Hypertext Preprocessor</glossterm>
+  <acronym>PHP</acronym>
+  <glossdef>
+    PHP is a widely-used open-source programming language primarily for 
+    server-side applications and developing dynamic web content.
+  </glossdef>
+  <glossseealso otherterm="html"/>
+</glossentry>
+
+<glossentry xml:id="jam">
+  <glossterm>
+    <link xlink:href="http://www.dixite.com/docs/jam/">Java Apache MySQL</link>
+  </glossterm>
+  <acronym>JAM</acronym>
+  <glossdef>
+    An Open Source Architecture for Enterprise Applications.
+  </glossdef>
+  <glossseealso otherterm="j2ee"/>
+  <glossseealso otherterm="cms"/>
+</glossentry>
+
+<glossentry xml:id="cms">
+  <glossterm>Content Management System</glossterm>
+  <acronym>CMS</acronym>
+  <glossdef>
+    A CMS, or Content Management System, is an application designed to store, 
+    format, reproduce and manage Web/intranet data. The CMS usually uses a 
+    database to store the content and a server-side scripting language to 
+    recall and present the data.
+  </glossdef>
+  <glossseealso otherterm="www"/>
+</glossentry>
+
+<glossentry xml:id="lamp">
+  <glossterm>Linux, Apache, MySQL, Perl, PHP, and/or Python</glossterm>
+  <acronym>LAMP</acronym>
+  <glossdef>
+    LAMP is an acronym for a set of free software programs commonly used 
+    together to run dynamic Web sites:* Linux, the operating system;* Apache, 
+    the Web server;* MySQL, the database management system 
+    (or database server);* Perl, PHP, and/or Python, scripting languages. 
+  </glossdef>
+  <glossseealso otherterm="html"/>
+</glossentry>
+
+<glossentry xml:id="ldap">
+  <glossterm>Lightweight Directory Access Protocol</glossterm>
+  <acronym>LDAP</acronym>
+  <glossdef>
+    A protocol used to access a directory listing. It is being implemented in 
+    Web browsers and e-mail programs to enable lookup queries.
+  </glossdef>
+</glossentry>
+
+<glossentry xml:id="php">
+  <glossterm>Hypertext Preprocessor</glossterm>
+  <acronym>PHP</acronym>
+  <glossdef>
+    PHP is a widely-used open-source programming language primarily for 
+    server-side applications and developing dynamic web content.
+  </glossdef>
+  <glossseealso otherterm="html"/>
+</glossentry>
+
+<glossentry xml:id="spposs">
+  <glossterm>
+    <link xlink:href="http://www.dixite.com/docs/spposs/">
+  Software Production Process using Open Source Software</link></glossterm>
+  <acronym>SPPOSS</acronym>
+  <glossseealso otherterm="fsf"/>
+  <glossseealso otherterm="asf"/>
+  <glossseealso otherterm="gpl"/>
+</glossentry>
+
+<glossentry xml:id="urfm">
+  <glossterm>Universal Resource File Manifest</glossterm>
+  <acronym>URFM</acronym>
+  <glossdef>
+    URFM provides a universal and yet easy approach to describe resource files.
+  </glossdef>
+  <glossseealso otherterm="rdf"/>
+  <glossseealso otherterm="www"/>
+</glossentry>
+
+<glossentry xml:id="urfm">
+  <glossterm>Universal Resource File Manifest</glossterm>
+  <acronym>URFM</acronym>
+  <glossdef>
+    URFM provides a universal and yet easy approach to describe resource files.
+  </glossdef>
+  <glossseealso otherterm="rdf"/>
+  <glossseealso otherterm="www"/>
+</glossentry>
+
+<glossentry xml:id="estime">
+  <glossterm>Explore, Sketch, Typography, Imagery, Make Up, Execute</glossterm>
+  <acronym>ESTIME</acronym>
+  <glossdef>
+    Explore, Sketch, Typography, Imagery, Make-Up, Execute
+  </glossdef>
+  <glossseealso otherterm="www"/>
+</glossentry>
+
+<glossentry xml:id="ajax">
+  <glossterm>Asynchronous JAvaScript + XML</glossterm>
+  <acronym>AJAX</acronym>
+  <glossdef>
+    AJAX is a term describing a web development technique for creating 
+    interactive web applications using a combination of: XHTML, CSS, DOM, XML,
+    XSLT, JavaScript, XMLHttpRequest.
+  </glossdef>
+  <glossseealso otherterm="css"/>
+  <glossseealso otherterm="xhtml"/>
+  <glossseealso otherterm="dom"/>
+  <glossseealso otherterm="xml"/>
+  <glossseealso otherterm="xslt"/>
+</glossentry>
+
+<glossentry xml:id="atom">
+  <glossterm>Atom</glossterm>
+  <acronym>Atom</acronym>
+  <glossdef>
+    Atom is an XML-based document format and HTTP-based protocol designed for 
+    the syndication of Web content such as Weblogs and news headlines to Web 
+    sites as well asdirectly to user agents. It is similar to the various 
+    versions of RSS, but aims to be more flexible. Critics would argue that it 
+    has merely created additional confusion. 
+  </glossdef>
+  <glossseealso otherterm="rss"/>
+  <glossseealso otherterm="xml"/>
+</glossentry>
+
+</glossary>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	 xmlns:doap="http://usefulinc.com/ns/doap#" 
+	 xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	 xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <rdf:Description rdf:about="http://silkpage.markupware.com/docs/doap.rdf">
+    <dc:title>SilkPage Documentation Project Description</dc:title>
+    <dc:description>
+      This RDF file describes SilkPage Documentation project.
+    </dc:description>
+    <dc:publisher rdf:resource="http://www.markupware.com/"/>
+    <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+  </rdf:Description>
+
+  <doap:Project>
+    <doap:name>SilkPage Documentation</doap:name>
+    <dc:identifier>http://silkpage.markupware.com/docs/</dc:identifier>
+    <doap:shortname>silkpage-docs</doap:shortname>
+    <doap:homepage rdf:resource="http://silkpage.markupware.com/docs/"/>
+    <doap:license rdf:resource="http://usefulinc.com/doap/licenses/gfdl"/>
+    <doap:created>2004-12-20T20:19:41+01:00</doap:created>
+    <rdfs:seeAlso>
+      <doap:Project rdf:about="http://silkpage.markupware.com/doap.rdf"/>
+    </rdfs:seeAlso>
+    <doap:description>
+    Installation, Customization and Usage Guide.
+    SilkPage User Guide is an extensive reference for installing, using 
+    and customizing the SilkPage software. Users of DocBook and DocBook 
+    Website have little trouble adapting to SilkPage. New Users will be 
+    able to use basic features fairly rapidly by reading the User Guide.
+    </doap:description>
+    <rdf:type rdf:resource="http://xmlns.com/wordnet/1.6/Document"/>
+    <doap:download-page rdf:resource="http://silkpage.markupware.com/download.rdf"/>
+    <doap:repository>
+      <doap:CVSRepository>
+	<doap:anon-root>:pserver:guest@cvs.dev.java.net:/cvs</doap:anon-root>
+	<doap:module>silkpage/docs</doap:module>
+	<doap:browse rdf:resource="https://silkpage.dev.java.net/source/browse/silkpage/docs"/>
+      </doap:CVSRepository>
+    </doap:repository>
+  </doap:Project>
+  
+</rdf:RDF>

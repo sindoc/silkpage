@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<webpage id="feedback"
+  	xmlns:html="http://www.w3.org/1999/xhtml">
+  <config param="rcsdate" value="$Date: 2006/04/17 18:43:19 $"/>
+  <head>
+    <title>Feedback</title>
+    <summary>Let us know what you think about our website.</summary>
+    <keywords>Feedback, Site</keywords>
+  </head>
+  <itemizedlist>
+    <para>
+      Thank you for taking the time to provide SilkPage with your feedback.
+      We value your feedback and try to evaluate it as soon as we can.
+    </para>
+    <listitem>
+    </listitem>
+  </itemizedlist>
+  <?php
+    if ((@$_GET["komail"]==1) OR (@$_GET["notext"]==1) OR (@$_GET["ko"]==1)) {
+        echo '<div class="error"><strong>ERROR: </strong>',
+             'Please correct the following errors and re-submit your message.<ol>';
+        if (@$_GET["komail"]==1)
+            echo '<li>Invalid <em>Email</em> address.</li>';
+        if (@$_GET["notext"]==1)
+            echo '<li>Invalid <em>Comment</em>.</li>';
+        if (@$_GET["ko"]==1)
+            echo '<li>Failed to send your message. Please try later.</li>';
+        echo '</ol></div>';
+    }
+  ??>
+  <html:form action="/about/feedback-send.php" method="POST" id="contactForm">
+    <html:fieldset>
+      <html:legend>Feedback Form</html:legend>
+      <html:p class="name">
+	<html:label for="contactForm-name" accesskey="9">Name: </html:label>
+	<html:br/>
+	<html:input id="contactForm-name" 
+		    name="name" 
+		    type="text" 
+		    size="40" 
+		    tabindex="1"/>
+      </html:p>
+      <html:p class="email">
+	<html:label for="contactForm-email">Email: </html:label> 
+	<html:em>*</html:em><html:br/>
+	<html:input name="email" 
+		    type="text" 
+		    id="contactForm-email" 
+		    size="40" 
+		    tabindex="2"/>
+      </html:p>
+      <html:p class="url">
+	<html:label for="contactForm-url">URL of specific page(s) 
+	(if applicable)</html:label><html:br/>
+	<html:textarea name="url" 
+		       id="contactForm-url" 
+		       rows="3"
+		       cols="50"
+		       tabindex="3"/>
+      </html:p>
+      <html:p class="comment">
+	<html:label for="contactForm-comment">Comments: </html:label>
+	<html:em>*</html:em><html:br/>
+	<html:textarea name="comment" 
+		       id="contactForm-comment" 
+		       rows="10"
+		       cols="50"
+		       tabindex="4"/>
+      </html:p>
+      <html:p>
+	<html:input class="button" type="submit" value="send" tabindex="7"/>
+      </html:p>
+      <html:p class="note"><html:strong class="alert">Note</html:strong>: 
+      Fields marked with a <html:em>*</html:em> are required.</html:p>
+    </html:fieldset>
+  </html:form>
+</webpage>

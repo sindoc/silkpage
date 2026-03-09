@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book [
+<!ENTITY % constants SYSTEM "constants.ent">
+%constants;
+]>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xl="http://www.w3.org/1999/xlink"  version="5.0" xml:lang="en">
+  <!-- Document Information -->
+  <info>
+    <title>SilkPage User Guide (&silkpage.docs.version;)</title>
+    <subtitle>Setup and Usage Guide</subtitle>
+    
+    <legalnotice>
+      <para>
+	Permission is granted to copy, distribute and/or modify
+	<acronym>
+	  <link xl:href="http://silkpage.markupware.com/">SilkPage</link>
+	</acronym>
+	Documentation under the terms of the GNU Free Documentation License, Version 1.1 or any later version published by the Free Software Foundation. A copy of the license is available at
+	<link xl:href="http://www.gnu.org/copyleft/fdl.html" />
+      </para>
+    </legalnotice>
+    
+    <copyright>
+      <year>2004</year>
+      <year>2005</year>
+      <year>2006</year>
+      <year>2007</year>
+      <year>2008</year>
+      <year>2009</year>
+      <holder>
+	<link xl:href="http://www.markupware.com/">MarkupWare</link>
+      </holder>
+    </copyright>
+    
+    <authorgroup>
+      <author>
+	<personname>Javad K. Heshmati</personname>
+	<email>javad@khakbaz.com</email>
+      </author>
+      <author>
+	<personname>Sina K. Heshmati</personname>
+	<email>sina@khakbaz.com</email>
+      </author>
+    </authorgroup>
+    
+    <pubdate>2006-08-23</pubdate>
+    
+    <revhistory>
+      <revision>
+	<revnumber>&silkpage.docs.version;</revnumber>
+	<date>23 August 2006</date>
+	<revremark>First draft for review.</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  
+  <!-- Document Content -->
+
+  <xi:include href="introduction.xml" /> 
+  <xi:include href="installation.xml" /> 
+  <xi:include href="usage.xml" /> 
+  <xi:include href="config-files-global.xml" /> 
+  <xi:include href="config-files-instance.xml" /> 
+  <xi:include href="commands.xml" /> 
+  <xi:include href="faq.xml" /> 
+  <xi:include href="resources.xml" /> 
+  <xi:include href="glossary.xml" /> 
+  <xi:include href="colophon.xml" /> 
+
+</book>

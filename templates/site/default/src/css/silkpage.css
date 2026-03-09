@@ -1,0 +1,134 @@
+/* CSS
+-------------------------------------------------------------------
+# rdf:
+# dc:title Base CSS Styling
+# cvs:date $Date: 2006-04-08 15:48:32 $
+# cvs:id $Id: silkpage.css,v 1.2 2006-04-08 15:48:32 sina Exp $
+# dc:rights Copyright &#169; 2006 MarkupWare.
+# dc:description Base CSS Stylesheet for a given website.
+# dc:author MarkupWare Team
+---------------------------------------------------------------- */
+
+/* imports Phenix style.
+----------------------------------------------- */
+
+@import url(phenix/main.css);
+
+#header div#title { background: url(../img/mw_logo.gif) top left no-repeat; }
+
+/* hidden references */
+#secnav li.sitemap,
+#secnav li.site-license,
+#secnav li.site-feedback,
+#secnav li.site-search,
+/* no sidebar for sitemap */
+.sitemap #sidebar,
+.site-search #sidebar #secnav, 
+.site-search #maincontent h1,
+.site-search #maincontent h2,
+/* no h1 for the following pages */
+.home h1, 
+.doc-phenix h1,
+        display: none; 
+	}
+
+.sitemap #wrapper, 
+.feeds #wrapper, 
+.site-license #wrapper, 
+.home #wrapper,
+.site-feedback #wrapper, 
+.site-search #wrapper {
+        width: 784px;
+	}
+
+.home #wrapper, 
+.sitemap #wrapper, 
+.site-search #wrapper {
+	background: #fff;
+	}
+
+.home #maincontent, 
+.sitemap #maincontent, 
+.site-search #maincontent {
+	width: 95%;
+	padding-top: 2em;
+	}
+
+.sitemap #headitems .sitemap.vbar { display: none; }
+.site-search #headitems .site-search.vbar { display: none; }
+
+.searchLinks a { 
+	font-size: 86%; 
+	}
+
+.searchLinks { 
+	text-indent: 10px; 
+	margin-top: -12px; 
+	}
+
+.site-search .google a span { visibility: hidden; }
+.site-search .google a { text-decoration: none; background-image: none;	} 
+.site-search .google { 
+	background: #fff url(../img/google.gif) top right no-repeat;
+	text-align: right;
+	}
+
+/* sitemap */
+.sitemap #maincontent h1, 
+.sitemap #maincontent .notoc,
+.sitemap #maincontent .headitem.sitemap,
+.sitemap #maincontent p.dixite .hbar,
+.sitemap #maincontent p.news .hbar { 
+	display: none;
+	}
+
+.sitemap #maincontent p.solutions a, 
+.sitemap #maincontent p.services a, 
+.sitemap #maincontent p.docs a, 
+.sitemap #maincontent p.clients-and-references a,
+.sitemap #maincontent p.opensource a, 
+.sitemap #maincontent p.dixite a, 
+.sitemap #maincontent p.news a { 
+	color: #E97E00; 
+	text-decoration: none;
+	}
+
+.hbar { margin-left: 5px; }
+
+.sitemap #maincontent .summary { font-size: 88%; }
+.sitemap #maincontent p.solutions, 
+.sitemap #maincontent p.services, 
+.sitemap #maincontent p.clients-and-references, 
+.sitemap #maincontent p.opensource, 
+.sitemap #maincontent p.dixite, 
+.sitemap #maincontent p.docs, 
+.sitemap #maincontent p.news { 
+	border-bottom: 1px solid #ccc; 
+	font-size: 135%;
+	color: #000;
+	}
+
+.sitemap #maincontent p.docs, 
+.sitemap #maincontent p.news { 
+	border-bottom: 0px;
+	}
+
+.sitemap #maincontent li.solutions, 
+.sitemap #maincontent li.services, 
+.sitemap #maincontent li.solutions-and-services,
+.sitemap #maincontent li.clients-and-references,
+.sitemap #maincontent li.docs, 
+.sitemap #maincontent li.opensource, 
+.sitemap #maincontent li.dixite, 
+.sitemap #maincontent li.news { 
+	background-image: none; 
+	margin:0 0 2em 0; 
+	}
+
+.sitemap #maincontent li.solutions-and-services { 
+	padding: 0; 
+	margin: 0; 
+	}
+
+form .invalid input { background-color: #ffcccc; }
+#footitems span.feedback a { margin-left: 5px; }

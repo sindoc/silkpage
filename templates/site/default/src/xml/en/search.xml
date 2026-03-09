@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webpage xmlns:html="http://www.w3.org/1999/xhtml"
+	 id="search">
+  <config param="rcsdate" value="$Date: 2006-04-08 15:54:17 $"/>
+  <head>
+    <title>Search</title>
+    <summary>Search this site</summary>
+    <keywords>SilkPage, Google, Search</keywords>
+  </head>
+  <html:form method="get" id="searchForm" title="Google Search Form"
+	     action="http://www.google.com/search">
+    <html:fieldset>
+      <html:legend>Search This Site</html:legend>
+      <html:input type="hidden" name="hl" value="en" />
+      <html:input type="hidden" name="ie" value="UTF-8"/>
+      <html:input type="hidden" name="btnG" value="Google+Search" />
+      <html:input type="hidden" name="as_qdr" value="all" />
+      <html:input type="hidden" name="as_occt" value="any" />
+      <html:input type="hidden" name="as_dt" value="i" />
+      <html:input type="hidden" name="domains" value="example.org"/>
+      <html:input type="hidden" id="searchSite" name="sitesearch" 
+		  checked="checked" value="example.org" />
+      <html:input type="text" name="q" size="25" maxlength="255" 
+		  id="searchText" value="Keyword ..."
+		  onfocus="if(this.value=='Keyword ...')this.value='';"
+		  onblur="if(this.value=='') this.value='Keyword ...';"/>
+      <html:input type="submit" name="sa" id="searchSubmit" value="Search"/>
+    </html:fieldset>
+  </html:form>
+  <para role='searchLinks'>
+    <phrase role='sitemap'><olink targetdoc="sitemap"/></phrase> 
+  </para>
+  <para role='google'>
+    <ulink url="http://www.google.com/"><orgname>Google</orgname></ulink>
+  </para>
+</webpage>

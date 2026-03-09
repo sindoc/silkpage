@@ -1,0 +1,51 @@
+<webpage id="participate">
+  <config param="rcsdate" value="$Date: 2006/04/17 14:03:13 $"/>
+  <head>
+    <title>Participate</title>
+    <summary>Join SilkPage team</summary>
+    <keywords>Participate, Contribute</keywords>
+  </head>
+
+  <para>
+    SilkPage is an <olink targetdoc="license">open source project</olink>. That
+    means it is primarily community-driven work. You too, can participate. 
+    Here are some of the ways you can participate/contribute to the SilkPage 
+    project. 
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        <emphasis>Report Bugs</emphasis>:
+        Bug reports are very helpful to us and great way to contribute to
+        the SilkPage project. Please make sure you can reproduce the problem, 
+        and be very explicit in your description.
+        <olink targetdoc="dev">Vist the developer Page</olink> to report bugs.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <emphasis>Contribute Code</emphasis>:
+	sources are always packed in the 
+	<olink targetdoc="downloads">distributions</olink>. If there's a 
+        feature you'd like to see, or a bug you'd like to see fixed, you have 
+        the power to make that happen. 
+        <olink targetdoc="dev">Vist the developer Page</olink> to browse sources.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <emphasis>Design our logo</emphasis>: that's right we need
+        a well designed logo. Your design will be displayed on every page that
+        is <olink targetdoc="silkPaged">SilkPaged</olink>. Please refer to the
+	<olink targetdoc="logoDesign">Logo Design Guidelines</olink> 
+	to find about the requirements.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+   <para>
+    Willing to help? <olink targetdoc="contact">Get in touch</olink>.
+   </para>
+
+</webpage>

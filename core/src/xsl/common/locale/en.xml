@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<l10n xmlns="http://docbook.sourceforge.net/xmlns/l10n/1.0" 
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      xmlns:cvs="http://www.markupware.com/metadata/cvs#" 
+      language="en" 
+      english-language-name="English">
+
+  <rdf:Description rdf:about="http://silkpage.markupware.com/release/core/current/src/xsl/common/locale/en.xml">
+    <rdf:type rdf:resource="http://www.markupware.com/metadata/taxonomy#XSL"/>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+    <dc:format>application/xml</dc:format>
+    <dc:title>SilkPage Core XSLT, Common English Locale</dc:title>
+    <cvs:date>$Date: 2009-12-07 21:11:01 $</cvs:date>
+    <dc:rights>Copyright &#xA9; 2004 MarkupWare.</dc:rights>
+  </rdf:Description>
+
+  <context name="title">
+    <template name="webpage" text="%t"/>
+  </context>
+
+  <context name="Access">
+    <template name="SkipToContent" text="Skip to Content"/>
+    <template name="SkipToSidebar" text="Skip to Sidebar"/>
+  </context>
+
+   <context name="xref">
+      <template name="webpage" text="%t"/>
+   </context>
+
+   <context name="datetime">
+      <template name="news-archive-format" text="Y-m-d"/>
+      <template name="news-sidebar-format" text="b d, Y"/>
+      <template name="feed-format" text="B d, Y"/>
+   </context>
+
+   <context name="URFM">
+      <template name="name" text="Name"/>
+      <template name="shortdesc" text="Short Description"/>
+      <template name="releases" text="Releases"/>
+      <template name="release" text="Release"/>
+      <template name="Release" text="Release"/>
+      <template name="description" text="Description"/>
+      <template name="files" text="Files"/>
+      <template name="file" text="File"/>
+      <template name="File" text="File"/>
+      <template name="license" text="License"/>
+      <template name="packages" text="Packages"/>
+      <template name="package" text="Package"/>
+      <template name="revision" text="Revision"/>
+      <template name="version" text="Version"/>
+      <template name="Package" text="Package"/>
+      <template name="created" text="Created"/>
+      <template name="status" text="Status"/>
+      <template name="basename" text="Download File"/>
+      <template name="language" text="Language"/>
+      <template name="format" text="Format"/>
+      <template name="size" text="Size"/>
+      <template name="extension" text="Extension"/>
+      <template name="Download" text="Download"/>
+      <template name="type" text="Type"/>
+      <template name="Dist-type" text="Distribution"/>
+      <template name="ReleaseDate" text="Released on"/>
+      <template name="http://purl.org/urfm/SourceDist" text="Source"/>
+      <template name="http://purl.org/urfm/BinaryDist" text="Binary"/>
+      <template name="http://purl.org/urfm/DocsDist" text="Documentation"/>
+      <template name="http://purl.org/urfm/WebResourceDist" text="Web Resources"/>
+      <template name="http://purl.org/urfm/ResourceBundleDist" text="Resource Bundle"/>
+      <template name="http://purl.org/urfm/DocsWebDist" text="View Online"/>
+      <template name="http://purl.org/urfm/Kilobyte" text="KB"/>
+      <template name="http://purl.org/urfm/Megabyte" text="MB"/>
+      <template name="http://purl.org/urfm/Gigabyte" text="GB"/>
+   </context>
+
+   <context name="DOAP">
+     <template name="name" text="Name"/>
+     <template name="shortname" text="Unix Name"/>
+     <template name="homepage" text="URL"/>
+     <template name="created" text="First Published"/>
+     <template name="description" text="Description"/>
+     <template name="os" text="Operrating System(s)"/>
+     <template name="shortdesc" text="Short Description"/>
+     <template name="license" text="License"/>
+     <template name="anon-root" text="Anonymous Root"/>
+     <template name="module" text="Module Name"/>
+     <template name="browse" text="Browse Source"/>
+     <template name="CVSRepository" text="CVS"/>
+     <template name="repository" text="Source Repository"/>
+     <template name="mailing-list" text="Mailing List"/>
+     <template name="bug-database" text="Bug Database"/>
+     <template name="download-page" text="Download Page"/>
+     <template name="maintainer" text="Maintainer"/>
+     <template name="programming-language" text="Programming Language"/>
+     <template name="download-page" text="Download Page"/>
+     <template name="download-mirror" text="Download Mirror"/>
+     <template name="category" text="Categories"/>
+     <template name="http://usefulinc.com/doap/licenses/gpl"
+     	text="GNU General Public License, Version 2"/>
+     <template name="http://www.gnu.org/licenses/gpl-3.0.txt"
+     	text="GNU General Public License, Version 3"/>
+     <template name="http://www.gnu.org/licenses/gpl-3.0.html"
+     	text="GNU General Public License, Version 3"/>
+     <template name="http://usefulinc.com/doap/licenses/gfdl" 
+	text="GNU Free Documentation License"/>
+     <template name="http://creativecommons.org/licenses/by-nc-sa/2.0/" 
+	text="Creative Commons Attribution-NonCommercial-ShareAlike 2.0"/>
+     <template name="http://usefulinc.com/doap/licenses/asl20" 
+	text="Apache License, Version 2.0"/>
+     <template name="http://usefulinc.com/doap/licenses/bsd" 
+	text="The BSD License"/>
+     <template name="http://forrest.apache.org/license.html" 
+	text="Apache License, Version 2.0"/>
+   </context>
+
+   <context name="FOAF">
+     <template name="name" text="Name"/>
+     <template name="homepage" text="URL"/>
+     <template name="maker" text="Sponsors"/>
+     <!--
+     <template name="maker" text="Clients"/>
+     -->
+     <template name="Contributions" text="References"/>
+     <template name="Document" text="Website"/>
+   </context>
+
+   <context name="DC">
+     <template name="description" text="Short Description"/>
+     <template name="title" text="Title"/>
+     <template name="Date" text="Date"/>
+   </context>
+
+   <context name="Directive">
+     <template name="arrowright" text="&#187;"/>
+     <template name="arrowleft" text="&#187;"/>
+     <template name="backtotop" text="Top"/>
+     <template name="readmore" text="Read More &#187;"/>
+     <template name="learnmore" text="Learn More &#187;"/>
+   </context>
+
+   <context name="Languages">
+     <template name="en" text="English"/>
+     <template name="fr" text="French"/>
+     <template name="fa" text="Farsi"/>
+     <template name="es" text="Spanish"/>
+     <template name="nl" text="Dutch"/>
+   </context>
+
+   <context name="Dixite">
+     <template name="challenges" text="Business Challenge"/>
+     <template name="solutions" text="Solutions Applied"/>
+     <template name="technologies" text="Technologies"/>
+     <template name="methodologies" text="Methodologies"/>
+     <template name="goals" text="Technical Goals"/>
+     <template name="bgoals" text="Business Objectives"/>
+   </context>
+
+   <context name="RSS">
+     <template name="title" text="Topic"/>
+     <template name="description" text="Description"/>
+     <template name="Subscribe" text="Subscribe"/>
+     <template name="RSS" text="RSS"/>
+     <template name="caption" text="Site Feeds"/>
+   </context>
+
+   <context name="Atom">
+     <template name="Atom" text="Atom"/>
+     <template name="Categories" text="Categories"/>
+   </context>
+
+   <context name="Address">
+     <template name="address" text="Address"/>
+     <template name="phone" text="Telephone"/>
+     <template name="fax" text="Fax"/>
+     <template name="email" text="Email"/>
+   </context>
+
+   <context name="Meta">
+     <template name="Compliance" text="Compliance"/>
+     <template name="SilkPaged" text="SilkPaged"/>
+     <template name="SilkPage" text="SilkPage"/>
+     <template name="LastUpdated" text="Last Updated"/>
+     <template name="XHTML" text="XHTML"/>
+     <template name="CSS" text="CSS"/>
+     <template name="508" text="508"/>
+     <template name="Validate" text="Validate"/>
+     <template name="Feedback" text="Feedback"/>
+     <template name="notoc" text="Additional Info"/>
+     <template name="Sources" text="Sources"/>
+     <template name="YouAreHere" text="You are here"/>
+   </context>
+
+   <context name="Category">
+     <template name="http://www.dixite.com/services/aftercare/" 
+	       text="AfterCare"/>
+     <template name="http://www.dixite.com/services/opensource/" 
+	       text="Open Source"/>
+     <template name="http://www.dixite.com/services/consultancy/"
+	       text="Consultancy"/>
+     <template name="http://www.dixite.com/services/security/"
+	       text="Web Security"/>
+     <template name="http://www.dixite.com/solutions/portal/" 
+	       text="Web Portal"/>
+     <template name="http://www.dixite.com/solutions/cms/" 
+	       text="CMS"/>
+     <template name="http://www.dixite.com/solutions/id-management/" 
+	       text="Identity Management"/>
+     <template name="http://www.dixite.com/clients/sector-it" 
+	       text="Software &amp; Computer Services"/>
+     <template name="http://www.dixite.com/clients/sector-finance" 
+	       text="Financial Services"/>
+     <template name="http://www.dixite.com/clients/sector-public" 
+	       text="Public Sector"/>
+     <template name="http://www.dixite.com/clients/sector-telecom" 
+	       text="Telecommunications"/>
+     <template name="http://www.dixite.com/clients/sector-utilities" 
+	       text="Utilities"/>
+     <template name="http://www.dixite.com/clients/sector-media" 
+	       text="Communications &amp; Media"/>
+     <template name="http://projects.apache.org/category/build-management" 
+	       text="build-management"/>
+     <template name="http://projects.apache.org/category/database" 
+	       text="database"/>
+     <template name="http://projects.apache.org/category/graphics" 
+	       text="graphics"/>
+     <template name="http://projects.apache.org/category/http" 
+	       text="http"/>
+     <template name="http://projects.apache.org/category/network-client" 
+	       text="network-client"/>
+     <template name="http://projects.apache.org/category/network-server" 
+	       text="network-server"/>
+     <template name="http://projects.apache.org/category/web-framework" 
+	       text="web-framework"/>
+     <template name="http://projects.apache.org/category/xml" 
+	       text="xml"/>
+     <template name="http://code.google.com/hosting/search?q=label:rdf" 
+	       text="RDF"/>
+     <template name="http://code.google.com/hosting/search?q=label:ontology" 
+	       text="Ontology"/>
+     <template name="http://code.google.com/hosting/search?q=label:owl" 
+	       text="OWL"/>
+     <template name="http://code.google.com/hosting/search?q=label:sparql" 
+	       text="SPARQL"/>
+     <template name="http://code.google.com/hosting/search?q=label:" 
+	       text=""/>
+   </context>
+
+</l10n>

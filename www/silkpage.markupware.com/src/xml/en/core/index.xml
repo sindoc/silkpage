@@ -1,0 +1,9 @@
+<webpage id="core">
+  <config param="rcsdate" value="$Date: 2006-04-17 10:13:01 $"/>
+  <config param="DOAP" value="doap.rdf"/>
+  <head>
+    <title>SilkPage Core</title>
+    <summary>SilkPage Core project</summary>
+    <keywords>SilkPage, Projects, Core</keywords>
+  </head>
+</webpage>

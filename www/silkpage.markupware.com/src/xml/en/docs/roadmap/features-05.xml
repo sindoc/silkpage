@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<webpage id="features-05">
+  <config param="rcsdate" value="$Date: 2006-04-17 14:32:21 $"/>
+  <head>
+    <title>Feature Requirements - SilkPage Core 0.5</title>
+    <summary>SilkPage Feature Requirements</summary>
+    <keywords>SilkPage, release, roadmap</keywords>
+  </head>
+
+  <para>
+    This page documents our goals and requested features for the
+    0.5 release of SilkPage. 
+  </para>
+  
+  <itemizedlist>
+    <listitem>
+      <para>
+	Make the current version (0.4) stable and bug free. 
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	Update the <olink targetdoc="userGuide">User Guide</olink>.
+      </para>
+    </listitem>
+  </itemizedlist>
+  
+  <para>
+    <?arrowleft?> <olink targetdoc="roadmap">Back to Roadmap</olink>
+  </para>
+
+</webpage>

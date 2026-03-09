@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<webpage id="liveSites">
+  <config param="rcsdate" value="$Date: 2007-10-25 22:55:48 $"/>
+  <head>
+    <title>Live Sites</title>
+    <summary>Featured websites produced by using SilkPage</summary>
+    <keywords>SilkPage</keywords>
+  </head>
+  <para>
+    Some featured websites published by SilkPage.
+  </para>
+
+  <table id="liveSitesTable" frame="none" pgwide="1" role="plain">
+    <title>Live Sites</title>
+    <tgroup cols="2">
+      <thead>
+	<row>
+	  <entry>Website</entry>
+	  <entry>Usage</entry>
+	</row>
+      </thead>
+      <tbody>
+	<row>
+	  <entry>
+	    <ulink url="http://www.markupware.com/">MarkupWare</ulink>
+	  </entry>
+	  <entry>
+	    Organization
+	  </entry>
+	</row>
+	<row>
+	  <entry>
+	    <ulink url="http://www.dixite.com/">Dixite</ulink>
+	  </entry>
+	  <entry>
+	    Company
+	  </entry>
+	</row>
+	<row>
+	  <entry>
+	    <ulink url="http://www.plainsource.com/">Plain Source</ulink>
+	  </entry>
+	  <entry>
+	    Company
+	  </entry>
+	</row>
+
+	<row>
+	  <entry>
+	    <ulink url="http://javad.khakbaz.com/">Javad's Home</ulink>
+	  </entry>
+	  <entry>
+	    Personal
+	  </entry>
+	</row>
+      </tbody>
+    </tgroup>
+  </table>
+</webpage>

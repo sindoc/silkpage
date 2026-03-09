@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<webpage id="userGuide">
+  <config param="rcsdate" value="$Date: 2007-10-30 14:10:18 $"/>
+  <head>
+    <title>User Guide</title>
+    <summary>SilkPage User Guide</summary>
+    <keywords>SilkPage Documentation, User Guide</keywords>
+  </head>
+  <para>
+    Installation, Customization and Usage Guide.
+    SilkPage User Guide is an extensive reference for installing, using 
+    and customizing the SilkPage software. Users of DocBook and DocBook 
+    Website have little trouble adapting to SilkPage. New Users will be 
+    able to use basic features fairly rapidly by reading the User Guide.
+  </para>
+  <variablelist>
+    <title>Available Formats</title>
+    <varlistentry>
+      <term>
+	<ulink url="http://silkpage.markupware.com/dist/docs/current/ug-html-chunk/">HTML Chunk</ulink>
+      </term>
+      <listitem>
+        <para>
+          Click on the link to view it in a browsable <acronym>HTML</acronym> format. The chunk
+          version provides the Next and Prev links to navigate throughout the 
+          User Guide.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <ulink url="http://silkpage.markupware.com/dist/docs/current/ug-html-single/silkpage-docs-ug.html">HTML Single</ulink>
+      </term>
+      <listitem>
+        <para>
+          Click on the link to view it in a single browsable <acronym>HTML</acronym> format. 
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <ulink url="http://silkpage.markupware.com/dist/docs/current/silkpage-userguide.pdf">PDF Version</ulink>
+      </term>
+      <listitem>
+        <para>
+          Click on the link to view it in a <acronym>PDF</acronym> viewer. 
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</webpage>
