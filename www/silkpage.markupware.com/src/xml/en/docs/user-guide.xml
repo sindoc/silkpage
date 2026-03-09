@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<webpage id="userGuide">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:26 $"/>
+  <head>
+    <title>User Guide</title>
+    <summary>SilkPage User Guide</summary>
+    <keywords>Silkpage Documentation, User Guide</keywords>
+  </head>
+  <para>
+    Installation, Customization and Usage Guide.
+    SilkPage User Guide is an extensive reference for installing, using 
+    and customizing the SilkPage software. Users of DocBook and DocBook 
+    Website have little trouble adapting to SilkPage. New Users will be 
+    able to use basic features fairly rapidly by reading the User Guide.
+  </para>
+  <variablelist>
+    <title>Available Formats</title>
+    <varlistentry>
+      <term>
+        <ulink url="guides/html/chunked/index.html"><acronym>HTML</acronym> Chunk</ulink>
+      </term>
+      <listitem>
+        <para>
+          Click on the link to view it in a browsable <acronym>HTML</acronym> format. The chunk
+          version provides the Next and Prev links to navigate throughout the 
+          User Guide.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <ulink url="guides/html/single/core-userguide.html">
+          <acronym>HTML</acronym> Single
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          Click on the link to view it in a single browsable <acronym>HTML</acronym> format. 
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <ulink url="guides/html/chunked/silkpage-userguide_html.zip">
+          <acronym>HTML</acronym> Compressed (Zip)
+        </ulink>
+      </term>
+      <listitem>
+        <para>
+          Click on the <acronym>HTML</acronym> compressed file link to download it. After it has 
+          finished downloading, expand the compressed file in your desired 
+          directory.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</webpage>

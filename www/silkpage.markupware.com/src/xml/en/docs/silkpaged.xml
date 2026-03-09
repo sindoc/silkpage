@@ -1,0 +1,84 @@
+<webpage id="silkPaged">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:26 $"/>
+  <head>
+    <title>SilkPaged</title>
+    <summary>Practical use of the SilkPage icon</summary>
+    <keywords>SilkPage Icon Usage </keywords>
+  </head>
+
+  <section id="overview">
+    <title>SilkPaged</title>
+  <para>
+    A page is considered to be <emphasis>SilkPaged</emphasis> if it's generated
+    by the SilkPage Web Publishing Framework. SilkPage output conforms with
+    requirements outlined in  
+    <olink targetdoc="designGoals">
+      SilkPage Design Goals
+    </olink>.
+  </para>
+
+  <para>
+    We are happy to grant you the right to use the SilkPaged Logo on the pages
+    that passed through the SilkPage Publishing Framework. 
+  </para>
+  </section>
+
+  <section id="icons">
+    <title>SilkPaged Icons and Logos</title>
+    <table frame="none" pgwide="1" role="plain">
+      <title>Icons and Logos</title>
+      <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Type</entry>
+          <entry>Size</entry>
+          <entry>Download</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Icon</entry>
+          <entry>32x32</entry>
+          <entry>
+	    N/A (
+	    <olink targetdoc="participate">Design our logo</olink> | 
+	    <olink targetdoc="logoDesign">Design Guidelines</olink>
+	    )
+	  </entry>
+        </row>
+        <row>
+          <entry>Logo</entry>
+          <entry>32x32</entry>
+          <entry>
+	    N/A (
+	    <olink targetdoc="participate">Design our logo</olink> | 
+	    <olink targetdoc="logoDesign">Design Guidelines</olink>
+	    )
+	  </entry>
+        </row>
+      </tbody>
+      </tgroup>
+    </table>
+    <para>
+      No request permission is needed for the SilkPaged logos. However, 
+      SilkPaged logos usage are subject to the following terms:
+    </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        The icons must not be used in any manner in which implies SilkPage or
+        MarkupWare sponsorship of your product.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        The icon must be an active link to 
+        <ulink>http://silkpage.markupware.com</ulink>
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  </section>
+ 
+</webpage>

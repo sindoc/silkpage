@@ -1,0 +1,40 @@
+<webpage id="downloads"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:26 $"/>
+  <head>
+    <title>Download</title>
+    <summary>Download SilkPage software distribution</summary>
+    <keywords>Download, SilkPage Software</keywords>
+  </head>
+
+  <link
+      xlink:type="simple"
+      xlink:href="../download.rdf"
+      xlink:role="http://purl.org/urfm/"/>
+
+  <sidebar id="prerequisites">
+  <variablelist>
+    <title>Prerequisites</title>
+    <varlistentry>
+      <term>Java and Apache Ant</term>
+      <listitem>
+        <para>
+          Prior to installing SilkPage, you must first install 
+          <ulink url="http://java.sun.com/j2se">
+            Java 2 Standard Platform 
+          </ulink>
+          and
+          <ulink url="http://ant.apache.org">
+            Apache Ant
+          </ulink>.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  </sidebar>
+
+  <para>
+    Refer to the <olink targetdoc="roadmap">SilkPage Roadmap</olink> for 
+    the future releases and features they include.
+  </para>
+</webpage>

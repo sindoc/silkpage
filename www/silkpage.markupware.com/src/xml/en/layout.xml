@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE layout PUBLIC "-//Norman Walsh//DTD Website Layout V2.4.1//EN"
+  "http://docbook.sourceforge.net/release/website/2.4.1/schema/dtd/layout.dtd">
+<layout>
+
+<!-- 
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ CONFIG: params, copyright, CSS stylesheet
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<config param="footlink" value="sitemap" altval="Sitemap"/>
+<config param="footlink" value="contact" altval="Contact"/>
+<config param="title" value="SilkPage"/>
+
+<copyright role="license">
+  <year>2004</year>
+  <year>2005</year>
+  <holder role="http://www.markupware.com">MarkupWare</holder>
+</copyright>
+
+<headlink rel="icon" href="graphics/gif/silkpage_icon.gif" type="image/gif"/>
+<style src="css/silkpage.css" type="text/css"/>
+
+<!-- 
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ TOC: Table Of Content: about, downloads
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+<!--
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ <about>
+ about goals, team and principles.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<toc page="index.xml" filename="index.html">
+
+  <tocentry page="about/index.xml" dir="about" filename="index.html">
+    <tocentry page="about/contact.xml" filename="contact.php"/>
+    <tocentry page="about/colophon.xml" filename="colophon.html"/>
+    <tocentry page="about/licence.xml" filename="licence.html"/>
+    <tocentry page="about/participate.xml" filename="participate.html"/>
+    <tocentry page="about/team.xml" filename="team.html"/>
+  </tocentry>
+
+  <tocentry page="docs/index.xml" dir="docs" filename="index.html">
+    <tocentry page="docs/user-guide.xml" filename="user-guide.html"/>
+    <tocentry page="docs/design-goals.xml" filename="design-goals.html"/>
+    <tocentry page="docs/roadmap/index.xml" dir="roadmap" filename="index.html"/>
+  </tocentry>
+  <tocentry page="downloads/index.xml" dir="downloads" filename="index.html"/>
+</toc>
+<!--
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ NOTOC:
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<notoc page="docs/foundations.xml" filename="foundations.html"/>
+<notoc page="docs/logo-design-guidelines.xml" dir="docs" filename="logo-design-guidelines.html"/>
+<notoc page="docs/silkpaged.xml" dir="docs" filename="silkpaged.html"/>
+<notoc page="sitemap.xml" filename="sitemap.html"/>
+<notoc page="about/message-sent.xml" filename="about/message-sent.html"/>
+<notoc page="docs/roadmap/features-04.xml" dir="docs/roadmap" filename="features-04.html"/>
+<notoc page="docs/roadmap/features-05.xml" dir="docs/roadmap" filename="features-05.html"/>
+</layout>

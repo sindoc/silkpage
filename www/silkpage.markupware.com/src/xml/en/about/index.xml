@@ -1,0 +1,15 @@
+<webpage id="about">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:25 $"/>
+  <head>
+    <title>About</title>
+    <summary>About SilkPage goals and principles</summary>
+    <keywords>SilkPage</keywords>
+  </head>
+
+  <para>
+    This site is about a powerfull web publishing framework called SilkPage.
+    Web publishing tools are certainly pletiful and have been available for a 
+    long time but sadly none of them met our requirements and 
+    <olink targetdoc="designGoals">design goals</olink> &#187;
+  </para>
+</webpage>

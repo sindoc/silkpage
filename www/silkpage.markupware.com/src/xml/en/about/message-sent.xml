@@ -1,0 +1,17 @@
+<webpage id="messageSent">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:25 $"/>
+  <head>
+    <title>Message Sent</title>
+    <summary>Message Confirmation</summary>
+    <keywords>SilkPage Contact Confirmation</keywords>
+  </head>
+
+  <para>
+    Thank you for your interest in SilkPage. Your message has been sent, 
+    we will respond as soon as we can. 
+  </para>
+  <para>
+    <olink targetdoc="contact">Bank to contact form</olink> &#187;
+  </para>
+
+</webpage>

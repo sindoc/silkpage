@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns="http://purl.org/urfm/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:doap="http://usefulinc.com/ns/doap#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+  <Channel rdf:about="http://silkpage.markupware.com/download.rdf">
+    <title>SilkPage Download Channel</title>
+    <link>http://silkpage.markupware.com/downloads/</link>
+    <shortdesc>
+      There are two distributions available; you only need to choose one of 
+      them.
+    </shortdesc>
+    <dc:language>en-US</dc:language>
+    <dc:publisher>MarkupWare</dc:publisher>
+    <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+    
+    <packages rdf:parseType="Collection">
+      
+      <Package rdf:about="http://silkpage.markupware.com/">
+	<description>
+	  <doap:Project rdf:about="http://silkpage.markupware.com/doap.rdf"/>
+	</description>
+      </Package>
+    </packages>
+    
+    <releases rdf:parseType="Collection">
+      
+      <Release rdf:about="http://silkpage.markupware.com/release/core/0.4.0/">
+	<package rdf:resource="http://silkpage.markupware.com/"/>
+	<revision>0.4.0</revision>
+	<created>2005-07-15</created>
+	<notes rdf:resource="http://silkpage.markupware.com/docs/roadmap/features-04.html"/> 
+	<link>http://silkpage.markupware.com/release/core/0.4.0/</link>
+      </Release>
+      
+      <Release rdf:about="http://silkpage.markupware.com/release/core/0.3.0/">
+	<package rdf:resource="http://silkpage.markupware.com/"/>
+	<revision>0.3.0</revision>
+	<created>2005-07-15</created>
+	<link>http://silkpage.markupware.com/release/core/0.3.0/</link>
+      </Release>
+
+    </releases>
+
+    <files rdf:parseType="Collection">
+
+      <File rdf:about="http://silkpage.markupware.com/release/core/0.4.0/silkpage-core-0_4_0.zip">
+	<release rdf:resource="http://silkpage.markupware.com/release/core/0.4.0/"/>
+	<basename>silkpage-core-0_4_0</basename>
+	<extension>.zip</extension>
+	<size rdf:parseType="Resource">
+	  <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+	  <value>1.9</value>
+	</size>
+	<link>http://silkpage.markupware.com/downloads/silkpage-core-0_4_0.zip</link>
+	<format>application/zip</format>
+	<rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+      </File>
+
+      <File rdf:about="http://silkpage.markupware.com/release/core/0.4.0/silkpage-core-0_4_0-plus.zip">
+	<release rdf:resource="http://silkpage.markupware.com/release/core/0.4.0/"/>
+	<basename>silkpage-core-0_4_0-plus</basename>
+	<extension>.zip</extension>
+	<size rdf:parseType="Resource">
+	  <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+	  <value>4.6</value>
+	</size> 
+	<link>http://silkpage.markupware.com/downloads/silkpage-core-0_4_0.zip</link>
+	<format>application/zip</format>
+	<rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+      </File>
+
+      <File rdf:about="http://silkpage.markupware.com/release/core/0.3.0/silkpage-core-0_3_0.zip">
+	<release rdf:resource="http://silkpage.markupware.com/release/core/0.3.0/"/>
+	<basename>silkpage-core-0_3_0</basename>
+	<extension>.zip</extension>
+	<size rdf:parseType="Resource">
+	  <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+	  <value>1.8</value>
+	</size> 
+	<link>http://silkpage.markupware.com/downloads/silkpage-core-0_3_0.zip</link>
+	<format>application/zip</format>
+	<rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+      </File>
+
+      <File rdf:about="http://silkpage.markupware.com/release/core/0.3.0/silkpage-core-0_3_0-plus.zip">
+	<release rdf:resource="http://silkpage.markupware.com/release/core/0.3.0/"/>
+	<basename>silkpage-core-0_3_0-plus</basename>
+	<extension>.zip</extension>
+	<size rdf:parseType="Resource">
+	  <unit rdf:resource="http://purl.org/urfm/Megabyte"/>
+	  <value>4.4</value>
+	</size> 
+	<link>http://silkpage.markupware.com/downloads/silkpage-core-0_3_0.zip</link>
+	<format>application/zip</format>
+	<rdf:type rdf:resource="http://purl.org/urfm/SourceDist"/>
+      </File>
+      
+    </files>
+
+  </Channel>
+</rdf:RDF>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel rdf:about="http://silkpage.markupware.com/downloads/">
+  <title>SilkPage Distribution Files</title>
+  <link>http://silkpage.markupware.com/downloads/</link>
+  <description>
+    There are two distributions available; you only need to choose one of them.
+  </description>
+  <dc:language>en-us</dc:language>
+  <dc:publisher>MarkupWare (mailto:silkpage@markupware.com)</dc:publisher>
+  <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+  <dc:identifier>downloads</dc:identifier>
+  <items>
+  <rdf:Seq>
+    <rdf:li rdf:resource="http://silkpage.markupware.com/downloads#silkPage-core-0_3_0"/>
+    <rdf:li rdf:resource="http://silkpage.markupware.com/downloads#silkPage-core-0_3_0-plus"/>
+  </rdf:Seq>
+  </items>
+</channel>
+
+<item rdf:about="http://silkpage.markupware.com/downloads#silkPage-core-0_3_0">
+  <title>SilkPage Core 0.3.0</title>
+  <link>http://silkpage.markupware.com/downloads/silkpage-core-0_3_0.zip</link>
+  <dc:format>application/zip</dc:format>
+  <dc:date>2005-02-12</dc:date>
+  <dc:subject>SilkPageCore-0.x</dc:subject>
+  <description>
+    Includes SilkPage software distribution. Should you choose this 
+    distribution, you also need to download DocBook XSL Stylesheets and 
+    DocBook Website.
+  </description>
+</item>
+
+<item rdf:about="http://silkpage.markupware.com/downloads#silkPage-core-0_3_0-plus">
+  <title>SilkPage Core 0.3.0 Plus</title>
+  <link>http://silkpage.markupware.com/downloads/silkpage-core-0_3_0-plus.zip</link>
+  <dc:format>application/zip</dc:format>
+  <dc:date>2005-02-12</dc:date>
+  <dc:subject>SilkPageCore0.x</dc:subject>
+  <description>
+    In addition to the content of SilkPage Core 0.3.0, it includes the required 
+    DocBook XSL Stylesheets and DocBook Website.
+  </description>
+</item>
+
+</rdf:RDF>
+

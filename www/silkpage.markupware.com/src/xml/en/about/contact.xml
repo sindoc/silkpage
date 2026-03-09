@@ -1,0 +1,106 @@
+<webpage id="contact">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:25 $"/>
+  <head>
+    <title>Contact Us</title>
+    <summary>How to reach us</summary>
+    <keywords>SilkPage Contact information</keywords>
+  </head>
+  <para>
+    We value your feedback about SilkPage. Please fill in all fields 
+    below and send us a message. To indicate the type of your feedback, 
+    please select the right <emphasis>category:</emphasis>
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+	<emphasis>Feature Reauest:</emphasis>
+	If there's a feature you'd like to see, or something you can imagine 
+	improving.
+      </para>
+    </listitem>
+    <listitem>
+       <para>
+	<emphasis>Bug Report:</emphasis>
+	  For problem reporting. Please make sure you can reproduce the 
+	  problem, and be very explicit in your description. 
+       </para>   
+    </listitem>
+    <listitem>
+      <para>
+	<emphasis>General Comment:</emphasis>
+	General suggestions to improve this site. 
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <para>
+    <?php
+      if (($_GET["komail"]==1) OR ($_GET["notext"]==1) OR ($_GET["ko"]==1)) {
+        $msg='<div class="error"><strong>ERROR: </strong>';
+        $msg.='Please correct the following errors and re-submit your message.<ol>';
+      if ($_GET["komail"]==1)
+        $msg.='<li>Invalid <em>Email</em> address.</li>' ;
+      if ($_GET["notext"]==1)
+        $msg.='<li>Invalid <em>Name</em> or <em>Subject</em> or <em>Comment</em>.</li>' ;
+      if ($_GET["ko"]==1)
+        $msg.='<li>Failed to send your message. Please try later.</li>' ;
+        $msg.='</ol></div>' ;
+      echo $msg;
+      }
+      ??>
+  </para>
+  
+  <section id="form"> 
+    <title>Contact Form</title>
+    <form action="send.php" method="post" xmlns="http://www.w3.org/1999/xhtml">
+      <p>Name
+      <br/>
+      <input name="name" type="text" size="50"/>
+      </p>
+      <p>Email
+      <br/>
+      <input name="mail" type="text" size="50"/>
+      </p>
+      <p>Category
+      <br/>
+      <select name="category">
+	<option value="">
+	  Please select one
+	</option>
+	<option value="feature">
+	  Feature Request
+	</option>
+	<option value="bug">
+	  Bug Report
+	</option>
+	<option value="general">
+	  General comment
+	</option>
+      </select>
+      </p>
+      <p>Subject
+      <br/>
+      <input name="subject" type="text" size="40"/>
+      </p>
+      <p>Comment
+      <br/>
+      <textarea name="comment" class="input" rows="15" cols="55"/>
+      </p>
+      <p>
+	<input class="button" type="submit" value="Send"/>
+      </p>
+    </form>
+  </section>
+  <sidebar id="also">
+    <title>Reach Us</title>
+    <address>
+      <street>Av. Louise, 179</street>
+      <postcode>1050</postcode>
+      <city>Brussels</city>
+      <country>Belgium</country>
+      <phone>+32 2 640 1382</phone>
+      <fax>+32 2 646 5775</fax>
+      <email>silkpage@markupware.com</email>
+    </address>
+  </sidebar>
+</webpage>

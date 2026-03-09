@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<webpage id="designGoals">
+  <config param="rcsdate" value="$Date: 2005-07-28 22:02:26 $"/>
+  <head>
+    <title>Design Goals</title>
+    <summary>SilkPage Design Goals</summary>
+    <keywords>Valid XHTML Code, Easy maintenance, Accessibility</keywords>
+  </head>
+
+  <para>
+    When it comes to the website design and development, there's far too much 
+    software tools that can be used; but none of them satisfied our design
+    goals: 
+    <itemizedlist>
+      <listitem>
+        <para>
+          Web Standards compliant web pages based on XML
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Accessibility and usability
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Easy maintenance
+        </para>
+      </listitem>
+    </itemizedlist>
+    We crafted SilkPage, having the above design goals in mind. SilkPage output
+    web pages meet the above requirements.
+  </para>
+
+  <section id="cleancode">
+    <title>Valid Code</title>
+    <para>
+      SilkPage output markup is validated <acronym>XHTML</acronym>. 
+      No legacy <acronym>XHTML</acronym> such as nested
+      layout tables and font tags, the page size is reduced dramatically and 
+      the source code is easier to read and faster to load.
+      At the back-end, SilkPage uses  DocBook Website Types together with 
+      <acronym>XSL</acronym> stylesheets to produce customized 
+      <acronym>XHTML</acronym> content. 
+      <emphasis>Web Standards compliant web pages</emphasis>.
+    </para>
+  </section>
+
+  <section id="stylesheet">
+    <title>Stylesheets Use</title>
+    <para>
+      Cascading Style Sheets (<acronym>CSS</acronym>) is used to separate 
+      presentation from content. SilkPage makes use of <acronym>CSS</acronym>
+      stylesheets by applying its <acronym>CSS</acronym> themes. 
+      Look and feel of the site can be changed by simply applying a new 
+      <acronym>CSS</acronym> theme. <emphasis>Ease of maintenance</emphasis>.
+    </para>
+  </section>
+
+  <section id="accessibility">
+    <title>Accessibility</title>
+    <para>
+      To serve people with visual or mobile impairments, SilkPage follows 
+      accessibility guidelines closely:
+      <itemizedlist>
+      <listitem>
+        <para>
+          Style sheets rather than deprecated markup like are used to present 
+          content.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          SilkPage generates markup that is structural and meaningful. 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Generated markup is not presented by graphics, graphics are not 
+          necessary to understand the main content.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The main navigation menu is short and tab based, all main content is 
+          provided near the top of the document.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Text equivalents are provided for every non-text element 
+          (e.g., using "alt")
+        </para>
+      </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+</webpage>

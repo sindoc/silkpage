@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel rdf:about="http://silkpage.markupware.com/docs/">
+  <title>SilkPage Documentation</title>
+  <link>http://silkpage.markupware.com/docs/</link>
+  <description>
+    Installation, Customization and User Guide. 
+  </description>
+  <dc:language>en-us</dc:language>
+  <dc:publisher>MarkupWare (mailto:silkpage@markupware.com)</dc:publisher>
+  <dc:rights>Copyright &#169; MarkupWare</dc:rights>
+  <dc:identifier>docs</dc:identifier>
+  <items>
+  <rdf:Seq>
+    <rdf:li rdf:resource="http://silkpage.markupware.com/docs#userGuide"/>
+    <rdf:li rdf:resource="http://silkpage.markupware.com/docs#designGoals"/>
+    <rdf:li rdf:resource="http://silkpage.markupware.com/docs#FAQ"/>
+  </rdf:Seq>
+  </items>
+</channel>
+
+<item rdf:about="http://silkpage.markupware.com/docs#userGuide">
+  <title>User Guide</title>
+  <link>http://silkpage.markupware.com/docs/userguide.html</link>
+  <dc:date>2004-12-10</dc:date>
+  <description>
+    SilkPage User Guide is an extensive reference for installing, using 
+    and customizing the SilkPage software. Users of DocBook and DocBook 
+    Website have little trouble adapting to SilkPage. New Users will be 
+    able to use basic features fairly rapidly by reading the User Guide.
+  </description>
+</item>
+
+<item rdf:about="http://silkpage.markupware.com/docs#FAQ">
+  <title>FAQ</title>
+  <link>http://silkpage.markupware.com/docs/userguide.html#ch:faq</link>
+  <dc:date>2004-12-10</dc:date>
+  <description>
+    This FAQ is provided with the hopes to be helpful for users using 
+    SilkPage. The information is updated as the questions and answers 
+    becomes appearant to the SilkPage team.
+  </description>
+</item>
+
+</rdf:RDF>
+
