@@ -1,0 +1,210 @@
+/* walsh/main.css — SilkPage theme: walsh
+   Layout: CSS Grid, structured sidebar as reference panel.
+   Targets the unchanged SilkPage XHTML output structure.
+   -------------------------------------------------------------------- */
+
+@import url("../common/reset.css");
+@import url("base.css");
+
+/* ── Page shell ─────────────────────────────────────────────────────── */
+
+#wrapper {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "menu"
+    "pagebody"
+    "footer";
+  min-block-size: 100dvb;
+  max-inline-size: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+#header {
+  grid-area: header;
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  padding: 0 var(--space-lg);
+  margin-inline: calc(-1 * var(--space-md));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-block-size: var(--header-height);
+}
+
+#header #title a {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-header-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  font-family: var(--font-mono);
+}
+#header #title a::before { content: "<"; opacity: 0.5; }
+#header #title a::after  { content: "/>"; opacity: 0.5; }
+#header #title a:hover { color: var(--color-nav-active); border: none; }
+
+#headitems {
+  font-size: var(--font-size-xs);
+  color: var(--color-nav-text);
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+#headitems a:link, #headitems a:visited { color: var(--color-nav-text); border: none; }
+#headitems a:hover { color: var(--color-nav-active); }
+#headitems .vbar { opacity: 0.3; }
+
+/* ── Primary navigation ─────────────────────────────────────────────── */
+
+#menu {
+  grid-area: menu;
+  background: var(--color-nav-bg);
+  margin-inline: calc(-1 * var(--space-md));
+  padding-inline: var(--space-lg);
+  border-block-end: 2px solid var(--color-accent);
+}
+
+#menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+
+#menu li { margin: 0; padding: 0; }
+
+#menu li a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-nav-text);
+  text-decoration: none;
+  border-block-end: 3px solid transparent;
+  transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+#menu li a span { pointer-events: none; }
+#menu li a:hover {
+  color: var(--color-nav-active);
+  background: rgba(255,255,255,0.08);
+  border-block-end-color: var(--color-nav-active);
+}
+
+body.about   #menu li.about   a,
+body.docs    #menu li.docs    a,
+body.downloads #menu li.downloads a,
+body.dev     #menu li.dev     a {
+  color: var(--color-nav-active);
+  border-block-end-color: var(--color-nav-active);
+  background: rgba(147,197,253,0.1);
+}
+
+/* ── Page body: main + sidebar ──────────────────────────────────────── */
+
+#pagebody {
+  grid-area: pagebody;
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-width);
+  grid-template-areas: "main sidebar";
+  gap: var(--space-xl);
+  padding-block: var(--space-xl);
+  align-items: start;
+}
+
+#maincontent { grid-area: main; min-inline-size: 0; }
+
+/* ── Sidebar — structured reference panel ───────────────────────────── */
+
+#sidebar {
+  grid-area: sidebar;
+  font-size: var(--font-size-sm);
+  border-inline-start: 3px solid var(--color-border-strong);
+  padding-inline-start: var(--space-md);
+}
+
+#sidebar div { margin-block-end: var(--space-lg); }
+
+#sidebar p.title {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-rule);
+  border-block-end: 1px solid var(--color-border);
+  padding-block-end: var(--space-xs);
+  margin-block-end: var(--space-sm);
+}
+#sidebar p.title b { font-weight: 700; }
+
+#sidebar dt {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-block-start: var(--space-sm);
+}
+#sidebar dd { margin-inline-start: 0; margin-block-end: var(--space-sm); color: var(--color-text-muted); }
+#sidebar dd p { margin: 0; }
+#sidebar a:link, #sidebar a:visited { color: var(--color-link); }
+#sidebar a:hover { color: var(--color-link-hover); }
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+
+#footer {
+  grid-area: footer;
+  background: var(--color-footer-bg);
+  border-block-start: 2px solid var(--color-border-strong);
+  padding: var(--space-md) var(--space-lg);
+  margin-inline: calc(-1 * var(--space-md));
+  font-size: var(--font-size-xs);
+  color: var(--color-footer-text);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+#footer #footitems { display: none; }
+
+#footer .left, #footer .right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+#footer .sources, #footer .compliance, #footer .copyright, #footer .updated {
+  display: flex; gap: var(--space-xs); flex-wrap: wrap;
+}
+
+#footer a:link, #footer a:visited { color: var(--color-footer-text); border: none; }
+#footer a:hover { color: var(--color-link); }
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 44rem) {
+  #pagebody {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main" "sidebar";
+  }
+  #sidebar {
+    border-inline: none;
+    border-block-start: 3px solid var(--color-border-strong);
+    padding-inline: 0;
+    padding-block-start: var(--space-lg);
+  }
+  #menu ul { flex-wrap: wrap; }
+  #header { flex-direction: column; align-items: flex-start; padding-block: var(--space-sm); }
+}

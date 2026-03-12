@@ -1,0 +1,172 @@
+/* meyer/base.css — SilkPage theme: meyer
+   Inspired by Eric Meyer's web aesthetic: warm earth tones, serif typography,
+   meticulous CSS craftsmanship. Channels the spirit of meyerweb.com and the
+   CSS Zen Garden era — but rebuilt with modern custom properties.
+   -------------------------------------------------------------------- */
+
+:root {
+  /* Palette — warm cream and slate */
+  --color-bg:           #faf8f5;
+  --color-bg-alt:       #f0ece4;
+  --color-surface:      #ffffff;
+  --color-border:       #d8cfc4;
+  --color-text:         #2c2420;
+  --color-text-muted:   #6b5e54;
+  --color-heading:      #1e150f;
+  --color-accent:       #8b6914;
+  --color-accent-hover: #6b4f0e;
+  --color-link:         #5c3a1e;
+  --color-link-hover:   #8b6914;
+  --color-header-bg:    #3d2b1a;
+  --color-header-text:  #f5ede0;
+  --color-nav-bg:       #4a3525;
+  --color-nav-text:     #e8d9c8;
+  --color-nav-active:   #c8a24a;
+  --color-footer-bg:    #f0ece4;
+  --color-footer-text:  #6b5e54;
+
+  /* Typography — Georgia-first serif stack */
+  --font-serif:    Georgia, 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  --font-sans:     'Trebuchet MS', Verdana, Geneva, sans-serif;
+  --font-mono:     'Courier New', Courier, monospace;
+
+  --font-size-base: clamp(1rem, 1.5vw, 1.0625rem);
+  --font-size-sm:   0.875em;
+  --font-size-xs:   0.75em;
+  --line-height:    1.6;
+  --line-height-heading: 1.2;
+
+  /* Spacing */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+
+  /* Layout */
+  --max-width:    58rem;
+  --sidebar-width: 14rem;
+  --header-height: 4.5rem;
+  --radius:        2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:           #1a1410;
+    --color-bg-alt:       #231c16;
+    --color-surface:      #2a211a;
+    --color-border:       #443830;
+    --color-text:         #e8ddd5;
+    --color-text-muted:   #a89080;
+    --color-heading:      #f0e4d8;
+    --color-accent:       #c8a24a;
+    --color-accent-hover: #e0b85c;
+    --color-link:         #c8a24a;
+    --color-link-hover:   #e0b85c;
+    --color-header-bg:    #120d08;
+    --color-header-text:  #f5ede0;
+    --color-nav-bg:       #1e1510;
+    --color-nav-text:     #d4c4b0;
+    --color-nav-active:   #c8a24a;
+    --color-footer-bg:    #1a1410;
+    --color-footer-text:  #a89080;
+  }
+}
+
+/* Base typography */
+html {
+  font-size: var(--font-size-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-serif);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--color-heading);
+  line-height: var(--line-height-heading);
+}
+
+h1 { font-size: 2rem;    margin-block: 0 var(--space-lg); font-weight: 700; }
+h2 { font-size: 1.4rem;  margin-block: var(--space-lg) var(--space-sm); font-weight: 600; }
+h3 { font-size: 1.1rem;  margin-block: var(--space-md) var(--space-xs); font-weight: 600;
+     text-transform: uppercase; letter-spacing: 0.06em; }
+h4 { font-size: 1rem;    margin-block: var(--space-md) var(--space-xs); font-weight: 600; }
+
+h1 { border-block-end: 2px solid var(--color-accent); padding-block-end: var(--space-sm); }
+h2 { border-block-end: 1px solid var(--color-border); padding-block-end: var(--space-xs); }
+
+/* Links — Eric Meyer style: colored, no underline except hover */
+a:link, a:visited {
+  color: var(--color-link);
+  text-decoration: none;
+  border-block-end: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+a:hover {
+  color: var(--color-link-hover);
+  border-block-end-color: var(--color-link-hover);
+}
+a:active {
+  color: var(--color-accent-hover);
+}
+
+/* Body copy */
+p { margin-block-end: 0.85em; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+abbr, acronym { border-block-end: 1px dotted var(--color-text-muted); cursor: help; }
+code, kbd, samp { font-family: var(--font-mono); font-size: var(--font-size-sm); }
+pre { font-family: var(--font-mono); font-size: var(--font-size-sm);
+      overflow-x: auto; padding: var(--space-md);
+      background: var(--color-bg-alt); border: 1px solid var(--color-border);
+      border-radius: var(--radius); }
+
+/* Lists */
+ul, ol { margin-block-end: var(--space-md); padding-inline-start: var(--space-lg); }
+ul { list-style: disc; }
+ol { list-style: decimal; }
+li { margin-block-end: var(--space-xs); line-height: var(--line-height); }
+
+/* Definition lists (DocBook variablelist) */
+dl { margin-block-end: var(--space-md); }
+dt { font-family: var(--font-sans); font-weight: 600;
+     color: var(--color-accent); margin-block-start: var(--space-sm); }
+dd { margin-inline-start: var(--space-lg); margin-block-end: var(--space-sm); }
+
+/* Tables */
+table { width: 100%; margin-block: var(--space-md); border-collapse: collapse; }
+th, td { padding: var(--space-xs) var(--space-sm); text-align: start;
+         border: 1px solid var(--color-border); font-size: var(--font-size-sm); }
+thead th { background: var(--color-bg-alt); font-family: var(--font-sans);
+           font-weight: 600; color: var(--color-heading); }
+
+/* p.title (DocBook variablelist title) */
+p.title b { font-family: var(--font-sans); font-size: var(--font-size-sm);
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--color-text-muted); }
+
+/* Accessibility: skip nav hidden off-screen */
+ul.skipNav {
+  position: absolute;
+  inset-inline-start: -999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+ul.skipNav:focus-within {
+  inset-inline-start: var(--space-md);
+  inset-block-start: var(--space-md);
+  width: auto;
+  height: auto;
+  z-index: 1000;
+}
+
+hr.access { display: none; }

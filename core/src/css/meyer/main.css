@@ -1,0 +1,221 @@
+/* meyer/main.css — SilkPage theme: meyer
+   Layout and component styles. CSS Grid replaces float-based layout.
+   Targets the unchanged SilkPage XHTML output structure.
+   -------------------------------------------------------------------- */
+
+@import url("../common/reset.css");
+@import url("base.css");
+
+/* ── Page shell ─────────────────────────────────────────────────────── */
+
+#wrapper {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "menu"
+    "pagebody"
+    "footer";
+  min-block-size: 100dvb;
+  max-inline-size: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+#header {
+  grid-area: header;
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-block-size: var(--header-height);
+  margin-inline: calc(-1 * var(--space-md));
+}
+
+#header #title a {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-header-text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+#header #title a:hover {
+  color: var(--color-nav-active);
+  border: none;
+}
+
+#headitems {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-nav-text);
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+#headitems a:link, #headitems a:visited {
+  color: var(--color-nav-text);
+  border: none;
+}
+#headitems a:hover { color: var(--color-nav-active); }
+#headitems .vbar { color: var(--color-header-bg); opacity: 0.4; }
+
+/* ── Primary navigation (div#menu) ──────────────────────────────────── */
+
+#menu {
+  grid-area: menu;
+  background: var(--color-nav-bg);
+  margin-inline: calc(-1 * var(--space-md));
+  padding-inline: var(--space-lg);
+}
+
+#menu ul {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu li { margin: 0; padding: 0; }
+
+#menu li a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-nav-text);
+  text-decoration: none;
+  border-block-end: 3px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+#menu li a span { pointer-events: none; }
+
+#menu li a:hover {
+  color: var(--color-nav-active);
+  background: rgba(255,255,255,0.06);
+  border-block-end-color: var(--color-nav-active);
+}
+
+/* Active/current page indicated by body class matching li class */
+body.about  #menu li.about  a,
+body.docs   #menu li.docs   a,
+body.downloads #menu li.downloads a,
+body.dev    #menu li.dev    a {
+  color: var(--color-nav-active);
+  border-block-end-color: var(--color-nav-active);
+  background: rgba(200,162,74,0.1);
+}
+
+/* ── Page body: main + sidebar ──────────────────────────────────────── */
+
+#pagebody {
+  grid-area: pagebody;
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-width);
+  grid-template-areas: "main sidebar";
+  gap: var(--space-xl);
+  padding-block: var(--space-xl);
+  align-items: start;
+}
+
+#maincontent {
+  grid-area: main;
+  min-inline-size: 0; /* prevent grid blowout */
+}
+
+#sidebar {
+  grid-area: sidebar;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+}
+
+/* ── Sidebar components ─────────────────────────────────────────────── */
+
+#sidebar div {
+  margin-block-end: var(--space-lg);
+}
+
+#sidebar p.title {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  border-block-end: 1px solid var(--color-border);
+  padding-block-end: var(--space-xs);
+  margin-block-end: var(--space-sm);
+}
+#sidebar p.title b { font-weight: 700; }
+
+#sidebar dl { margin: 0; }
+#sidebar dt {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-block-start: var(--space-sm);
+}
+#sidebar dd { margin-inline-start: 0; margin-block-end: var(--space-sm); color: var(--color-text-muted); }
+#sidebar dd p { margin: 0; }
+#sidebar a:link, #sidebar a:visited { color: var(--color-accent); }
+#sidebar a:hover { color: var(--color-accent-hover); }
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+
+#footer {
+  grid-area: footer;
+  background: var(--color-footer-bg);
+  border-block-start: 1px solid var(--color-border);
+  padding: var(--space-md) var(--space-lg);
+  margin-inline: calc(-1 * var(--space-md));
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-footer-text);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+#footer #footitems { display: none; } /* redundant with header items */
+
+#footer .left, #footer .right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+#footer a:link, #footer a:visited { color: var(--color-footer-text); border: none; }
+#footer a:hover { color: var(--color-link-hover); }
+
+#footer .sources, #footer .compliance, #footer .copyright, #footer .updated {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+/* ── Responsive: collapse sidebar on narrow viewports ───────────────── */
+
+@media (max-width: 42rem) {
+  #pagebody {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main" "sidebar";
+  }
+  #sidebar {
+    border-block-start: 1px solid var(--color-border);
+    padding-block-start: var(--space-lg);
+  }
+  #menu ul { flex-wrap: wrap; }
+  #menu li a { padding: var(--space-xs) var(--space-sm); }
+  #header { flex-direction: column; align-items: flex-start; }
+}

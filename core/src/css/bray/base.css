@@ -1,0 +1,181 @@
+/* bray/base.css — SilkPage theme: bray
+   Inspired by Tim Bray's ongoing.tbray.org: written since 2003, the gold standard
+   of minimal, readable, fast personal publishing. Near-zero decoration.
+   Pure content. One accent colour. Generous leading. Nothing else.
+   -------------------------------------------------------------------- */
+
+:root {
+  /* Palette — near-black on white, single warm-red accent */
+  --color-bg:           #ffffff;
+  --color-bg-alt:       #f7f7f7;
+  --color-surface:      #ffffff;
+  --color-border:       #e0e0e0;
+  --color-text:         #111111;
+  --color-text-muted:   #666666;
+  --color-heading:      #000000;
+  --color-accent:       #c0392b;    /* Tim Bray's characteristic red-orange */
+  --color-accent-hover: #922b21;
+  --color-link:         #c0392b;
+  --color-link-hover:   #922b21;
+  --color-link-visited: #8e44ad;    /* visited links get a distinct purple */
+  --color-header-bg:    #111111;
+  --color-header-text:  #ffffff;
+  --color-nav-bg:       #222222;
+  --color-nav-text:     #cccccc;
+  --color-nav-active:   #ffffff;
+  --color-footer-bg:    #ffffff;
+  --color-footer-text:  #999999;
+
+  /* Typography — pure system sans, no custom font loading */
+  --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                  'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+  --font-mono:    'SF Mono', SFMono-Regular, ui-monospace, 'Cascadia Mono',
+                  Menlo, Consolas, 'Courier New', monospace;
+
+  --font-size-base:    clamp(1rem, 1.6vw, 1.0625rem);
+  --font-size-sm:      0.875em;
+  --font-size-xs:      0.75em;
+  --line-height:       1.75;           /* Tim Bray's hallmark generous leading */
+  --line-height-heading: 1.2;
+
+  /* Spacing */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+
+  /* Layout — single narrow column */
+  --max-width:    48rem;               /* readable line length, ~75 chars */
+  --sidebar-width: 10rem;
+  --header-height: 3rem;
+  --radius:        2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:           #111111;
+    --color-bg-alt:       #1a1a1a;
+    --color-surface:      #1a1a1a;
+    --color-border:       #333333;
+    --color-text:         #f0f0f0;
+    --color-text-muted:   #999999;
+    --color-heading:      #ffffff;
+    --color-accent:       #e74c3c;
+    --color-accent-hover: #c0392b;
+    --color-link:         #e74c3c;
+    --color-link-hover:   #ff6b5b;
+    --color-link-visited: #bb8fce;
+    --color-header-bg:    #000000;
+    --color-header-text:  #ffffff;
+    --color-nav-bg:       #000000;
+    --color-nav-text:     #aaaaaa;
+    --color-nav-active:   #ffffff;
+    --color-footer-bg:    #111111;
+    --color-footer-text:  #666666;
+  }
+}
+
+/* Base typography */
+html {
+  font-size: var(--font-size-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Headings — plain, no borders, weight carries hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  line-height: var(--line-height-heading);
+  font-weight: 700;
+}
+
+h1 { font-size: 1.75rem;  margin-block: 0 var(--space-lg); }
+h2 { font-size: 1.25rem;  margin-block: var(--space-xl) var(--space-sm); }
+h3 { font-size: 1.05rem;  margin-block: var(--space-lg) var(--space-xs); }
+h4 { font-size: 1rem;     margin-block: var(--space-md) var(--space-xs); }
+
+/* No decorative borders on headings — content is decoration enough */
+
+/* Links */
+a:link    { color: var(--color-link);         text-decoration: underline;
+             text-decoration-thickness: 1px;   text-underline-offset: 2px; }
+a:visited { color: var(--color-link-visited);  text-decoration: underline; }
+a:hover   { color: var(--color-link-hover);    text-decoration-thickness: 2px; }
+a:active  { color: var(--color-accent-hover); }
+
+/* Body copy — generous spacing for readability */
+p { margin-block-end: 1em; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+abbr, acronym { border-block-end: 1px dotted var(--color-text-muted); cursor: help; }
+
+/* Code — minimal, unobtrusive */
+code, kbd, samp, tt {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  overflow-x: auto;
+  padding: var(--space-md);
+  background: var(--color-bg-alt);
+  border-inline-start: 3px solid var(--color-border);
+  line-height: 1.5;
+  margin-block: var(--space-md);
+}
+
+/* Lists */
+ul, ol { margin-block-end: var(--space-md); padding-inline-start: var(--space-lg); }
+ul { list-style: disc; }
+ol { list-style: decimal; }
+li { margin-block-end: var(--space-xs); }
+
+/* Definition lists */
+dl { margin-block-end: var(--space-md); }
+dt { font-weight: 700; color: var(--color-heading); margin-block-start: var(--space-md); }
+dd { margin-inline-start: var(--space-lg); margin-block-end: var(--space-sm); }
+
+/* Tables */
+table { width: 100%; margin-block: var(--space-md); border-collapse: collapse; }
+th, td {
+  padding: var(--space-xs) var(--space-sm);
+  text-align: start;
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+thead th { font-weight: 700; border-block-end: 2px solid var(--color-text); }
+
+/* p.title (DocBook) */
+p.title b {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+/* Accessibility */
+ul.skipNav {
+  position: absolute;
+  inset-inline-start: -999px;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+ul.skipNav:focus-within {
+  inset-inline-start: var(--space-md);
+  inset-block-start: var(--space-md);
+  width: auto; height: auto;
+  z-index: 1000;
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  padding: var(--space-xs) var(--space-sm);
+}
+hr.access { display: none; }
