@@ -13,7 +13,8 @@ UG_PDF_DIR = $(OUT)/guides/pdf
 LANG = en
 XML = $(SRC)/xml/$(LANG)/main.xml
 DOCS_UG = $(DOCS)-ug
-.PHONY : clean 
+HUMBLE_IDP_JAVA ?= $(HOME)/ws/today/cleanUp/X0-DigitalIdentity/humble-idp/java
+.PHONY : clean humble-idp-docs
 
 all: html-chunk html-single tidy css zip
 
@@ -71,6 +72,9 @@ zip-chunk:
 
 zip:
 	cd $(TMP)/$(DOCS) && zip -rpD $(DOCS).zip *
+
+humble-idp-docs:
+	$(MAKE) -C "$(HUMBLE_IDP_JAVA)" docs
 
 clean:
 	rm -rf $(OUT)

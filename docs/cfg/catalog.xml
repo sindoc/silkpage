@@ -3,13 +3,34 @@
    PUBLIC "-//OASIS/DTD Entity Resolution XML Catalog V1.0//EN"
    "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 
+<!--
+  silkpage/docs/cfg/catalog.xml — portable XML catalog for DocBook XSL resolution.
+
+  On macOS with Homebrew:
+    brew install docbook-xsl
+    XML_CATALOG_FILES=/opt/homebrew/etc/xml/catalog xsltproc ...
+
+  The Homebrew system catalog at /opt/homebrew/etc/xml/catalog already has
+  the DocBook URI rewrite rules; use that directly for the most portable
+  approach.  This file provides explicit fallback rewrites for the two URI
+  patterns used by the SilkPage stylesheets.
+
+  Override via environment:
+    DOCBOOK_XSL=/path/to/docbook-xsl make html-chunk
+-->
+
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
-  <group xml:base="file:///home/cortex/opt/">
+  <!-- macOS / Homebrew: docbook-xsl installed via brew install docbook-xsl -->
+  <group xml:base="file:///opt/homebrew/Cellar/docbook-xsl/1.79.2_1/docbook-xsl/">
 
     <rewriteURI
         uriStartString="http://docbook.sourceforge.net/release/xsl/current/"
-        rewritePrefix="docbook-xsl/" />
+        rewritePrefix="." />
+
+    <rewriteURI
+        uriStartString="http://docbook.sourceforge.net/release/xsl-ns/current/"
+        rewritePrefix="." />
 
   </group>
 
