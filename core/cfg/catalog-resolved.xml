@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- catalog-resolved.xml: SilkPage XML Catalog, resolved version.
+     Replaces catalog.xml (which uses @...@ Ant filter tokens).
+     Relative URIs in rewritePrefix are resolved against this file's base URI:
+       file:///REPO/core/cfg/catalog-resolved.xml
+     So:  ../src/xsl/      resolves to core/src/xsl/
+          ../../tools/...  resolves to REPO/tools/... -->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <!-- Chain to the DocBook XSL snapshot catalog (new cdn.docbook.org URIs) -->
+  <nextCatalog catalog="../../tools/docbook-xsl/catalog.xml"/>
+
+  <!-- OLink targetdatabase DTD (shipped with SilkPage) -->
+  <group xml:base="common/" id="docbook-xsl" prefer="public">
+    <public publicId="-//Norman Walsh//DTD DocBook Olink Summary V2.0//EN"
+            uri="targetdatabase.dtd"/>
+  </group>
+
+  <!-- SilkPage XSL: live URL → local core/src/xsl/ -->
+  <rewriteURI
+    uriStartString="http://silkpage.markupware.com/release/core/current/src/xsl"
+    rewritePrefix="../src/xsl/"/>
+
+  <!-- DocBook XSL (non-website): old SourceForge URL → local tools/docbook-xsl/ -->
+  <rewriteURI
+    uriStartString="http://docbook.sourceforge.net/release/xsl/current"
+    rewritePrefix="../../tools/docbook-xsl/"/>
+  <rewriteSystem
+    systemIdStartString="http://docbook.sourceforge.net/release/xsl/current"
+    rewritePrefix="../../tools/docbook-xsl/"/>
+
+  <!-- DocBook Website XSL: old SourceForge URLs → local tools/docbook-xsl/website/
+       The snapshot layout has XSLs directly in website/ (no xsl/ subdirectory),
+       so the /xsl/ path segment must be consumed by the rewrite. -->
+  <rewriteURI
+    uriStartString="http://docbook.sourceforge.net/release/website/current/xsl/"
+    rewritePrefix="../../tools/docbook-xsl/website/"/>
+  <rewriteURI
+    uriStartString="http://docbook.sourceforge.net/release/website/2.4.1/xsl/"
+    rewritePrefix="../../tools/docbook-xsl/website/"/>
+  <rewriteSystem
+    systemIdStartString="http://docbook.sourceforge.net/release/website/current/xsl/"
+    rewritePrefix="../../tools/docbook-xsl/website/"/>
+  <rewriteSystem
+    systemIdStartString="http://docbook.sourceforge.net/release/website/2.4.1/xsl/"
+    rewritePrefix="../../tools/docbook-xsl/website/"/>
+
+</catalog>

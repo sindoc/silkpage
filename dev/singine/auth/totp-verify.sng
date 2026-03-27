@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# dev/singine/auth/totp-verify.sng
+#:name        auth.totp-verify
+#:description Verify a TOTP code from Google/Microsoft Authenticator or 1Password
+#:version     1.0.0
+#:param       email  string  required  "Account email address"
+#:param       code   string  optional  "6-digit TOTP code (prompted if omitted)"
+#:param       vault  string  optional  "1Password vault name" default=lutino-dev
+#:entity      User
+#:entity      AuthCredential
+#:entity      AuthEvent
+#:attribute   email
+#:attribute   totpCode
+#:attribute   verifiedAt
+#:attribute   authResult
+#:code-set    AuthResult
+#:master      User
+#:reference   AuthEvent
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+email="${1:-}"
+code="${2:-}"
+vault="${3:-lutino-dev}"
+
+[[ -n "${email}" ]] || sng_die "email is required.  Usage: sng auth.totp-verify <email> [code] [vault]"
+
+# ── read secret ───────────────────────────────────────────────────────────────
+# Prefer locally cached secret; fall back to 1Password
+local_secret_file="${LUTINO_TOTP_DIR}/${email}.secret"
+
+if [[ -f "${local_secret_file}" ]]; then
+  secret="$(cat "${local_secret_file}")"
+else
+  op_require
+  sng_step "Reading TOTP secret from 1Password (vault: ${vault})"
+  secret="$(op_get_field "${vault}" "lutino-totp-${email}" "OTP.totp")" \
+    || sng_die "TOTP secret not found for ${email}. Run: sng auth.totp-setup ${email}"
+fi
+
+# ── prompt for code if not given ──────────────────────────────────────────────
+if [[ -z "${code}" ]]; then
+  printf "Enter 6-digit code from your authenticator: "
+  read -r code
+fi
+
+code="${code// /}"
+
+[[ "${code}" =~ ^[0-9]{6}$ ]] \
+  || sng_die "invalid code '${code}': must be exactly 6 digits"
+
+# ── verify ────────────────────────────────────────────────────────────────────
+sng_step "Verifying TOTP code..."
+result="$(totp_verify "${secret}" "${code}")"
+
+if [[ "${result}" == "valid" ]]; then
+  sng_ok "Code is VALID — authentication successful"
+  exit 0
+else
+  sng_err "Code is INVALID or expired"
+  exit 1
+fi

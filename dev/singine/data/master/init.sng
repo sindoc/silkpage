@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+# dev/singine/data/master/init.sng
+#:name        data.master.init
+#:description Initialise master data stores: create directories, write seed records
+#:version     1.0.0
+#:uses        data.reference.codes
+#:param       env    string  optional  "local|staging|production" default=local
+#:param       force  string  optional  "overwrite existing seed data" default=false
+#:entity      User
+#:entity      Account
+#:entity      System
+#:attribute   id
+#:attribute   email
+#:attribute   siteContext
+#:attribute   deployEnv
+#:attribute   status
+#:attribute   bootstrapOrder
+#:code-set    StatusLifecycle
+#:code-set    SiteContext
+#:code-set    DeployEnv
+#:master      User Account System
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/lib/runtime.sh"
+
+env_name="${1:-local}"
+force="${2:-false}"
+
+case "${env_name}" in
+  local|staging|production) ;;
+  *) sng_die "invalid env '${env_name}'. Valid values (code-set: DeployEnv): local | staging | production" ;;
+esac
+
+LUTINO_DATA_ROOT="${HOME}/.config/lutino/data"
+
+# ── directory layout ──────────────────────────────────────────────────────────
+_ensure_dirs() {
+  local dirs=(
+    "${LUTINO_DATA_ROOT}/master/users"
+    "${LUTINO_DATA_ROOT}/master/accounts"
+    "${LUTINO_DATA_ROOT}/master/systems"
+    "${LUTINO_DATA_ROOT}/reference"
+    "${HOME}/.config/lutino/totp"
+    "${HOME}/.config/lutino/sessions"
+    "${HOME}/.config/lutino/ssl"
+  )
+  for d in "${dirs[@]}"; do
+    mkdir -p "${d}"
+    chmod 0700 "${d}"
+  done
+  sng_ok "Directory layout ready under ${HOME}/.config/lutino/"
+}
+
+# ── write a record only if missing (or force=true) ────────────────────────────
+_write_if_new() {
+  local file="$1"; shift
+  if [[ -f "${file}" && "${force}" != "true" ]]; then
+    sng_info "skip (exists): ${file}"
+    return
+  fi
+  cat > "${file}"
+  chmod 0600 "${file}"
+  sng_ok "wrote ${file}"
+}
+
+# ── seed: system records ──────────────────────────────────────────────────────
+_seed_systems() {
+  local ts; ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  for subdomain in lutino.io app.lutino.io cdn.lutino.io; do
+    local sys_id; sys_id="$(python3 -c "import uuid; print(uuid.uuid4())")"
+    local f="${LUTINO_DATA_ROOT}/master/systems/${subdomain}.system"
+    _write_if_new "${f}" <<EOF
+id=${sys_id}
+name=${subdomain}
+siteContext=${subdomain}
+deployEnv=${env_name}
+createdAt=${ts}
+status=draft
+EOF
+  done
+}
+
+# ── seed: default account ─────────────────────────────────────────────────────
+_seed_account() {
+  local ts; ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  local acc_id; acc_id="$(python3 -c "import uuid; print(uuid.uuid4())")"
+  local f="${LUTINO_DATA_ROOT}/master/accounts/default.account"
+  _write_if_new "${f}" <<EOF
+id=${acc_id}
+name=lutino-default
+siteContext=lutino.io
+deployEnv=${env_name}
+createdAt=${ts}
+status=draft
+EOF
+}
+
+# ── bootstrap reference data ──────────────────────────────────────────────────
+_bootstrap_reference() {
+  sng_step "Bootstrapping reference data code sets..."
+  bash "$(dirname "${BASH_SOURCE[0]}")/../reference/codes.sng" bootstrap
+}
+
+# ── write manifest ────────────────────────────────────────────────────────────
+_write_manifest() {
+  local manifest="${LUTINO_DATA_ROOT}/.bootstrap-manifest"
+  cat > "${manifest}" <<EOF
+bootstrapVersion=1.0.0
+env=${env_name}
+bootstrappedAt=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+bootstrappedBy=${USER}
+EOF
+  chmod 0600 "${manifest}"
+  sng_ok "Manifest: ${manifest}"
+}
+
+# ── main ──────────────────────────────────────────────────────────────────────
+sng_head "Master Data Init — env: ${env_name}"
+printf "\n"
+
+sng_step "1/5  Ensuring directory layout..."
+_ensure_dirs
+
+sng_step "2/5  Seeding System records (lutino.io, app, cdn)..."
+_seed_systems
+
+sng_step "3/5  Seeding default Account..."
+_seed_account
+
+sng_step "4/5  Bootstrapping reference data..."
+_bootstrap_reference
+
+sng_step "5/5  Writing bootstrap manifest..."
+_write_manifest
+
+printf "\n"
+sng_ok "Master data initialised (env: ${env_name})"
+printf "\n  Next steps:\n"
+printf "    sng data.master.user create <email>   — add the first user\n"
+printf "    sng auth.totp-setup <email>            — set up TOTP\n"
+printf "    sng auth.qr <email>                    — show login QR code\n"
+printf "    sng model.entities validate            — validate entity registry\n"
+printf "    sng model.attributes validate          — validate attribute registry\n\n"

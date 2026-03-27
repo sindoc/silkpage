@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سینجین() — Singine Logotype · One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Print page ───────────────────────────────── */
+@page { size: A4 portrait; margin: 0; }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:    #b8880a;
+  --rose:    #b82040;
+  --blue:    #1840a8;
+  --violet:  #5820a8;
+  --green:   #0a7840;
+  --ink:     #080810;
+  --ink-mid: #303044;
+  --ink-dim: #686880;
+  --rule:    #c8c8d8;
+  --rule-lt: #e4e4ee;
+  --paper:   #fafafc;
+  --sq:      5pt;
+}
+
+html { background: #c0c0cc; }
+
+body {
+  width: 210mm;
+  margin: 0 auto;
+  background: transparent;
+  font-family: 'IBM Plex Sans', Helvetica, sans-serif;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+@media screen  { body { padding: 20px 0 40px; } }
+@media print   { html { background: none; } body { padding: 0; } }
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: var(--paper);
+  padding: 12mm 14mm 10mm;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,.28);
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero { flex-shrink: 0; margin-bottom: 2mm; }
+
+.hero-svg { display: block; width: 100%; height: auto; }
+
+.hero-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 6.8pt;
+  color: var(--ink-dim);
+  letter-spacing: 0.14em;
+  margin-top: 2mm;
+}
+.hero-sub .dot { margin: 0 2.5mm; color: #b0b0c0; }
+
+/* ── HR ───────────────────────────────────────── */
+.hr {
+  height: 0;
+  border: none;
+  border-top: 0.35pt solid var(--rule);
+  margin: 2.8mm 0;
+  flex-shrink: 0;
+}
+.hr-thick {
+  border-top-width: 0.6pt;
+  border-top-color: var(--ink-dim);
+}
+
+/* ── IDENTITY ROW ─────────────────────────────── */
+.ident {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1.4fr;
+  gap: 2mm;
+  flex-shrink: 0;
+  margin-bottom: 0.5mm;
+}
+.id-k {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 5.4pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 1mm;
+}
+.id-v {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.8pt;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.id-v.ar {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 9.5pt;
+  direction: rtl;
+}
+.id-v .g { color: var(--gold); font-weight: 600; }
+.id-v .r { color: var(--rose); }
+.id-v .d { color: var(--ink-dim); }
+
+/* ── SECTION LABEL ────────────────────────────── */
+.sec {
+  font-family: 'Amiri', 'IBM Plex Mono', serif;
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--rose);
+  letter-spacing: 0.04em;
+  margin-bottom: 2mm;
+  flex-shrink: 0;
+}
+.sec .arrow { font-style: normal; margin-right: 1.5mm; font-size: 7pt; }
+
+/* ── SQUARE BULLETS ───────────────────────────── */
+.sq {
+  display: inline-block;
+  width: var(--sq); height: var(--sq);
+  vertical-align: middle;
+  margin-right: 1.5mm;
+  flex-shrink: 0;
+}
+.sq-gold   { background: var(--gold);   }
+.sq-rose   { background: var(--rose);   }
+.sq-blue   { background: var(--blue);   }
+.sq-green  { background: var(--green);  }
+.sq-violet { background: var(--violet); }
+.sq-dim    { background: var(--ink-dim);}
+
+/* ── TWO COLUMNS ──────────────────────────────── */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+  flex-shrink: 0;
+}
+
+/* ── ANATOMY TABLE ────────────────────────────── */
+.atbl {
+  width: 100%;
+  border-collapse: collapse;
+}
+.atbl td {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.2pt;
+  padding: 1.1mm 1.4mm;
+  border-bottom: 0.25pt solid var(--rule-lt);
+  vertical-align: middle;
+}
+.atbl td.g {
+  font-size: 14pt;
+  width: 10mm;
+  text-align: center;
+  direction: rtl;
+}
+.atbl td.u  { color: var(--ink-dim); font-size: 5.8pt; width: 18mm; }
+.atbl td.n  { font-size: 7pt; }
+.atbl td.fa {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 8pt;
+  direction: rtl;
+  color: var(--ink-mid);
+  text-align: right;
+  width: 16mm;
+}
+
+/* ── CODE BLOCK ───────────────────────────────── */
+.code {
+  border: 0.3pt solid var(--rule);
+  border-left: 1.6pt solid var(--gold);
+  padding: 2.5mm 3mm;
+  background: #f2f2f8;
+}
+.code pre {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 6.6pt;
+  line-height: 1.78;
+  color: var(--ink);
+  white-space: pre;
+}
+.c-cm { color: var(--ink-dim); }
+.c-kw { color: var(--blue); }
+.c-sy { color: var(--gold); }
+.c-st { color: var(--green); }
+.c-hl { color: var(--rose); }
+.c-ar { font-family: 'IBM Plex Sans Arabic',sans-serif; }
+
+/* ── UNICODE MAP ──────────────────────────────── */
+.utbl { width: 100%; border-collapse: collapse; }
+.utbl th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 5.6pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  padding: 1.4mm 1.4mm;
+  border-top: 0.5pt solid var(--ink-dim);
+  border-bottom: 0.5pt solid var(--ink-dim);
+  text-align: left;
+  background: #ededf4;
+}
+.utbl td {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.2pt;
+  padding: 1.2mm 1.4mm;
+  border-bottom: 0.25pt solid var(--rule-lt);
+  vertical-align: middle;
+}
+.utbl tr.alt td { background: #f5f5fb; }
+.utbl td.g  { font-size: 14pt; width: 9mm; text-align: center; direction: rtl; }
+.utbl td.u  { color: var(--ink-dim); font-size: 5.6pt; width: 12mm; }
+.utbl td.nm { width: 32mm; font-size: 7pt; }
+.utbl td.ro { color: var(--ink-mid); font-size: 7pt; }
+.utbl td.fa {
+  font-family: 'IBM Plex Sans Arabic',sans-serif;
+  font-size: 8pt;
+  direction: rtl;
+  width: 18mm;
+  text-align: right;
+  color: var(--ink-mid);
+}
+.utbl td.sc { color: var(--ink-dim); font-size: 5.8pt; }
+
+/* ── FORMAL GRID ──────────────────────────────── */
+.fgrid { width: 100%; border-collapse: collapse; border: 0.3pt solid var(--rule); }
+.fgrid td {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7pt;
+  padding: 1.7mm 2mm;
+  border-bottom: 0.25pt solid var(--rule-lt);
+  vertical-align: middle;
+}
+.fgrid td.k {
+  background: #ededf4;
+  color: var(--ink-dim);
+  font-size: 5.6pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 18mm;
+  border-right: 0.3pt solid var(--rule);
+}
+.fgrid tr:last-child td { border-bottom: none; }
+.fg { color: var(--gold); }
+.fr { color: var(--rose); }
+.fb { color: var(--blue); }
+
+/* ── VARIANTS ─────────────────────────────────── */
+.vgrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5mm;
+}
+.vcell {
+  border: 0.3pt solid var(--rule);
+  padding: 2mm 1.5mm 1.5mm;
+  border-radius: 0.6mm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.v1 { border-top: 1pt solid var(--gold);   }
+.v2 { border-top: 1pt solid var(--blue);   }
+.v3 { border-top: 1pt solid var(--green);  }
+.v4 { border-top: 1pt solid var(--violet); }
+.v5 { border-top: 1pt solid var(--rose);   }
+.vcell .vn { font-family:'IBM Plex Mono',monospace; font-size:5.4pt; color:var(--ink-dim); letter-spacing:.1em; margin-bottom:1.5mm; }
+.vcell .vl { font-size:12pt; direction:rtl; text-align:center; line-height:1.35; margin-bottom:1.5mm; display:block; flex:1; }
+.vcell .vf { font-family:'IBM Plex Mono',monospace; font-size:5pt; color:var(--ink-dim); line-height:1.5; }
+
+/* ── SIGNATURE BOX ────────────────────────────── */
+.sigbox {
+  border: 0.4pt solid var(--rule);
+  min-height: 18mm;
+  margin-bottom: 2mm;
+  position: relative;
+}
+.sigbox .sig-label {
+  position: absolute;
+  bottom: 2mm; left: 3mm;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 6pt;
+  color: var(--ink-dim);
+}
+
+/* ── FOOTER ───────────────────────────────────── */
+.ftr {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2mm;
+  border-top: 0.35pt solid var(--rule);
+  margin-top: auto;
+}
+.ftr-l, .ftr-r {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 5.8pt;
+  color: var(--ink-dim);
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HERO ══════════════════════════════════ -->
+  <div class="hero">
+    <svg class="hero-svg" viewBox="0 0 682 148"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ul" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"  stop-color="#b8880a" stop-opacity="0"/>
+          <stop offset="25%" stop-color="#b8880a"/>
+          <stop offset="75%" stop-color="#b8880a"/>
+          <stop offset="100%" stop-color="#b8880a" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- single text run: direction=rtl preserves Arabic cursive shaping;
+           tspan switches colour/weight per glyph without breaking joining   -->
+      <text x="341" y="122"
+            text-anchor="middle"
+            direction="rtl"
+            font-family="'IBM Plex Sans Arabic', sans-serif"
+            font-size="112"
+            font-weight="300"
+            fill="#080810"><!-- RTL reading order: سین first (rightmost), () last (leftmost) -->سین<tspan fill="#b8880a" font-weight="700">ج</tspan>ی<tspan font-family="'IBM Plex Mono',monospace" font-size="90" fill="#b8880a" dy="4">λ</tspan><tspan font-family="'IBM Plex Sans Arabic',sans-serif" font-size="112" fill="#b82040" dy="-4">؟</tspan><tspan font-family="'IBM Plex Mono',monospace" font-size="80" fill="#c0c0d0" dy="6" font-weight="300">()</tspan></text>
+
+      <!-- fine underline -->
+      <line x1="80" y1="140" x2="602" y2="140"
+            stroke="url(#ul)" stroke-width="0.4" opacity="0.5"/>
+    </svg>
+
+    <div class="hero-sub">
+      Tres Amigos
+      <span class="dot">·</span> ASCII &amp; Unicode
+      <span class="dot">·</span> Farsi Calligraphy
+      <span class="dot">·</span> Lambda Calculus
+      <span class="dot">·</span> Wolfram + LaTeX Notation
+    </div>
+  </div>
+
+  <div class="hr hr-thick"></div>
+
+  <!-- ══ IDENTITY ══════════════════════════════ -->
+  <div class="ident">
+    <div>
+      <div class="id-k">identity</div>
+      <div class="id-v">Sina Khakbaz · SinDoc42<br>London, UK · sin.khz.io</div>
+    </div>
+    <div>
+      <div class="id-k">logotype handle</div>
+      <div class="id-v ar">سین<span class="g">ج</span>ی<span class="d" style="font-family:'IBM Plex Mono',monospace;font-size:.85em;">λ</span><span class="r">؟</span><span class="d" style="font-family:'IBM Plex Mono',monospace;font-size:.82em;">()</span></div>
+    </div>
+    <div>
+      <div class="id-k">URN · namespace</div>
+      <div class="id-v" style="font-size:6.8pt;">URN: singine:42LL—————————————————<br>PREFIX singine: &lt;sin:engine/42LL&gt;</div>
+    </div>
+    <div>
+      <div class="id-k">meaning</div>
+      <div class="id-v ar" style="font-size:9pt;">پرسش و پاسخ</div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <!-- ══ CANONICAL EXECUTION NOTATION ══════════ -->
+  <div class="sec" style="margin-bottom:1.5mm;"><span class="arrow">↑</span> Canonical Execution Notation (Singine Engine)</div>
+  <div class="two" style="margin-bottom:0;">
+
+    <!-- LEFT: anatomy -->
+    <table class="atbl">
+      <tr>
+        <td class="g">سین</td>
+        <td class="u">U+0633·0646</td>
+        <td class="n">sin — س letter name</td>
+        <td class="fa">پرسش</td>
+      </tr>
+      <tr>
+        <td class="g" style="color:var(--gold)">ج</td>
+        <td class="u">U+062C &nbsp;←</td>
+        <td class="n"><b>jim — <span class="sq sq-gold"></span>pivot glyph</b></td>
+        <td class="fa">جیم</td>
+      </tr>
+      <tr>
+        <td class="g">ی</td>
+        <td class="u">U+06CC</td>
+        <td class="n">ya — connector</td>
+        <td class="fa">یاء</td>
+      </tr>
+      <tr>
+        <td class="g" style="color:var(--blue);font-family:'IBM Plex Mono',monospace;font-size:13pt;">λ</td>
+        <td class="u">U+03BB</td>
+        <td class="n">lambda — replaces ن</td>
+        <td class="fa">لامبدا</td>
+      </tr>
+      <tr>
+        <td class="g" style="color:var(--rose)">؟</td>
+        <td class="u">U+061F</td>
+        <td class="n">Arabic ? — replaces ه</td>
+        <td class="fa">پرسش‌نشان</td>
+      </tr>
+      <tr>
+        <td class="g" style="color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11pt;">()</td>
+        <td class="u">U+0028·0029</td>
+        <td class="n">function call · arity 0</td>
+        <td class="fa">تابع</td>
+      </tr>
+    </table>
+
+    <!-- RIGHT: code -->
+    <div class="code">
+<pre><span class="c-cm">;; λ. <span class="c-ar">سینجیλ؟</span>() — self-executing form</span>
+<span class="c-sy"><span class="c-ar">سینجیλ؟</span></span>()
+
+<span class="c-kw">(assign</span> [value
+  <span class="c-kw">(form</span> gen
+    <span class="c-kw">(data-element</span>
+      (list f <span class="c-sy">■</span> filter | query | sql)
+      (choose → <span class="c-st">DB:sindoc:42LL…</span>)
+      (compile → Iceberg | Kafka | Camel)
+      (connect → Collibra:BusinessAsset)
+      (lineage ⊆ DataQuality:Phase))
+    (output → <span class="c-sy">λ</span>-pipeline)))])</pre>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <!-- ══ UNICODE MAP ════════════════════════════ -->
+  <div class="sec"><span class="arrow">↑</span> Unicode Map &nbsp;(Tres Amigos — symbolic vocabulary)</div>
+  <table class="utbl">
+    <thead>
+      <tr>
+        <th></th><th>U+</th><th>Name</th>
+        <th>Element of logotype system</th>
+        <th>Farsi</th><th>For all (universal scope)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="g">سین</td>
+        <td class="u">0633+0646</td>
+        <td class="nm">Has type / proposition</td>
+        <td class="ro"><span class="sq sq-gold"></span>Porseh — interrogative base chain</td>
+        <td class="fa">سین</td>
+        <td class="sc">Q-scope · sin root</td>
+      </tr>
+      <tr class="alt">
+        <td class="g" style="color:var(--gold)">ج</td>
+        <td class="u">062C</td>
+        <td class="nm">Map-to / pivot glyph ←</td>
+        <td class="ro"><span class="sq sq-gold"></span>Jim — <b>identity pivot</b> · highlight key</td>
+        <td class="fa">جیم</td>
+        <td class="sc">Definitional equivalence</td>
+      </tr>
+      <tr>
+        <td class="g">ی</td>
+        <td class="u">06CC</td>
+        <td class="nm">Asserts / predicate</td>
+        <td class="ro"><span class="sq sq-dim"></span>Ya — continuation · connector</td>
+        <td class="fa">یاء</td>
+        <td class="sc">Relational connector</td>
+      </tr>
+      <tr class="alt">
+        <td class="g" style="color:var(--blue);font-family:'IBM Plex Mono',monospace;font-size:13pt;">λ</td>
+        <td class="u">03BB</td>
+        <td class="nm">Composition operator</td>
+        <td class="ro"><span class="sq sq-blue"></span>Lambda — calculus core · replaces ن</td>
+        <td class="fa">لامبدا</td>
+        <td class="sc">Tensor / join operation</td>
+      </tr>
+      <tr>
+        <td class="g" style="color:var(--rose)">؟</td>
+        <td class="u">061F</td>
+        <td class="nm">There exists (instance)</td>
+        <td class="ro"><span class="sq sq-rose"></span>Porsesh-neshan · replaces ه · terminal</td>
+        <td class="fa">پرسش‌نشان</td>
+        <td class="sc">Existential query mark</td>
+      </tr>
+      <tr class="alt">
+        <td class="g" style="color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11pt;">()</td>
+        <td class="u">0028·0029</td>
+        <td class="nm">Function application</td>
+        <td class="ro"><span class="sq sq-dim"></span>Parens — zero-arity invocation</td>
+        <td class="fa">پرانتز</td>
+        <td class="sc">Invocation boundary</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="hr"></div>
+
+  <!-- ══ FORMAL STATEMENT + VARIANTS ═══════════ -->
+  <div class="sec" style="margin-bottom:1.5mm;"><span class="arrow">↑</span> Formal Statement &nbsp;(Wolfram-LaTeX)</div>
+  <div class="two">
+
+    <!-- LEFT: formal grid -->
+    <table class="fgrid">
+      <tr>
+        <td class="k">Pipeline</td>
+        <td><span class="fg">λ</span> s.&nbsp;assign(value(form(gen(de(n))), <span class="fg">سینجیλ؟</span>()))</td>
+      </tr>
+      <tr>
+        <td class="k">Control</td>
+        <td><span class="fg">Y</span> ∈ DataElement:Collibra.BA <span class="fr">→</span> ctx(s) = BA</td>
+      </tr>
+      <tr>
+        <td class="k">Execution</td>
+        <td>Engine <span class="sq sq-gold" style="width:5pt;height:5pt;display:inline-block;vertical-align:middle;"></span>(HTTP + SMTP + IMAP) <span class="fg">@</span> (Kafka <span class="sq sq-blue" style="width:5pt;height:5pt;display:inline-block;vertical-align:middle;"></span>Iceberg)</td>
+      </tr>
+      <tr>
+        <td class="k">URN scope</td>
+        <td>∂ ∈ GNN · u = sindoc:42 · u.lang = u.iso · u.nalco <span class="fr">▸</span> PREFIX <span class="fg">singine:</span></td>
+      </tr>
+    </table>
+
+    <!-- RIGHT: 5 variant mini-cards -->
+    <div>
+      <div class="vgrid">
+        <div class="vcell v1">
+          <div class="vn">v1</div>
+          <span class="vl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">سین<span style="color:var(--gold);font-weight:700">ج</span>یλ؟</span>
+          <div class="vf">Noto Nastaliq<br>+ JetBrains Mono</div>
+        </div>
+        <div class="vcell v2">
+          <div class="vn">v2</div>
+          <span class="vl" style="font-family:'IBM Plex Mono',monospace;font-size:8pt;color:var(--blue);padding-top:2mm;">SVG<br>◼◻◼</span>
+          <div class="vf">Pure SVG<br>Kufic geometry</div>
+        </div>
+        <div class="vcell v3">
+          <div class="vn">v3</div>
+          <span class="vl" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:10pt;">سین<span style="color:var(--green);font-weight:600">ج</span>یλ</span>
+          <div class="vf">MathML<br>Noto Naskh</div>
+        </div>
+        <div class="vcell v4">
+          <div class="vn">v4</div>
+          <span class="vl" style="font-family:'IBM Plex Mono',monospace;font-size:8pt;">سین<span style="color:var(--violet);font-weight:600">ج</span>ی<br>λ؟()</span>
+          <div class="vf">IBM Plex<br>+ terminal</div>
+        </div>
+        <div class="vcell v5">
+          <div class="vn">v5</div>
+          <span class="vl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">سین<span style="color:var(--rose);font-weight:700">ج</span>یλ؟</span>
+          <div class="vf">Lateef<br>+ Amiri</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <!-- ══ SIGNATURE ══════════════════════════════ -->
+  <div class="two" style="gap:4mm;">
+    <div>
+      <div class="sigbox">
+        <div class="sig-label">Sina Khakbaz · SinDoc42</div>
+      </div>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:6.4pt;color:var(--ink-dim);line-height:2;">
+      # 1. Export your Preview signature (trackpad/camera)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;defaults export com.apple.Preview ~/preview.plist<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;qlmanage -p singine-logotype-onepager.html<br>
+      <br>
+      # 2. Sign this PDF (requires cert in Keychain)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;security cms -S -i singine-logotype-onepager.pdf \<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-o singine-logotype-onepager-SIGNED.pdf<br>
+      <br>
+      # 3. Verify TOTP via 1Password CLI<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;op item get 'SinDoc42' --otp<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;# or: Google/Microsoft Authenticator app
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ════════════════════════════════ -->
+  <div class="ftr">
+    <div class="ftr-l">سینجین · s-engine · Collibra + Databricks + Iceberg · London, UK</div>
+    <div class="ftr-r">ref 2026-03-26</div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>

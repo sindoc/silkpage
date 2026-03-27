@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+# dev/singine/data/reference/mime-types.sng
+#:name        data.reference.mime-types
+#:description Reference data: MIME type registry with dispatch handler mapping
+#:version     1.0.0
+#:param       action   string  optional  "list|lookup|validate|sync" default=list
+#:param       target   string  optional  "MIME type or file extension to look up"
+#:entity      MIMEType
+#:attribute   mimeType
+#:attribute   handler
+#:attribute   extension
+#:attribute   status
+#:code-set    MIMEDispatch
+#:reference   MIMEType
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/lib/runtime.sh"
+
+action="${1:-list}"
+target="${2:-}"
+
+# ── MIME type registry ────────────────────────────────────────────────────────
+# mimeType | extension | handler | description
+_mime_registry() {
+  cat <<'MIMES'
+text/x-sh                | .sh   | sh              | POSIX shell script
+text/x-shellscript       | .bash | bash            | Bash shell script
+application/x-shellscript| .bash | bash            | Bash shell script (alt MIME)
+text/x-bash              | .bash | bash            | Bash shell script (explicit)
+application/x-racket     | .rkt  | racket          | Racket language source
+text/x-racket            | .rkt  | racket          | Racket language source (alt)
+application/x-singine    | .sng  | singine         | Singine DSL command file
+application/javascript   | .js   | node            | JavaScript (Node.js)
+text/javascript          | .js   | node            | JavaScript (alt MIME)
+text/x-python            | .py   | python3         | Python 3 script
+text/x-script.python     | .py   | python3         | Python 3 (macOS file(1) output)
+application/x-python     | .py   | python3         | Python 3 (alt)
+text/x-ruby              | .rb   | ruby            | Ruby script
+application/x-ruby       | .rb   | ruby            | Ruby script (alt)
+text/x-perl              | .pl   | perl            | Perl script
+application/x-perl       | .pl   | perl            | Perl script (alt)
+text/x-awk               | .awk  | awk -f          | AWK program
+application/x-awk        | .awk  | awk -f          | AWK program (alt)
+text/css                 | .css  | (static)        | CSS stylesheet
+text/html                | .html | (static)        | HTML document
+application/xml          | .xml  | (static/xslt)   | XML document
+text/xml                 | .xml  | (static/xslt)   | XML document (alt)
+application/xslt+xml     | .xsl  | xsltproc        | XSLT stylesheet
+image/svg+xml            | .svg  | (static)        | SVG image
+application/json         | .json | node/python3    | JSON data
+MIMES
+}
+
+cmd_list() {
+  sng_head "MIME Type Registry"
+  printf "\n%-28s %-7s %-16s %s\n" "MIME TYPE" "EXT" "HANDLER" "DESCRIPTION"
+  printf "%-28s %-7s %-16s %s\n" "─────────" "───" "───────" "───────────"
+  while IFS='|' read -r mime ext handler desc; do
+    printf "%-28s %-7s %-16s %s\n" \
+      "$(printf "%s" "${mime}"    | xargs)" \
+      "$(printf "%s" "${ext}"     | xargs)" \
+      "$(printf "%s" "${handler}" | xargs)" \
+      "$(printf "%s" "${desc}"    | xargs)"
+  done < <(_mime_registry)
+  printf "\n  Dispatcher: dev/infra/dispatch/dispatch.sh\n"
+  printf "  Run:  sng data.reference.mime-types lookup <mime-type-or-ext>\n\n"
+}
+
+cmd_lookup() {
+  [[ -n "${target}" ]] || sng_die "target required.  Usage: sng data.reference.mime-types lookup <mime|.ext>"
+  local found=0
+  while IFS='|' read -r mime ext handler desc; do
+    mime="$(printf "%s" "${mime}" | xargs)"
+    ext="$(printf "%s" "${ext}" | xargs)"
+    if [[ "${mime}" == "${target}" || "${ext}" == "${target}" ]]; then
+      printf "mimeType  %s\n"    "${mime}"
+      printf "extension %s\n"    "${ext}"
+      printf "handler   %s\n"    "$(printf "%s" "${handler}" | xargs)"
+      printf "desc      %s\n\n"  "$(printf "%s" "${desc}" | xargs)"
+      found=1
+    fi
+  done < <(_mime_registry)
+  [[ ${found} -gt 0 ]] || { sng_warn "not found: ${target}"; exit 1; }
+}
+
+cmd_validate() {
+  sng_step "Cross-checking MIME registry against dispatch.sh..."
+  local errors=0
+  while IFS='|' read -r mime _ handler _; do
+    mime="$(printf "%s" "${mime}" | xargs)"
+    handler="$(printf "%s" "${handler}" | xargs)"
+    [[ "${handler}" == "(static)"* || "${handler}" == "(static/xslt)"* ]] && continue
+    local interp="${handler%% *}"
+    command -v "${interp}" >/dev/null 2>&1 \
+      || { sng_warn "handler not found on PATH: ${interp}  (for ${mime})"; errors=$(( errors+1 )); }
+  done < <(_mime_registry)
+  if [[ ${errors} -eq 0 ]]; then
+    sng_ok "All handlers present on PATH"
+  else
+    sng_warn "${errors} handler(s) not installed (install to enable those MIME types)"
+  fi
+}
+
+# sync: write MIME registry into dispatch table format
+cmd_sync() {
+  sng_step "Syncing MIME registry → dev/infra/dispatch/dispatch.sh handler_for()"
+  printf "\n  Add these cases to handler_for() in dispatch.sh:\n\n"
+  while IFS='|' read -r mime _ handler _; do
+    mime="$(printf "%s" "${mime}" | xargs)"
+    handler="$(printf "%s" "${handler}" | xargs)"
+    [[ "${handler}" == "(static)"* ]] && continue
+    printf '    ["%s"]="%s"\n' "${mime}" "${handler}"
+  done < <(_mime_registry)
+  printf "\n  (dispatch.sh is already up to date for all singine-dispatched types)\n\n"
+}
+
+case "${action}" in
+  list)     cmd_list ;;
+  lookup)   cmd_lookup ;;
+  validate) cmd_validate ;;
+  sync)     cmd_sync ;;
+  *) sng_die "unknown action '${action}'. Valid: list | lookup | validate | sync" ;;
+esac

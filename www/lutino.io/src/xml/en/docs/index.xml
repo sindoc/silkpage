@@ -1,0 +1,12 @@
+<webpage id="docs">
+  <config param="rcsdate" value="$Date: 2026-03-10 $"/>
+  <head>
+    <title>Documentation</title>
+    <summary>Lutino platform documentation</summary>
+  </head>
+
+  <para>
+    Platform documentation lives here. See
+    <olink targetdoc="about">About</olink> for an overview.
+  </para>
+</webpage>

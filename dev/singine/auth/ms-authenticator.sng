@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+# dev/singine/auth/ms-authenticator.sng
+#:name        auth.ms-authenticator
+#:description Microsoft Authenticator integration plan + provisioned QR generation
+#:version     0.2.0-plan
+#:uses        auth.totp-setup
+#:param       action  string  required  "qr|deeplink|push-plan|status"
+#:param       email   string  required  "Account email address"
+#:param       vault   string  optional  "1Password vault name" default=lutino-dev
+#:entity      User
+#:entity      AuthCredential
+#:entity      AuthProvider
+#:attribute   email
+#:attribute   totpUri
+#:attribute   msAuthDeepLink
+#:attribute   pushAuthEndpoint
+#:code-set    AuthProvider
+#:code-set    MSAuthMode
+#:master      User
+#:reference   AuthProvider
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+action="${1:-status}"
+email="${2:-}"
+vault="${3:-lutino-dev}"
+
+# ── status: show current implementation plan ──────────────────────────────────
+cmd_status() {
+  sng_head "Microsoft Authenticator — Integration Roadmap"
+  cat <<'EOF'
+
+  Phase 1 (current — v0.2.0-plan):
+    ✓  RFC 6238 TOTP QR code works identically in MS Authenticator
+    ✓  sng auth.qr <email> --provider=microsoft  displays the QR
+    ✓  Secret stored in 1Password (same item, provider=microsoft noted)
+    ○  MS Authenticator deep-link scheme:
+         ms-auth://totp/?url=<encoded-otpauth-uri>
+         (not yet exposed; use QR for now)
+
+  Phase 2 (planned — v0.3.0):
+    ○  Microsoft Authenticator deep-link provisioning
+         ms-auth://totp/?url=...  opens the app directly on mobile
+    ○  OATH hardware token XML export (for MSFT SSPR)
+    ○  Conditional Access policy hooks (Azure AD)
+
+  Phase 3 (planned — v0.4.0):
+    ○  MS Authenticator Push Notification (requires Azure AD app registration)
+         Endpoint: POST https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
+         Flow: device-code or passwordless phone sign-in
+    ○  SAML 2.0 assertion bridge via lutino.io IdP metadata
+    ○  FIDO2 / Passkey support (WebAuthn, no TOTP needed)
+
+  Code sets referenced:
+    AuthProvider  : google | microsoft | 1password | fido2 (planned)
+    MSAuthMode    : totp | push | saml | fido2
+
+  See: sng auth.ms-authenticator deeplink <email>
+       sng auth.ms-authenticator push-plan
+       sng model codes AuthProvider
+
+EOF
+}
+
+# ── qr: standard TOTP QR (works in MS Authenticator today) ───────────────────
+cmd_qr() {
+  [[ -n "${email}" ]] || sng_die "email is required for qr action"
+  bash "$(dirname "${BASH_SOURCE[0]}")/qr.sng" "${email}" "${vault}" "microsoft"
+}
+
+# ── deeplink: generate ms-auth:// URI (Phase 2) ───────────────────────────────
+cmd_deeplink() {
+  [[ -n "${email}" ]] || sng_die "email is required for deeplink action"
+  op_require
+
+  item_name="lutino-totp-${email}"
+  totp_uri="$(op_totp_uri "${vault}" "${item_name}")" \
+    || sng_die "TOTP not set up for ${email}. Run: sng auth.totp-setup ${email}"
+
+  # URL-encode the otpauth URI
+  encoded="$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))" "${totp_uri}")"
+  deeplink="ms-auth://totp/?url=${encoded}"
+
+  printf "\nMicrosoft Authenticator deep-link:\n%s\n\n" "${deeplink}"
+  printf "Note: Phase 2 — deep-link scheme subject to MS Authenticator version.\n"
+  printf "      Test on iOS/Android by opening the link on the device.\n\n"
+
+  # Also display as QR (so user can scan the deep-link itself)
+  qr_display "${deeplink}" "MS Authenticator deep-link QR"
+}
+
+# ── push-plan: describe push notification setup (Phase 3) ─────────────────────
+cmd_push_plan() {
+  sng_head "Push Notification Auth — Implementation Plan (Phase 3)"
+  cat <<'EOF'
+
+  Requirements:
+    - Azure AD tenant + app registration for lutino.io
+    - Grant permission: DeviceManagementManagedDevices.ReadWrite.All (for push)
+    - Client ID + Client Secret stored in 1Password vault
+
+  1Password items needed (create via: sng data.master.init --env=azure):
+    lutino-azure-tenant-id     → op://lutino-dev/lutino-azure/tenant_id
+    lutino-azure-client-id     → op://lutino-dev/lutino-azure/client_id
+    lutino-azure-client-secret → op://lutino-dev/lutino-azure/credential
+
+  Push flow (device-code grant):
+    1.  POST https://login.microsoftonline.com/<tenant>/oauth2/v2.0/devicecode
+        body: client_id=<id>&scope=openid+profile
+    2.  Display user_code to user (enter at https://microsoft.com/devicelogin)
+        OR display device_code as QR for scan
+    3.  Poll  https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
+        until user approves in MS Authenticator push notification
+    4.  Exchange access_token → session via sng auth.session create <email>
+
+  Commands (Phase 3):
+    sng auth.ms-authenticator push <email>  — initiate push auth
+    sng auth.ms-authenticator device-code <email>  — device code flow + QR
+
+  Singine command template (auth/ms-push.sng — to be created in Phase 3):
+    #:name        auth.ms-push
+    #:entity      User AuthSession MicrosoftDevice
+    #:attribute   deviceCode userCode expiresIn pollInterval
+    #:code-set    MSAuthMode OAuthGrantType
+    #:master      User
+    #:reference   OAuthEndpoint AzureTenant
+
+EOF
+}
+
+case "${action}" in
+  status)    cmd_status ;;
+  qr)        cmd_qr ;;
+  deeplink)  cmd_deeplink ;;
+  push-plan) cmd_push_plan ;;
+  *) sng_die "unknown action '${action}'. Valid: status | qr | deeplink | push-plan" ;;
+esac

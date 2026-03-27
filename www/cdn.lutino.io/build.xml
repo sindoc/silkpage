@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+  =======================================================================
+  Build instructions for cdn.lutino.io — static asset CDN.
+  Unlike the main sites, this does NOT run through the SilkPage XML
+  pipeline; it simply copies src/assets/** to the dist directory.
+  =======================================================================
+-->
+<project name="cdn.lutino.io" default="dist">
+  <property file="build.properties"/>
+
+  <target name="dist"
+          description="copies static assets to ${dist.dir}">
+    <mkdir dir="${dist.dir}"/>
+    <copy toDir="${dist.dir}" encoding="${default.encoding}">
+      <fileset dir="${basedir}/src/assets"/>
+    </copy>
+  </target>
+
+  <target name="publish" depends="clean-dist, dist"
+          description="publishes assets to ${www.dir}">
+    <mkdir dir="${www.dir}"/>
+    <copy toDir="${www.dir}" encoding="${default.encoding}">
+      <fileset dir="${dist.dir}"/>
+    </copy>
+  </target>
+
+  <target name="clean-dist"
+          description="deletes ${dist.dir}">
+    <delete dir="${dist.dir}"/>
+  </target>
+</project>

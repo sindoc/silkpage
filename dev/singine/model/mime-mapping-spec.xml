@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mapping Specification: singine ↔ silkpage MIME registries
+  Version:  1.0.0
+  Status:   candidate
+  Domain:   MIME Integration Specifications  (community: sindoc)
+
+  Source:   singine/core/src/singine/lang/mime.clj
+            extension→MIME canonical table + MIME→route classification
+
+  Target:   silkpage/dev/singine/data/reference/mime-types.sng
+            MIME→handler dispatch table
+
+  Pattern:  Collibra Reference Data Management crosswalk model
+            (Saad Yaku et al. / Collibra RDM training pattern)
+            · Simple code table         — SingineRouteClass, SilkpageHandlerClass,
+                                          XwalkEquivalenceType
+            · Hierarchical code table   — MIMEFormatHierarchy  (SKOS broader/narrower)
+            · Crosswalk                 — SingineMIME ↔ SilkpageHandler
+                                          (first-class asset, not an implicit join)
+            · Field Mapping             — singine.{extension,mimeType,route}
+                                          → silkpage.{mimeType,extension,handler,description}
+            · Mapping Specification     — this document
+
+  Transfer: Abstractions are fully aligned with the Collibra metamodel and
+            transferable to any metadata-aware system
+            (DCAT, SKOS, OpenMetadata, DataHub, Amundsen).
+
+  Runtime:  dev/singine/data/reference/mime-xwalk.sng
+            sng data.reference.mime-xwalk resolve <ext>
+            sng data.reference.mime-xwalk harfbuzz-svg <source-file>
+-->
+<mime-format-mapping-specification
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:collibra="urn:collibra:metamodel:v1">
+
+  <!-- ── Governance ──────────────────────────────────────────────────────── -->
+
+  <governance>
+    <community id="sindoc">sindoc</community>
+    <domain id="mime-integration-specs" type="Mapping Specifications">MIME Integration Specifications</domain>
+    <asset-type collibraAssetType="Mapping Specification">mime-format-mapping-specification</asset-type>
+    <owner>singine/silkpage platform team</owner>
+    <status>candidate</status>
+    <version>1.0.0</version>
+    <primary-objective>
+      Resolve $FORMAT at runtime to drive the HarfBuzz SVG generation pipeline.
+      Maintain traceability between the two MIME registries for governance,
+      gap analysis, and cost-benefit review of format coverage.
+    </primary-objective>
+  </governance>
+
+  <!-- ── Code Tables ─────────────────────────────────────────────────────── -->
+
+  <code-tables>
+
+    <!--
+      Simple code table: SingineRouteClass
+      Three-way routing classification from singine/lang/mime.clj.
+      Collibra asset type: Code Set  |  Domain: MIME Integration Specifications
+    -->
+    <code-set id="SingineRouteClass" collibraAssetType="Code Set"
+              domain="mime-integration-specs" bootstrapOrder="31">
+      <name>Singine Route Class</name>
+      <description>
+        Three-way classification of MIME types in singine for routing content
+        to the correct processing backend. Determines HarfBuzz shaping eligibility.
+      </description>
+      <code-values>
+        <code-value id="route-lookup">
+          <code>:lookup</code>
+          <description>
+            Full-text indexable content. Routed to Lucene index.
+            TextFormat family. HarfBuzz SVG shaping is eligible for this class.
+          </description>
+        </code-value>
+        <code-value id="route-link">
+          <code>:link</code>
+          <description>
+            RDF/graph content. Routed to triple store and SPARQL endpoint.
+            SemanticFormat family. Not eligible for HarfBuzz shaping.
+          </description>
+        </code-value>
+        <code-value id="route-binary">
+          <code>:binary</code>
+          <description>
+            Opaque binary. Pass-through only. No text extraction.
+            BinaryFormat family. Not eligible for HarfBuzz shaping
+            (except image/svg+xml which is the HarfBuzz output target).
+          </description>
+        </code-value>
+        <code-value id="route-unknown">
+          <code>:unknown</code>
+          <description>Unrecognised MIME type. Not routable.</description>
+        </code-value>
+      </code-values>
+    </code-set>
+
+    <!--
+      Simple code table: SilkpageHandlerClass
+      Dispatch handler categories from mime-types.sng.
+    -->
+    <code-set id="SilkpageHandlerClass" collibraAssetType="Code Set"
+              domain="mime-integration-specs" bootstrapOrder="32">
+      <name>Silkpage Handler Class</name>
+      <description>
+        Dispatch handler categories used in silkpage's MIME dispatch table.
+        Each value names the interpreter command used to execute or serve the format.
+      </description>
+      <code-values>
+        <code-value id="handler-static">
+          <code>(static)</code>
+          <description>Static file served without transformation.</description>
+        </code-value>
+        <code-value id="handler-static-xslt">
+          <code>(static/xslt)</code>
+          <description>XML served statically or transformed via XSLT.</description>
+        </code-value>
+        <code-value id="handler-xsltproc">
+          <code>xsltproc</code>
+          <description>XSLT stylesheet executed by xsltproc.</description>
+        </code-value>
+        <code-value id="handler-sh">
+          <code>sh</code>
+          <description>POSIX shell script executed by sh.</description>
+        </code-value>
+        <code-value id="handler-bash">
+          <code>bash</code>
+          <description>Bash shell script executed by bash.</description>
+        </code-value>
+        <code-value id="handler-python3">
+          <code>python3</code>
+          <description>Python 3 script executed by python3.</description>
+        </code-value>
+        <code-value id="handler-node">
+          <code>node</code>
+          <description>JavaScript executed by Node.js.</description>
+        </code-value>
+        <code-value id="handler-node-python3">
+          <code>node/python3</code>
+          <description>Dispatched by Node.js or Python 3 depending on context.</description>
+        </code-value>
+        <code-value id="handler-racket">
+          <code>racket</code>
+          <description>Racket language source executed by racket.</description>
+        </code-value>
+        <code-value id="handler-ruby">
+          <code>ruby</code>
+          <description>Ruby script executed by ruby.</description>
+        </code-value>
+        <code-value id="handler-perl">
+          <code>perl</code>
+          <description>Perl script executed by perl.</description>
+        </code-value>
+        <code-value id="handler-awk">
+          <code>awk -f</code>
+          <description>AWK program executed by awk.</description>
+        </code-value>
+        <code-value id="handler-singine">
+          <code>singine</code>
+          <description>Singine DSL command file executed by the singine CLI.</description>
+        </code-value>
+        <code-value id="handler-none">
+          <code>(none)</code>
+          <description>No silkpage handler registered. Coverage gap; extend mime-types.sng.</description>
+        </code-value>
+      </code-values>
+    </code-set>
+
+    <!--
+      Hierarchical code table: MIMEFormatHierarchy
+      Parent-child hierarchy of MIME format families.
+      Aligned with SKOS skos:broader / skos:narrower.
+      The hierarchy maps directly onto singine route classes:
+        TextFormat     → :lookup
+        SemanticFormat → :link
+        BinaryFormat   → :binary
+    -->
+    <code-set id="MIMEFormatHierarchy" collibraAssetType="Code Set"
+              domain="mime-integration-specs" bootstrapOrder="33" hierarchical="true">
+      <name>MIME Format Hierarchy</name>
+      <description>
+        Hierarchical classification of MIME types by format family.
+        Drives route decisions, HarfBuzz eligibility, and gap analysis.
+        Parent-child relations use skos:broader (SKOS) / collibra:broader.
+        Transferable to any metadata-aware system supporting concept hierarchies.
+      </description>
+
+      <code-value id="hc-media">
+        <code>MediaFormat</code>
+        <description>Top-level media format classification. Root of the hierarchy.</description>
+        <skos:topConceptOf rdf:resource="#MIMEFormatHierarchy"/>
+      </code-value>
+
+      <!-- TextFormat branch — all children are HarfBuzz-eligible -->
+      <code-value id="hc-text">
+        <code>TextFormat</code>
+        <description>Human-readable text. Maps to singine route :lookup. HarfBuzz SVG shaping eligible.</description>
+        <skos:broader rdf:resource="#hc-media"/>
+        <singine-route>:lookup</singine-route>
+        <hb-eligible>true</hb-eligible>
+      </code-value>
+      <code-value id="hc-structured">
+        <code>StructuredText</code>
+        <description>Machine-readable structured text: JSON, XML, YAML, TOML, XSLT, JavaScript.</description>
+        <skos:broader rdf:resource="#hc-text"/>
+        <mime-members>application/json application/xml application/yaml application/toml application/xslt+xml application/javascript</mime-members>
+      </code-value>
+      <code-value id="hc-plain">
+        <code>PlainText</code>
+        <description>Unstructured or lightly-structured text: plain, CSV, TSV.</description>
+        <skos:broader rdf:resource="#hc-text"/>
+        <mime-members>text/plain text/csv text/tab-separated-values</mime-members>
+      </code-value>
+      <code-value id="hc-markup">
+        <code>MarkupText</code>
+        <description>Text with presentation markup: HTML, Markdown, CSS.</description>
+        <skos:broader rdf:resource="#hc-text"/>
+        <mime-members>text/html text/markdown text/css</mime-members>
+      </code-value>
+      <code-value id="hc-synd">
+        <code>SyndText</code>
+        <description>Syndication feed formats: Atom, RSS.</description>
+        <skos:broader rdf:resource="#hc-text"/>
+        <mime-members>application/atom+xml application/rss+xml</mime-members>
+      </code-value>
+      <code-value id="hc-vendor-text">
+        <code>VendorText</code>
+        <description>Singine vendor XML text formats: sindoc, skh.</description>
+        <skos:broader rdf:resource="#hc-text"/>
+        <mime-members>application/vnd.singine.sindoc+xml application/vnd.singine.skh+xml</mime-members>
+      </code-value>
+
+      <!-- SemanticFormat branch — no HarfBuzz shaping, but SPARQL-queryable -->
+      <code-value id="hc-semantic">
+        <code>SemanticFormat</code>
+        <description>RDF/graph content. Maps to singine route :link. Not eligible for HarfBuzz.</description>
+        <skos:broader rdf:resource="#hc-media"/>
+        <singine-route>:link</singine-route>
+        <hb-eligible>false</hb-eligible>
+      </code-value>
+      <code-value id="hc-rdf">
+        <code>RDFFormat</code>
+        <description>Standard RDF serialisations: Turtle, N-Triples, N-Quads, TriG, N3, JSON-LD.</description>
+        <skos:broader rdf:resource="#hc-semantic"/>
+        <mime-members>text/turtle text/n3 application/n-triples application/n-quads application/trig application/ld+json</mime-members>
+      </code-value>
+      <code-value id="hc-owl">
+        <code>OWLFormat</code>
+        <description>OWL ontology formats: RDF/XML, OWL/XML.</description>
+        <skos:broader rdf:resource="#hc-semantic"/>
+        <mime-members>application/rdf+xml application/owl+xml</mime-members>
+      </code-value>
+      <code-value id="hc-sparql">
+        <code>SPARQLFormat</code>
+        <description>SPARQL query and result formats.</description>
+        <skos:broader rdf:resource="#hc-semantic"/>
+        <mime-members>application/sparql-query application/sparql-results+xml application/sparql-results+json</mime-members>
+      </code-value>
+      <code-value id="hc-urfm">
+        <code>URFMFormat</code>
+        <description>Singine URFM vendor semantic format.</description>
+        <skos:broader rdf:resource="#hc-semantic"/>
+        <mime-members>application/vnd.urfm+xml</mime-members>
+      </code-value>
+
+      <!-- BinaryFormat branch — pass-through; SVG is both a member and the HarfBuzz output target -->
+      <code-value id="hc-binary">
+        <code>BinaryFormat</code>
+        <description>Opaque binary. Maps to singine route :binary. Pass-through; no text extraction.</description>
+        <skos:broader rdf:resource="#hc-media"/>
+        <singine-route>:binary</singine-route>
+        <hb-eligible>false</hb-eligible>
+      </code-value>
+      <code-value id="hc-image">
+        <code>ImageFormat</code>
+        <description>Raster and vector images. image/svg+xml is the HarfBuzz output format.</description>
+        <skos:broader rdf:resource="#hc-binary"/>
+        <mime-members>image/png image/jpeg image/gif image/svg+xml image/webp</mime-members>
+        <note>image/svg+xml is :binary in singine (it is an image) but is the output target of the HarfBuzz pipeline.</note>
+      </code-value>
+      <code-value id="hc-archive">
+        <code>ArchiveFormat</code>
+        <description>Compressed archive formats.</description>
+        <skos:broader rdf:resource="#hc-binary"/>
+        <mime-members>application/zip application/x-tar application/gzip application/x-bzip2 application/x-xz</mime-members>
+      </code-value>
+      <code-value id="hc-document">
+        <code>DocumentFormat</code>
+        <description>Office and PDF document formats.</description>
+        <skos:broader rdf:resource="#hc-binary"/>
+        <mime-members>application/pdf application/vnd.openxmlformats-officedocument.wordprocessingml.document application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.openxmlformats-officedocument.presentationml.presentation</mime-members>
+      </code-value>
+      <code-value id="hc-bigdata">
+        <code>BigDataFormat</code>
+        <description>Columnar and big-data serialisation formats.</description>
+        <skos:broader rdf:resource="#hc-binary"/>
+        <mime-members>application/x-parquet application/avro application/orc</mime-members>
+      </code-value>
+      <code-value id="hc-mediastream">
+        <code>MediaStreamFormat</code>
+        <description>Audio and video stream formats.</description>
+        <skos:broader rdf:resource="#hc-binary"/>
+        <mime-members>video/mp4 audio/mpeg</mime-members>
+      </code-value>
+
+    </code-set>
+
+    <!--
+      Simple code table: XwalkEquivalenceType
+      SKOS-aligned equivalence codes for crosswalk entries.
+    -->
+    <code-set id="XwalkEquivalenceType" collibraAssetType="Code Set"
+              domain="mime-integration-specs" bootstrapOrder="34">
+      <name>Crosswalk Equivalence Type</name>
+      <description>
+        Equivalence classification for each entry in the singine↔silkpage MIME crosswalk.
+        Aligned with SKOS mapping relations (skos:exactMatch, skos:closeMatch).
+        Gap and reverse are first-class records, not omissions.
+      </description>
+      <code-values>
+        <code-value id="xwalk-exact">
+          <code>exact</code>
+          <description>Source and target MIME types are identical. Same IANA type, same semantics. skos:exactMatch.</description>
+        </code-value>
+        <code-value id="xwalk-close">
+          <code>close</code>
+          <description>Same format, different MIME type variant (e.g. text/xml vs application/xml). skos:closeMatch.</description>
+        </code-value>
+        <code-value id="xwalk-alias">
+          <code>alias</code>
+          <description>Different MIME type designating the same underlying format. Non-standard alt MIME. skos:closeMatch.</description>
+        </code-value>
+        <code-value id="xwalk-gap">
+          <code>gap</code>
+          <description>Present in singine only; no silkpage handler. Coverage gap. Extend mime-types.sng to close.</description>
+        </code-value>
+        <code-value id="xwalk-reverse">
+          <code>reverse</code>
+          <description>Present in silkpage only; not in singine canonical extension table. Singine registration needed to close.</description>
+        </code-value>
+      </code-values>
+    </code-set>
+
+  </code-tables>
+
+  <!-- ── Mapping Specification ────────────────────────────────────────────── -->
+
+  <mapping-specification id="singine-silkpage-mime-mapping-spec"
+                         collibraAssetType="Mapping Specification">
+    <name>Singine ↔ Silkpage MIME Registry Mapping Specification</name>
+    <description>
+      Field-level mapping between the singine canonical MIME registry and the
+      silkpage MIME dispatch table. Establishes the source-target field
+      correspondence used to resolve $FORMAT for the HarfBuzz SVG pipeline.
+    </description>
+
+    <source-system id="singine-mime-registry">
+      <name>Singine MIME Registry</name>
+      <location>singine/core/src/singine/lang/mime.clj</location>
+      <collibraAssetType>Data Set</collibraAssetType>
+      <fields>
+        <field id="sf-extension">extension</field>
+        <field id="sf-mimeType">mimeType</field>
+        <field id="sf-route">route</field>
+      </fields>
+    </source-system>
+
+    <target-system id="silkpage-mime-dispatch">
+      <name>Silkpage MIME Dispatch</name>
+      <location>silkpage/dev/singine/data/reference/mime-types.sng</location>
+      <collibraAssetType>Data Set</collibraAssetType>
+      <fields>
+        <field id="tf-mimeType">mimeType</field>
+        <field id="tf-extension">extension</field>
+        <field id="tf-handler">handler</field>
+        <field id="tf-description">description</field>
+      </fields>
+    </target-system>
+
+    <field-mappings>
+      <field-mapping id="fm-extension">
+        <source-field ref="sf-extension"/>
+        <target-field ref="tf-extension"/>
+        <mapping-type>direct</mapping-type>
+        <note>Lowercase extension without leading dot. Singine is the canonical authority for extension-to-MIME assignment. Silkpage uses the same convention.</note>
+      </field-mapping>
+
+      <field-mapping id="fm-mimeType">
+        <source-field ref="sf-mimeType"/>
+        <target-field ref="tf-mimeType"/>
+        <mapping-type>direct</mapping-type>
+        <note>IANA MIME type string. This is the join key for the crosswalk. Exact string match for equivalence=exact; crosswalk entry resolves for equivalence=close or alias.</note>
+      </field-mapping>
+
+      <field-mapping id="fm-route-to-handler">
+        <source-field ref="sf-route"/>
+        <target-field ref="tf-handler"/>
+        <mapping-type>derived</mapping-type>
+        <derivation-rule>
+          Derivation is through the crosswalk, not a 1:1 copy.
+          :lookup + crosswalk-match → specific handler (static, xsltproc, node, python3, sh, bash, …)
+          :lookup + crosswalk-gap   → (none)  — no silkpage coverage
+          :binary                   → (static) for image/svg+xml; (none) for all others
+          :link                     → (none)   — semantic formats have no silkpage dispatch handler
+        </derivation-rule>
+        <note>Route is a singine internal routing concept. Handler is a silkpage dispatch concept. The mapping traverses the crosswalk at runtime.</note>
+      </field-mapping>
+
+      <field-mapping id="fm-description">
+        <source-field>(none)</source-field>
+        <target-field ref="tf-description"/>
+        <mapping-type>target-only</mapping-type>
+        <note>Human-readable description exists only in silkpage. No singine source equivalent. Not populated during $FORMAT resolution.</note>
+      </field-mapping>
+    </field-mappings>
+
+  </mapping-specification>
+
+  <!-- ── Crosswalk ────────────────────────────────────────────────────────── -->
+  <!--
+    Crosswalk is a first-class Collibra asset type (Crosswalk).
+    Each entry is a typed mapping relation between a source Code Value
+    (singine MIME type) and a target Code Value (silkpage handler).
+    Collibra relation: "maps to"  head: source CodeValue → tail: target CodeValue.
+
+    Gap and reverse entries are included as first-class records.
+    They represent known coverage mismatches requiring remediation.
+
+    Full data lives in mime-xwalk.sng (_xwalk_table).
+    This section documents the crosswalk structure and gap summary.
+  -->
+  <crosswalk id="mime-dispatch-xwalk" collibraAssetType="Crosswalk">
+    <name>MIME Dispatch Crosswalk — singine ↔ silkpage</name>
+    <description>
+      Maps each MIME type from the singine registry to its silkpage dispatch handler.
+      Equivalence types use XwalkEquivalenceType codes (SKOS-aligned).
+      Gap and reverse entries are first-class records exposing coverage mismatches.
+    </description>
+    <source-code-set ref="SingineMIMERegistry">singine extension→MIME table (mime.clj)</source-code-set>
+    <target-code-set ref="SilkpageMIMEDispatch">silkpage MIME→handler table (mime-types.sng)</target-code-set>
+
+    <coverage-summary>
+      <!-- Generated from mime-xwalk.sng: sng data.reference.mime-xwalk crosswalk -->
+      <exact count="7">
+        text/html, application/xml, application/xslt+xml, application/json,
+        application/javascript, image/svg+xml, text/css
+      </exact>
+      <close count="1">
+        text/xml (close-match to application/xml in silkpage)
+      </close>
+      <gap count="37">
+        PlainText (3), MarkupText/SyndText/VendorText gaps (6),
+        all SemanticFormat (11), most BinaryFormat (17).
+        These require extending silkpage/mime-types.sng to close.
+      </gap>
+      <reverse count="17">
+        Executor MIMEs in silkpage (sh, bash, racket, python3, ruby, perl, awk, singine)
+        and their alt-MIME aliases. Not registered in singine canonical extension table.
+        Register in singine/lang/mime.clj to close.
+      </reverse>
+    </coverage-summary>
+
+    <gap-remediation>
+      <strategy>
+        To close a gap: add the MIME type and a handler to silkpage/mime-types.sng.
+        To close a reverse: register the MIME type in singine/core/src/singine/lang/mime.clj
+        extension->mime and mime-route-table with the appropriate route keyword.
+      </strategy>
+      <priority>
+        High: PlainText, MarkupText gaps — these are HarfBuzz-eligible formats with no handler.
+        Medium: VendorText, SyndText — singine-native formats with no silkpage dispatch.
+        Low: SemanticFormat gaps — :link route; silkpage does not serve a triple store.
+        Defer: BinaryFormat gaps — :binary; no text extraction needed.
+      </priority>
+    </gap-remediation>
+  </crosswalk>
+
+  <!-- ── HarfBuzz SVG Pipeline ─────────────────────────────────────────────── -->
+
+  <pipeline id="harfbuzz-svg-pipeline">
+    <name>HarfBuzz SVG Generation Pipeline</name>
+    <description>
+      Generates SVG from a source file in format $FORMAT.
+      $FORMAT is a file extension or MIME type string resolved through the
+      singine→silkpage MIME crosswalk at runtime.
+
+      Only TextFormat family formats with a registered silkpage handler are eligible.
+      SemanticFormat (:link) and BinaryFormat (:binary) formats are not eligible for shaping.
+      Gap formats (:lookup but handler=(none)) require mime-types.sng extension before use.
+    </description>
+
+    <format-resolution>
+      <step id="step-1-ext-to-mime" source="singine/lang/mime.clj :: lookup(ext)">
+        <name>Extension → MIME</name>
+        <input>$FORMAT  (file extension without dot, e.g. "md", or full path)</input>
+        <output>mimeType  (IANA MIME type string, e.g. "text/markdown")</output>
+        <fallback>application/octet-stream for unknown extensions</fallback>
+      </step>
+
+      <step id="step-2-mime-to-route" source="singine/lang/mime.clj :: route(mimeType)">
+        <name>MIME → Route (singine classification)</name>
+        <input>mimeType</input>
+        <output>:lookup | :link | :binary</output>
+        <gate>
+          Must be :lookup for the pipeline to proceed.
+          :link and :binary terminate the pipeline with "not applicable".
+        </gate>
+      </step>
+
+      <step id="step-3-mime-to-handler" source="mime-xwalk.sng :: _resolve_format()">
+        <name>MIME → Handler (crosswalk dispatch)</name>
+        <input>mimeType</input>
+        <output>handler command string</output>
+        <fallback>
+          If equivalence=gap: handler=(none).
+          Pipeline terminates with "gap — extend mime-types.sng".
+        </fallback>
+      </step>
+    </format-resolution>
+
+    <shaping-stage>
+      <step id="step-4-extract">
+        <name>Text Extraction</name>
+        <command>{handler} {source-file}</command>
+        <output>Unicode text stream (stdout)</output>
+        <note>
+          For (static) and (static/xslt) handlers, the file content itself is the text stream.
+          For executor handlers (python3, node, etc.) the script is run and its stdout is shaped.
+        </note>
+      </step>
+
+      <step id="step-5-shape">
+        <name>HarfBuzz Text Shaping</name>
+        <command>hb-view --font-file={font.ttf} --output-format=svg --output-file={output.svg}</command>
+        <output>SVG glyph paths with advance widths and positions</output>
+        <note>
+          HarfBuzz processes the Unicode text stream with the specified font and script.
+          hb-view renders shaped glyphs directly to SVG using font outline data.
+          Font and script selection is caller-supplied; this pipeline does not prescribe them.
+        </note>
+      </step>
+
+      <step id="step-6-output">
+        <name>SVG Output</name>
+        <mime-out>image/svg+xml</mime-out>
+        <singine-route>:binary</singine-route>
+        <silkpage-handler>(static)</silkpage-handler>
+        <hierarchy-class>ImageFormat</hierarchy-class>
+        <note>
+          The produced SVG is an ImageFormat asset in both systems.
+          singine routes it :binary (pass-through); silkpage serves it as (static).
+          This completes the pipeline: TextFormat input → ImageFormat output.
+        </note>
+      </step>
+    </shaping-stage>
+
+    <eligible-formats>
+      <note>
+        TextFormat family with a registered silkpage handler (non-gap entries).
+        These formats can be fed to HarfBuzz without extending mime-types.sng.
+      </note>
+      <format ext=".html"  mime="text/html"             handler="(static)"      hierarchy="MarkupText"/>
+      <format ext=".xml"   mime="application/xml"       handler="(static/xslt)" hierarchy="StructuredText"/>
+      <format ext=".xsl"   mime="application/xslt+xml"  handler="xsltproc"      hierarchy="StructuredText"/>
+      <format ext=".json"  mime="application/json"      handler="node/python3"  hierarchy="StructuredText"/>
+      <format ext=".js"    mime="application/javascript" handler="node"         hierarchy="StructuredText"/>
+      <format ext=".css"   mime="text/css"              handler="(static)"      hierarchy="MarkupText"/>
+      <!-- reverse-registered in silkpage; need singine registration to be fully traced -->
+      <format ext=".py"    mime="text/x-python"         handler="python3"       hierarchy="(executor/reverse)"/>
+      <format ext=".sh"    mime="text/x-sh"             handler="sh"            hierarchy="(executor/reverse)"/>
+      <format ext=".bash"  mime="text/x-shellscript"    handler="bash"          hierarchy="(executor/reverse)"/>
+      <format ext=".rkt"   mime="application/x-racket"  handler="racket"        hierarchy="(executor/reverse)"/>
+      <format ext=".rb"    mime="text/x-ruby"           handler="ruby"          hierarchy="(executor/reverse)"/>
+      <format ext=".pl"    mime="text/x-perl"           handler="perl"          hierarchy="(executor/reverse)"/>
+      <format ext=".awk"   mime="text/x-awk"            handler="awk -f"        hierarchy="(executor/reverse)"/>
+      <format ext=".sng"   mime="application/x-singine" handler="singine"       hierarchy="(executor/reverse)"/>
+    </eligible-formats>
+
+    <gap-formats>
+      <note>
+        TextFormat family (:lookup) but no silkpage handler (gap crosswalk entries).
+        Extend silkpage/dev/singine/data/reference/mime-types.sng to enable.
+      </note>
+      <gap-family name="PlainText">text/plain text/csv text/tab-separated-values</gap-family>
+      <gap-family name="MarkupText-gaps">text/markdown</gap-family>
+      <gap-family name="StructuredText-gaps">application/yaml application/toml</gap-family>
+      <gap-family name="SyndText">application/atom+xml application/rss+xml</gap-family>
+      <gap-family name="VendorText">application/vnd.singine.sindoc+xml application/vnd.singine.skh+xml</gap-family>
+    </gap-formats>
+
+  </pipeline>
+
+  <!-- ── Collibra Catalog References ─────────────────────────────────────── -->
+
+  <collibra-catalog>
+    <asset assetType="Mapping Specification" name="Singine-Silkpage MIME Mapping Spec"    collibraId=""/>
+    <asset assetType="Code Set"              name="SingineRouteClass"                      collibraId=""/>
+    <asset assetType="Code Set"              name="SilkpageHandlerClass"                   collibraId=""/>
+    <asset assetType="Code Set"              name="MIMEFormatHierarchy"                    collibraId=""/>
+    <asset assetType="Code Set"              name="XwalkEquivalenceType"                   collibraId=""/>
+    <asset assetType="Crosswalk"             name="MIME Dispatch Crosswalk singine-silkpage" collibraId=""/>
+    <asset assetType="Data Set"              name="Singine MIME Registry"                  collibraId=""/>
+    <asset assetType="Data Set"              name="Silkpage MIME Dispatch"                 collibraId=""/>
+  </collibra-catalog>
+
+</mime-format-mapping-specification>

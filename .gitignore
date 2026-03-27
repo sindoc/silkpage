@@ -10,3 +10,8 @@ dist/
 
 # Java compiled
 *.class
+
+# External tools (downloaded locally, not committed)
+tools/docbook-xsl/
+tools/docbook-website/
+tools/calabash/

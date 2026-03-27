@@ -1,0 +1,216 @@
+#!/usr/bin/env bash
+# dev/singine/data/reference/codes.sng
+#:name        data.reference.codes
+#:description Bootstrap and inspect all reference data code sets for lutino.io
+#:version     1.0.0
+#:param       action      string  optional  "list|bootstrap|validate|export" default=list
+#:param       code-set    string  optional  "Filter to a specific code set"
+#:entity      CodeSet
+#:entity      CodeValue
+#:attribute   codeSetName
+#:attribute   codeValue
+#:attribute   description
+#:attribute   bootstrapOrder
+#:attribute   status
+#:code-set    AuthProvider
+#:code-set    MSAuthMode
+#:code-set    AuthResult
+#:code-set    SessionStatus
+#:code-set    OAuthGrantType
+#:code-set    StatusLifecycle
+#:code-set    ResponsibilityRole
+#:code-set    MIMEDispatch
+#:code-set    SiteContext
+#:code-set    DeployEnv
+#:reference   CodeSet CodeValue
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/lib/runtime.sh"
+
+action="${1:-list}"
+cs_filter="${2:-}"
+
+# ── code set definitions ───────────────────────────────────────────────────────
+# Format: CODE_SET_NAME  BOOTSTRAP_ORDER
+#   then: VALUE | DESCRIPTION
+#
+# These are the canonical "reference data" objects in the Collibra sense:
+# Code Sets live in the "Reference Data" domain, Code Values are assets within it.
+
+_all_code_sets() {
+  cat <<'CODESETS'
+CodeSet:AuthProvider bootstrap=10
+google        | Google Authenticator (RFC 6238 TOTP)
+microsoft     | Microsoft Authenticator (TOTP + push, Phase 2+)
+1password     | 1Password built-in TOTP autofill
+fido2         | FIDO2 / Passkey (planned Phase 3)
+
+CodeSet:MSAuthMode bootstrap=11
+totp          | Time-based one-time password (RFC 6238)
+push          | Push notification approval (Azure AD, Phase 3)
+saml          | SAML 2.0 assertion via IdP (Phase 3)
+fido2         | Passkey / WebAuthn (Phase 3)
+
+CodeSet:AuthResult bootstrap=12
+valid         | Code accepted within time window
+invalid       | Code did not match any window
+expired       | Code window has passed
+locked        | Account locked due to repeated failures
+
+CodeSet:SessionStatus bootstrap=13
+active        | Session is live and not expired
+expired       | Session TTL has passed
+revoked       | Session was explicitly revoked by user or admin
+
+CodeSet:OAuthGrantType bootstrap=14
+authorization_code   | Standard browser redirect flow
+device_code          | Device / CLI authorization flow
+client_credentials   | Server-to-server (no user)
+refresh_token        | Extend session via refresh token
+
+CodeSet:StatusLifecycle bootstrap=20
+draft         | Being authored, not yet reviewed
+candidate     | Under review or in RFC
+approved      | Officially accepted and in use
+deprecated    | Superseded, still supported temporarily
+retired       | No longer in use, archived
+
+CodeSet:ResponsibilityRole bootstrap=21
+owner         | Accountable for the asset (data owner)
+steward       | Responsible for quality and documentation
+custodian     | Manages storage and access controls
+consumer      | Reads / uses the asset
+
+CodeSet:MIMEDispatch bootstrap=30
+text/x-sh              | POSIX shell: sh
+text/x-shellscript     | Bash shell: bash
+application/x-racket   | Racket language: racket
+application/x-singine  | Singine DSL: singine
+application/javascript | JavaScript: node
+text/x-python          | Python 3: python3
+text/x-ruby            | Ruby: ruby
+text/x-perl            | Perl: perl
+text/x-awk             | AWK: awk -f
+
+CodeSet:SiteContext bootstrap=40
+lutino.io       | Main marketing / documentation site
+app.lutino.io   | Interactive web application
+cdn.lutino.io   | Static asset CDN
+
+CodeSet:DeployEnv bootstrap=41
+local           | Developer workstation (Docker / Apache / /etc/hosts)
+staging         | Pre-production integration environment
+production      | Live public environment
+CODESETS
+}
+
+# ── print all code sets ────────────────────────────────────────────────────────
+cmd_list() {
+  sng_head "Reference Data — Code Sets"
+  printf "\n"
+  local current_set=""
+  while IFS= read -r line; do
+    [[ -z "${line}" ]] && continue
+    if [[ "${line}" =~ ^CodeSet:([A-Za-z]+) ]]; then
+      current_set="${BASH_REMATCH[1]}"
+      local bootstrap_order="${line##*=}"
+      [[ -n "${cs_filter}" ]] && [[ "${current_set}" != *"${cs_filter}"* ]] && current_set="" && continue
+      printf "  %-24s  (bootstrap-order: %s)\n" "${current_set}" "${bootstrap_order}"
+    else
+      [[ -z "${current_set}" ]] && continue
+      local val desc
+      val="$(printf "%s" "${line%%|*}" | xargs)"
+      desc="$(printf "%s" "${line##*|}" | xargs)"
+      printf "    %-22s %s\n" "${val}" "${desc}"
+    fi
+  done < <(_all_code_sets)
+  printf "\n  Total: $( _all_code_sets | grep -c '^CodeSet:' ) code sets\n\n"
+}
+
+# ── bootstrap: write code sets to local registry ──────────────────────────────
+cmd_bootstrap() {
+  local registry_dir="${HOME}/.config/lutino/data/reference"
+  mkdir -p "${registry_dir}"
+  chmod 0700 "${registry_dir}"
+
+  local current_set="" current_file=""
+  sng_step "Bootstrapping reference data code sets..."
+
+  while IFS= read -r line; do
+    [[ -z "${line}" ]] && continue
+    if [[ "${line}" =~ ^CodeSet:([A-Za-z]+) ]]; then
+      current_set="${BASH_REMATCH[1]}"
+      current_file="${registry_dir}/${current_set}.csv"
+      printf "codeValue,description\n" > "${current_file}"
+    else
+      [[ -z "${current_set}" ]] && continue
+      local val desc
+      val="$(printf "%s" "${line%%|*}" | xargs)"
+      desc="$(printf "%s" "${line##*|}" | xargs)"
+      printf "%s,\"%s\"\n" "${val}" "${desc}" >> "${current_file}"
+    fi
+  done < <(_all_code_sets)
+
+  sng_ok "Code sets written to ${registry_dir}"
+  ls "${registry_dir}"/*.csv | while read -r f; do
+    printf "    %s (%d values)\n" "$(basename "${f}" .csv)" \
+      "$(( $(wc -l < "${f}") - 1 ))"
+  done
+}
+
+# ── validate: check a value against a code set ────────────────────────────────
+cmd_validate() {
+  local cs="${cs_filter:-}"
+  [[ -n "${cs}" ]] || sng_die "code-set name required for validate.  Usage: sng data.reference.codes validate <CodeSet> <value>"
+  local value="${3:-}"
+  [[ -n "${value}" ]] || sng_die "value required for validate."
+
+  local found=false
+  local in_set=false
+  while IFS= read -r line; do
+    [[ -z "${line}" ]] && continue
+    if [[ "${line}" =~ ^CodeSet:([A-Za-z]+) ]]; then
+      [[ "${BASH_REMATCH[1]}" == "${cs}" ]] && in_set=true || in_set=false
+    else
+      "${in_set}" || continue
+      local val
+      val="$(printf "%s" "${line%%|*}" | xargs)"
+      [[ "${val}" == "${value}" ]] && found=true && break
+    fi
+  done < <(_all_code_sets)
+
+  if "${found}"; then
+    sng_ok "'${value}' is a valid value in code set '${cs}'"
+  else
+    sng_err "'${value}' is NOT a valid value in code set '${cs}'"
+    exit 1
+  fi
+}
+
+# ── export: CSV for Collibra import ───────────────────────────────────────────
+cmd_export() {
+  printf "assetName,assetType,domain,status,codeSet,description\n"
+  local current_set=""
+  while IFS= read -r line; do
+    [[ -z "${line}" ]] && continue
+    if [[ "${line}" =~ ^CodeSet:([A-Za-z]+) ]]; then
+      current_set="${BASH_REMATCH[1]}"
+      printf "%s,Code Set,Reference Data,Approved,,\n" "${current_set}"
+    else
+      [[ -z "${current_set}" ]] && continue
+      local val desc
+      val="$(printf "%s" "${line%%|*}" | xargs)"
+      desc="$(printf "%s" "${line##*|}" | xargs)"
+      printf "%s,Code Value,Reference Data,Approved,%s,\"%s\"\n" \
+        "${val}" "${current_set}" "${desc}"
+    fi
+  done < <(_all_code_sets)
+}
+
+case "${action}" in
+  list)      cmd_list ;;
+  bootstrap) cmd_bootstrap ;;
+  validate)  cmd_validate ;;
+  export)    cmd_export ;;
+  *) sng_die "unknown action '${action}'. Valid: list | bootstrap | validate | export" ;;
+esac
