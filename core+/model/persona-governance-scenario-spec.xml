@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Persona Governance Scenario Specification
+  Version: 1.0.0
+  Status: candidate
+  Domain: Singine Persona Governance / SilkPage Transformation / Collibra I/O
+
+  Purpose:
+    Model one governed scenario per Singine persona for log management and
+    document processing through the Singine JVM activity engine, SilkPage
+    publication surfaces, and Collibra reference-data abstractions.
+-->
+<persona-governance-scenario-specification
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:collibra="urn:collibra:metamodel:v1"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+
+  <governance>
+    <community id="sindoc">sindoc</community>
+    <domain id="persona-governance-specs" type="Mapping Specifications">Persona Governance Specifications</domain>
+    <asset-type collibraAssetType="Mapping Specification">persona-governance-scenario-specification</asset-type>
+    <owner>singine / silkpage / collibra platform team</owner>
+    <status>candidate</status>
+    <version>1.0.0</version>
+    <objective>
+      Align Singine personas, the JVM activity engine, SilkPage publication
+      payloads, and Collibra code/reference structures for governed log and
+      document-processing workflows.
+    </objective>
+  </governance>
+
+  <code-tables>
+    <code-set id="PersonaCode" collibraAssetType="Code Set" domain="persona-governance-specs" bootstrapOrder="41">
+      <name>Singine Persona Code</name>
+      <description>Canonical five-persona table sourced from singine.persona.agents.</description>
+      <code-values>
+        <code-value id="persona-phil"><code>PHIL</code><name>Philosopher</name><description>Seeks understanding through observation and disambiguation.</description></code-value>
+        <code-value id="persona-guar"><code>GUAR</code><name>Guardian</name><description>Protects through threat detection and rapid response.</description></code-value>
+        <code-value id="persona-expl"><code>EXPL</code><name>Explorer</name><description>Seeks novelty through movement and recombination.</description></code-value>
+        <code-value id="persona-heal"><code>HEAL</code><name>Healer</name><description>Restores balance through empathic connection.</description></code-value>
+        <code-value id="persona-netw"><code>NETW</code><name>Networker</name><description>Creates composite agents through social fusion.</description></code-value>
+      </code-values>
+    </code-set>
+
+    <code-set id="ActivityCapabilityCode" collibraAssetType="Code Set" domain="persona-governance-specs" bootstrapOrder="42">
+      <name>Activity Capability Code</name>
+      <description>Capabilities driven by the Singine Java activity engine.</description>
+      <code-values>
+        <code-value id="cap-logd"><code>LOGD</code><name>Log Discovery</name><description>Find and classify candidate logs.</description></code-value>
+        <code-value id="cap-loga"><code>LOGA</code><name>Log Assessment</name><description>Assess risk, compliance, and operational anomalies.</description></code-value>
+        <code-value id="cap-docx"><code>DOCX</code><name>Document Extraction</name><description>Extract structure and metadata from XML/DocBook content.</description></code-value>
+        <code-value id="cap-docn"><code>DOCN</code><name>Document Normalization</name><description>Normalize payloads for publication and ingestion.</description></code-value>
+        <code-value id="cap-xwak"><code>XWAK</code><name>Crosswalk Alignment</name><description>Align code tables and external vocabularies.</description></code-value>
+        <code-value id="cap-refd"><code>REFD</code><name>Reference Stewardship</name><description>Maintain reference data and permissible values.</description></code-value>
+        <code-value id="cap-hier"><code>HIER</code><name>Hierarchy Publication</name><description>Publish broader/narrower concept structures.</description></code-value>
+      </code-values>
+    </code-set>
+
+    <code-set id="PayloadFormatCode" collibraAssetType="Code Set" domain="persona-governance-specs" bootstrapOrder="43">
+      <name>Payload Format Code</name>
+      <description>Publication and interchange formats emitted by the scenario pack.</description>
+      <code-values>
+        <code-value id="fmt-xml"><code>XMLR</code><name>Scenario Request XML</name><description>Primary XML request payload.</description></code-value>
+        <code-value id="fmt-atom"><code>ATOM</code><name>Atom 1.0</name><description>Entry-based update feed for operational subscribers.</description></code-value>
+        <code-value id="fmt-rss"><code>RSS1</code><name>RSS 2.0</name><description>Channel-based summary feed for downstream syndication.</description></code-value>
+        <code-value id="fmt-skos"><code>SKOS</code><name>SKOS RDF</name><description>Concept and hierarchy publication payload.</description></code-value>
+        <code-value id="fmt-coll"><code>COLL</code><name>Collibra Mapping</name><description>Collibra-facing code, crosswalk, and hierarchy representation.</description></code-value>
+      </code-values>
+    </code-set>
+
+    <code-set id="CollibraStructureCode" collibraAssetType="Code Set" domain="persona-governance-specs" bootstrapOrder="44">
+      <name>Collibra Structure Code</name>
+      <description>Minimal Collibra structures required for the scenario pack.</description>
+      <code-values>
+        <code-value id="coll-bpro"><code>BPRO</code><name>Business Process</name><description>Persona scenario process asset.</description></code-value>
+        <code-value id="coll-cods"><code>CODS</code><name>Code Set</name><description>Controlled vocabulary container.</description></code-value>
+        <code-value id="coll-cval"><code>CVAL</code><name>Code Value</name><description>One permissible value in a code table.</description></code-value>
+        <code-value id="coll-xwlk"><code>XWLK</code><name>Crosswalk</name><description>First-class mapping asset between source and target codes.</description></code-value>
+        <code-value id="coll-refd"><code>REFD</code><name>Reference Data</name><description>Operational lookup values.</description></code-value>
+        <code-value id="coll-hier"><code>HIER</code><name>Hierarchy</name><description>Broader/narrower concept structure.</description></code-value>
+      </code-values>
+    </code-set>
+
+    <code-set id="GovernanceResourceHierarchy" collibraAssetType="Code Set" domain="persona-governance-specs" bootstrapOrder="45" hierarchical="true">
+      <name>Governance Resource Hierarchy</name>
+      <description>Hierarchy spanning logs, documents, reference data, and publication surfaces.</description>
+      <code-value id="grh-root">
+        <code>GovernedResource</code>
+        <description>Root concept for all governed persona scenario resources.</description>
+        <skos:topConceptOf rdf:resource="#GovernanceResourceHierarchy"/>
+      </code-value>
+      <code-value id="grh-log"><code>LogManagement</code><description>Operational logs and log events.</description><skos:broader rdf:resource="#grh-root"/></code-value>
+      <code-value id="grh-doc"><code>DocumentProcessing</code><description>DocBook, XML, and transformed publication content.</description><skos:broader rdf:resource="#grh-root"/></code-value>
+      <code-value id="grh-ref"><code>ReferenceManagement</code><description>Code sets, crosswalks, and reference data.</description><skos:broader rdf:resource="#grh-root"/></code-value>
+      <code-value id="grh-pub"><code>PublicationFeeds</code><description>Atom and RSS update channels.</description><skos:broader rdf:resource="#grh-root"/></code-value>
+      <code-value id="grh-skos"><code>ConceptScheme</code><description>SKOS concept scheme for personas and scenarios.</description><skos:broader rdf:resource="#grh-root"/></code-value>
+    </code-set>
+  </code-tables>
+
+  <crosswalks>
+    <crosswalk id="PersonaScenarioCrosswalk" collibraAssetType="Crosswalk">
+      <name>Persona Scenario Crosswalk</name>
+      <description>Maps each persona to a dominant scenario, capability code, and Collibra structure.</description>
+      <source-code-set ref="PersonaCode"/>
+      <target-code-set ref="ActivityCapabilityCode"/>
+      <rows>
+        <row source="PHIL" target="DOCX" collibraStructure="BPRO" hierarchy="DocumentProcessing"/>
+        <row source="GUAR" target="LOGA" collibraStructure="BPRO" hierarchy="LogManagement"/>
+        <row source="EXPL" target="LOGD" collibraStructure="BPRO" hierarchy="LogManagement"/>
+        <row source="HEAL" target="DOCN" collibraStructure="BPRO" hierarchy="DocumentProcessing"/>
+        <row source="NETW" target="XWAK" collibraStructure="XWLK" hierarchy="ReferenceManagement"/>
+      </rows>
+    </crosswalk>
+  </crosswalks>
+
+  <reference-data>
+    <reference-set id="ReferenceDataLogLevel" code="REFD-LOG">
+      <value code="TRACE" severity="1"/>
+      <value code="DEBUG" severity="2"/>
+      <value code="INFO" severity="3"/>
+      <value code="WARN" severity="4"/>
+      <value code="ERROR" severity="5"/>
+      <value code="FATAL" severity="6"/>
+    </reference-set>
+    <reference-set id="ReferenceDataDocumentClass" code="REFD-DOC">
+      <value code="DOCBOOK" mime="application/docbook+xml"/>
+      <value code="XML" mime="application/xml"/>
+      <value code="ATOM" mime="application/atom+xml"/>
+      <value code="RSS" mime="application/rss+xml"/>
+      <value code="SKOS" mime="application/rdf+xml"/>
+    </reference-set>
+    <reference-set id="ReferenceDataCollibraRelation" code="REFD-REL">
+      <value code="USES_CODE_SET"/>
+      <value code="USES_REFERENCE_DATA"/>
+      <value code="MAPS_TO"/>
+      <value code="BROADER_THAN"/>
+      <value code="PUBLISHED_AS"/>
+    </reference-set>
+  </reference-data>
+
+  <java-activity-engine>
+    <existing-activity javaClass="singine.activity.fs.FilesystemActivities$FilesAboutTopicActivity" taxonomy="taxonomy-singine-filesystem-discovery"/>
+    <existing-activity javaClass="singine.activity.fs.FilesystemActivities$FileListToActivity" taxonomy="taxonomy-singine-filesystem-mutation"/>
+    <proposed-activity javaClass="singine.activity.log.LogManagementActivity" taxonomy="taxonomy-singine-log-management" status="proposed"/>
+    <proposed-activity javaClass="singine.activity.doc.SilkpageDocumentProcessorActivity" taxonomy="taxonomy-singine-document-processing" status="proposed"/>
+  </java-activity-engine>
+
+  <persona-scenarios>
+    <scenario id="scenario-persona-philosopher-log-doc" personaCode="PHIL" capabilityCode="DOCX" collibraCode="BPRO">
+      <name>Philosopher reviews logs through document semantics</name>
+      <goal>Interpret operational logs as governed document evidence and derive concepts, code tables, and publication updates.</goal>
+      <requestPayload format="XMLR">persona-governance-request-philosopher</requestPayload>
+      <publishes formats="ATOM RSS1 SKOS COLL"/>
+      <collibra>
+        <community>Singineers</community>
+        <domain>Persona Governance Specifications</domain>
+        <assetType>Business Process</assetType>
+      </collibra>
+    </scenario>
+
+    <scenario id="scenario-persona-guardian-log-risk" personaCode="GUAR" capabilityCode="LOGA" collibraCode="BPRO">
+      <name>Guardian triages risky log events</name>
+      <goal>Detect anomalous log patterns, classify risk, and publish governed alerts and hierarchy updates.</goal>
+      <requestPayload format="XMLR">persona-governance-request-guardian</requestPayload>
+      <publishes formats="ATOM RSS1 COLL"/>
+      <collibra>
+        <community>Singineers</community>
+        <domain>Persona Governance Specifications</domain>
+        <assetType>Business Process</assetType>
+      </collibra>
+    </scenario>
+
+    <scenario id="scenario-persona-explorer-discovery" personaCode="EXPL" capabilityCode="LOGD" collibraCode="BPRO">
+      <name>Explorer discovers new log and document classes</name>
+      <goal>Discover unknown files, infer candidate classifications, and propose new code values and hierarchy branches.</goal>
+      <requestPayload format="XMLR">persona-governance-request-explorer</requestPayload>
+      <publishes formats="ATOM SKOS COLL"/>
+      <collibra>
+        <community>Singineers</community>
+        <domain>Persona Governance Specifications</domain>
+        <assetType>Business Process</assetType>
+      </collibra>
+    </scenario>
+
+    <scenario id="scenario-persona-healer-remediation" personaCode="HEAL" capabilityCode="DOCN" collibraCode="BPRO">
+      <name>Healer remediates broken document flows</name>
+      <goal>Normalize malformed XML, restore feed continuity, and map repaired payloads back to canonical reference data.</goal>
+      <requestPayload format="XMLR">persona-governance-request-healer</requestPayload>
+      <publishes formats="ATOM RSS1 SKOS COLL"/>
+      <collibra>
+        <community>Singineers</community>
+        <domain>Persona Governance Specifications</domain>
+        <assetType>Business Process</assetType>
+      </collibra>
+    </scenario>
+
+    <scenario id="scenario-persona-networker-crosswalk" personaCode="NETW" capabilityCode="XWAK" collibraCode="XWLK">
+      <name>Networker fuses vocabularies and publication channels</name>
+      <goal>Fuse code systems, maintain crosswalks, and publish aligned updates across Atom, RSS, SKOS, and Collibra.</goal>
+      <requestPayload format="XMLR">persona-governance-request-networker</requestPayload>
+      <publishes formats="ATOM RSS1 SKOS COLL"/>
+      <collibra>
+        <community>Singineers</community>
+        <domain>Persona Governance Specifications</domain>
+        <assetType>Crosswalk</assetType>
+      </collibra>
+    </scenario>
+  </persona-scenarios>
+
+  <request-templates>
+    <request-template id="persona-governance-request-template" format="XMLR">
+      <persona-scenario-request id="REQ-PERSONA-GOV-001" issuedAt="2026-03-26T00:00:00Z">
+        <persona code="PHIL"/>
+        <scope>
+          <log-root>/var/log/singine</log-root>
+          <document-root>/srv/silkpage/src/xml</document-root>
+          <collibra-community>Singineers</collibra-community>
+        </scope>
+        <activities>
+          <activity javaClass="singine.activity.fs.FilesystemActivities$FilesAboutTopicActivity" capabilityCode="LOGD"/>
+          <activity javaClass="singine.activity.doc.SilkpageDocumentProcessorActivity" capabilityCode="DOCX"/>
+          <activity javaClass="singine.activity.log.LogManagementActivity" capabilityCode="LOGA"/>
+        </activities>
+        <outputs>
+          <output format="XMLR"/>
+          <output format="ATOM"/>
+          <output format="RSS1"/>
+          <output format="SKOS"/>
+          <output format="COLL"/>
+        </outputs>
+      </persona-scenario-request>
+    </request-template>
+  </request-templates>
+
+  <collibra-assets>
+    <asset assetType="Code Set" name="Singine Persona Code" code="CODS-PERSONA"/>
+    <asset assetType="Code Set" name="Activity Capability Code" code="CODS-ACTIVITY"/>
+    <asset assetType="Code Set" name="Payload Format Code" code="CODS-PAYLOAD"/>
+    <asset assetType="Code Set" name="Governance Resource Hierarchy" code="HIER-GOV-RESOURCE"/>
+    <asset assetType="Crosswalk" name="Persona Scenario Crosswalk" code="XWLK-PERSONA-SCENARIO"/>
+    <asset assetType="Reference Data" name="Persona Governance Reference Data" code="REFD-PERSONA-GOV"/>
+  </collibra-assets>
+</persona-governance-scenario-specification>

@@ -10,6 +10,7 @@
 <!-- ==================================================================== -->
 
 <xsl:param name="site.url" select="''"/>
+<xsl:param name="site.author" select="''"/>
 <xsl:param name="site.license" select="''"/>
 <xsl:param name="site.lang" select="''"/>
 <xsl:param name="site.id" select="''"/>

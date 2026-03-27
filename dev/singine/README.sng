@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+# dev/singine/README.sng
+#:name        readme
+#:description Self-documenting index of all singine commands for lutino.io
+#:version     1.0.0
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/runtime.sh"
+
+sng_head "singine — lutino.io command DSL"
+cat <<'EOF'
+
+  Every key operation is available as a singine command.
+  Run any command via the sng runner:
+
+    ./dev/singine/sng <command> [args...]
+    ./dev/singine/sng list        — see all commands
+    ./dev/singine/sng help <cmd>  — describe a command
+
+  .sng files are self-documenting bash scripts with #: header directives.
+  They run standalone (bash file.sng) or via the sng runner.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BOOTSTRAP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  sng bootstrap.init [env]
+    Full system bootstrap: dirs, certs, master data, model validation.
+    env: local (default) | staging | production  (code-set: DeployEnv)
+    References: User, Account, System, CodeSet, CodeValue, MIMEType
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AUTHENTICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  sng auth.totp-setup <email> [issuer] [vault] [provider]
+    Generate TOTP secret, store in 1Password, display QR to scan.
+    provider: google (default) | microsoft | 1password  (code-set: AuthProvider)
+    Entities: User, AuthCredential
+    Attributes: email, totpSecret (sensitive), totpUri, totpIssuer, authProvider
+
+  sng auth.qr <email> [vault] [provider]
+    Display QR code for adding lutino.io to Google/Microsoft Authenticator.
+    Reads TOTP URI from 1Password. Prompts to run totp-setup if not yet configured.
+    Entities: User, AuthSession
+    Attributes: email, totpUri, authProvider
+
+  sng auth.totp-verify <email> [code] [vault]
+    Verify a 6-digit code from any TOTP authenticator (window ±1).
+    Reads secret from ~/.config/lutino/totp/<email>.secret or 1Password.
+    Entities: User, AuthCredential, AuthEvent
+    Attributes: email, totpCode, verifiedAt, authResult  (code-set: AuthResult)
+
+  sng auth.session create|inspect|revoke <email> [vault]
+    Create (after TOTP verify), inspect, or revoke a local session token.
+    Session stored in ~/.config/lutino/sessions/<email>.session + 1Password.
+    Entities: User, AuthSession
+    Attributes: sessionId, createdAt, expiresAt, sessionStatus  (code-set: SessionStatus)
+
+  sng auth.ms-authenticator status|qr|deeplink|push-plan [email]
+    Microsoft Authenticator integration.
+    status    — show implementation roadmap (Phase 1: QR works now)
+    qr        — same as auth.qr --provider=microsoft
+    deeplink  — generate ms-auth:// deep-link URI (Phase 2)
+    push-plan — Azure AD push notification plan (Phase 3)
+    Code sets: AuthProvider, MSAuthMode
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MASTER DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  sng data.master.init [env] [force]
+    Initialise master data: directory layout, seed System + Account records,
+    bootstrap reference data code sets.
+    Entities: User, Account, System  Attributes: id, status, deployEnv
+
+  sng data.master.user create|list|describe|validate|delete [email]
+    CRUD for the User master data entity.
+    Entities: User, AuthCredential
+    Attributes: id, email, displayName, createdAt, status (code-set: StatusLifecycle)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  REFERENCE DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  sng data.reference.codes list|bootstrap|validate|export [code-set]
+    All reference code sets: AuthProvider, SessionStatus, StatusLifecycle,
+    MIMEDispatch, SiteContext, DeployEnv, and more.
+    Entities: CodeSet, CodeValue
+    export → Collibra-import CSV
+
+  sng data.reference.mime-types list|lookup|validate|sync [mime-or-ext]
+    MIME type registry: type → handler mapping, cross-checked against dispatch.sh.
+    Entities: MIMEType  Attributes: mimeType, handler, extension
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  DATA MODEL (Collibra metamodel bridge)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  sng model.collibra-bridge summary|all|communities|domains|entities|
+                               attributes|codes|relations|export
+    Collibra metamodel mapped onto singine.  Not indispensable — Collibra is
+    optional — but every object IS named and typed per the Collibra metamodel
+    so it can be imported.
+    Bridge: sng model.collibra-bridge export → Collibra import CSV
+
+  sng model.entities list|describe|validate [EntityName]
+    Entity type registry: 14 entities, Collibra asset type mapping, schema.
+
+  sng model.attributes list|describe|validate [attributeName]
+    Attribute type registry: 25 attributes, data types, validation patterns,
+    sensitive flag (sensitive=yes → stored only in 1Password).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  INFRA / DISPATCH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  dev/infra/dispatch/dispatch.sh [--mime type] <file>   — run any file by MIME
+  dev/infra/dispatch/dispatch.sh --list                 — show handler table
+  dev/infra/dispatch/dispatch.sh --quicktest            — run test suite
+  dev/infra/ssl/cacert-setup.sh [--force]               — fetch certs from 1Password
+  dev/env.sh                                            — source to set JAVA_HOME etc.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  .sng FILE FORMAT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  #!/usr/bin/env bash
+  #:name        namespace.command
+  #:description One-line description
+  #:version     semver
+  #:uses        ns.dep1 ns.dep2          (sourced before execution)
+  #:param       name type req "desc" [default=val] [values=a|b]
+  #:entity      EntityType               (Collibra asset type)
+  #:attribute   attributeName            (Collibra attribute type)
+  #:code-set    CodeSetName              (Collibra code set)
+  #:master      MasterDataObject
+  #:reference   ReferenceDataObject
+
+  # body: executable bash
+  set -euo pipefail
+  . "$(cd "$(dirname "\${BASH_SOURCE[0]}")/..." && pwd)/lib/runtime.sh"
+  ...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF

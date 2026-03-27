@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  core+/forrest/build.xml
+  Local Apache Forrest bridge for SilkPage core+.
+
+  This does not vendor Forrest. It validates and invokes a local Forrest
+  runtime through Ant so Singine can later orchestrate it safely.
+-->
+<project name="silkpage-core-plus-forrest" default="forrest-validate" basedir=".">
+
+  <property environment="env"/>
+  <property name="forrest.home" value="${env.FORREST_HOME}"/>
+  <property name="forrest.bin" value="${env.FORREST_BIN}"/>
+  <property name="core.plus.dir" value="${basedir}/.."/>
+  <property name="model.dir" value="${core.plus.dir}/model"/>
+
+  <condition property="forrest.bin.resolved" value="${forrest.bin}" else="${forrest.home}/bin/forrest">
+    <and>
+      <isset property="forrest.bin"/>
+      <not><equals arg1="${forrest.bin}" arg2=""/></not>
+    </and>
+  </condition>
+
+  <target name="forrest-validate" description="Validate local Apache Forrest runtime wiring">
+    <fail unless="forrest.home" message="FORREST_HOME is not set. Point it to your local Apache Forrest checkout or install."/>
+    <available file="${forrest.bin.resolved}" property="forrest.bin.exists"/>
+    <fail unless="forrest.bin.exists" message="Forrest binary not found at ${forrest.bin.resolved}"/>
+    <echo message="FORREST_HOME = ${forrest.home}"/>
+    <echo message="FORREST_BIN  = ${forrest.bin.resolved}"/>
+    <echo message="MODEL_DIR    = ${model.dir}"/>
+  </target>
+
+  <target name="forrest-version" depends="forrest-validate" description="Print Apache Forrest version using the local runtime">
+    <exec executable="${forrest.bin.resolved}" failonerror="false">
+      <arg value="-version"/>
+    </exec>
+  </target>
+
+  <target name="forrest-site" depends="forrest-validate" description="Run a Forrest site build in the current FORREST_HOME">
+    <exec dir="${forrest.home}" executable="${forrest.bin.resolved}" failonerror="false">
+      <arg value="site"/>
+    </exec>
+  </target>
+
+  <target name="forrest-skinconf" depends="forrest-validate" description="Echo the bridge model inputs Forrest will receive">
+    <echo message="Using bridge model: ${model.dir}/forrest-singine-silkpage-bridge.xml"/>
+    <echo message="Using scenario model: ${model.dir}/persona-governance-scenario-spec.xml"/>
+  </target>
+</project>

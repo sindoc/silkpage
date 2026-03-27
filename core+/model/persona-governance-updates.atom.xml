@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>urn:sindoc:singine:persona-governance:updates</id>
+  <title>Singine Persona Governance Updates</title>
+  <updated>2026-03-26T00:00:00Z</updated>
+  <author><name>sindoc platform</name></author>
+  <entry>
+    <id>urn:sindoc:persona:PHIL</id>
+    <title>PHIL philosopher scenario ready for XML, SKOS, and Collibra publication</title>
+    <updated>2026-03-26T00:00:00Z</updated>
+    <category term="PHIL"/>
+    <summary>Semantic review of logs as governed document evidence.</summary>
+  </entry>
+  <entry>
+    <id>urn:sindoc:persona:GUAR</id>
+    <title>GUAR guardian scenario published as risk triage update</title>
+    <updated>2026-03-26T00:00:00Z</updated>
+    <category term="GUAR"/>
+    <summary>Risk-oriented log assessment and operational alert publication.</summary>
+  </entry>
+  <entry>
+    <id>urn:sindoc:persona:EXPL</id>
+    <title>EXPL explorer scenario proposes new code values</title>
+    <updated>2026-03-26T00:00:00Z</updated>
+    <category term="EXPL"/>
+    <summary>Discovery workflow for candidate log and document classes.</summary>
+  </entry>
+  <entry>
+    <id>urn:sindoc:persona:HEAL</id>
+    <title>HEAL healer scenario restores malformed XML and feeds</title>
+    <updated>2026-03-26T00:00:00Z</updated>
+    <category term="HEAL"/>
+    <summary>Normalization and remediation workflow for SilkPage payloads.</summary>
+  </entry>
+  <entry>
+    <id>urn:sindoc:persona:NETW</id>
+    <title>NETW networker scenario aligns crosswalks and hierarchies</title>
+    <updated>2026-03-26T00:00:00Z</updated>
+    <category term="NETW"/>
+    <summary>Cross-system vocabulary fusion across Atom, RSS, SKOS, and Collibra.</summary>
+  </entry>
+</feed>

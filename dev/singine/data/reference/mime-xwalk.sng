@@ -1,0 +1,369 @@
+#!/usr/bin/env bash
+# dev/singine/data/reference/mime-xwalk.sng
+#:name        data.reference.mime-xwalk
+#:description Crosswalk and Mapping Specification: singine ↔ silkpage MIME registries
+#:version     1.0.0
+#:param       action  string  optional  "list|resolve|crosswalk|harfbuzz-svg" default=list
+#:param       target  string  optional  "file extension, MIME type, or source file path"
+#:entity      MappingSpecification
+#:entity      FieldMapping
+#:entity      Crosswalk
+#:code-set    SingineRouteClass
+#:code-set    SilkpageHandlerClass
+#:code-set    MIMEFormatHierarchy
+#:code-set    XwalkEquivalenceType
+#:reference   MIMEType Crosswalk FieldMapping MappingSpecification
+#:xwalk       SingineMIME → SilkpageHandler
+#:mapping-spec singine/lang/mime.clj → silkpage/data/reference/mime-types.sng
+#
+# Pattern: Collibra Reference Data Management crosswalk model
+#   · Simple code table    → SingineRouteClass, SilkpageHandlerClass, XwalkEquivalenceType
+#   · Hierarchical code table → MIMEFormatHierarchy (parent-child, SKOS-aligned)
+#   · Crosswalk            → SingineMIME ↔ SilkpageMIME (first-class asset, not an implicit join)
+#   · Field Mapping        → singine.{extension,mimeType,route} → silkpage.{mimeType,extension,handler,description}
+#   · Mapping Specification → singine-silkpage-mime-mapping-spec
+#
+# See also: dev/singine/model/mime-mapping-spec.xml  (full XML model of this spec)
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/lib/runtime.sh"
+
+action="${1:-list}"
+target="${2:-}"
+
+# ── Code Table: MIMEFormatHierarchy (hierarchical) ───────────────────────────
+# Columns: code | parent | description
+# Root parent is "(root)". Hierarchy aligns with singine route classes.
+_format_hierarchy() {
+  cat <<'HIERARCHY'
+CodeSet:MIMEFormatHierarchy bootstrap=31
+MediaFormat         | (root)        | Top-level media format classification
+TextFormat          | MediaFormat   | Human-readable text; singine route :lookup. HarfBuzz-eligible.
+SemanticFormat      | MediaFormat   | RDF/graph content; singine route :link.
+BinaryFormat        | MediaFormat   | Opaque binary; singine route :binary.
+StructuredText      | TextFormat    | Machine-readable structured text: JSON, XML, YAML, TOML
+PlainText           | TextFormat    | Unstructured or lightly-structured: plain, CSV, TSV
+MarkupText          | TextFormat    | Presentation markup: HTML, Markdown, CSS
+SyndText            | TextFormat    | Syndication feeds: Atom, RSS
+VendorText          | TextFormat    | Singine vendor XML: sindoc, skh
+RDFFormat           | SemanticFormat| Standard RDF serialisations: Turtle, N-Triples, N-Quads, TriG, N3, JSON-LD
+OWLFormat           | SemanticFormat| OWL ontology: RDF/XML, OWL/XML
+SPARQLFormat        | SemanticFormat| SPARQL query and result formats
+URFMFormat          | SemanticFormat| Singine URFM semantic format
+ImageFormat         | BinaryFormat  | Raster and vector images
+ArchiveFormat       | BinaryFormat  | Compressed archives
+DocumentFormat      | BinaryFormat  | Office and PDF documents
+BigDataFormat       | BinaryFormat  | Columnar big-data: Parquet, Avro, ORC
+MediaStreamFormat   | BinaryFormat  | Audio and video streams
+HIERARCHY
+}
+
+# ── Code Table: XwalkEquivalenceType (simple, SKOS-aligned) ──────────────────
+_equivalence_types() {
+  cat <<'EQUIV'
+CodeSet:XwalkEquivalenceType bootstrap=32
+exact   | Same MIME in both systems (IANA-registered, same semantics) — skos:exactMatch
+close   | Same format, different MIME variant (e.g. text/xml vs application/xml) — skos:closeMatch
+alias   | Different MIME designating same format (non-standard alt MIME) — skos:closeMatch
+gap     | Singine-only: no silkpage handler. Coverage gap; extend mime-types.sng to close.
+reverse | Silkpage-only: not registered in singine canonical table. Singine extension needed.
+EQUIV
+}
+
+# ── Crosswalk data ────────────────────────────────────────────────────────────
+# Columns: singine_mime | singine_route | silkpage_mime | silkpage_handler | equivalence | hierarchy_class
+# Gap entries: silkpage_mime=(gap), handler=(none)
+# Reverse entries: singine_mime=(reverse), route=(none)
+_xwalk_table() {
+  cat <<'XWALK'
+text/html                            | :lookup | text/html                            | (static)        | exact    | MarkupText
+application/xml                      | :lookup | application/xml                      | (static/xslt)   | exact    | StructuredText
+application/xslt+xml                 | :lookup | application/xslt+xml                 | xsltproc        | exact    | StructuredText
+application/json                     | :lookup | application/json                     | node/python3    | exact    | StructuredText
+application/javascript               | :lookup | application/javascript               | node            | exact    | StructuredText
+image/svg+xml                        | :binary | image/svg+xml                        | (static)        | exact    | ImageFormat
+text/css                             | :lookup | text/css                             | (static)        | exact    | MarkupText
+text/xml                             | :lookup | application/xml                      | (static/xslt)   | close    | StructuredText
+text/plain                           | :lookup | (gap)                                | (none)          | gap      | PlainText
+text/csv                             | :lookup | (gap)                                | (none)          | gap      | PlainText
+text/tab-separated-values            | :lookup | (gap)                                | (none)          | gap      | PlainText
+text/markdown                        | :lookup | (gap)                                | (none)          | gap      | MarkupText
+application/yaml                     | :lookup | (gap)                                | (none)          | gap      | StructuredText
+application/toml                     | :lookup | (gap)                                | (none)          | gap      | StructuredText
+application/atom+xml                 | :lookup | (gap)                                | (none)          | gap      | SyndText
+application/rss+xml                  | :lookup | (gap)                                | (none)          | gap      | SyndText
+application/vnd.singine.sindoc+xml   | :lookup | (gap)                                | (none)          | gap      | VendorText
+application/vnd.singine.skh+xml      | :lookup | (gap)                                | (none)          | gap      | VendorText
+application/rdf+xml                  | :link   | (gap)                                | (none)          | gap      | OWLFormat
+application/owl+xml                  | :link   | (gap)                                | (none)          | gap      | OWLFormat
+text/turtle                          | :link   | (gap)                                | (none)          | gap      | RDFFormat
+text/n3                              | :link   | (gap)                                | (none)          | gap      | RDFFormat
+application/n-triples                | :link   | (gap)                                | (none)          | gap      | RDFFormat
+application/n-quads                  | :link   | (gap)                                | (none)          | gap      | RDFFormat
+application/trig                     | :link   | (gap)                                | (none)          | gap      | RDFFormat
+application/ld+json                  | :link   | (gap)                                | (none)          | gap      | RDFFormat
+application/sparql-query             | :link   | (gap)                                | (none)          | gap      | SPARQLFormat
+application/sparql-results+xml       | :link   | (gap)                                | (none)          | gap      | SPARQLFormat
+application/sparql-results+json      | :link   | (gap)                                | (none)          | gap      | SPARQLFormat
+application/vnd.urfm+xml             | :link   | (gap)                                | (none)          | gap      | URFMFormat
+application/x-parquet                | :binary | (gap)                                | (none)          | gap      | BigDataFormat
+application/avro                     | :binary | (gap)                                | (none)          | gap      | BigDataFormat
+application/orc                      | :binary | (gap)                                | (none)          | gap      | BigDataFormat
+application/zip                      | :binary | (gap)                                | (none)          | gap      | ArchiveFormat
+application/x-tar                    | :binary | (gap)                                | (none)          | gap      | ArchiveFormat
+application/gzip                     | :binary | (gap)                                | (none)          | gap      | ArchiveFormat
+application/x-bzip2                  | :binary | (gap)                                | (none)          | gap      | ArchiveFormat
+application/x-xz                     | :binary | (gap)                                | (none)          | gap      | ArchiveFormat
+application/pdf                      | :binary | (gap)                                | (none)          | gap      | DocumentFormat
+application/vnd.openxmlformats-officedocument.wordprocessingml.document   | :binary | (gap) | (none) | gap | DocumentFormat
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet         | :binary | (gap) | (none) | gap | DocumentFormat
+application/vnd.openxmlformats-officedocument.presentationml.presentation | :binary | (gap) | (none) | gap | DocumentFormat
+image/png                            | :binary | (gap)                                | (none)          | gap      | ImageFormat
+image/jpeg                           | :binary | (gap)                                | (none)          | gap      | ImageFormat
+image/gif                            | :binary | (gap)                                | (none)          | gap      | ImageFormat
+image/webp                           | :binary | (gap)                                | (none)          | gap      | ImageFormat
+video/mp4                            | :binary | (gap)                                | (none)          | gap      | MediaStreamFormat
+audio/mpeg                           | :binary | (gap)                                | (none)          | gap      | MediaStreamFormat
+(reverse)                            | (none)  | text/x-sh                            | sh              | reverse  | (executor)
+(reverse)                            | (none)  | text/x-shellscript                   | bash            | reverse  | (executor)
+(reverse)                            | (none)  | application/x-shellscript            | bash            | reverse  | (executor)
+(reverse)                            | (none)  | text/x-bash                          | bash            | reverse  | (executor)
+(reverse)                            | (none)  | application/x-racket                 | racket          | reverse  | (executor)
+(reverse)                            | (none)  | text/x-racket                        | racket          | reverse  | (executor)
+(reverse)                            | (none)  | application/x-singine                | singine         | reverse  | (executor)
+(reverse)                            | (none)  | text/x-python                        | python3         | reverse  | (executor)
+(reverse)                            | (none)  | text/x-script.python                 | python3         | reverse  | (executor)
+(reverse)                            | (none)  | application/x-python                 | python3         | reverse  | (executor)
+(reverse)                            | (none)  | text/x-ruby                          | ruby            | reverse  | (executor)
+(reverse)                            | (none)  | application/x-ruby                   | ruby            | reverse  | (executor)
+(reverse)                            | (none)  | text/x-perl                          | perl            | reverse  | (executor)
+(reverse)                            | (none)  | application/x-perl                   | perl            | reverse  | (executor)
+(reverse)                            | (none)  | text/x-awk                           | awk -f          | reverse  | (executor)
+(reverse)                            | (none)  | application/x-awk                    | awk -f          | reverse  | (executor)
+XWALK
+}
+
+# ── Field Mapping (Mapping Specification body) ────────────────────────────────
+# source: singine/lang/mime.clj    fields: extension, mimeType, route
+# target: mime-types.sng           fields: mimeType, extension, handler, description
+_field_mappings() {
+  cat <<'FIELDS'
+source_system | source_field | target_system | target_field | mapping_type | notes
+singine        | extension    | silkpage      | extension    | direct       | Lowercase, no dot. Singine is canonical authority.
+singine        | mimeType     | silkpage      | mimeType     | direct       | IANA type string. Crosswalk join key.
+singine        | route        | silkpage      | handler      | derived      | :lookup→handler per xwalk; :binary→(static) for SVG; :link→(none)
+(none)         | (none)       | silkpage      | description  | target-only  | Human description; no singine source equivalent.
+FIELDS
+}
+
+# ── $FORMAT resolution: ext/mime → route + handler + HarfBuzz eligibility ────
+_resolve_format() {
+  local fmt="${1#.}"   # strip leading dot
+
+  # Step 1: ext → MIME (singine canonical table)
+  local mime
+  case "${fmt}" in
+    txt|text)            mime="text/plain" ;;
+    csv)                 mime="text/csv" ;;
+    tsv)                 mime="text/tab-separated-values" ;;
+    html|htm)            mime="text/html" ;;
+    md|markdown)         mime="text/markdown" ;;
+    xml|xsd)             mime="application/xml" ;;
+    xsl|xslt)            mime="application/xslt+xml" ;;
+    dtd)                 mime="application/xml-dtd" ;;
+    json)                mime="application/json" ;;
+    yaml|yml)            mime="application/yaml" ;;
+    toml)                mime="application/toml" ;;
+    js)                  mime="application/javascript" ;;
+    css)                 mime="text/css" ;;
+    py)                  mime="text/x-python" ;;
+    sh)                  mime="text/x-sh" ;;
+    bash)                mime="text/x-shellscript" ;;
+    rkt)                 mime="application/x-racket" ;;
+    sng)                 mime="application/x-singine" ;;
+    rb)                  mime="text/x-ruby" ;;
+    pl)                  mime="text/x-perl" ;;
+    awk)                 mime="text/x-awk" ;;
+    svg)                 mime="image/svg+xml" ;;
+    rdf)                 mime="application/rdf+xml" ;;
+    owl)                 mime="application/owl+xml" ;;
+    ttl)                 mime="text/turtle" ;;
+    n3)                  mime="text/n3" ;;
+    nt)                  mime="application/n-triples" ;;
+    nq)                  mime="application/n-quads" ;;
+    trig)                mime="application/trig" ;;
+    jsonld)              mime="application/ld+json" ;;
+    sparql)              mime="application/sparql-query" ;;
+    sindoc|sin)          mime="application/vnd.singine.sindoc+xml" ;;
+    skh)                 mime="application/vnd.singine.skh+xml" ;;
+    urfm)                mime="application/vnd.urfm+xml" ;;
+    parquet)             mime="application/x-parquet" ;;
+    avro)                mime="application/avro" ;;
+    orc)                 mime="application/orc" ;;
+    zip)                 mime="application/zip" ;;
+    tar)                 mime="application/x-tar" ;;
+    gz)                  mime="application/gzip" ;;
+    bz2)                 mime="application/x-bzip2" ;;
+    xz)                  mime="application/x-xz" ;;
+    pdf)                 mime="application/pdf" ;;
+    docx)                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document" ;;
+    xlsx)                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ;;
+    pptx)                mime="application/vnd.openxmlformats-officedocument.presentationml.presentation" ;;
+    png)                 mime="image/png" ;;
+    jpg|jpeg)            mime="image/jpeg" ;;
+    gif)                 mime="image/gif" ;;
+    webp)                mime="image/webp" ;;
+    mp4)                 mime="video/mp4" ;;
+    mp3)                 mime="audio/mpeg" ;;
+    # If input looks like a MIME type already, pass through
+    */*)                 mime="${fmt}" ;;
+    *)                   mime="application/octet-stream" ;;
+  esac
+
+  # Step 2: MIME → singine route
+  local route
+  case "${mime}" in
+    application/rdf+xml|application/owl+xml|text/turtle|text/n3|\
+    application/n-triples|application/n-quads|application/trig|\
+    application/ld+json|application/sparql-query|\
+    application/sparql-results+xml|application/sparql-results+json|\
+    application/vnd.urfm+xml)
+      route=":link" ;;
+    application/x-parquet|application/avro|application/orc|\
+    application/zip|application/x-tar|application/gzip|\
+    application/x-bzip2|application/x-xz|application/pdf|\
+    application/vnd.openxmlformats-officedocument.*|\
+    image/*|video/*|audio/*)
+      route=":binary" ;;
+    *)
+      route=":lookup" ;;
+  esac
+
+  # Step 3: MIME → silkpage handler (via crosswalk)
+  local handler
+  case "${mime}" in
+    text/html|text/css)                               handler="(static)" ;;
+    image/svg+xml)                                    handler="(static)" ;;
+    application/xml|text/xml|application/xml-dtd)     handler="(static/xslt)" ;;
+    application/xslt+xml)                             handler="xsltproc" ;;
+    application/json)                                 handler="node/python3" ;;
+    application/javascript)                           handler="node" ;;
+    text/x-sh)                                        handler="sh" ;;
+    text/x-shellscript|application/x-shellscript|\
+    text/x-bash)                                      handler="bash" ;;
+    application/x-racket|text/x-racket)               handler="racket" ;;
+    application/x-singine)                            handler="singine" ;;
+    text/x-python|text/x-script.python|\
+    application/x-python)                             handler="python3" ;;
+    text/x-ruby|application/x-ruby)                   handler="ruby" ;;
+    text/x-perl|application/x-perl)                   handler="perl" ;;
+    text/x-awk|application/x-awk)                     handler="awk -f" ;;
+    *)                                                handler="(none)" ;;
+  esac
+
+  # Step 4: HarfBuzz eligibility — :lookup route + a real handler
+  local hb="no"
+  [[ "${route}" == ":lookup" && "${handler}" != "(none)" ]] && hb="yes"
+
+  printf "format      %s\n"   "${fmt}"
+  printf "mimeType    %s\n"   "${mime}"
+  printf "route       %s\n"   "${route}"
+  printf "handler     %s\n"   "${handler}"
+  printf "hb-capable  %s\n\n" "${hb}"
+
+  if [[ "${hb}" == "yes" ]]; then
+    printf "HarfBuzz SVG pipeline:\n"
+    printf "  1. extract  : %s <source-file>\n"              "${handler}"
+    printf "  2. shape    : hb-view --font-file=<font.ttf> --output-format=svg\n"
+    printf "  3. output   : image/svg+xml  (silkpage: (static), singine: :binary)\n\n"
+  elif [[ "${route}" == ":lookup" && "${handler}" == "(none)" ]]; then
+    printf "HarfBuzz SVG pipeline: gap — extend mime-types.sng to add handler for %s\n\n" "${mime}"
+  else
+    printf "HarfBuzz SVG pipeline: not applicable (route %s, not :lookup)\n\n" "${route}"
+  fi
+}
+
+# ── Commands ──────────────────────────────────────────────────────────────────
+
+cmd_list() {
+  sng_head "MIME Crosswalk — singine ↔ silkpage"
+  printf "\n%-44s %-9s %-44s %-16s %-9s %s\n" \
+    "SINGINE MIME" "ROUTE" "SILKPAGE MIME" "HANDLER" "EQUIV" "CLASS"
+  printf "%-44s %-9s %-44s %-16s %-9s %s\n" \
+    "────────────" "─────" "─────────────" "───────" "─────" "─────"
+  while IFS='|' read -r smime route tmime handler equiv cls; do
+    smime="$(printf "%s" "${smime}" | xargs)"
+    route="$(printf "%s" "${route}" | xargs)"
+    tmime="$(printf "%s" "${tmime}" | xargs)"
+    handler="$(printf "%s" "${handler}" | xargs)"
+    equiv="$(printf "%s" "${equiv}" | xargs)"
+    cls="$(printf "%s" "${cls}" | xargs)"
+    printf "%-44s %-9s %-44s %-16s %-9s %s\n" \
+      "${smime}" "${route}" "${tmime}" "${handler}" "${equiv}" "${cls}"
+  done < <(_xwalk_table)
+  printf "\n  Run:  sng data.reference.mime-xwalk resolve <ext-or-mime>\n"
+  printf "  See:  dev/singine/model/mime-mapping-spec.xml  for full XML model\n\n"
+}
+
+cmd_crosswalk() {
+  sng_head "Crosswalk Summary — singine ↔ silkpage"
+  local exact=0 close=0 alias_=0 gap=0 reverse=0
+  while IFS='|' read -r _ _ _ _ equiv _; do
+    equiv="$(printf "%s" "${equiv}" | xargs)"
+    case "${equiv}" in
+      exact)   exact=$(( exact+1 ))     ;;
+      close)   close=$(( close+1 ))     ;;
+      alias)   alias_=$(( alias_+1 ))   ;;
+      gap)     gap=$(( gap+1 ))         ;;
+      reverse) reverse=$(( reverse+1 )) ;;
+    esac
+  done < <(_xwalk_table)
+  printf "\n  exact   : %3d  (same MIME in both systems)\n"        "${exact}"
+  printf "  close   : %3d  (same format, alt MIME variant)\n"     "${close}"
+  printf "  alias   : %3d  (different MIME, same format)\n"       "${alias_}"
+  printf "  gap     : %3d  (singine-only, no silkpage handler)\n" "${gap}"
+  printf "  reverse : %3d  (silkpage-only, not in singine)\n"     "${reverse}"
+  printf "  ────────────────────────────────────────────────────\n"
+  printf "  total   : %3d  crosswalk entries\n\n" \
+    "$(( exact + close + alias_ + gap + reverse ))"
+
+  sng_head "Mapping Specification: Field Mappings"
+  printf "\n%-14s %-14s %-14s %-14s %-13s %s\n" \
+    "SRC-SYSTEM" "SRC-FIELD" "TGT-SYSTEM" "TGT-FIELD" "MAPPING" "NOTES"
+  printf "%-14s %-14s %-14s %-14s %-13s %s\n" \
+    "──────────" "─────────" "──────────" "─────────" "───────" "─────"
+  while IFS='|' read -r ss sf ts tf mt notes; do
+    [[ "${ss}" == "source_system" ]] && continue
+    printf "%-14s %-14s %-14s %-14s %-13s %s\n" \
+      "$(printf "%s" "${ss}" | xargs)" \
+      "$(printf "%s" "${sf}" | xargs)" \
+      "$(printf "%s" "${ts}" | xargs)" \
+      "$(printf "%s" "${tf}" | xargs)" \
+      "$(printf "%s" "${mt}" | xargs)" \
+      "$(printf "%s" "${notes}" | xargs)"
+  done < <(_field_mappings)
+  printf "\n"
+}
+
+cmd_resolve() {
+  [[ -n "${target}" ]] || sng_die "format required.  Usage: sng data.reference.mime-xwalk resolve <ext|.ext|mime>"
+  _resolve_format "${target}"
+}
+
+cmd_harfbuzz_svg() {
+  [[ -n "${target}" ]] || \
+    sng_die "source file required.  Usage: sng data.reference.mime-xwalk harfbuzz-svg <source-file>"
+  local ext="${target##*.}"
+  sng_head "HarfBuzz SVG — format resolution for: ${target}"
+  printf "\n"
+  _resolve_format "${ext}"
+}
+
+case "${action}" in
+  list)         cmd_list ;;
+  resolve)      cmd_resolve ;;
+  lookup)       cmd_resolve ;;
+  crosswalk)    cmd_crosswalk ;;
+  harfbuzz-svg) cmd_harfbuzz_svg ;;
+  *) sng_die "unknown action '${action}'. Valid: list | resolve | crosswalk | harfbuzz-svg" ;;
+esac

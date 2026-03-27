@@ -1,0 +1,99 @@
+.TH SILKPAGE 1 "2026-03-15" "silkpage 0.6.0" "User Commands"
+.SH NAME
+silkpage \- XML-based web publishing framework (MarkupWare)
+.SH SYNOPSIS
+.B silkpage
+\fICOMMAND\fR [\fIOPTIONS\fR]
+.PP
+.B silkpage build
+[\fB--site\fR \fISITE_DIR\fR] [\fB--out\fR \fIOUT_DIR\fR]
+.PP
+.B silkpage validate
+[\fB--site\fR \fISITE_DIR\fR]
+.PP
+.B silkpage layout
+[\fB--site\fR \fISITE_DIR\fR] [\fB--layout\fR \fILAYOUT_XML\fR]
+.SH DESCRIPTION
+.B silkpage
+is an XML-based web publishing framework evolved from DocBook Website.
+It transforms a directory of XML source pages and a
+.I layout.xml
+navigation descriptor into a standards-compliant XHTML 1.0 website.
+.PP
+Sites are defined by a
+.I layout.xml
+file at their root.  This file maps XML source pages to output HTML files,
+defines the table of contents (TOC), and records metadata such as copyright,
+stylesheet, and head/foot links.
+.SH LAYOUT.XML STRUCTURE
+.nf
+<?xml version="1.0"?>
+<layout xml:id="site-id">
+  <config param="title" value="Site Title"/>
+  <copyright>
+    <year>2026</year>
+    <holder role="http://example.com/">Author Name</holder>
+  </copyright>
+  <style src="css/site.css" type="text/css"/>
+  <toc page="index.xml" filename="index.html">
+    <tocentry page="docs/index.xml" dir="docs" filename="index.html"/>
+  </toc>
+  <notoc page="site/map.xml" dir="site/map" filename="index.html"/>
+</layout>
+.fi
+.SH COMMANDS
+.TP
+.B build
+Build the full site from XML sources.
+Reads
+.I layout.xml
+and transforms each page to HTML in the output directory.
+.TP
+.B validate
+Validate all XML source pages against the SilkPage schema.
+.TP
+.B layout
+Print the TOC derived from
+.IR layout.xml .
+.SH PAGE FORMAT
+Each page is a
+.I .xml
+file with a
+.B <webpage>
+root element:
+.nf
+<?xml version='1.0' encoding='UTF-8'?>
+<webpage id="page-id">
+  <head>
+    <title>Page Title</title>
+    <summary>Short description.</summary>
+  </head>
+  <para>Content paragraph.</para>
+</webpage>
+.fi
+.SH SITE DIRECTORY LAYOUT
+.nf
+site-root/
+  layout.xml          Navigation and TOC descriptor
+  index.xml           Home page source
+  css/                Stylesheets
+  img/                Images and SVG assets
+  docs/               Documentation pages (XML source)
+  feeds/              Atom/RSS feed sources
+.fi
+.SH ENVIRONMENT
+.TP
+.B SILKPAGE_HOME
+Root directory of the SilkPage installation.
+Defaults to the directory containing the
+.B silkpage
+launcher script.
+.SH SEE ALSO
+.BR singine (1),
+.BR silkpage-build (1),
+.BR xmllint (1)
+.SH AUTHORS
+SilkPage was created by MarkupWare (2004\(en2012) and is maintained by
+Sina K. Heshmati as part of the singine platform.
+.SH HOME PAGE
+.I https://silkpage.markupware.com/

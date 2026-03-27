@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+# dev/singine/auth/session.sng
+#:name        auth.session
+#:description Create, inspect, or revoke an authenticated session
+#:version     1.0.0
+#:uses        auth.totp-verify
+#:param       action  string  required  "create|inspect|revoke"
+#:param       email   string  required  "Account email address"
+#:param       vault   string  optional  "1Password vault name" default=lutino-dev
+#:entity      User
+#:entity      AuthSession
+#:attribute   sessionId
+#:attribute   email
+#:attribute   createdAt
+#:attribute   expiresAt
+#:attribute   sessionStatus
+#:code-set    SessionStatus
+#:master      User
+#:reference   AuthSession
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+action="${1:-}"
+email="${2:-}"
+vault="${3:-lutino-dev}"
+
+[[ -n "${action}" ]] || sng_die "action is required.  Usage: sng auth.session <create|inspect|revoke> <email>"
+[[ -n "${email}"  ]] || sng_die "email is required."
+
+SESSION_DIR="${HOME}/.config/lutino/sessions"
+session_file="${SESSION_DIR}/${email}.session"
+
+case "${action}" in
+
+  create)
+    # 1. Verify TOTP first
+    bash "$(dirname "${BASH_SOURCE[0]}")/totp-verify.sng" "${email}" "" "${vault}"
+
+    # 2. Generate session token
+    session_id="$(python3 -c "import secrets; print(secrets.token_hex(32))")"
+    created_at="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+    expires_at="$(python3 -c "
+import datetime
+exp = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+print(exp.strftime('%Y-%m-%dT%H:%M:%SZ'))
+")"
+
+    mkdir -p "${SESSION_DIR}"
+    chmod 0700 "${SESSION_DIR}"
+    cat > "${session_file}" <<EOF
+sessionId=${session_id}
+email=${email}
+createdAt=${created_at}
+expiresAt=${expires_at}
+sessionStatus=active
+EOF
+    chmod 0600 "${session_file}"
+
+    # 3. Optionally store session token in 1Password
+    op_require
+    op item create --category=password \
+      --title="lutino-session-${email}" \
+      --vault="${vault}" \
+      "password=${session_id}" \
+      "notes=createdAt=${created_at} expiresAt=${expires_at}" \
+      >/dev/null 2>/dev/null \
+    || op item edit "lutino-session-${email}" --vault="${vault}" \
+         "password=${session_id}" \
+         "notes=createdAt=${created_at} expiresAt=${expires_at}" \
+         >/dev/null 2>/dev/null \
+    || sng_warn "Could not store session in 1Password (non-fatal)"
+
+    sng_ok "Session created"
+    printf "  sessionId   %s\n" "${session_id}"
+    printf "  email       %s\n" "${email}"
+    printf "  createdAt   %s\n" "${created_at}"
+    printf "  expiresAt   %s\n" "${expires_at}"
+    ;;
+
+  inspect)
+    [[ -f "${session_file}" ]] || sng_die "no active session for ${email}. Run: sng auth.session create ${email}"
+    now_ts="$(python3 -c "import time; print(int(time.time()))")"
+    printf "\nSession for %s:\n" "${email}"
+    while IFS='=' read -r k v; do
+      [[ -z "${k}" ]] && continue
+      if [[ "${k}" == "expiresAt" ]]; then
+        exp_ts="$(python3 -c "import datetime; print(int(datetime.datetime.strptime('${v}','%Y-%m-%dT%H:%M:%SZ').timestamp()))")"
+        if [[ "${now_ts}" -gt "${exp_ts}" ]]; then
+          printf "  %-14s %s  (EXPIRED)\n" "${k}" "${v}"
+        else
+          remaining=$(( (exp_ts - now_ts) / 60 ))
+          printf "  %-14s %s  (%d min remaining)\n" "${k}" "${v}" "${remaining}"
+        fi
+      else
+        printf "  %-14s %s\n" "${k}" "${v}"
+      fi
+    done < "${session_file}"
+    printf "\n"
+    ;;
+
+  revoke)
+    if [[ -f "${session_file}" ]]; then
+      rm -f "${session_file}"
+      sng_ok "Session revoked for ${email}"
+    else
+      sng_warn "No active session found for ${email}"
+    fi
+    ;;
+
+  *) sng_die "unknown action '${action}'. Valid values (code-set: SessionStatus): create | inspect | revoke" ;;
+esac

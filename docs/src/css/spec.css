@@ -1,0 +1,225 @@
+/*
+------------------------------------------------------------------------------
+ MarkupWare Specification Theme
+ CSS3 refresh inspired by historical SilkPage presentation and Eric Meyer style
+ normalization.
+------------------------------------------------------------------------------
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+:root {
+  --spec-ink: #1f2a37;
+  --spec-muted: #51606f;
+  --spec-border: #cfd8df;
+  --spec-accent: #0f766e;
+  --spec-accent-soft: #dff5f3;
+  --spec-paper: #fbfcfd;
+  --spec-panel: #ffffff;
+  --spec-shadow: rgba(15, 23, 42, 0.08);
+  --spec-code: #0b253a;
+  --spec-code-bg: #eef5f8;
+}
+
+body {
+  line-height: 1.6;
+  color: var(--spec-ink);
+  background:
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 28%),
+    linear-gradient(180deg, #f5f9fb 0%, #fbfcfd 30%, #f7fafb 100%);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body > * {
+  box-sizing: border-box;
+}
+
+div.article,
+div.book,
+div.chapter,
+div.reference {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.titlepage,
+div.toc,
+div.section,
+div.refentry,
+div.refsect1,
+div.refnamediv,
+div.refsynopsisdiv,
+div.variablelist,
+div.table {
+  background: var(--spec-panel);
+  border: 1px solid var(--spec-border);
+  border-radius: 16px;
+  box-shadow: 0 16px 48px var(--spec-shadow);
+  margin: 1.25rem 0;
+  padding: 1.25rem 1.5rem;
+}
+
+h1.title {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.7rem);
+  line-height: 1.05;
+  color: #fff;
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 52%, #172554 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 60px rgba(15, 118, 110, 0.35);
+  margin-bottom: 1rem;
+  padding: 2rem;
+}
+
+h2, h2.title, h2.subtitle, h2.section,
+h3, h3.section,
+h4, h4.section {
+  color: var(--spec-accent);
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2, h2.title, h2.section {
+  font-size: 1.65rem;
+  margin-bottom: 0.85rem;
+}
+
+h3, h3.section {
+  font-size: 1.25rem;
+  margin-bottom: 0.65rem;
+}
+
+p, li, dd {
+  color: var(--spec-ink);
+}
+
+p + p,
+li + li {
+  margin-top: 0.65rem;
+}
+
+ul, ol {
+  margin-left: 1.35rem;
+}
+
+code, tt, pre, .literal, .command {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+pre,
+.literal,
+code {
+  background: var(--spec-code-bg);
+  color: var(--spec-code);
+  border-radius: 10px;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+code,
+.literal {
+  padding: 0.1rem 0.35rem;
+}
+
+a:link,
+a:visited {
+  color: #0f4c81;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: #0f766e;
+  border-color: currentColor;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.8rem 0.9rem;
+  border-bottom: 1px solid var(--spec-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--spec-accent);
+  background: var(--spec-accent-soft);
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--spec-border);
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+
+  div.article,
+  div.book,
+  div.chapter,
+  div.reference {
+    padding: 1.25rem 0.9rem 2.5rem;
+  }
+
+  .titlepage,
+  div.toc,
+  div.section,
+  div.refentry,
+  div.refsect1,
+  div.refnamediv,
+  div.refsynopsisdiv,
+  div.variablelist,
+  div.table {
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  h1.title {
+    padding: 1.35rem;
+  }
+}

@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+# dev/infra/dispatch/quicktest
+#
+# Quick-test runner for the MIME-type lambda dispatcher.
+# Compatible with bash 3.2 (macOS system bash).
+#
+# Discovers test scripts under dev/infra/dispatch/handlers/tests/,
+# runs each via dispatch.sh, and reports pass/fail.
+#
+# Exit status: 0 if all tests pass, non-zero otherwise.
+#
+# Usage:
+#   ./quicktest                       # run tests in handlers/tests/
+#   ./quicktest path/to/test.sh       # run single test
+#   ./quicktest path/to/dir/          # run all tests in dir
+#
+set -euo pipefail
+
+DISPATCH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DISPATCH_SH="${DISPATCH_DIR}/dispatch.sh"
+DEFAULT_TESTS_DIR="${DISPATCH_DIR}/handlers/tests"
+
+# ── colour helpers ────────────────────────────────────────────────────────────
+tty_green()  { [[ -t 1 ]] && printf "\033[0;32m%s\033[0m" "$*" || printf "%s" "$*"; }
+tty_red()    { [[ -t 1 ]] && printf "\033[0;31m%s\033[0m" "$*" || printf "%s" "$*"; }
+tty_yellow() { [[ -t 1 ]] && printf "\033[0;33m%s\033[0m" "$*" || printf "%s" "$*"; }
+
+# ── run_test_result <file> → prints PASS | SKIP | FAIL and a description ──────
+run_test_result() {
+  local f="$1"
+  local label="${f#${DISPATCH_DIR}/}"
+  local output exit_code
+
+  exit_code=0
+  output="$("${DISPATCH_SH}" "${f}" 2>&1)" || exit_code=$?
+
+  if [[ ${exit_code} -eq 0 ]]; then
+    printf "  %s %s\n" "$(tty_green PASS)" "${label}" >&2
+    printf "PASS"
+  elif printf "%s" "${output}" | grep -q "interpreter not found:"; then
+    printf "  %s %s\n" "$(tty_yellow SKIP)" "${label} (interpreter not installed)" >&2
+    printf "SKIP"
+  else
+    printf "  %s %s (exit %d)\n" "$(tty_red FAIL)" "${label}" "${exit_code}" >&2
+    [[ -n "${output}" ]] && printf "       %s\n" "${output}" >&2
+    printf "FAIL"
+  fi
+}
+
+# ── main ──────────────────────────────────────────────────────────────────────
+main() {
+  local pass=0
+  local fail=0
+  local skip=0
+  local count=0
+
+  # Build list of test files into a temp file (bash 3.2 compatible)
+  local tmplist=""
+  tmplist="$(mktemp /tmp/quicktest.XXXXXX)"
+  trap 'rm -f "${tmplist:-}"' EXIT
+
+  if [[ $# -eq 0 ]]; then
+    if [[ -d "${DEFAULT_TESTS_DIR}" ]]; then
+      find "${DEFAULT_TESTS_DIR}" -maxdepth 2 -type f ! -name '_*' \
+        | sort > "${tmplist}"
+    else
+      printf "quicktest: no test dir at %s\n" "${DEFAULT_TESTS_DIR}"
+      printf "           create test scripts there or pass a path as argument.\n"
+      exit 0
+    fi
+  else
+    for arg in "$@"; do
+      if [[ -d "${arg}" ]]; then
+        find "${arg}" -maxdepth 2 -type f ! -name '_*' | sort >> "${tmplist}"
+      elif [[ -f "${arg}" ]]; then
+        printf "%s\n" "${arg}" >> "${tmplist}"
+      else
+        printf "quicktest: WARN: not found: %s\n" "${arg}" >&2
+      fi
+    done
+  fi
+
+  count="$(wc -l < "${tmplist}" | tr -d ' ')"
+  if [[ "${count}" -eq 0 ]]; then
+    printf "quicktest: no test files found\n" >&2
+    exit 1
+  fi
+
+  printf "quicktest: running %d test(s)\n" "${count}"
+
+  while IFS= read -r t; do
+    [[ -z "${t}" ]] && continue
+    local result
+    result="$(run_test_result "${t}")"
+    case "${result}" in
+      PASS) pass=$(( pass + 1 )) ;;
+      SKIP) skip=$(( skip + 1 )) ;;
+      *)    fail=$(( fail + 1 )) ;;
+    esac
+  done < "${tmplist}"
+
+  printf "\nResults: %s passed, %s skipped, %s failed\n" \
+    "$(tty_green "${pass}")" \
+    "$(tty_yellow "${skip}")" \
+    "$( [[ ${fail} -eq 0 ]] && tty_green "${fail}" || tty_red "${fail}" )"
+
+  [[ ${fail} -eq 0 ]]
+}
+
+main "$@"

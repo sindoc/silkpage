@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# dev/singine/auth/totp-setup.sng
+#:name        auth.totp-setup
+#:description Set up TOTP secret in 1Password for Google/Microsoft Authenticator
+#:version     1.0.0
+#:param       email     string   required  "Account email address"
+#:param       issuer    string   optional  "Issuer label shown in authenticator" default=lutino.io
+#:param       vault     string   optional  "1Password vault name" default=lutino-dev
+#:param       provider  string   optional  "Target authenticator: google|microsoft|1password" default=google
+#:entity      User
+#:entity      AuthCredential
+#:attribute   email
+#:attribute   totpSecret
+#:attribute   totpIssuer
+#:attribute   authProvider
+#:code-set    AuthProvider
+#:master      User
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+# ── parse args ────────────────────────────────────────────────────────────────
+email="${1:-}"
+issuer="${2:-lutino.io}"
+vault="${3:-lutino-dev}"
+provider="${4:-google}"
+
+[[ -n "${email}" ]] || sng_die "email is required.  Usage: sng auth.totp-setup <email> [issuer] [vault] [provider]"
+
+# Validate provider against code set AuthProvider
+case "${provider}" in
+  google|microsoft|1password) ;;
+  *) sng_die "invalid provider '${provider}'. Valid values (code-set: AuthProvider): google | microsoft | 1password" ;;
+esac
+
+# ── check prerequisites ───────────────────────────────────────────────────────
+op_require
+
+# ── generate secret ───────────────────────────────────────────────────────────
+sng_step "Generating TOTP secret for ${email} (issuer: ${issuer})"
+secret="$(totp_gen_secret)"
+
+# ── store in 1Password ────────────────────────────────────────────────────────
+item_name="lutino-totp-${email}"
+uri="$(totp_build_uri "${secret}" "${email}" "${issuer}")"
+
+sng_step "Storing TOTP secret in 1Password vault '${vault}' as '${item_name}'"
+
+# Create or update the 1Password item with an OTP field
+if op item get "${item_name}" --vault="${vault}" >/dev/null 2>&1; then
+  sng_warn "Item '${item_name}' already exists in vault '${vault}'. Updating..."
+  op item edit "${item_name}" --vault="${vault}" \
+    "OTP.totp[otp]=${uri}" \
+    "username=${email}" \
+    "notes=provider=${provider} issuer=${issuer}" \
+    >/dev/null
+else
+  op item create --category=login \
+    --title="${item_name}" \
+    --vault="${vault}" \
+    --url="https://lutino.io" \
+    "username=${email}" \
+    "OTP.totp[otp]=${uri}" \
+    "notes=provider=${provider} issuer=${issuer}" \
+    >/dev/null
+fi
+
+sng_ok "TOTP secret stored in 1Password: ${item_name}"
+
+# ── store secret locally for local verification (mode 0600) ──────────────────
+mkdir -p "${LUTINO_TOTP_DIR}"
+chmod 0700 "${LUTINO_TOTP_DIR}"
+local_secret_file="${LUTINO_TOTP_DIR}/${email}.secret"
+printf "%s" "${secret}" > "${local_secret_file}"
+chmod 0600 "${local_secret_file}"
+sng_ok "Secret cached locally: ${local_secret_file}"
+
+# ── provider-specific output ──────────────────────────────────────────────────
+case "${provider}" in
+  google)
+    printf "\nScan this QR code with Google Authenticator:\n"
+    qr_display "${uri}" "Google Authenticator — ${issuer}: ${email}"
+    ;;
+  microsoft)
+    # Microsoft Authenticator supports otpauth:// QR codes identically to Google
+    printf "\nScan this QR code with Microsoft Authenticator:\n"
+    qr_display "${uri}" "Microsoft Authenticator — ${issuer}: ${email}"
+    printf "\nNote: Microsoft Authenticator also supports cloud backup.\n"
+    printf "      Future: SAML/OAuth via --provider=microsoft-work\n"
+    ;;
+  1password)
+    printf "\n1Password stores the TOTP natively. To get current code:\n"
+    printf "  sng auth.totp-verify %s\n" "${email}"
+    printf "  op item get '%s' --otp\n" "${item_name}"
+    ;;
+esac
+
+printf "\nVerify setup:  sng auth.totp-verify %s <6-digit-code>\n" "${email}"
+printf "Login QR:      sng auth.qr %s\n\n" "${email}"

@@ -11,7 +11,7 @@
 		exclude-result-prefixes="suwl xi html rdf dc cvs rss db"
 		version="1.0">
 
-  <xsl:import href="http://docbook.sourceforge.net/release/website/current/xsl/website-common.xsl"/>
+  <xsl:import href="http://docbook.sourceforge.net/release/website/current/xsl/chunk-website.xsl"/>
   <xsl:import href="rdf-chunk.xsl"/>
   <xsl:import href="rdf.xsl"/>
   <xsl:import href="trl-chunk.xsl"/>
@@ -26,6 +26,7 @@
   <xsl:include href="urfm.xsl"/>
   <xsl:include href="foaf.xsl"/>
   <xsl:include href="header.xsl"/>
+  <xsl:include href="docbook4-compat.xsl"/>
 
   <rdf:Description rdf:about="http://silkpage.markupware.com/release/core/current/src/xsl/common/main.xsl">
     <rdf:type rdf:resource="http://www.markupware.com/metadata/taxonomy#XSL"/>

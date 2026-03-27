@@ -1,0 +1,183 @@
+#!/usr/bin/env bash
+# dev/singine/data/master/user.sng
+#:name        data.master.user
+#:description Master data: User entity — create, list, describe, validate
+#:version     1.0.0
+#:param       action  string  required  "create|list|describe|validate|delete"
+#:param       email   string  optional  "User email (required for create/describe/delete)"
+#:param       vault   string  optional  "1Password vault name" default=lutino-dev
+#:entity      User
+#:entity      AuthCredential
+#:attribute   id
+#:attribute   email
+#:attribute   displayName
+#:attribute   createdAt
+#:attribute   status
+#:code-set    StatusLifecycle
+#:code-set    SiteContext
+#:master      User
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/lib/runtime.sh"
+
+action="${1:-list}"
+email="${2:-}"
+vault="${3:-lutino-dev}"
+
+USER_DIR="${HOME}/.config/lutino/data/master/users"
+
+# ── helpers ───────────────────────────────────────────────────────────────────
+_user_file() { printf "%s/%s.user" "${USER_DIR}" "${1}"; }
+
+_write_user() {
+  local f="$1"; shift
+  cat > "${f}"
+  chmod 0600 "${f}"
+}
+
+_read_field() {
+  local file="$1" key="$2"
+  grep "^${key}=" "${file}" | head -1 | cut -d= -f2-
+}
+
+# ── create ────────────────────────────────────────────────────────────────────
+cmd_create() {
+  [[ -n "${email}" ]] || sng_die "email required.  Usage: sng data.master.user create <email>"
+
+  # Validate email attribute (pattern from model/attributes.sng)
+  printf "%s" "${email}" | grep -qE '^[^@]+@[^@]+\.[^@]+$' \
+    || sng_die "invalid email format: ${email}  (attribute: email, pattern: ^[^@]+@[^@]+\.[^@]+\$)"
+
+  mkdir -p "${USER_DIR}"
+  chmod 0700 "${USER_DIR}"
+
+  local f; f="$(_user_file "${email}")"
+  [[ ! -f "${f}" ]] || sng_die "user already exists: ${email}  (run: sng data.master.user describe ${email})"
+
+  local id created_at
+  id="$(python3 -c "import uuid; print(uuid.uuid4())")"
+  created_at="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+
+  _write_user "${f}" <<EOF
+id=${id}
+email=${email}
+displayName=${email%%@*}
+createdAt=${created_at}
+status=draft
+vault=${vault}
+EOF
+
+  # Store in 1Password
+  op_require
+  op item create --category=login \
+    --title="lutino-user-${email}" \
+    --vault="${vault}" \
+    --url="https://lutino.io" \
+    "username=${email}" \
+    "notes=id=${id} createdAt=${created_at} status=draft" \
+    >/dev/null 2>/dev/null \
+  || sng_warn "Could not create 1Password item (non-fatal — stored locally)"
+
+  sng_ok "User created"
+  printf "  id          %s\n" "${id}"
+  printf "  email       %s\n" "${email}"
+  printf "  createdAt   %s\n" "${created_at}"
+  printf "  status      draft\n"
+  printf "\nNext: sng auth.totp-setup %s\n\n" "${email}"
+}
+
+# ── list ──────────────────────────────────────────────────────────────────────
+cmd_list() {
+  sng_head "Master Data — Users"
+  mkdir -p "${USER_DIR}"
+  local count=0
+  printf "\n%-36s %-30s %-10s %s\n" "ID" "EMAIL" "STATUS" "CREATED"
+  printf "%-36s %-30s %-10s %s\n" "──" "─────" "──────" "───────"
+  for f in "${USER_DIR}"/*.user 2>/dev/null; do
+    [[ -f "${f}" ]] || { printf "  (no users — run: sng data.master.user create <email>)\n"; break; }
+    printf "%-36s %-30s %-10s %s\n" \
+      "$(_read_field "${f}" id)" \
+      "$(_read_field "${f}" email)" \
+      "$(_read_field "${f}" status)" \
+      "$(_read_field "${f}" createdAt)"
+    count=$(( count + 1 ))
+  done
+  printf "\n  Total: %d user(s)\n\n" "${count}"
+}
+
+# ── describe ──────────────────────────────────────────────────────────────────
+cmd_describe() {
+  [[ -n "${email}" ]] || sng_die "email required."
+  local f; f="$(_user_file "${email}")"
+  [[ -f "${f}" ]] || sng_die "user not found: ${email}"
+  sng_head "User: ${email}"
+  printf "\n"
+  while IFS='=' read -r k v; do
+    [[ -z "${k}" ]] && continue
+    printf "  %-14s %s\n" "${k}" "${v}"
+  done < "${f}"
+  printf "\n"
+  # Show linked auth credential if present
+  local totp_file="${HOME}/.config/lutino/totp/${email}.secret"
+  if [[ -f "${totp_file}" ]]; then
+    sng_ok "AuthCredential: TOTP secret present (${totp_file})"
+    printf "  Run: sng auth.qr %s\n" "${email}"
+  else
+    sng_warn "AuthCredential: no TOTP set up yet"
+    printf "  Run: sng auth.totp-setup %s\n" "${email}"
+  fi
+  local session_file="${HOME}/.config/lutino/sessions/${email}.session"
+  if [[ -f "${session_file}" ]]; then
+    sng_ok "AuthSession: session file present"
+    printf "  Run: sng auth.session inspect %s\n" "${email}"
+  else
+    printf "  AuthSession: none\n"
+  fi
+  printf "\n"
+}
+
+# ── validate ──────────────────────────────────────────────────────────────────
+cmd_validate() {
+  sng_step "Validating master data: Users..."
+  local errors=0
+  for f in "${USER_DIR}"/*.user 2>/dev/null; do
+    [[ -f "${f}" ]] || continue
+    local eid estatus
+    eid="$(_read_field "${f}" id)"
+    estatus="$(_read_field "${f}" status)"
+    printf "%s" "${eid}" | grep -qE '^[0-9a-f-]{36}$' \
+      || { sng_warn "$(basename "${f}"): invalid id '${eid}'"; errors=$(( errors+1 )); }
+    case "${estatus}" in
+      draft|candidate|approved|deprecated|retired) ;;
+      *) sng_warn "$(basename "${f}"): invalid status '${estatus}' (code-set: StatusLifecycle)"; errors=$(( errors+1 )) ;;
+    esac
+  done
+  [[ ${errors} -eq 0 ]] && sng_ok "User records valid" || { sng_err "${errors} error(s)"; exit 1; }
+}
+
+# ── delete ────────────────────────────────────────────────────────────────────
+cmd_delete() {
+  [[ -n "${email}" ]] || sng_die "email required."
+  local f; f="$(_user_file "${email}")"
+  [[ -f "${f}" ]] || sng_die "user not found: ${email}"
+  printf "Delete user '%s'? This removes local files only. [y/N] " "${email}"
+  read -r yn
+  case "${yn}" in
+    [Yy]*)
+      rm -f "${f}"
+      rm -f "${HOME}/.config/lutino/totp/${email}.secret" 2>/dev/null || true
+      rm -f "${HOME}/.config/lutino/sessions/${email}.session" 2>/dev/null || true
+      sng_ok "User deleted: ${email}"
+      ;;
+    *) printf "Aborted.\n" ;;
+  esac
+}
+
+case "${action}" in
+  create)   cmd_create ;;
+  list)     cmd_list ;;
+  describe) cmd_describe ;;
+  validate) cmd_validate ;;
+  delete)   cmd_delete ;;
+  *) sng_die "unknown action '${action}'. Valid: create | list | describe | validate | delete" ;;
+esac

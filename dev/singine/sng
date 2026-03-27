@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+# dev/singine/sng — the singine command runner
+#
+# Singine (.sng) is a lightweight command DSL for lutino.io operations.
+# Each .sng file is self-documenting via #: header directives and executable
+# as a bash script via this runner.
+#
+# .sng file header format (all directives start with #:):
+#
+#   #:name        namespace.command     — fully qualified command name
+#   #:description one-line summary      — shown in sng list / sng help
+#   #:version     1.0.0
+#   #:uses        ns.cmd1 ns.cmd2       — dependencies (sourced before execution)
+#   #:param       name type req "desc" [default=val] [values=a|b|c]
+#   #:entity      EntityType            — Collibra entity types referenced
+#   #:attribute   AttributeType         — Collibra attribute types referenced
+#   #:code-set    CodeSetName           — Collibra code sets referenced
+#   #:master      MasterDataObject      — master data objects referenced
+#   #:reference   ReferenceDataObject   — reference data objects referenced
+#
+# Usage:
+#   sng list                      — list all available commands
+#   sng help <name>               — describe a command and its parameters
+#   sng run  <name> [-- args...]  — run a named .sng command
+#   sng <name> [args...]          — shorthand for sng run
+#   sng model                     — show data model (entities + attributes)
+#   sng model entities            — list entity types
+#   sng model attributes          — list attribute types
+#   sng model codes               — list code sets and values
+#   sng bootstrap                 — run system bootstrap
+#   sng deps <name>               — show dependency tree for a command
+#
+set -euo pipefail
+
+SNG_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SNG_LIB="${SNG_DIR}/lib"
+
+# Source the runtime library
+# shellcheck source=lib/runtime.sh
+. "${SNG_LIB}/runtime.sh"
+
+# ── command discovery ──────────────────────────────────────────────────────────
+# Find all .sng files under SNG_DIR and return their logical names.
+_sng_all_files() {
+  find "${SNG_DIR}" -name "*.sng" -type f | sort
+}
+
+# name_to_file <ns.command> → file path
+_sng_name_to_file() {
+  local name="$1"
+  # Convert dots to path separators: auth.qr → auth/qr.sng
+  local rel="${name//.//}.sng"
+  local f="${SNG_DIR}/${rel}"
+  [[ -f "${f}" ]] && printf "%s" "${f}" && return
+  # Also try flat files: bootstrap.sng
+  f="${SNG_DIR}/${name}.sng"
+  [[ -f "${f}" ]] && printf "%s" "${f}" && return
+  return 1
+}
+
+# file_to_name <path> → ns.command
+_sng_file_to_name() {
+  local f="$1"
+  local rel="${f#${SNG_DIR}/}"
+  rel="${rel%.sng}"
+  printf "%s" "${rel//\//.}"
+}
+
+# Read a #: directive value from a .sng file
+_sng_directive() {
+  local file="$1" key="$2"
+  grep "^#:${key}" "${file}" 2>/dev/null \
+    | sed "s|^#:${key}[[:space:]]*||" \
+    | head -1 \
+    || true
+}
+
+# Read all #: directive values (for multi-value directives like #:param)
+_sng_directives() {
+  local file="$1" key="$2"
+  grep "^#:${key}" "${file}" 2>/dev/null \
+    | sed "s|^#:${key}[[:space:]]*||" \
+    || true
+}
+
+# ── commands ──────────────────────────────────────────────────────────────────
+cmd_list() {
+  printf "\n%-30s %-8s  %s\n" "COMMAND" "VERSION" "DESCRIPTION"
+  printf "%-30s %-8s  %s\n" "-------" "-------" "-----------"
+  local f name desc ver
+  while IFS= read -r f; do
+    name="$(_sng_directive "${f}" name)"
+    [[ -z "${name}" ]] && name="$(_sng_file_to_name "${f}")"
+    desc="$(_sng_directive "${f}" description)"
+    ver="$(_sng_directive  "${f}" version)"
+    printf "%-30s %-8s  %s\n" "${name}" "${ver:-—}" "${desc:-}"
+  done < <(_sng_all_files)
+  printf "\n"
+}
+
+cmd_help() {
+  local name="${1:-}"
+  [[ -n "${name}" ]] || { sng_err "usage: sng help <command>"; return 1; }
+  local f
+  f="$(_sng_name_to_file "${name}")" \
+    || { sng_err "unknown command: ${name}"; return 1; }
+
+  printf "\n"
+  sng_head "$(_sng_directive "${f}" name)"
+  printf "  %s\n\n" "$(_sng_directive "${f}" description)"
+
+  local ver uses
+  ver="$(_sng_directive  "${f}" version)"; if [[ -n "${ver}"  ]]; then printf "  version   %s\n" "${ver}";  fi
+  uses="$(_sng_directive "${f}" uses)";    if [[ -n "${uses}" ]]; then printf "  uses      %s\n" "${uses}"; fi
+  printf "\n"
+
+  local params
+  params="$(_sng_directives "${f}" param)"
+  if [[ -n "${params}" ]]; then
+    printf "  Parameters:\n"
+    while IFS= read -r p; do
+      printf "    %s\n" "${p}"
+    done <<< "${params}"
+    printf "\n"
+  fi
+
+  _sng_model_refs "${f}"
+  printf "\n"
+}
+
+# Show Collibra model references from a .sng file
+_sng_model_refs() {
+  local f="$1"
+  local entities attrs codes master ref
+  entities="$(_sng_directives "${f}" entity)"
+  attrs="$(_sng_directives    "${f}" attribute)"
+  codes="$(_sng_directives    "${f}" code-set)"
+  master="$(_sng_directives   "${f}" master)"
+  ref="$(_sng_directives      "${f}" reference)"
+
+  if [[ -n "${entities}${attrs}${codes}${master}${ref}" ]]; then
+    printf "  Data model references (Collibra metamodel):\n"
+    if [[ -n "${entities}" ]]; then printf "    entities:   %s\n" "${entities}"; fi
+    if [[ -n "${attrs}" ]];    then printf "    attributes: %s\n" "${attrs}";    fi
+    if [[ -n "${codes}" ]];    then printf "    code-sets:  %s\n" "${codes}";    fi
+    if [[ -n "${master}" ]];   then printf "    master:     %s\n" "${master}";   fi
+    if [[ -n "${ref}" ]];      then printf "    reference:  %s\n" "${ref}";      fi
+  fi
+}
+
+cmd_deps() {
+  local name="${1:-}"
+  [[ -n "${name}" ]] || { sng_err "usage: sng deps <command>"; return 1; }
+  local f
+  f="$(_sng_name_to_file "${name}")" \
+    || { sng_err "unknown command: ${name}"; return 1; }
+  _sng_print_deps "${f}" "" 0
+}
+
+_sng_print_deps() {
+  local f="$1" seen_list="$2" depth="$3"
+  local name uses indent
+  name="$(_sng_directive "${f}" name)"
+  [[ -z "${name}" ]] && name="$(_sng_file_to_name "${f}")"
+  indent="$(printf '%*s' $(( depth * 2 )) '')"
+  printf "%s%s\n" "${indent}" "${name}"
+  uses="$(_sng_directive "${f}" uses)"
+  for dep in ${uses}; do
+    local df
+    df="$(_sng_name_to_file "${dep}")" 2>/dev/null || { printf "%s  (%s — not found)\n" "${indent}" "${dep}"; continue; }
+    _sng_print_deps "${df}" "${seen_list}" $(( depth + 1 ))
+  done
+}
+
+cmd_run() {
+  local name="${1:-}"; shift || true
+  [[ -n "${name}" ]] || { sng_err "usage: sng run <command> [-- args...]"; return 1; }
+  local f
+  f="$(_sng_name_to_file "${name}")" \
+    || { sng_err "unknown command: ${name}  (run 'sng list' to see available commands)"; return 1; }
+
+  sng_info "run ${name}"
+  # Execute as a subprocess so $@ is scoped cleanly to the .sng file.
+  # #:uses is documentation metadata; lib/runtime.sh provides all shared functions.
+  exec bash "${f}" "$@"
+}
+
+cmd_model() {
+  local sub="${1:-all}"
+  . "${SNG_DIR}/model/collibra-bridge.sng" "$@"
+}
+
+cmd_bootstrap() {
+  cmd_run "bootstrap.init" "$@"
+}
+
+# ── main ──────────────────────────────────────────────────────────────────────
+main() {
+  local cmd="${1:-help}"; shift || true
+
+  case "${cmd}" in
+    list)      cmd_list "$@" ;;
+    help)      cmd_help "$@" ;;
+    run)       cmd_run  "$@" ;;
+    deps)      cmd_deps "$@" ;;
+    model)     cmd_model "$@" ;;
+    bootstrap) cmd_bootstrap "$@" ;;
+    # Shorthand: sng auth.qr ... → sng run auth.qr ...
+    *.*)       cmd_run "${cmd}" "$@" ;;
+    # Two-word shorthand: sng auth qr → sng run auth.qr ...
+    auth|data|model|bootstrap)
+      local sub="${1:-}"; shift || true
+      [[ -n "${sub}" ]] || { sng_err "usage: sng ${cmd} <subcommand>"; return 1; }
+      cmd_run "${cmd}.${sub}" "$@"
+      ;;
+    *) sng_err "unknown command: ${cmd}  (run 'sng list')"; return 1 ;;
+  esac
+}
+
+main "$@"

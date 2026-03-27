@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Forrest / Singine / SilkPage bridge specification.
+  This is the architecture contract for introducing Apache Forrest as a local
+  dependency and routing its outputs through Singine and Collibra-aware models.
+-->
+<forrest-singine-silkpage-bridge
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:collibra="urn:collibra:metamodel:v1">
+
+  <identity>
+    <name>Forrest Singine SilkPage Bridge</name>
+    <version>1.0.0</version>
+    <status>candidate</status>
+  </identity>
+
+  <runtime>
+    <dependency kind="local-runtime" system="Apache Forrest">
+      <home-env>FORREST_HOME</home-env>
+      <bin-env>FORREST_BIN</bin-env>
+      <reason>Forrest is retired upstream but still used as a living XML publishing engine in this workspace.</reason>
+    </dependency>
+    <host-system>SilkPage core+</host-system>
+    <execution-system>Singine</execution-system>
+  </runtime>
+
+  <engines>
+    <engine id="forrest" role="publishing-engine"/>
+    <engine id="silkpage" role="transformation-engine"/>
+    <engine id="singine" role="execution-engine"/>
+    <engine id="collibra" role="governance-engine"/>
+  </engines>
+
+  <bridges>
+    <bridge id="jdbc-virtual-driver" status="planned">
+      <name>Virtual JDBC Driver</name>
+      <description>Driver abstraction over virtual SQL, SPARQL, GraphQL, REST API, OpenAPI, xAPI, systemApi().exp(), and gRPC-compatible calls.</description>
+      <dialects>
+        <dialect>sql</dialect>
+        <dialect>sparql</dialect>
+        <dialect>graphql</dialect>
+        <dialect>restapi</dialect>
+        <dialect>openapi</dialect>
+        <dialect>experienceAPI</dialect>
+        <dialect>systemApi().exp()</dialect>
+        <dialect>lambda.knuth().derrive().dirac().gRPC</dialect>
+      </dialects>
+    </bridge>
+
+    <bridge id="functional-remote-call" status="planned">
+      <name>Measured Remote Functional Call</name>
+      <description>Remote functional invocation aligned with metadata, cell-based architecture, and electricity() projections.</description>
+      <measurement>
+        <metric>latency</metric>
+        <metric>response-shape</metric>
+        <metric>reference-data-alignment</metric>
+        <metric>hierarchy-depth</metric>
+      </measurement>
+    </bridge>
+  </bridges>
+
+  <governed-apis>
+    <api id="virtual-sql" family="jdbc"/>
+    <api id="virtual-sparql" family="rdf"/>
+    <api id="virtual-graphql" family="graph"/>
+    <api id="virtual-restapi" family="http"/>
+    <api id="virtual-openapi" family="contract"/>
+    <api id="virtual-experienceapi" family="event"/>
+    <api id="virtual-systemapi-exp" family="system"/>
+    <api id="virtual-grpc" family="rpc"/>
+  </governed-apis>
+
+  <collibra-query-contract>
+    <goal>Have Collibra return the number and name of a two-level hierarchy aligned with governed reference data.</goal>
+    <query-shape>
+      <level-1 code="XXXX"/>
+      <level-2 code="BBBB"/>
+      <level-2 code="DDDD"/>
+    </query-shape>
+    <notation>
+      <symbol>\lambda</symbol>
+      <symbol>\pi</symbol>
+      <symbol>\phi</symbol>
+      <symbol>\fa</symbol>
+    </notation>
+    <response-fields>
+      <field>hierarchyLevel1Name</field>
+      <field>hierarchyLevel1Count</field>
+      <field>hierarchyLevel2Name</field>
+      <field>hierarchyLevel2Count</field>
+      <field>referenceDataCode</field>
+    </response-fields>
+  </collibra-query-contract>
+
+  <reference-data>
+    <code-table id="forrest-reference-data-two-level">
+      <row code="XXXX" label="Top-level governed hierarchy"/>
+      <row code="BBBB" label="Second-level branch B"/>
+      <row code="DDDD" label="Second-level branch D"/>
+    </code-table>
+    <crosswalk id="forrest-collibra-driver-crosswalk">
+      <mapping source="XXXX" target="hierarchy-level-1"/>
+      <mapping source="BBBB" target="hierarchy-level-2-b"/>
+      <mapping source="DDDD" target="hierarchy-level-2-d"/>
+    </crosswalk>
+  </reference-data>
+
+  <execution-chain>
+    <step order="1">Singine authorizes and invokes the bridge.</step>
+    <step order="2">SilkPage transforms XML payloads and publication models.</step>
+    <step order="3">Apache Forrest renders site/document outputs.</step>
+    <step order="4">Virtual driver exposes SQL/SPARQL/GraphQL/REST/OpenAPI/xAPI/gRPC surfaces.</step>
+    <step order="5">Collibra consumes or returns governed hierarchy/reference data.</step>
+  </execution-chain>
+</forrest-singine-silkpage-bridge>

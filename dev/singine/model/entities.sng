@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+# dev/singine/model/entities.sng
+#:name        model.entities
+#:description Define and inspect the canonical entity types for lutino.io
+#:version     1.0.0
+#:param       action  string  optional  "list|describe|validate" default=list
+#:param       name    string  optional  "Entity name to describe"
+#:entity      User
+#:entity      Account
+#:entity      AuthCredential
+#:entity      AuthSession
+#:entity      AuthProvider
+#:entity      AuthEvent
+#:entity      DataSet
+#:entity      DataAttribute
+#:entity      CodeSet
+#:entity      CodeValue
+#:entity      MIMEType
+#:entity      SiteContext
+#:entity      System
+#:entity      Policy
+#:code-set    StatusLifecycle
+#:master      User Account
+#:reference   CodeSet CodeValue MIMEType
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+action="${1:-list}"
+target="${2:-}"
+
+# ── entity registry ────────────────────────────────────────────────────────────
+# Format: name | domain | type | status | description
+_entity_registry() {
+  cat <<'ENTITIES'
+User           | Platform Entities     | master    | approved   | Authenticated human actor on lutino.io
+Account        | Platform Entities     | master    | approved   | Billing / organizational account
+AuthCredential | Authentication Model  | master    | approved   | TOTP secret + provider config for a User
+AuthSession    | Authentication Model  | master    | approved   | Time-bounded authenticated session token
+AuthProvider   | Authentication Model  | reference | approved   | Authenticator application (Google, Microsoft, 1Password)
+AuthEvent      | Authentication Model  | reference | approved   | Immutable audit log entry for auth actions
+DataSet        | Data Dictionary       | master    | approved   | Named collection of DataAttributes
+DataAttribute  | Data Dictionary       | master    | approved   | Typed field within a DataSet
+CodeSet        | Reference Data        | reference | approved   | Named set of controlled vocabulary values
+CodeValue      | Reference Data        | reference | approved   | Single value within a CodeSet
+MIMEType       | MIME Type Registry    | reference | approved   | MIME type with dispatch handler mapping
+SiteContext    | Platform Entities     | reference | approved   | Subdomain context: lutino.io / app / cdn
+System         | lutino.ops            | master    | approved   | Software system or component
+Policy         | Business Glossary     | reference | candidate  | Governance policy applying to one or more assets
+ENTITIES
+}
+
+# ── attribute schema per entity ───────────────────────────────────────────────
+_entity_schema() {
+  local name="$1"
+  case "${name}" in
+    User) cat <<'EOF'
+  Attributes (entity: User):
+    id           uuid        required   Surrogate key
+    email        string      required   Unique email address (lookup key)
+    displayName  string      optional
+    createdAt    datetime    required
+    status       StatusLifecycle        draft|candidate|approved|deprecated|retired
+  Relations:
+    hasSession   → AuthSession
+    owns         → Account
+    holds        → AuthCredential
+EOF
+    ;;
+    Account) cat <<'EOF'
+  Attributes (entity: Account):
+    id           uuid        required
+    name         string      required
+    ownerId      uuid        required   FK → User.id
+    siteContext  SiteContext required   lutino.io | app.lutino.io | cdn.lutino.io
+    createdAt    datetime    required
+    status       StatusLifecycle
+  Relations:
+    ownedBy      → User
+    deployedTo   → SiteContext
+EOF
+    ;;
+    AuthCredential) cat <<'EOF'
+  Attributes (entity: AuthCredential):
+    id            uuid       required
+    userId        uuid       required   FK → User.id
+    totpSecret    string     sensitive  Base32-encoded TOTP seed (stored in 1Password)
+    totpIssuer    string     required
+    totpUri       string     derived    otpauth:// URI
+    authProvider  AuthProvider          google | microsoft | 1password
+    createdAt     datetime   required
+    status        StatusLifecycle
+  Relations:
+    relatesToAuthProvider → AuthProvider
+    belongsTo             → User
+  Storage:
+    1Password vault item: lutino-totp-<email>
+    Local cache: ~/.config/lutino/totp/<email>.secret  (mode 0600)
+EOF
+    ;;
+    AuthSession) cat <<'EOF'
+  Attributes (entity: AuthSession):
+    sessionId    string     required   hex(32) token
+    userId       uuid       required   FK → User.id
+    email        string     required
+    createdAt    datetime   required
+    expiresAt    datetime   required
+    sessionStatus SessionStatus        active | expired | revoked
+  Relations:
+    hasSession   ← User
+  Storage:
+    ~/.config/lutino/sessions/<email>.session  (mode 0600)
+    1Password: lutino-session-<email>
+EOF
+    ;;
+    CodeSet) cat <<'EOF'
+  Attributes (entity: CodeSet):
+    id            uuid       required
+    codeSetName   string     required   Unique name (e.g. AuthProvider)
+    domain        string     required   Collibra domain
+    bootstrapOrder integer   optional   Load order during bootstrap
+    status        StatusLifecycle
+  Relations:
+    isCodeValueOf ← CodeValue (1..*)
+  Singine file: data/reference/codes.sng
+EOF
+    ;;
+    MIMEType) cat <<'EOF'
+  Attributes (entity: MIMEType):
+    id         uuid       required
+    mimeType   string     required   e.g. text/x-sh
+    handler    string     required   interpreter command, e.g. sh
+    extension  string     optional   file extension, e.g. .sh
+    status     StatusLifecycle
+  Singine file: data/reference/mime-types.sng
+  Dispatcher:  dev/infra/dispatch/dispatch.sh
+EOF
+    ;;
+    *) sng_warn "no detailed schema for entity '${name}' — add it to model/entities.sng" ;;
+  esac
+}
+
+cmd_list() {
+  sng_head "Entity Registry — lutino.io"
+  printf "\n%-18s %-22s %-12s %-10s  %s\n" \
+    "ENTITY" "DOMAIN" "TYPE" "STATUS" "DESCRIPTION"
+  printf "%-18s %-22s %-12s %-10s  %s\n" \
+    "──────" "──────" "────" "──────" "───────────"
+  while IFS='|' read -r name domain type status desc; do
+    name="$(printf "%s" "${name}" | xargs)"
+    domain="$(printf "%s" "${domain}" | xargs)"
+    type="$(printf "%s" "${type}" | xargs)"
+    status="$(printf "%s" "${status}" | xargs)"
+    desc="$(printf "%s" "${desc}" | xargs)"
+    printf "%-18s %-22s %-12s %-10s  %s\n" "${name}" "${domain}" "${type}" "${status}" "${desc}"
+  done < <(_entity_registry)
+  printf "\n"
+  printf "  master data    : entities where type=master  (User, Account, AuthCredential, …)\n"
+  printf "  reference data : entities where type=reference (CodeSet, CodeValue, MIMEType, …)\n"
+  printf "\n  Run:  sng model.entities describe <EntityName>\n\n"
+}
+
+cmd_describe() {
+  [[ -n "${target}" ]] || sng_die "entity name required.  Usage: sng model.entities describe <Name>"
+  # Find the entity row
+  local row
+  row="$(_entity_registry | grep -i "^${target}" | head -1)" \
+    || sng_die "entity not found: ${target}"
+  local name domain type status desc
+  IFS='|' read -r name domain type status desc <<< "${row}"
+  sng_head "Entity: $(printf "%s" "${name}" | xargs)"
+  printf "  domain   %s\n"  "$(printf "%s" "${domain}" | xargs)"
+  printf "  type     %s\n"  "$(printf "%s" "${type}" | xargs)"
+  printf "  status   %s\n"  "$(printf "%s" "${status}" | xargs)"
+  printf "  desc     %s\n\n" "$(printf "%s" "${desc}" | xargs)"
+  _entity_schema "$(printf "%s" "${name}" | xargs)"
+  printf "\n"
+}
+
+cmd_validate() {
+  sng_step "Validating entity registry..."
+  local errors=0
+  while IFS='|' read -r name domain type status _; do
+    name="$(printf "%s" "${name}" | xargs)"
+    type="$(printf "%s" "${type}" | xargs)"
+    status="$(printf "%s" "${status}" | xargs)"
+    case "${type}" in master|reference) ;; *) sng_warn "${name}: invalid type '${type}'"; errors=$(( errors+1 )) ;; esac
+    case "${status}" in draft|candidate|approved|deprecated|retired) ;; *) sng_warn "${name}: invalid status '${status}'"; errors=$(( errors+1 )) ;; esac
+  done < <(_entity_registry)
+  if [[ ${errors} -eq 0 ]]; then
+    sng_ok "Entity registry valid ($(  _entity_registry | wc -l | tr -d ' ') entities)"
+  else
+    sng_err "${errors} validation error(s) found"
+    exit 1
+  fi
+}
+
+case "${action}" in
+  list)     cmd_list ;;
+  describe) cmd_describe ;;
+  validate) cmd_validate ;;
+  *) sng_die "unknown action '${action}'. Valid: list | describe | validate" ;;
+esac

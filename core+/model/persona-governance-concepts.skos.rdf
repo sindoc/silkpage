@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/">
+
+  <skos:ConceptScheme rdf:about="urn:sindoc:scheme:persona-governance">
+    <dcterms:title>Singine Persona Governance Scheme</dcterms:title>
+    <skos:prefLabel xml:lang="en">Singine Persona Governance Scheme</skos:prefLabel>
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="urn:sindoc:concept:GovernedResource">
+    <skos:prefLabel xml:lang="en">Governed Resource</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="urn:sindoc:scheme:persona-governance"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:concept:LogManagement">
+    <skos:prefLabel xml:lang="en">Log Management</skos:prefLabel>
+    <skos:broader rdf:resource="urn:sindoc:concept:GovernedResource"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:concept:DocumentProcessing">
+    <skos:prefLabel xml:lang="en">Document Processing</skos:prefLabel>
+    <skos:broader rdf:resource="urn:sindoc:concept:GovernedResource"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:concept:ReferenceManagement">
+    <skos:prefLabel xml:lang="en">Reference Management</skos:prefLabel>
+    <skos:broader rdf:resource="urn:sindoc:concept:GovernedResource"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:persona:PHIL">
+    <skos:prefLabel xml:lang="en">Philosopher</skos:prefLabel>
+    <skos:notation>PHIL</skos:notation>
+    <skos:broader rdf:resource="urn:sindoc:concept:DocumentProcessing"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:persona:GUAR">
+    <skos:prefLabel xml:lang="en">Guardian</skos:prefLabel>
+    <skos:notation>GUAR</skos:notation>
+    <skos:broader rdf:resource="urn:sindoc:concept:LogManagement"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:persona:EXPL">
+    <skos:prefLabel xml:lang="en">Explorer</skos:prefLabel>
+    <skos:notation>EXPL</skos:notation>
+    <skos:broader rdf:resource="urn:sindoc:concept:LogManagement"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:persona:HEAL">
+    <skos:prefLabel xml:lang="en">Healer</skos:prefLabel>
+    <skos:notation>HEAL</skos:notation>
+    <skos:broader rdf:resource="urn:sindoc:concept:DocumentProcessing"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="urn:sindoc:persona:NETW">
+    <skos:prefLabel xml:lang="en">Networker</skos:prefLabel>
+    <skos:notation>NETW</skos:notation>
+    <skos:broader rdf:resource="urn:sindoc:concept:ReferenceManagement"/>
+  </skos:Concept>
+</rdf:RDF>

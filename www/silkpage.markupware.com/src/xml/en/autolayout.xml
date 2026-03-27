@@ -1,99 +1,173 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE autolayout PUBLIC "-//Norman Walsh//DTD Website Autolayout V2.5.0//EN" "http://docbook.sourceforge.net/release/website/2.5.0/schema/dtd/autolayout.dtd">
 <autolayout>
-<config param="headlink" value="contact" altval="Contact"/><config param="headlink" value="sitemap" altval="Site Map"/><config param="headlink" value="search" altval="Search"/><config param="title" value="SilkPage"/><copyright role="license"><year>2004 - 2012</year><holder role="http://www.markupware.com/">MarkupWare</holder></copyright><style src="css/silkpage.css" type="text/css"/><toc page="index.xml" id="home" filename="index.html">
-<title>What's SilkPage?</title>
-<summary>An XML based Publishing Framework for Web</summary>
-<tocentry page="about/index.xml" id="about" dir="about/" filename="index.html">
-<title>About</title>
-<summary>About SilkPage goals and principles</summary>
-<tocentry page="about/participate.xml" id="participate" dir="about/participate/" filename="index.html">
-<title>Participate</title>
-<summary>Join SilkPage team</summary>
-</tocentry>
-<tocentry page="about/colophon.xml" id="colophon" dir="about/colophon/" filename="index.html">
-<title>Colophon</title>
-<summary>Colophon and Typography</summary>
-</tocentry>
-<tocentry page="about/licence.xml" id="license" dir="about/licence/" filename="index.html">
-<title>Licensing</title>
-<summary>About Licensing and Trademarks</summary>
-</tocentry>
-<tocentry page="about/team.xml" id="team" dir="about/team/" filename="index.html">
-<title>Silk Team</title>
-<summary>People behind SilkPage</summary>
-</tocentry>
-<tocentry page="about/contact.xml" id="contact" dir="about/contact/" filename="index.php">
-<title>Contact Us</title>
-<summary>How to reach us</summary>
-</tocentry>
-</tocentry>
-<tocentry page="docs/index.xml" id="docs" dir="docs/" filename="index.html">
-<title>Documentation</title>
-<summary>Installation, Customization and Usage Guides</summary>
-<tocentry page="docs/user-guide.xml" id="userGuide" dir="docs/user-guide/" filename="index.html">
-<title>User Guide</title>
-<summary>SilkPage User Guide</summary>
-</tocentry>
-<tocentry page="docs/design-goals.xml" id="designGoals" dir="docs/design-goals/" filename="index.html">
-<title>Design Goals</title>
-<summary>SilkPage Design Goals</summary>
-</tocentry>
-<tocentry page="docs/roadmap/index.xml" id="roadmap" dir="docs/roadmap/" filename="index.html">
-<title>Roadmap</title>
-<summary>SilkPage release roadmap</summary>
-</tocentry>
-</tocentry>
-<tocentry page="downloads/index.xml" id="downloads" dir="downloads/" filename="index.html">
-<title>Download</title>
-<summary>Download SilkPage software distribution</summary>
-</tocentry>
-<tocentry page="about/dev.xml" id="dev" dir="dev/" filename="index.html">
-<title>Developers</title>
-<summary>SilkPage for developers</summary>
-</tocentry>
-</toc>
-<notoc page="about/live-sites.xml" id="liveSites" dir="about/live-sites/" filename="index.html">
-<title>Live Sites</title>
-<summary>Featured websites produced by using SilkPage</summary>
-</notoc>
-<notoc page="docs/logo-design-guidelines.xml" id="logoDesign" dir="docs/logo-design-guidelines/" filename="index.html">
-<title>Logo Design Guidelines</title>
-<summary>SilkPage Logo Design Guidelines</summary>
-</notoc>
-<notoc page="docs/silkpaged.xml" id="silkPaged" dir="docs/silkpaged/" filename="index.html">
-<title>SilkPaged</title>
-<summary>Practical use of the SilkPage icon</summary>
-</notoc>
-<notoc page="sitemap.xml" id="sitemap" dir="site/map/" filename="index.html">
-<title>Sitemap</title>
-<summary>Automatically Generated Sitemap</summary>
-</notoc>
-<notoc page="about/search.xml" id="search" dir="site/search/" filename="index.html">
-<title>Search</title>
-<summary>Search SilkPage website</summary>
-</notoc>
-<notoc page="about/message-sent.xml" id="messageSent" dir="about/contact/" filename="sent.html">
-<title>Message Sent</title>
-<summary>Message Confirmation</summary>
-</notoc>
-<notoc page="docs/roadmap/features-04.xml" id="features-04" dir="docs/roadmap/features-04/" filename="index.html">
-<title>Feature Requirements - SilkPage Core 0.4</title>
-<summary>SilkPage Feature Requirements</summary>
-</notoc>
-<notoc page="docs/roadmap/features-05.xml" id="features-05" dir="docs/roadmap/features-05/" filename="index.html">
-<title>Feature Requirements - SilkPage Core 0.5</title>
-<summary>SilkPage Feature Requirements</summary>
-</notoc>
-<notoc page="docs/roadmap/features-06.xml" id="features-06" dir="docs/roadmap/features-06/" filename="index.html">
-<title>Feature Requirements - SilkPage Core 0.6</title>
-<summary>SilkPage Core 0.6 features</summary>
-</notoc>
-<notoc page="core/index.xml" id="core" dir="core/" filename="index.html">
-<title>SilkPage Core</title>
-<summary>SilkPage Core project</summary>
-</notoc>
-<notoc page="templates/index.xml" id="templates" dir="templates/" filename="index.html">
-<title>SilkPage Templates</title>
-<summary>SilkPage Templates project</summary>
-</notoc>
+   <config param="headlink" value="contact" altval="Contact"/>
+   <config param="headlink" value="sitemap" altval="Site Map"/>
+   <config param="headlink" value="search" altval="Search"/>
+   <config param="title" value="SilkPage"/>
+   <copyright role="license">
+      <year>2004 - 2012</year>
+      <holder role="http://www.markupware.com/">MarkupWare</holder>
+   </copyright>
+   <style src="css/silkpage.css" type="text/css"/>
+   <toc page="index.xml" id="home" filename="index.html">
+      <title>What's SilkPage?</title>
+      <summary>An XML based Publishing Framework for Web</summary>
+      <tocentry page="about/index.xml"
+                id="about"
+                dir="about/"
+                filename="index.html">
+         <title>About</title>
+         <summary>About SilkPage goals and principles</summary>
+         <tocentry page="about/participate.xml"
+                   id="participate"
+                   dir="about/participate/"
+                   filename="index.html">
+            <title>Participate</title>
+            <summary>Join SilkPage team</summary>
+         </tocentry>
+         <tocentry page="about/colophon.xml"
+                   id="colophon"
+                   dir="about/colophon/"
+                   filename="index.html">
+            <title>Colophon</title>
+            <summary>Colophon and Typography</summary>
+         </tocentry>
+         <tocentry page="about/licence.xml"
+                   id="license"
+                   dir="about/licence/"
+                   filename="index.html">
+            <title>Licensing</title>
+            <summary>About Licensing and Trademarks</summary>
+         </tocentry>
+         <tocentry page="about/team.xml"
+                   id="team"
+                   dir="about/team/"
+                   filename="index.html">
+            <title>Silk Team</title>
+            <summary>People behind SilkPage</summary>
+         </tocentry>
+         <tocentry page="about/contact.xml"
+                   id="contact"
+                   dir="about/contact/"
+                   filename="index.php">
+            <title>Contact Us</title>
+            <summary>How to reach us</summary>
+         </tocentry>
+      </tocentry>
+      <tocentry page="docs/index.xml"
+                id="docs"
+                dir="docs/"
+                filename="index.html">
+         <title>Documentation</title>
+         <summary>Installation, Customization and Usage Guides</summary>
+         <tocentry page="docs/user-guide.xml"
+                   id="userGuide"
+                   dir="docs/user-guide/"
+                   filename="index.html">
+            <title>User Guide</title>
+            <summary>SilkPage User Guide</summary>
+         </tocentry>
+         <tocentry page="docs/design-goals.xml"
+                   id="designGoals"
+                   dir="docs/design-goals/"
+                   filename="index.html">
+            <title>Design Goals</title>
+            <summary>SilkPage Design Goals</summary>
+         </tocentry>
+         <tocentry page="docs/roadmap/index.xml"
+                   id="roadmap"
+                   dir="docs/roadmap/"
+                   filename="index.html">
+            <title>Roadmap</title>
+            <summary>SilkPage release roadmap</summary>
+         </tocentry>
+      </tocentry>
+      <tocentry page="downloads/index.xml"
+                id="downloads"
+                dir="downloads/"
+                filename="index.html">
+         <title>Download</title>
+         <summary>Download SilkPage software distribution</summary>
+      </tocentry>
+      <tocentry page="about/dev.xml" id="dev" dir="dev/" filename="index.html">
+         <title>Developers</title>
+         <summary>SilkPage for developers</summary>
+      </tocentry>
+   </toc>
+   <notoc page="about/live-sites.xml"
+          id="liveSites"
+          dir="about/live-sites/"
+          filename="index.html">
+      <title>Live Sites</title>
+      <summary>Featured websites produced by using SilkPage</summary>
+   </notoc>
+   <notoc page="docs/logo-design-guidelines.xml"
+          id="logoDesign"
+          dir="docs/logo-design-guidelines/"
+          filename="index.html">
+      <title>Logo Design Guidelines</title>
+      <summary>SilkPage Logo Design Guidelines</summary>
+   </notoc>
+   <notoc page="docs/silkpaged.xml"
+          id="silkPaged"
+          dir="docs/silkpaged/"
+          filename="index.html">
+      <title>SilkPaged</title>
+      <summary>Practical use of the SilkPage icon</summary>
+   </notoc>
+   <notoc page="sitemap.xml"
+          id="sitemap"
+          dir="site/map/"
+          filename="index.html">
+      <title>Sitemap</title>
+      <summary>Automatically Generated Sitemap</summary>
+   </notoc>
+   <notoc page="about/search.xml"
+          id="search"
+          dir="site/search/"
+          filename="index.html">
+      <title>Search</title>
+      <summary>Search SilkPage website</summary>
+   </notoc>
+   <notoc page="about/message-sent.xml"
+          id="messageSent"
+          dir="about/contact/"
+          filename="sent.html">
+      <title>Message Sent</title>
+      <summary>Message Confirmation</summary>
+   </notoc>
+   <notoc page="docs/roadmap/features-04.xml"
+          id="features-04"
+          dir="docs/roadmap/features-04/"
+          filename="index.html">
+      <title>Feature Requirements - SilkPage Core 0.4</title>
+      <summary>SilkPage Feature Requirements</summary>
+   </notoc>
+   <notoc page="docs/roadmap/features-05.xml"
+          id="features-05"
+          dir="docs/roadmap/features-05/"
+          filename="index.html">
+      <title>Feature Requirements - SilkPage Core 0.5</title>
+      <summary>SilkPage Feature Requirements</summary>
+   </notoc>
+   <notoc page="docs/roadmap/features-06.xml"
+          id="features-06"
+          dir="docs/roadmap/features-06/"
+          filename="index.html">
+      <title>Feature Requirements - SilkPage Core 0.6</title>
+      <summary>SilkPage Core 0.6 features</summary>
+   </notoc>
+   <notoc page="core/index.xml"
+          id="core"
+          dir="core/"
+          filename="index.html">
+      <title>SilkPage Core</title>
+      <summary>SilkPage Core project</summary>
+   </notoc>
+   <notoc page="templates/index.xml"
+          id="templates"
+          dir="templates/"
+          filename="index.html">
+      <title>SilkPage Templates</title>
+      <summary>SilkPage Templates project</summary>
+   </notoc>
 </autolayout>

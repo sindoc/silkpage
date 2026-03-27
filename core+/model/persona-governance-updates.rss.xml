@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Singine Persona Governance Updates</title>
+    <link>https://lutino.io/singine/persona-governance</link>
+    <description>Operational updates for persona-driven log management and document processing.</description>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>PHIL philosopher scenario ready</title>
+      <guid>urn:sindoc:rss:persona:PHIL</guid>
+      <description>Semantic analysis of logs and document evidence published to Collibra and SKOS.</description>
+      <category>PHIL</category>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>GUAR guardian scenario ready</title>
+      <guid>urn:sindoc:rss:persona:GUAR</guid>
+      <description>Risk triage workflow publishes governed log alerts.</description>
+      <category>GUAR</category>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>EXPL explorer scenario ready</title>
+      <guid>urn:sindoc:rss:persona:EXPL</guid>
+      <description>Discovery workflow proposes new code values and hierarchy branches.</description>
+      <category>EXPL</category>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>HEAL healer scenario ready</title>
+      <guid>urn:sindoc:rss:persona:HEAL</guid>
+      <description>Normalization workflow repairs malformed XML and publication feeds.</description>
+      <category>HEAL</category>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>NETW networker scenario ready</title>
+      <guid>urn:sindoc:rss:persona:NETW</guid>
+      <description>Crosswalk and reference-data alignment across publication channels.</description>
+      <category>NETW</category>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

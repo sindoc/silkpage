@@ -1,0 +1,235 @@
+#!/usr/bin/env bash
+# dev/singine/model/collibra-bridge.sng
+#:name        model.collibra-bridge
+#:description Collibra metamodel mapped onto singine — entities, attributes, code sets
+#:version     1.0.0
+#:uses        model.entities model.attributes
+#:param       action  string  optional  "all|entities|attributes|codes|domains|communities|summary" default=summary
+#:param       filter  string  optional  "Filter by name (substring match)"
+#:entity      Community
+#:entity      Domain
+#:entity      Asset
+#:entity      AssetType
+#:entity      AttributeType
+#:entity      RelationType
+#:entity      CodeSet
+#:entity      CodeValue
+#:entity      Status
+#:entity      Responsibility
+#:attribute   name
+#:attribute   description
+#:attribute   status
+#:attribute   community
+#:attribute   domain
+#:code-set    AssetTypeRegistry
+#:code-set    StatusLifecycle
+#:code-set    ResponsibilityRole
+#:reference   CollibraMetamodel
+
+# ── Collibra metamodel ─────────────────────────────────────────────────────────
+#
+#  The Collibra Data Intelligence Cloud metamodel defines a hierarchy:
+#
+#    Organization
+#      └─ Community          (organisational grouping, can be nested)
+#           └─ Domain        (namespace: Business Glossary, Data Dictionary, …)
+#                └─ Asset    (the unit of documentation)
+#                     ├─ Attribute  (typed properties: text, date, boolean, …)
+#                     ├─ Relation   (typed links between assets)
+#                     ├─ Status     (lifecycle: Draft→Candidate→Approved→Deprecated)
+#                     └─ Tag
+#
+#  Asset Types used by lutino.io (mapped below):
+#    Business Glossary  → Business Term, Acronym, Definition
+#    Data Dictionary    → Data Set, Data Attribute, Data Domain
+#    Reference Data     → Code Set, Code Value
+#    Technology         → System, Database, Column, Report, Process
+#    Governance         → Policy, Rule, Standard, Issue
+#    People & Process   → Role, Responsibility, Data Owner, Data Steward
+#
+#  Bridge (not indispensable — Collibra is NOT required to run singine):
+#    - singine model objects ARE named and typed according to the Collibra metamodel
+#    - an export command (model.collibra-export) can generate Collibra import CSV
+#    - a sync command (model.collibra-sync) can push via the Collibra REST API
+#      when COLLIBRA_URL, COLLIBRA_USER, COLLIBRA_PASS are set in 1Password
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+action="${1:-summary}"
+filter="${2:-}"
+
+# ── Communities ───────────────────────────────────────────────────────────────
+_communities() {
+  cat <<'EOF'
+COMMUNITY              DESCRIPTION
+─────────────────────  ──────────────────────────────────────────────────
+lutino.io              Root community — main website and platform
+app.lutino.io          Application subdomain community
+cdn.lutino.io          CDN / static asset community
+lutino.auth            Authentication and identity governance
+lutino.data            Data management and reference data governance
+lutino.ops             Operations, infrastructure, and deployment
+EOF
+}
+
+# ── Domains ───────────────────────────────────────────────────────────────────
+_domains() {
+  cat <<'EOF'
+DOMAIN                  COMMUNITY       TYPE
+──────────────────────  ──────────────  ──────────────────────────
+Business Glossary       lutino.io       Business Glossary
+Data Dictionary         lutino.data     Data Dictionary
+Reference Data          lutino.data     Reference Data Management
+Authentication Model    lutino.auth     Technology Asset Domain
+Session Registry        lutino.auth     Technology Asset Domain
+MIME Type Registry      lutino.ops      Reference Data Management
+Code Set Registry       lutino.data     Reference Data Management
+Platform Entities       lutino.io       Data Dictionary
+EOF
+}
+
+# ── Asset types ───────────────────────────────────────────────────────────────
+_asset_types() {
+  cat <<'EOF'
+ASSET TYPE             DOMAIN                   SINGINE ENTITY         COLLIBRA BUILT-IN
+─────────────────────  ───────────────────────  ─────────────────────  ─────────────────
+Business Term          Business Glossary        Concept                ✓
+Data Set               Data Dictionary          DataSet                ✓
+Data Attribute         Data Dictionary          DataAttribute          ✓
+Code Set               Reference Data           CodeSet                ✓
+Code Value             Reference Data           CodeValue              ✓
+User                   Platform Entities        User                   (custom)
+Account                Platform Entities        Account                (custom)
+AuthCredential         Authentication Model     AuthCredential         (custom)
+AuthSession            Authentication Model     AuthSession            (custom)
+AuthProvider           Authentication Model     AuthProvider           (custom)
+MIMEType               MIME Type Registry       MIMEType               (custom)
+System                 lutino.ops               System                 ✓
+Policy                 Business Glossary        Policy                 ✓
+Rule                   Business Glossary        Rule                   ✓
+EOF
+}
+
+# ── Attribute types ───────────────────────────────────────────────────────────
+_attribute_types() {
+  cat <<'EOF'
+ATTRIBUTE TYPE         APPLIES TO             DATA TYPE   COLLIBRA TYPE
+─────────────────────  ─────────────────────  ──────────  ─────────────
+name                   All assets             string      String
+description            All assets             string      String (multi-line)
+status                 All assets             enum        Status
+email                  User, AuthCredential   string      String
+totpSecret             AuthCredential         string      String (sensitive)
+totpUri                AuthCredential         string      String
+totpIssuer             AuthCredential         string      String
+authProvider           AuthCredential         enum        String
+sessionId              AuthSession            string      String
+createdAt              AuthSession, User      datetime    Date
+expiresAt              AuthSession            datetime    Date
+sessionStatus          AuthSession            enum        String
+msAuthDeepLink         AuthCredential         string      String
+pushAuthEndpoint       AuthProvider           string      String
+mimeType               MIMEType, DataSet      string      String
+handler                MIMEType               string      String
+codeValue              CodeValue              string      String
+codeSetName            CodeSet                string      String
+bootstrapOrder         DataSet, CodeSet       integer     Number
+EOF
+}
+
+# ── Code sets ─────────────────────────────────────────────────────────────────
+_code_sets() {
+  cat <<'EOF'
+CODE SET               VALUES (code-set: CodeSet → CodeValue assets)
+─────────────────────  ────────────────────────────────────────────────────────
+AuthProvider           google | microsoft | 1password | fido2
+MSAuthMode             totp | push | saml | fido2
+AuthResult             valid | invalid | expired | locked
+SessionStatus          active | expired | revoked
+OAuthGrantType         authorization_code | device_code | client_credentials
+StatusLifecycle        draft | candidate | approved | deprecated | retired
+ResponsibilityRole     owner | steward | custodian | consumer
+MIMEDispatch           text/x-sh | text/x-shellscript | application/x-racket |
+                       application/x-singine | application/javascript |
+                       text/x-python | text/x-ruby | text/x-perl | text/x-awk
+SiteContext            lutino.io | app.lutino.io | cdn.lutino.io
+DeployEnv              local | staging | production
+EOF
+}
+
+# ── Relation types ────────────────────────────────────────────────────────────
+_relation_types() {
+  cat <<'EOF'
+RELATION TYPE               HEAD ASSET          TAIL ASSET          DIRECTION
+──────────────────────────  ──────────────────  ──────────────────  ─────────
+hasAttribute                Asset               DataAttribute       →
+implementedBy               Business Term       Data Set            →
+contains                    Community           Domain              →
+classifiedBy                Asset               CodeValue           →
+ownedBy                     Asset               User (Role:Owner)   →
+stewardedBy                 Asset               User (Role:Steward) →
+relatesToAuthProvider       AuthCredential      AuthProvider        →
+hasSession                  User                AuthSession         →
+isCodeValueOf               CodeValue           CodeSet             →
+dispatches                  MIMEType            System (handler)    →
+EOF
+}
+
+# ── Singine ↔ Collibra export stub ────────────────────────────────────────────
+_export_stub() {
+  sng_head "Collibra Import CSV — stub (model.collibra-export)"
+  printf "\nTo generate a full Collibra import package:\n\n"
+  printf "  sng model.collibra-export --format=csv  > /tmp/lutino-collibra.csv\n"
+  printf "  sng model.collibra-export --format=json > /tmp/lutino-collibra.json\n\n"
+  printf "  Requires: COLLIBRA_URL, COLLIBRA_USER, COLLIBRA_PASS in 1Password\n"
+  printf "  vault item: op://lutino-dev/lutino-collibra/\n\n"
+  printf "  sng model.collibra-sync   — push via Collibra REST API /rest/2.0/assets\n\n"
+  printf "Bridge status: mapped (not indispensable — Collibra is optional)\n\n"
+}
+
+# ── summary ───────────────────────────────────────────────────────────────────
+_summary() {
+  sng_head "Collibra Metamodel Bridge — lutino.io"
+  printf "\n"
+  printf "  Communities : 6    (run: sng model communities)\n"
+  printf "  Domains     : 8    (run: sng model domains)\n"
+  printf "  Asset Types : 14   (run: sng model entities)\n"
+  printf "  Attr Types  : 20   (run: sng model attributes)\n"
+  printf "  Code Sets   : 9    (run: sng model codes)\n"
+  printf "  Rel Types   : 10   (run: sng model relations)\n"
+  printf "\n"
+  printf "  Bridge:  sng model collibra-export  |  sng model collibra-sync\n"
+  printf "  All:     sng model all\n\n"
+}
+
+# ── filter helper ─────────────────────────────────────────────────────────────
+_maybe_filter() {
+  if [[ -n "${filter}" ]]; then
+    grep -i "${filter}" || true
+  else
+    cat
+  fi
+}
+
+# ── dispatch ──────────────────────────────────────────────────────────────────
+case "${action}" in
+  summary)     _summary ;;
+  all)
+    sng_head "Communities";  _communities    | _maybe_filter; printf "\n"
+    sng_head "Domains";      _domains        | _maybe_filter; printf "\n"
+    sng_head "Asset Types";  _asset_types    | _maybe_filter; printf "\n"
+    sng_head "Attributes";   _attribute_types| _maybe_filter; printf "\n"
+    sng_head "Code Sets";    _code_sets      | _maybe_filter; printf "\n"
+    sng_head "Relations";    _relation_types | _maybe_filter; printf "\n"
+    _export_stub
+    ;;
+  communities) sng_head "Communities";   _communities    | _maybe_filter ;;
+  domains)     sng_head "Domains";       _domains        | _maybe_filter ;;
+  entities)    sng_head "Asset Types";   _asset_types    | _maybe_filter ;;
+  attributes)  sng_head "Attributes";    _attribute_types| _maybe_filter ;;
+  codes)       sng_head "Code Sets";     _code_sets      | _maybe_filter ;;
+  relations)   sng_head "Relations";     _relation_types | _maybe_filter ;;
+  export)      _export_stub ;;
+  *) sng_die "unknown action '${action}'. Valid: summary|all|communities|domains|entities|attributes|codes|relations|export" ;;
+esac

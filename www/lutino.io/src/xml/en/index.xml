@@ -1,0 +1,17 @@
+<webpage id="home">
+  <config param="rcsdate" value="$Date: 2026-03-10 $"/>
+  <config param="footlink" value="contact" altval="Contact"/>
+  <head>
+    <title>Lutino</title>
+    <summary>The Lutino platform</summary>
+    <keywords>lutino, platform, app, cdn, web</keywords>
+  </head>
+
+  <para>
+    Welcome to <emphasis>Lutino</emphasis>, a platform with a public website
+    at <ulink url="https://lutino.io/">lutino.io</ulink>, a web application at
+    <ulink url="https://app.lutino.io/">app.lutino.io</ulink>, and a content
+    delivery network at
+    <ulink url="https://cdn.lutino.io/">cdn.lutino.io</ulink>.
+  </para>
+</webpage>

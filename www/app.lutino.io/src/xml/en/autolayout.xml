@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE autolayout PUBLIC
+  "-//Norman Walsh//DTD Website Autolayout V2.5.0//EN"
+  "http://docbook.sourceforge.net/release/website/2.5.0/schema/dtd/autolayout.dtd">
+<autolayout>
+  <config param="title" value="Lutino App"/>
+  <style src="css/app.css" type="text/css"/>
+
+  <toc page="index.xml" id="home" filename="index.html">
+    <title>Lutino App</title>
+    <summary>The Lutino web application</summary>
+
+    <tocentry page="api/index.xml" id="api" dir="api/" filename="index.html">
+      <title>API</title>
+      <summary>Lutino API reference</summary>
+    </tocentry>
+  </toc>
+</autolayout>

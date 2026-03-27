@@ -1,0 +1,14 @@
+<webpage id="about">
+  <config param="rcsdate" value="$Date: 2026-03-10 $"/>
+  <head>
+    <title>About Lutino</title>
+    <summary>About the Lutino platform</summary>
+  </head>
+
+  <para>
+    Lutino is built on open standards. The main site is served from
+    <emphasis>lutino.io</emphasis>, the interactive application from
+    <emphasis>app.lutino.io</emphasis>, and static assets from
+    <emphasis>cdn.lutino.io</emphasis>.
+  </para>
+</webpage>

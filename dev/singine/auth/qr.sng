@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# dev/singine/auth/qr.sng
+#:name        auth.qr
+#:description Display a QR code for login via Google/Microsoft Authenticator or 1Password
+#:version     1.0.0
+#:uses        auth.totp-setup
+#:param       email     string   required  "Account email address"
+#:param       vault     string   optional  "1Password vault name" default=lutino-dev
+#:param       provider  string   optional  "Authenticator: google|microsoft|1password" default=google
+#:param       verify    boolean  optional  "Prompt to verify a code after display" default=false
+#:entity      User
+#:entity      AuthSession
+#:attribute   email
+#:attribute   totpUri
+#:attribute   authProvider
+#:code-set    AuthProvider
+#:master      User
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+# ── parse args ────────────────────────────────────────────────────────────────
+email="${1:-}"
+vault="${2:-lutino-dev}"
+provider="${3:-google}"
+do_verify="${4:-false}"
+
+[[ -n "${email}" ]] || sng_die "email is required.  Usage: sng auth.qr <email> [vault] [provider]"
+
+case "${provider}" in
+  google|microsoft|1password) ;;
+  *) sng_die "invalid provider '${provider}'. Valid values (code-set: AuthProvider): google | microsoft | 1password" ;;
+esac
+
+op_require
+
+# ── retrieve the TOTP URI from 1Password ──────────────────────────────────────
+item_name="lutino-totp-${email}"
+sng_step "Reading TOTP URI from 1Password vault '${vault}' / item '${item_name}'"
+
+totp_uri=""
+
+# Try to read the OTP URI field
+totp_uri="$(op_totp_uri "${vault}" "${item_name}")" || true
+
+if [[ -z "${totp_uri}" ]]; then
+  sng_warn "TOTP item '${item_name}' not found in vault '${vault}'."
+  printf "Run first:  sng auth.totp-setup %s %s %s %s\n\n" \
+    "${email}" "lutino.io" "${vault}" "${provider}" >&2
+
+  # Offer to set it up interactively
+  printf "Set up TOTP now? [y/N] "
+  read -r yn
+  case "${yn}" in
+    [Yy]*) bash "$(dirname "${BASH_SOURCE[0]}")/totp-setup.sng" "${email}" "lutino.io" "${vault}" "${provider}" ;;
+    *)     exit 1 ;;
+  esac
+
+  # Re-read after setup
+  totp_uri="$(op_totp_uri "${vault}" "${item_name}")" || true
+  [[ -n "${totp_uri}" ]] || sng_die "Could not retrieve TOTP URI after setup."
+fi
+
+sng_ok "Retrieved TOTP URI from 1Password"
+
+# ── display QR code ───────────────────────────────────────────────────────────
+case "${provider}" in
+  google)
+    qr_display "${totp_uri}" "Google Authenticator — lutino.io: ${email}"
+    printf "After scanning: open Google Authenticator → tap the code → enter below\n"
+    ;;
+  microsoft)
+    qr_display "${totp_uri}" "Microsoft Authenticator — lutino.io: ${email}"
+    printf "After scanning: open Microsoft Authenticator → tap the code → enter below\n"
+    printf "\nPlanned: Microsoft Authenticator deep-link (ms-auth://) and push auth\n"
+    ;;
+  1password)
+    printf "\n1Password manages the TOTP natively (no QR needed).\n"
+    printf "Current code:  "
+    op_get_otp "${vault}" "${item_name}" && printf "\n" || printf "(run: op item get '%s' --otp)\n" "${item_name}"
+    do_verify="false"
+    ;;
+esac
+
+# ── optional verification step ────────────────────────────────────────────────
+if [[ "${do_verify}" == "true" ]]; then
+  bash "$(dirname "${BASH_SOURCE[0]}")/totp-verify.sng" "${email}" "${vault}"
+fi
+
+printf "\nCommands:\n"
+printf "  sng auth.totp-verify %-30s  verify a code\n" "${email}"
+printf "  sng auth.qr          %-30s  --verify  show QR + verify\n" "${email}"
+printf "  sng auth.session     %-30s            create a session\n" "${email}"
+printf "\n"

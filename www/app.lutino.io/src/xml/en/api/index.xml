@@ -1,0 +1,9 @@
+<webpage id="api">
+  <config param="rcsdate" value="$Date: 2026-03-10 $"/>
+  <head>
+    <title>API Reference</title>
+    <summary>Lutino API reference</summary>
+  </head>
+
+  <para>API documentation for the Lutino platform.</para>
+</webpage>

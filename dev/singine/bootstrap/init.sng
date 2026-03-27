@@ -1,0 +1,148 @@
+#!/usr/bin/env bash
+# dev/singine/bootstrap/init.sng
+#:name        bootstrap.init
+#:description Full system bootstrap: env, certs, master data, reference data, model validation
+#:version     1.0.0
+#:uses        data.master.init data.reference.codes model.entities model.attributes
+#:param       env    string  optional  "local|staging|production" default=local
+#:param       force  string  optional  "re-run even if already bootstrapped" default=false
+#:entity      User
+#:entity      Account
+#:entity      System
+#:entity      CodeSet
+#:entity      CodeValue
+#:entity      MIMEType
+#:attribute   deployEnv
+#:attribute   bootstrapOrder
+#:attribute   status
+#:code-set    DeployEnv
+#:code-set    StatusLifecycle
+#:master      User Account System
+#:reference   CodeSet CodeValue MIMEType
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+env_name="${1:-local}"
+force="${2:-false}"
+
+MANIFEST="${HOME}/.config/lutino/data/.bootstrap-manifest"
+
+# ── guard: already bootstrapped ───────────────────────────────────────────────
+if [[ -f "${MANIFEST}" && "${force}" != "true" ]]; then
+  sng_warn "System already bootstrapped."
+  printf "  manifest: %s\n" "${MANIFEST}"
+  grep "bootstrappedAt\|env\|bootstrapVersion" "${MANIFEST}" | while IFS='=' read -r k v; do
+    printf "  %-20s %s\n" "${k}" "${v}"
+  done
+  printf "\n  Run with force=true to re-bootstrap:  sng bootstrap.init %s true\n\n" "${env_name}"
+  exit 0
+fi
+
+sng_head "SilkPage / lutino.io — System Bootstrap"
+printf "  env: %s\n\n" "${env_name}"
+
+# ── Step 1: environment ───────────────────────────────────────────────────────
+sng_step "1/6  Checking environment (JAVA_HOME, op, dispatch)..."
+
+# Java
+if [[ -d "${HOME}/.sdkman/candidates/java/current" ]]; then
+  export JAVA_HOME="${HOME}/.sdkman/candidates/java/current"
+  sng_ok "JAVA_HOME = ${JAVA_HOME}"
+else
+  sng_warn "JAVA_HOME not set via SDKMAN — SilkPage Ant builds may fail"
+  sng_warn "Fix: sdk install java  or  . dev/env.sh"
+fi
+
+# 1Password CLI
+if command -v op >/dev/null 2>&1; then
+  sng_ok "op CLI found: $(command -v op)"
+else
+  sng_warn "1Password CLI (op) not found — auth commands require it"
+  sng_warn "Install: brew install 1password-cli"
+fi
+
+# qrencode
+if command -v qrencode >/dev/null 2>&1; then
+  sng_ok "qrencode found"
+else
+  sng_warn "qrencode not found — QR display will fall back to URI text"
+  sng_warn "Install: brew install qrencode"
+fi
+
+# dispatch
+DISPATCH="${SILKPAGE_PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)}/dev/infra/dispatch/dispatch.sh"
+if [[ -x "${DISPATCH}" ]]; then
+  sng_ok "dispatch.sh found: ${DISPATCH}"
+else
+  sng_warn "dispatch.sh not found or not executable at: ${DISPATCH}"
+fi
+
+# ── Step 2: SSL cert directory ────────────────────────────────────────────────
+sng_step "2/6  SSL cert directory..."
+mkdir -p "${HOME}/.config/lutino/ssl"
+chmod 0700 "${HOME}/.config/lutino/ssl"
+
+CACERT_PATH_FILE="${HOME}/.config/lutino/ssl/.cacert_path"
+if [[ ! -f "${CACERT_PATH_FILE}" ]]; then
+  printf "%s/.config/lutino/ssl/cacert.pem\n" "${HOME}" > "${CACERT_PATH_FILE}"
+  chmod 0600 "${CACERT_PATH_FILE}"
+  sng_ok "Created .cacert_path dotfile"
+else
+  sng_ok "cacert path: $(cat "${CACERT_PATH_FILE}")"
+fi
+
+if op whoami >/dev/null 2>&1; then
+  sng_step "  Running cacert-setup.sh from 1Password..."
+  SNG_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  PROJ_ROOT="$(dirname "$(dirname "${SNG_DIR}")")"
+  bash "${PROJ_ROOT}/dev/infra/ssl/cacert-setup.sh" || sng_warn "cacert-setup.sh failed (non-fatal for local env)"
+else
+  sng_warn "Not signed in to 1Password — skipping cert retrieval"
+  sng_warn "Run later: eval \$(op signin) && dev/infra/ssl/cacert-setup.sh"
+fi
+
+# ── Step 3: master data init ──────────────────────────────────────────────────
+sng_step "3/6  Initialising master data..."
+bash "$(dirname "${BASH_SOURCE[0]}")/../data/master/init.sng" "${env_name}" "${force}"
+
+# ── Step 4: MIME type reference data ─────────────────────────────────────────
+sng_step "4/6  Validating MIME type registry..."
+bash "$(dirname "${BASH_SOURCE[0]}")/../data/reference/mime-types.sng" validate || true
+
+# ── Step 5: model validation ──────────────────────────────────────────────────
+sng_step "5/6  Validating entity + attribute registries..."
+bash "$(dirname "${BASH_SOURCE[0]}")/../model/entities.sng"    validate
+bash "$(dirname "${BASH_SOURCE[0]}")/../model/attributes.sng"  validate
+
+# ── Step 6: /etc/hosts reminder ───────────────────────────────────────────────
+sng_step "6/6  Checking /etc/hosts..."
+if grep -q "lutino.io" /etc/hosts 2>/dev/null; then
+  sng_ok "/etc/hosts: lutino.io entries present"
+else
+  sng_warn "/etc/hosts: lutino.io entries missing"
+  printf "\n  To add:\n"
+  printf "  sudo sh -c 'cat dev/infra/hosts.fragment >> /etc/hosts'\n\n"
+fi
+
+if grep -q "app.lutino.io" /etc/hosts 2>/dev/null && \
+   grep -q "cdn.lutino.io" /etc/hosts 2>/dev/null; then
+  sng_ok "/etc/hosts: subdomains present"
+fi
+
+# ── Summary ───────────────────────────────────────────────────────────────────
+printf "\n"
+sng_head "Bootstrap complete — ${env_name}"
+printf "\n  Key commands:\n"
+printf "    sng list                                  — all available commands\n"
+printf "    sng model all                             — full data model\n"
+printf "    sng model codes                           — reference code sets\n"
+printf "    sng data.master.user create <email>       — add first user\n"
+printf "    sng auth.totp-setup <email>               — configure TOTP\n"
+printf "    sng auth.qr <email>                       — show login QR\n"
+printf "    sng auth.qr <email> google  true          — show QR + verify\n"
+printf "    sng auth.ms-authenticator status          — MS Auth roadmap\n"
+printf "    sng auth.session create <email>           — create session\n"
+printf "    sng model.collibra-bridge all             — Collibra bridge summary\n"
+printf "    dev/infra/dispatch/dispatch.sh --list     — MIME dispatcher table\n"
+printf "    dev/infra/dispatch/dispatch.sh --quicktest — run handler tests\n\n"

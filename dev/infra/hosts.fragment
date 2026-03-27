@@ -1,0 +1,16 @@
+# ── lutino.io local development ───────────────────────────────────────────────
+# Append to /etc/hosts:
+#
+#   sudo sh -c 'cat dev/infra/hosts.fragment >> /etc/hosts'
+#
+# To remove, delete the lines between the BEGIN/END markers.
+# ── BEGIN lutino.io ────────────────────────────────────────────────────────────
+127.0.0.1   lutino.io
+127.0.0.1   www.lutino.io
+127.0.0.1   app.lutino.io
+127.0.0.1   cdn.lutino.io
+::1         lutino.io
+::1         www.lutino.io
+::1         app.lutino.io
+::1         cdn.lutino.io
+# ── END lutino.io ──────────────────────────────────────────────────────────────

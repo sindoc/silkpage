@@ -1,0 +1,14 @@
+<webpage id="home">
+  <config param="rcsdate" value="$Date: 2026-03-10 $"/>
+  <head>
+    <title>Lutino App</title>
+    <summary>The Lutino web application</summary>
+  </head>
+
+  <para>
+    This is the Lutino application, served from
+    <ulink url="https://app.lutino.io/">app.lutino.io</ulink>.
+    Static assets are loaded from
+    <ulink url="https://cdn.lutino.io/">cdn.lutino.io</ulink>.
+  </para>
+</webpage>

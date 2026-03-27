@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# dev/singine/model/attributes.sng
+#:name        model.attributes
+#:description Attribute type registry: types, constraints, and Collibra mapping
+#:version     1.0.0
+#:param       action  string  optional  "list|describe|validate" default=list
+#:param       name    string  optional  "Attribute name to describe"
+#:entity      DataAttribute
+#:entity      AttributeType
+#:attribute   name
+#:attribute   dataType
+#:attribute   required
+#:attribute   sensitive
+#:attribute   defaultValue
+#:attribute   validationPattern
+#:code-set    AttributeDataType
+#:code-set    StatusLifecycle
+#:reference   AttributeType
+
+set -euo pipefail
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/runtime.sh"
+
+action="${1:-list}"
+target="${2:-}"
+
+# ── attribute type registry ────────────────────────────────────────────────────
+# name | dataType | required | sensitive | appliesTo | validation | collibra-type
+_attr_registry() {
+  cat <<'ATTRS'
+id                   | uuid      | required  | no  | all                  | ^[0-9a-f-]{36}$         | String
+name                 | string    | required  | no  | all                  |                          | String
+description          | string    | optional  | no  | all                  |                          | String (multi-line)
+status               | enum      | required  | no  | all                  | StatusLifecycle          | String
+email                | string    | required  | no  | User AuthCredential  | ^[^@]+@[^@]+\.[^@]+$    | String
+displayName          | string    | optional  | no  | User                 |                          | String
+createdAt            | datetime  | required  | no  | all                  | ISO8601                  | Date
+expiresAt            | datetime  | optional  | no  | AuthSession          | ISO8601                  | Date
+totpSecret           | string    | required  | yes | AuthCredential       | ^[A-Z2-7]+=*$           | String (sensitive)
+totpUri              | string    | derived   | no  | AuthCredential       | ^otpauth://              | String
+totpIssuer           | string    | required  | no  | AuthCredential       |                          | String
+authProvider         | enum      | required  | no  | AuthCredential       | AuthProvider             | String
+sessionId            | string    | required  | no  | AuthSession          | ^[0-9a-f]{64}$          | String
+sessionStatus        | enum      | required  | no  | AuthSession          | SessionStatus            | String
+msAuthDeepLink       | string    | optional  | no  | AuthCredential       | ^ms-auth://              | String
+pushAuthEndpoint     | string    | optional  | no  | AuthProvider         | ^https://                | String
+mimeType             | string    | required  | no  | MIMEType DataSet     | ^[a-z]+/[a-z0-9._+-]+$  | String
+handler              | string    | required  | no  | MIMEType             |                          | String
+extension            | string    | optional  | no  | MIMEType             | ^\.[a-z0-9]+$            | String
+codeSetName          | string    | required  | no  | CodeSet              |                          | String
+codeValue            | string    | required  | no  | CodeValue            |                          | String
+bootstrapOrder       | integer   | optional  | no  | CodeSet DataSet      | ^[0-9]+$                 | Number
+ownerId              | uuid      | required  | no  | Account              | ^[0-9a-f-]{36}$         | String
+siteContext          | enum      | required  | no  | Account              | SiteContext              | String
+deployEnv            | enum      | optional  | no  | Account System       | DeployEnv                | String
+ATTRS
+}
+
+cmd_list() {
+  sng_head "Attribute Type Registry — lutino.io"
+  printf "\n%-22s %-10s %-9s %-6s  %s\n" \
+    "ATTRIBUTE" "DATA TYPE" "REQUIRED" "SENS." "COLLIBRA TYPE"
+  printf "%-22s %-10s %-9s %-6s  %s\n" \
+    "─────────" "─────────" "────────" "─────" "─────────────"
+  while IFS='|' read -r name dtype req sens _ _ ctype; do
+    printf "%-22s %-10s %-9s %-6s  %s\n" \
+      "$(printf "%s" "${name}"  | xargs)" \
+      "$(printf "%s" "${dtype}" | xargs)" \
+      "$(printf "%s" "${req}"   | xargs)" \
+      "$(printf "%s" "${sens}"  | xargs)" \
+      "$(printf "%s" "${ctype}" | xargs)"
+  done < <(_attr_registry)
+  printf "\n"
+  printf "  sensitive=yes attributes are stored in 1Password, never in plaintext files.\n"
+  printf "\n  Run:  sng model.attributes describe <attributeName>\n\n"
+}
+
+cmd_describe() {
+  [[ -n "${target}" ]] || sng_die "attribute name required."
+  local row
+  row="$(_attr_registry | grep -i "^${target}[[:space:]]*|" | head -1)" \
+    || sng_die "attribute not found: ${target}"
+  IFS='|' read -r name dtype req sens applies validation ctype <<< "${row}"
+  sng_head "Attribute: $(printf "%s" "${name}" | xargs)"
+  printf "  dataType          %s\n"  "$(printf "%s" "${dtype}"      | xargs)"
+  printf "  required          %s\n"  "$(printf "%s" "${req}"        | xargs)"
+  printf "  sensitive         %s\n"  "$(printf "%s" "${sens}"       | xargs)"
+  printf "  appliesTo         %s\n"  "$(printf "%s" "${applies}"    | xargs)"
+  printf "  validation        %s\n"  "$(printf "%s" "${validation}" | xargs)"
+  printf "  collibra-type     %s\n\n" "$(printf "%s" "${ctype}"    | xargs)"
+  local s="$(printf "%s" "${sens}" | xargs)"
+  if [[ "${s}" == "yes" ]]; then
+    printf "  ⚠  SENSITIVE — stored only in 1Password\n"
+    printf "     op://lutino-dev/<item>/$(printf "%s" "${name}" | xargs)\n\n"
+  fi
+}
+
+cmd_validate() {
+  sng_step "Validating attribute registry..."
+  local errors=0
+  while IFS='|' read -r name dtype req sens _ _ _; do
+    name="$(printf "%s" "${name}" | xargs)"
+    dtype="$(printf "%s" "${dtype}" | xargs)"
+    case "${dtype}" in
+      uuid|string|enum|datetime|integer|boolean|derived) ;;
+      *) sng_warn "${name}: unknown dataType '${dtype}'"; errors=$(( errors+1 )) ;;
+    esac
+  done < <(_attr_registry)
+  if [[ ${errors} -eq 0 ]]; then
+    sng_ok "Attribute registry valid ($( _attr_registry | wc -l | tr -d ' ') attributes)"
+  else
+    sng_err "${errors} validation error(s)"
+    exit 1
+  fi
+}
+
+case "${action}" in
+  list)     cmd_list ;;
+  describe) cmd_describe ;;
+  validate) cmd_validate ;;
+  *) sng_die "unknown action '${action}'. Valid: list | describe | validate" ;;
+esac
