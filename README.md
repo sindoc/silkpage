@@ -182,6 +182,20 @@ make html         # single-page HTML
 make pdf          # PDF via FOP
 ```
 
+## Testing
+
+The repository includes a first regression test for the HTML5 audio feature:
+
+- `make test-case-01` builds the website and verifies that the generated
+  `docs/audio/index.html` page contains the expected `audio`, `source`, and
+  `track` HTML output.
+
+## Contributing
+
+Contribution policy and inbound licensing requirements are described in
+[`CONTRIBUTING.md`](CONTRIBUTING.md). Contributor agreement templates live in
+[`legal/`](legal/).
+
 ---
 
 ## Authors
@@ -193,8 +207,10 @@ make pdf          # PDF via FOP
 
 ## License
 
-- **Software**: [GNU General Public License (GPL)](http://www.gnu.org/licenses/gpl.html)
-- **Documentation**: [GNU Free Documentation License 1.1+](http://www.gnu.org/copyleft/fdl.html)
+- **Software**: GNU GPL, with intended support for a separate commercial license model
+- **Documentation**: GNU Free Documentation License 1.1+
+- **Commercial licensing policy**: see `COMMERCIAL-LICENSING.md`
+- **Third-party review checklist**: see `THIRD_PARTY_NOTICES.md`
 
 ---
 

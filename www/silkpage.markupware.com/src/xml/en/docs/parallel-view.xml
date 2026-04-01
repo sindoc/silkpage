@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<webpage id="parallelView" xmlns:html="http://www.w3.org/1999/xhtml">
+  <config param="rcsdate" value="$Date: 2026-04-01 00:00:00 $"/>
+  <head>
+    <title>Parallel View</title>
+    <summary>Simple side-by-side preview of the new SilkPage pages</summary>
+    <keywords>SilkPage, iframe, preview, audio, licensing</keywords>
+  </head>
+
+  <para>
+    This page presents two SilkPage-generated documents in parallel:
+    the HTML5 audio feature page and the updated licensing page.
+  </para>
+
+  <html:div class="parallel-preview">
+    <html:div class="parallel-preview-panel">
+      <html:h2>Audio</html:h2>
+      <html:p>
+        <html:a href="../audio/index.html">Open page directly</html:a>
+      </html:p>
+      <html:iframe
+        src="../audio/index.html"
+        title="Audio page preview"
+      />
+    </html:div>
+    <html:div class="parallel-preview-panel">
+      <html:h2>Licensing</html:h2>
+      <html:p>
+        <html:a href="../../about/licence/index.html">Open page directly</html:a>
+      </html:p>
+      <html:iframe
+        src="../../about/licence/index.html"
+        title="Licensing page preview"
+      />
+    </html:div>
+  </html:div>
+</webpage>

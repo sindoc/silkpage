@@ -1,4 +1,4 @@
-.PHONY: help status check docs-html docs-clean website-preview core-dist
+.PHONY: help status check docs-html docs-clean website-preview core-dist test-case-01
 
 help:
 	@printf "silkpage commands:\n"
@@ -8,6 +8,7 @@ help:
 	@printf "  make docs-clean      Clean generated docs output\n"
 	@printf "  make website-preview Run the Ant-based site preview if ant is installed\n"
 	@printf "  make core-dist       Run the Ant-based core dist target if ant is installed\n"
+	@printf "  make test-case-01    Run the first audio feature regression test\n"
 
 status:
 	git status -sb
@@ -39,3 +40,6 @@ core-dist:
 		printf "ant is not installed; cannot run core dist\n" >&2; \
 		exit 1; \
 	fi
+
+test-case-01:
+	bash tests/test-case-01-audio.sh

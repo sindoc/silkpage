@@ -13,6 +13,11 @@
     Website have little trouble adapting to SilkPage. New Users will be 
     able to use basic features fairly rapidly by reading the User Guide.
   </para>
+  <para>
+    The repository also includes project-level regression checks. The first
+    one, <emphasis>test-case-01</emphasis>, verifies the HTML5 audio feature by
+    rebuilding the website and checking the generated output.
+  </para>
   <variablelist>
     <title>Available Formats</title>
     <varlistentry>

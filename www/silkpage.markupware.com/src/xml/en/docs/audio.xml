@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<webpage id="audioElement" xmlns:html="http://www.w3.org/1999/xhtml">
+  <config param="rcsdate" value="$Date: 2026-04-01 00:00:00 $"/>
+  <head>
+    <title>HTML5 Audio</title>
+    <summary>Embedding sound files with SilkPage XML</summary>
+    <keywords>SilkPage, HTML5, audio, sound, XML</keywords>
+  </head>
+
+  <para>
+    SilkPage now supports a native <emphasis>audio</emphasis> element in page
+    content. It renders as the HTML5 <emphasis>audio</emphasis> element so a
+    page can expose browser-native playback controls without dropping into
+    namespaced XHTML markup.
+  </para>
+
+  <section id="usage">
+    <title>Usage</title>
+    <para>
+      Use the <emphasis>audio</emphasis> element directly in a SilkPage page.
+      The usual HTML5 attributes such as <emphasis>controls</emphasis>,
+      <emphasis>preload</emphasis>, <emphasis>autoplay</emphasis>,
+      <emphasis>loop</emphasis> and <emphasis>muted</emphasis> are passed
+      through unchanged.
+    </para>
+    <para>
+      Live example:
+    </para>
+    <audio controls="controls" preload="metadata">
+      <source src="/media/example.ogg" type="audio/ogg"/>
+      <source src="/media/example.mp3" type="audio/mpeg"/>
+      <track kind="captions" src="/media/example.en.vtt"
+             srclang="en" label="English"/>
+      Your browser does not support HTML5 audio.
+    </audio>
+    <html:pre>
+&lt;audio src="media/intro.mp3" controls="controls" preload="metadata"&gt;
+  Your browser does not support HTML5 audio.
+&lt;/audio&gt;
+    </html:pre>
+  </section>
+
+  <section id="multipleSources">
+    <title>Multiple Sources</title>
+    <para>
+      For broader browser compatibility, nest one or more
+      <emphasis>source</emphasis> elements and let the browser choose the first
+      supported format.
+    </para>
+    <html:pre>
+&lt;audio controls="controls" preload="metadata"&gt;
+  &lt;source src="media/intro.ogg" type="audio/ogg"/&gt;
+  &lt;source src="media/intro.mp3" type="audio/mpeg"/&gt;
+  Your browser does not support HTML5 audio.
+&lt;/audio&gt;
+    </html:pre>
+  </section>
+
+  <section id="captionsAndMetadata">
+    <title>Tracks And Metadata</title>
+    <para>
+      SilkPage also passes through nested <emphasis>track</emphasis> elements,
+      so timed text and metadata tracks can be attached when needed.
+    </para>
+    <html:pre>
+&lt;audio controls="controls"&gt;
+  &lt;source src="media/interview.mp3" type="audio/mpeg"/&gt;
+  &lt;track kind="captions" src="media/interview.en.vtt"
+         srclang="en" label="English"/&gt;
+&lt;/audio&gt;
+    </html:pre>
+  </section>
+
+  <section id="testing">
+    <title>Regression Test</title>
+    <para>
+      The repository includes <emphasis>test-case-01</emphasis> as a regression
+      check for this feature. Run <emphasis>make test-case-01</emphasis> from
+      the project root to validate the XML source, rebuild the website, and
+      confirm that the generated page contains the expected HTML5
+      <emphasis>audio</emphasis>, <emphasis>source</emphasis>, and
+      <emphasis>track</emphasis> markup.
+    </para>
+  </section>
+</webpage>

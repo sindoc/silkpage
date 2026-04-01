@@ -66,6 +66,20 @@
             <title>User Guide</title>
             <summary>SilkPage User Guide</summary>
          </tocentry>
+         <tocentry page="docs/audio.xml"
+                   id="audioElement"
+                   dir="docs/audio/"
+                   filename="index.html">
+            <title>HTML5 Audio</title>
+            <summary>Embedding sound files with SilkPage XML</summary>
+         </tocentry>
+         <tocentry page="docs/parallel-view.xml"
+                   id="parallelView"
+                   dir="docs/parallel-view/"
+                   filename="index.html">
+            <title>Parallel View</title>
+            <summary>Simple side-by-side preview of the new SilkPage pages</summary>
+         </tocentry>
          <tocentry page="docs/design-goals.xml"
                    id="designGoals"
                    dir="docs/design-goals/"
