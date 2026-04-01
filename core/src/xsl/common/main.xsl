@@ -486,6 +486,13 @@
   </xsl:element>
 </xsl:template>
 
+<xsl:template match="audio|source|track">
+  <xsl:element name="{local-name(.)}">
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+  </xsl:element>
+</xsl:template>
+
 <xsl:template match="ulink">
   <xsl:variable name="link">
     <a class="{local-name(.)}">
@@ -541,4 +548,3 @@
 
 
 </xsl:stylesheet>
-

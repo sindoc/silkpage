@@ -46,9 +46,31 @@
     </varlistentry>
   </variablelist>
 -->
-<sidebar id="silkpaged">
+  <sidebar id="silkpaged">
   <title>SilkPaged</title>
   <variablelist>
+    <varlistentry>
+      <term>
+        <olink targetdoc="audioElement">HTML5 Audio</olink>
+      </term>
+      <listitem>
+        <para>
+          Shows how to embed browser-native sound playback with SilkPage's
+          native <emphasis>audio</emphasis> element.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <olink targetdoc="parallelView">Parallel View</olink>
+      </term>
+      <listitem>
+        <para>
+          Shows the audio and licensing pages together in a simple iframe-based
+          comparison view.
+        </para>
+      </listitem>
+    </varlistentry>
     <varlistentry>
       <term>What does it mean ?</term>
       <listitem>

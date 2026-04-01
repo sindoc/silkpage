@@ -51,7 +51,8 @@
         </listitem>
         <listitem>
           <para>
-            License Type: GNU General Public License
+            License Type: GNU General Public License, with commercial licensing
+            available from the rights holder under separate terms
           </para>
         </listitem>
         <listitem>
@@ -60,7 +61,32 @@
             <ulink url="http://www.gnu.org/copyleft/gpl.html"/>
           </para>
         </listitem>
+        <listitem>
+          <para>
+            Commercial Terms: available only by separate written agreement with
+            the copyright holder or authorized licensor
+          </para>
+        </listitem>
       </itemizedlist>
+    </para>
+  </section>
+  <section id="duallicensing">
+    <title>
+      Dual Licensing Model
+    </title>
+    <para>
+      SilkPage is intended to support a classic dual-licensing structure:
+      <emphasis>GPL for open-source use</emphasis> and
+      <emphasis>commercial licensing for proprietary distribution,
+      embedding, and support arrangements</emphasis>. This model only works
+      when the commercial licensor has the necessary copyright control over the
+      codebase and all redistributed third-party components have been reviewed.
+    </para>
+    <para>
+      The repository-level policy and commercialization checklist are described
+      in <ulink url="https://github.com/sindoc/silkpage/blob/main/COMMERCIAL-LICENSING.md">COMMERCIAL-LICENSING.md</ulink>
+      and
+      <ulink url="https://github.com/sindoc/silkpage/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</ulink>.
     </para>
   </section>
   <section id="documentation">
