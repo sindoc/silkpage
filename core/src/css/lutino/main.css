@@ -1,0 +1,176 @@
+/* =============================================================================
+   Lutino SilkPage Theme — Layout
+   Imports tokens + base, adds structural layout for the webpage shell.
+   ============================================================================= */
+@import url("tokens.css");
+@import url("base.css");
+
+/* ---------------------------------------------------------------------------
+   Page Shell
+   --------------------------------------------------------------------------- */
+#page-wrapper {
+  max-width:     62em;
+  margin:        0 auto;
+  background:    var(--color-sheet);
+  box-shadow:    var(--shadow-md);
+  min-height:    100vh;
+}
+
+/* ---------------------------------------------------------------------------
+   Header / Banner
+   --------------------------------------------------------------------------- */
+.titlebar, #header {
+  background:   var(--gradient-header);
+  color:        var(--lutino-white);
+  padding:      0.8em 1.5em;
+  display:      flex;
+  align-items:  center;
+  justify-content: space-between;
+}
+
+.titlebar a, #header a { color: var(--lutino-white); }
+.titlebar a:hover, #header a:hover { opacity: 0.85; }
+
+.site-title {
+  font-family:    var(--font-main);
+  font-weight:    700;
+  font-size:      1.2em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color:          var(--lutino-white);
+  margin:         0;
+}
+
+.site-subtitle {
+  font-size:   0.85em;
+  color:       rgba(255, 255, 255, 0.75);
+  margin-left: 1em;
+}
+
+/* ---------------------------------------------------------------------------
+   Two-column layout: TOC sidebar + main content
+   --------------------------------------------------------------------------- */
+.layout-body {
+  display: grid;
+  grid-template-columns: 16em 1fr;
+  min-height: calc(100vh - 4em);
+}
+
+/* ---------------------------------------------------------------------------
+   Navigation TOC (left column)
+   --------------------------------------------------------------------------- */
+.navtoc, #sidebar {
+  background:    var(--lutino-stone-tint);
+  border-right:  var(--border-thin);
+  padding:       1.5em 0;
+  font-size:     0.88em;
+}
+
+.navtoc h3, .navtoc .toc-title {
+  font-size:      0.72em;
+  font-weight:    700;
+  color:          var(--lutino-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding:        0 1.2em;
+  margin:         1em 0 0.4em 0;
+}
+
+.navtoc a, .navtoc a:visited {
+  display:     block;
+  padding:     0.35em 1.2em;
+  color:       var(--color-text);
+  border-left: 3px solid transparent;
+  transition:  background 0.15s ease, border-color 0.15s ease;
+}
+
+.navtoc a:hover {
+  background:   var(--lutino-coral-tint-s);
+  border-color: var(--lutino-coral);
+  color:        var(--lutino-coral-dark);
+}
+
+.navtoc a.current, .navtoc a.active {
+  border-color:  var(--lutino-coral);
+  font-weight:   700;
+  color:         var(--lutino-coral-dark);
+  background:    var(--lutino-coral-tint-s);
+}
+
+/* indent sub-levels */
+.navtoc ul { list-style: none; margin: 0; padding: 0; }
+.navtoc ul ul a { padding-left: 2.2em; font-size: 0.92em; }
+.navtoc ul ul ul a { padding-left: 3.2em; }
+
+/* ---------------------------------------------------------------------------
+   Main Content Area
+   --------------------------------------------------------------------------- */
+#mainContent, .main-content, td.main {
+  padding:    2em 2.5em;
+  max-width:  none;
+}
+
+/* Page title (from <head><title> rendered by XSL as h1) */
+.page-title, h1.page-title {
+  font-size:    2em;
+  font-weight:  700;
+  margin-top:   0;
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid var(--lutino-coral);
+  margin-bottom: 1.2em;
+}
+
+/* Property table (Logseq properties rendered as a small definition list) */
+.page-properties {
+  font-size:     0.82em;
+  color:         var(--lutino-grey);
+  background:    var(--lutino-stone-tint);
+  border:        var(--border-thin);
+  border-radius: var(--radius-md);
+  padding:       0.6em 1em;
+  margin-bottom: 1.5em;
+  display:       flex;
+  flex-wrap:     wrap;
+  gap:           0.4em 1.2em;
+}
+.page-properties .prop-key {
+  font-weight:    700;
+  color:          var(--color-text);
+  letter-spacing: 0.03em;
+}
+.page-properties .prop-key::after { content: ":"; }
+
+/* Outliner structure */
+.ls-block    { margin-bottom: 0.5em; }
+.ls-children { padding-left: 1.4em; border-left: 1px solid var(--color-border); margin-left: 0.4em; }
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+.navfoot, footer {
+  background:   var(--lutino-stone);
+  border-top:   var(--border-thin);
+  padding:      0.8em 1.5em;
+  font-size:    0.8em;
+  color:        var(--lutino-grey);
+  display:      flex;
+  justify-content: space-between;
+  align-items:  center;
+}
+
+.navfoot a, footer a {
+  color: var(--lutino-grey);
+  border-bottom: none;
+}
+.navfoot a:hover, footer a:hover { color: var(--lutino-coral); }
+
+.navfoot .hrule, footer hr { display: none; }
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .layout-body { grid-template-columns: 1fr; }
+  .navtoc, #sidebar { border-right: none; border-bottom: var(--border-thin); }
+  #mainContent, .main-content { padding: 1.5em 1em; }
+}

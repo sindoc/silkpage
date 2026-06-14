@@ -1,0 +1,208 @@
+/* =============================================================================
+   Lutino SilkPage Theme — Base
+   Typography, reset, and structural foundations
+   ============================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+/* ---------------------------------------------------------------------------
+   Reset & Base
+   --------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: var(--font-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family:   var(--font-main);
+  font-weight:   400;
+  line-height:   var(--line-height);
+  color:         var(--color-text);
+  background:    var(--color-background);
+  margin:        0;
+  padding:       0;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "kern", "liga";
+}
+
+/* ---------------------------------------------------------------------------
+   Headings
+   --------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family:    var(--font-main);
+  font-weight:    700;
+  line-height:    1.2;
+  letter-spacing: -0.01em;
+  margin:         1.2em 0 0.4em 0;
+  color:          var(--color-text);
+}
+
+h1 { font-size: 2em;    margin-top: 0; }
+h2 { font-size: 1.5em;  border-bottom: 1px solid var(--color-border); padding-bottom: 0.2em; }
+h3 { font-size: 1.15em; }
+h4 { font-size: 1em;    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--lutino-grey); }
+h5 { font-size: 0.9em;  font-weight: 700; }
+h6 { font-size: 0.85em; font-weight: 700; color: var(--lutino-grey); }
+
+/* ---------------------------------------------------------------------------
+   Links
+   --------------------------------------------------------------------------- */
+a {
+  color:           var(--color-link);
+  text-decoration: none;
+  transition:      color 0.2s ease, border-color 0.2s ease;
+}
+a:visited { color: var(--color-link-visited); }
+a:hover   { color: var(--lutino-black); }
+
+a[href^="http"], a[href^="https"] {
+  border-bottom: 1px dotted var(--color-link);
+}
+a[href^="http"]:hover, a[href^="https"]:hover {
+  border-bottom-color: var(--lutino-black);
+}
+
+/* Page references (internal links, class added by XSL) */
+a.page-ref {
+  color:        var(--lutino-blurple);
+  border-bottom: 1px solid transparent;
+  font-weight:   500;
+}
+a.page-ref:hover { border-bottom-color: var(--lutino-blurple); }
+
+/* ---------------------------------------------------------------------------
+   Paragraphs & Text
+   --------------------------------------------------------------------------- */
+p  { margin: 0 0 1em 0; }
+p:last-child { margin-bottom: 0; }
+
+strong, b { font-weight: 700; }
+em, i     { font-style: italic; }
+
+small { font-size: 0.85em; color: var(--lutino-grey); }
+
+/* ---------------------------------------------------------------------------
+   Lists
+   --------------------------------------------------------------------------- */
+ul, ol { margin: 0 0 1em 0; padding-left: 1.4em; }
+li     { margin-bottom: 0.3em; }
+li > ul, li > ol { margin-top: 0.3em; margin-bottom: 0; }
+
+/* Logseq-style outliner bullets rendered in SilkPage */
+ul.ls-outline {
+  list-style: none;
+  padding-left: 0;
+}
+ul.ls-outline > li {
+  position: relative;
+  padding-left: 1.2em;
+}
+ul.ls-outline > li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--lutino-coral);
+  font-size: 0.8em;
+  line-height: 1.8;
+}
+ul.ls-outline ul.ls-outline { padding-left: 1.2em; }
+
+/* ---------------------------------------------------------------------------
+   Code
+   --------------------------------------------------------------------------- */
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size:   0.875em;
+  background:  var(--lutino-stone);
+  border:      1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding:     0.1em 0.35em;
+}
+
+pre {
+  font-family:   var(--font-mono);
+  font-size:     0.875em;
+  background:    var(--lutino-stone);
+  border:        1px solid var(--color-border);
+  border-left:   3px solid var(--lutino-coral);
+  border-radius: var(--radius-sm);
+  padding:       1em 1.2em;
+  overflow-x:    auto;
+  margin:        1em 0;
+}
+pre code { background: none; border: none; padding: 0; font-size: 1em; }
+
+/* ---------------------------------------------------------------------------
+   Tables
+   --------------------------------------------------------------------------- */
+table {
+  border-collapse: collapse;
+  width:           100%;
+  font-size:       0.9em;
+  margin:          1em 0;
+}
+
+th {
+  background:   var(--lutino-stone);
+  font-weight:  700;
+  text-align:   left;
+  padding:      8px 12px;
+  border-bottom: 2px solid var(--lutino-coral);
+}
+
+td {
+  padding:       8px 12px;
+  border-bottom: var(--border-thin);
+}
+
+tr:nth-child(even) td { background: var(--lutino-canary-tint); }
+tr:hover td           { background: var(--lutino-coral-tint-s); }
+
+/* ---------------------------------------------------------------------------
+   Blockquote
+   --------------------------------------------------------------------------- */
+blockquote {
+  border-left: 3px solid var(--lutino-coral);
+  margin:      1em 0;
+  padding:     0.5em 1.2em;
+  color:       var(--lutino-grey);
+  background:  var(--lutino-stone-tint);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Tags (Logseq #tag rendered inline)
+   --------------------------------------------------------------------------- */
+.tag, span.tag {
+  font-size:        0.8em;
+  background-color: var(--lutino-coral-tint-s);
+  color:            var(--lutino-coral-dark);
+  border-radius:    var(--radius-sm);
+  padding:          1px 6px;
+  font-weight:      600;
+  letter-spacing:   0.03em;
+}
+
+/* ---------------------------------------------------------------------------
+   Asset Code chips
+   --------------------------------------------------------------------------- */
+.asset-code {
+  display:       inline-block;
+  font-family:   var(--font-mono);
+  font-size:     0.75em;
+  background:    var(--lutino-stone);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding:       1px 6px;
+  color:         var(--lutino-grey);
+  letter-spacing: 0.05em;
+}
+
+/* ---------------------------------------------------------------------------
+   Scrollbars
+   --------------------------------------------------------------------------- */
+::-webkit-scrollbar            { width: 6px; height: 6px; }
+::-webkit-scrollbar-track      { background: transparent; }
+::-webkit-scrollbar-thumb      { background: var(--lutino-metal); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover{ background: var(--lutino-coral); }

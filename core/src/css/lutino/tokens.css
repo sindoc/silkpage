@@ -1,0 +1,65 @@
+/* =============================================================================
+   Lutino Design Tokens
+   Shared by the SilkPage Lutino theme and the Logseq Lutino theme.
+   ============================================================================= */
+:root {
+  /* Brand palette */
+  --lutino-coral:        #FF6C69;
+  --lutino-coral-dark:   #8B0000;
+  --lutino-coral-tint:   rgba(255, 108, 105, 0.15);
+  --lutino-coral-tint-s: #fce8e8;
+  --lutino-canary:       #fff5ca;
+  --lutino-canary-tint:  #fffae5;
+  --lutino-blurple:      #5522fa;
+  --lutino-teal:         #5ceace;
+  --lutino-mint:         #b3f8eb;
+  --lutino-lavender:     #d5d2ff;
+  --lutino-salmon:       #ec8580;
+  --lutino-peach:        #fee5da;
+
+  /* Neutrals */
+  --lutino-stone:        #edeae6;
+  --lutino-stone-tint:   #f6f4f2;
+  --lutino-grey:         #777471;
+  --lutino-grey-light:   #FBFAF9;
+  --lutino-metal:        #d9d9d9;
+  --lutino-black:        #222222;
+  --lutino-white:        #ffffff;
+
+  /* Semantic */
+  --color-text:          var(--lutino-black);
+  --color-background:    var(--lutino-stone);
+  --color-sheet:         var(--lutino-white);
+  --color-border:        var(--lutino-metal);
+  --color-link:          var(--lutino-coral);
+  --color-link-visited:  var(--lutino-coral-dark);
+  --color-accent:        var(--lutino-teal);
+  --color-neutral:       var(--lutino-grey);
+
+  /* Gradients */
+  --gradient-header: linear-gradient(90deg, #FF6C69, #8B0000);
+  --gradient-stone:  linear-gradient(-45deg, #f6f4f2, #edeae6);
+
+  /* Shadows */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 12px rgba(0,0,0,0.12);
+
+  /* Spacing */
+  --space-xs:    0.25rem;
+  --space-sm:    0.5rem;
+  --space-md:    1rem;
+  --space-lg:    2rem;
+  --space-xl:    3rem;
+  --space-xxl:   4rem;
+
+  /* Typography */
+  --font-main:   "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:   "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --font-base:   16px;
+  --line-height: 1.65;
+
+  /* Borders */
+  --border-thin: 1px solid var(--color-border);
+  --radius-sm:   4px;
+  --radius-md:   8px;
+}
