@@ -107,11 +107,15 @@
     p, li { font-size: 9pt; line-height: 1.55; color: var(--mid); }
 
     /* ── Header ─────────────────────────────────────────────────────────── */
-    .cv-header { margin-bottom: 5mm; }
+    .cv-header { margin-bottom: 5mm; display: flex; gap: 8mm; align-items: flex-start; }
+    .cv-header-text { flex: 1; }
+    .cv-photo { width: 28mm; height: 28mm; border-radius: 50%; object-fit: cover; border: 2px solid var(--rule); flex-shrink: 0; }
     .cv-tagline { font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 9pt; color: var(--accent); margin-top: 3px; letter-spacing: .02em; }
     .contact-bar { display: flex; flex-wrap: wrap; gap: 0 10px; margin-top: 5px; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 8pt; color: var(--mid); }
+    .contact-bar a { color: var(--accent); text-decoration: none; }
     .contact-bar span::before { content: '· '; color: var(--rule); }
     .contact-bar span:first-child::before { content: ''; }
+    .collibra-badge { display: inline-block; background: var(--accent); color: #fff; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 7pt; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-top: 4px; letter-spacing: .06em; text-transform: uppercase; }
 
     /* ── Skills grid ─────────────────────────────────────────────────────── */
     .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px 10px; margin-top: 4px; }
@@ -176,25 +180,46 @@
   >
     <!-- Header -->
     <header class="cv-header">
-      <h1 class="p-name" itemprop="name">
-        <xsl:value-of select="person/@foaf:name"/>
-      </h1>
-      <p class="cv-tagline p-job-title" itemprop="jobTitle">
-        <xsl:value-of select="person/foaf:title"/>
-      </p>
-      <div class="contact-bar">
-        <span class="p-locality" itemprop="addressLocality">
-          <xsl:value-of select="person/schema:homeLocation"/>
-        </span>
-        <span>
-          <a class="u-url" itemprop="url">
-            <xsl:attribute name="href">https://<xsl:value-of select="person/foaf:homepage"/></xsl:attribute>
-            <xsl:value-of select="person/foaf:homepage"/>
+      <xsl:if test="person/foaf:img">
+        <img class="cv-photo u-photo" itemprop="image">
+          <xsl:attribute name="src"><xsl:value-of select="person/foaf:img"/></xsl:attribute>
+          <xsl:attribute name="alt"><xsl:value-of select="person/foaf:img-alt"/></xsl:attribute>
+        </img>
+      </xsl:if>
+      <div class="cv-header-text">
+        <h1 class="p-name" itemprop="name">
+          <xsl:value-of select="person/@foaf:name"/>
+        </h1>
+        <p class="cv-tagline p-job-title" itemprop="jobTitle">
+          <xsl:value-of select="person/foaf:title"/>
+        </p>
+        <xsl:if test="person/sg:collibra-profile">
+          <a class="collibra-badge" itemprop="memberOf">
+            <xsl:attribute name="href">https://<xsl:value-of select="person/sg:collibra-profile"/></xsl:attribute>
+            <xsl:attribute name="title">Collibra profile: <xsl:value-of select="person/sg:collibra-profile"/></xsl:attribute>
+            Collibra Certified SA
           </a>
-        </span>
-        <xsl:for-each select="person/schema:knowsLanguage">
-          <span><xsl:value-of select="."/></span>
-        </xsl:for-each>
+        </xsl:if>
+        <div class="contact-bar">
+          <span class="p-locality" itemprop="addressLocality">
+            <xsl:value-of select="person/schema:homeLocation"/>
+          </span>
+          <span>
+            <a class="u-email" itemprop="email">
+              <xsl:attribute name="href">mailto:<xsl:value-of select="person/schema:email"/></xsl:attribute>
+              <xsl:value-of select="person/schema:email"/>
+            </a>
+          </span>
+          <span>
+            <a class="u-url" itemprop="url">
+              <xsl:attribute name="href">https://<xsl:value-of select="person/foaf:homepage"/></xsl:attribute>
+              <xsl:value-of select="person/foaf:homepage"/>
+            </a>
+          </span>
+          <xsl:for-each select="person/schema:knowsLanguage">
+            <span><xsl:value-of select="."/></span>
+          </xsl:for-each>
+        </div>
       </div>
     </header>
 
@@ -222,7 +247,7 @@
   <article class="page" data-page="2 / 2">
     <!-- Remaining experience -->
     <h2>Professional Experience (continued)</h2>
-    <xsl:apply-templates select="experience/position[position() &gt; 2]"/>
+    <xsl:apply-templates select="experience/position[position() = 3 or position() = 4]"/>
 
     <!-- Projects -->
     <h2>Key Projects</h2>
@@ -247,13 +272,14 @@
         <h2 style="margin-top:5mm">Certifications</h2>
         <ul style="padding-left:0;list-style:none">
           <xsl:for-each select="certifications/cert">
-            <li style="font-size:8.5pt;padding:1px 0">
-              <xsl:if test="@collibra:level">
-                <span style="color:var(--accent);font-family:Helvetica Neue,Arial,sans-serif;font-size:7pt;font-weight:700;margin-right:4px">
-                  [<xsl:value-of select="@collibra:level"/>]
-                </span>
-              </xsl:if>
-              <xsl:value-of select="."/>
+            <li style="font-size:8.5pt;padding:2px 0">
+              <strong><xsl:value-of select="."/></strong>
+              <br/>
+              <span style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:7.5pt;color:var(--mid)">
+                <xsl:value-of select="@issuer"/>
+                <xsl:if test="@issued"> · Issued <xsl:value-of select="@issued"/></xsl:if>
+                <xsl:if test="@expires"> · Expires <xsl:value-of select="@expires"/></xsl:if>
+              </span>
             </li>
           </xsl:for-each>
         </ul>

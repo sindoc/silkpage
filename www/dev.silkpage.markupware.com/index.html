@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" vocab="http://schema.org/" typeof="WebSite">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>dev.silkpage.markupware.com — Singine · SilkPage</title>
+<meta name="description" content="Local development site — Singine XSLT publishing, Logseq graph, CV, semantic XML"/>
+<style>
+  :root{--ink:#1a1a2e;--mid:#3a3a5c;--accent:#4a6fa5;--bg:#e8ecf0;--rule:#c8d0dc;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+  nav{background:var(--ink);color:#fff;padding:10px 24px;display:flex;gap:16px;align-items:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;position:sticky;top:0;z-index:10}
+  nav a{color:#ccc;text-decoration:none} nav a:hover{color:#fff}
+  nav .brand{color:var(--accent);font-weight:700;font-size:13px;margin-right:8px}
+  .hero{max-width:820px;margin:52px auto 32px;padding:0 24px;text-align:center}
+  .hero h1{font-size:30pt;color:var(--ink);line-height:1.2;margin-bottom:8px;letter-spacing:-.01em}
+  .hero .tagline{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10pt;color:var(--mid);margin-bottom:32px;letter-spacing:.02em}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;max-width:820px;margin:0 auto;padding:0 24px 60px}
+  .card{background:#fff;border-radius:8px;padding:20px;box-shadow:0 1px 8px rgba(26,26,46,.1);text-decoration:none;color:inherit;transition:box-shadow .15s,transform .15s;display:block}
+  .card:hover{box-shadow:0 4px 20px rgba(26,26,46,.18);transform:translateY(-2px)}
+  .card-icon{font-size:26px;margin-bottom:10px}
+  .card h2{font-size:11.5pt;color:var(--ink);margin-bottom:5px;font-weight:700}
+  .card p{font-size:8.5pt;color:var(--mid);line-height:1.55}
+  .card .url{font-family:'Courier New',monospace;font-size:7.5pt;color:var(--accent);margin-top:9px;display:block}
+  .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+  .tag{background:var(--accent);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:6.5pt;padding:1px 5px;border-radius:2px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+  footer{text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;color:#99a;padding:24px;border-top:1px solid var(--rule);margin-top:20px}
+  footer a{color:var(--accent);text-decoration:none}
+  .status-bar{background:#fff;max-width:820px;margin:0 auto 24px;padding:10px 24px;border-radius:8px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:9pt;color:var(--mid);box-shadow:0 1px 4px rgba(26,26,46,.07)}
+  #sg-server-status{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">dev.silkpage.markupware.com</span>
+  <a href="/cv/">CV</a>
+  <a href="/graph/">Graph</a>
+  <a href="/snippets/">Snippets</a>
+  <a href="/mime/">MIME</a>
+  <a href="/api/cv/status">API</a>
+</nav>
+
+<div class="hero">
+  <h1 itemprop="name">Singine · SilkPage</h1>
+  <p class="tagline" itemprop="description">
+    XSLT publishing · Logseq knowledge graph · Semantic CV · MIME-aware XML pipeline
+  </p>
+</div>
+
+<div class="status-bar">
+  Server: <span id="sg-server-status">checking…</span>
+  &nbsp;·&nbsp; webroot: <code id="sg-webroot"></code>
+  &nbsp;·&nbsp; <a href="/api/cv/status">JSON status</a>
+</div>
+
+<div class="cards">
+  <a class="card" href="/cv/">
+    <div class="card-icon">📄</div>
+    <h2>CV</h2>
+    <p>Sina K. Heshmati — Collibra Solution Architect. XSLT-rendered from semantic XML with Gravatar photo. Download PDF, RTF, HTML, or MD.</p>
+    <span class="url">/cv/</span>
+    <div class="tags">
+      <span class="tag">XSLT</span><span class="tag">schema.org</span><span class="tag">h-card</span><span class="tag">PDF</span>
+    </div>
+  </a>
+
+  <a class="card" href="/graph/">
+    <div class="card-icon">🔗</div>
+    <h2>Logseq Graph</h2>
+    <p>Kern knowledge base — 12 pages + journals published as semantic HTML with RDF/XML graph manifest.</p>
+    <span class="url">/graph/</span>
+    <div class="tags">
+      <span class="tag">Logseq</span><span class="tag">RDF</span><span class="tag">SKOS</span>
+    </div>
+  </a>
+
+  <a class="card" href="/snippets/">
+    <div class="card-icon">💻</div>
+    <h2>Snippets</h2>
+    <p>Composable bash commands from singine, silkpage, and sindoc — with SilkPage MIME capability matrix.</p>
+    <span class="url">/snippets/</span>
+    <div class="tags">
+      <span class="tag">singine</span><span class="tag">silkpage</span><span class="tag">bash</span>
+    </div>
+  </a>
+
+  <a class="card" href="/graph/graph-data.xml">
+    <div class="card-icon">🌐</div>
+    <h2>RDF Graph</h2>
+    <p>Machine-readable RDF/XML manifest of the Logseq kern knowledge graph — SKOS concept scheme.</p>
+    <span class="url">/graph/graph-data.xml</span>
+    <div class="tags">
+      <span class="tag">RDF</span><span class="tag">SKOS</span><span class="tag">XML</span>
+    </div>
+  </a>
+
+  <a class="card" href="/cv/cv-data.xml">
+    <div class="card-icon">🏷️</div>
+    <h2>CV Source XML</h2>
+    <p>Semantic XML powering the CV — schema.org Person, FOAF, SKOS skills, Collibra metamodel, dcterms.</p>
+    <span class="url">/cv/cv-data.xml</span>
+    <div class="tags">
+      <span class="tag">XML</span><span class="tag">FOAF</span><span class="tag">Collibra</span>
+    </div>
+  </a>
+
+  <a class="card" href="/cv/cv.xsl">
+    <div class="card-icon">⚙️</div>
+    <h2>XSLT Stylesheet</h2>
+    <p>XSLT 1.0 that transforms cv-data.xml to A4 HTML with toolbar, microformats, and RDFa.</p>
+    <span class="url">/cv/cv.xsl</span>
+    <div class="tags">
+      <span class="tag">XSLT</span><span class="tag">RDFa</span><span class="tag">A4</span>
+    </div>
+  </a>
+</div>
+
+<footer>
+  Served by <strong>SingineServe.java</strong> (javax.xml.transform · XSLT on demand) ·
+  Add to /etc/hosts: <code>127.0.0.1 dev.silkpage.markupware.com</code> ·
+  <a href="https://gravatar.com/sindoc">gravatar.com/sindoc</a> ·
+  <a href="https://lutino.collibra.com">lutino.collibra.com</a> ·
+  <a href="https://github.com/sindoc">github.com/sindoc</a>
+</footer>
+
+<script>
+fetch('/api/cv/status')
+  .then(function(r){return r.json()})
+  .then(function(d){
+    document.getElementById('sg-server-status').textContent = '✓ online · ' + d.timestamp.split('T')[0];
+    document.getElementById('sg-webroot').textContent = d.webroot;
+  })
+  .catch(function(){
+    document.getElementById('sg-server-status').textContent = '✗ offline';
+  });
+</script>
+</body>
+</html>

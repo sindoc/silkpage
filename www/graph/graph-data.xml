@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:sg="https://ontology.lutino.io/singine/1.0/"
+>
+  <skos:ConceptScheme rdf:about="https://ontology.lutino.io/graph/kern">
+    <dcterms:title>Logseq Kern Graph — kern</dcterms:title>
+    <dcterms:source>/Users/sina/ws/ls/kern</dcterms:source>
+    <dcterms:modified>2026-06-16</dcterms:modified>
+  </skos:ConceptScheme>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/campaign___dead-leaves"><dcterms:title>Campaign / Dead-Leaves</dcterms:title><skos:prefLabel>Campaign / Dead-Leaves</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/contents"><dcterms:title>Contents</dcterms:title><skos:prefLabel>Contents</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/infra___ci-cd"><dcterms:title>Infra / Ci-Cd</dcterms:title><skos:prefLabel>Infra / Ci-Cd</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/lutino___app"><dcterms:title>Lutino / App</dcterms:title><skos:prefLabel>Lutino / App</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/lutino___site"><dcterms:title>Lutino / Site</dcterms:title><skos:prefLabel>Lutino / Site</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/lutino___stripe"><dcterms:title>Lutino / Stripe</dcterms:title><skos:prefLabel>Lutino / Stripe</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/lutino___substack"><dcterms:title>Lutino / Substack</dcterms:title><skos:prefLabel>Lutino / Substack</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/lutino___team"><dcterms:title>Lutino / Team</dcterms:title><skos:prefLabel>Lutino / Team</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/metrics___2026-q2"><dcterms:title>Metrics / 2026-Q2</dcterms:title><skos:prefLabel>Metrics / 2026-Q2</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/social___logseq-community"><dcterms:title>Social / Logseq-Community</dcterms:title><skos:prefLabel>Social / Logseq-Community</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/social___threads"><dcterms:title>Social / Threads</dcterms:title><skos:prefLabel>Social / Threads</skos:prefLabel></rdf:Description>
+  <rdf:Description rdf:about="https://ontology.lutino.io/graph/kern/pages/social___x-crew"><dcterms:title>Social / X-Crew</dcterms:title><skos:prefLabel>Social / X-Crew</skos:prefLabel></rdf:Description>
+</rdf:RDF>

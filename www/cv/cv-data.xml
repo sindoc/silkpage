@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  cv-data.xml — Canonical CV data for Sina K. Heshmati
-  Namespace declarations carry semantic intent:
-    schema:  → schema.org Person/JobPosting vocabulary
-    foaf:    → FOAF (Friend of a Friend) ontology
-    skos:    → SKOS concept scheme for skill taxonomy
-    sg:      → Singine platform ontology
-    collibra:→ Collibra metamodel alignment
-    mf:      → microformats2 class intent (applied in XSLT output)
+  cv-data.xml — Canonical CV source for Sina K. Heshmati
+  Sources: LinkedIn Profile (2026-06-15), Gravatar sindoc, lutino.collibra.com
+  Semantic namespaces: schema.org · FOAF · SKOS · Collibra · Singine
 -->
 <cv
   xml:lang="en"
@@ -19,40 +14,45 @@
   xmlns:dcterms="http://purl.org/dc/terms/"
   generated-by="singine cv html"
   schema:encodingFormat="text/html"
+  dcterms:modified="2026-06-16"
 >
 
   <!-- ── Identity ──────────────────────────────────────────────────────────── -->
   <person
     foaf:name="Sina K. Heshmati"
     schema:additionalType="collibra:DataGovernancePractitioner"
-    sg:orcid=""
   >
-    <foaf:title>Ontology Designer · Data &amp; AI Governance Architect · Open Source Engineer</foaf:title>
+    <foaf:title>Collibra Solution Architect · Data &amp; AI Governance · Open Source Engineer</foaf:title>
+    <foaf:img>https://0.gravatar.com/avatar/499e0ee7f83517a6dd88cfc8fd82d0856097450d2cf4bf9a542c399337e22f8e?s=256</foaf:img>
+    <foaf:img-alt>Sina K. Heshmati — gravatar.com/sindoc</foaf:img-alt>
     <schema:homeLocation>London, UK</schema:homeLocation>
+    <schema:email>sina@khakbaz.com</schema:email>
     <foaf:homepage>sina.khakbaz.com</foaf:homepage>
     <sg:telegram>t.me/surenkierkegaard</sg:telegram>
-    <sg:calendly>calendly.com/sina-heshmati</sg:calendly>
-    <schema:email>lutino.io.sindoc42@gmail.com</schema:email>
+    <sg:collibra-profile>lutino.collibra.com</sg:collibra-profile>
+    <sg:gravatar>gravatar.com/sindoc</sg:gravatar>
     <schema:knowsLanguage xml:lang="en">English</schema:knowsLanguage>
     <schema:knowsLanguage xml:lang="fr">French</schema:knowsLanguage>
     <schema:knowsLanguage xml:lang="nl">Dutch</schema:knowsLanguage>
     <schema:knowsLanguage xml:lang="ar">Arabic</schema:knowsLanguage>
-    <foaf:account service="github">github.com/sindoc</foaf:account>
-    <foaf:account service="gravatar">gravatar.com/sindoc</foaf:account>
-    <foaf:account service="stackoverflow">Stack Overflow</foaf:account>
-    <foaf:account service="mastodon">Mastodon</foaf:account>
-    <foaf:account service="substack">lutino@substack.com</foaf:account>
-    <foaf:account service="strava">Strava</foaf:account>
-    <foaf:account service="goodreads">Goodreads</foaf:account>
-    <foaf:account service="patreon">Patreon</foaf:account>
-    <foaf:account service="linktree">linktr.ee/sindoc</foaf:account>
+    <schema:knowsLanguage xml:lang="fa">Persian</schema:knowsLanguage>
+    <schema:knowsLanguage xml:lang="pt">Portuguese</schema:knowsLanguage>
+    <foaf:account service="linkedin" url="https://www.linkedin.com/in/sinaheshmati">linkedin.com/in/sinaheshmati</foaf:account>
+    <foaf:account service="github" url="https://github.com/sindoc">github.com/sindoc</foaf:account>
+    <foaf:account service="gravatar" url="https://gravatar.com/sindoc">gravatar.com/sindoc</foaf:account>
+    <foaf:account service="x" url="https://x.com/sindoc">@sindoc</foaf:account>
+    <foaf:account service="bluesky" url="https://bsky.app/profile/sindoc.bsky.social">sindoc.bsky.social</foaf:account>
+    <foaf:account service="substack" url="https://lutino.substack.com">lutino@substack.com</foaf:account>
+    <foaf:account service="producthunt" url="https://www.producthunt.com/@sindoc">producthunt.com/@sindoc</foaf:account>
+    <foaf:account service="wordpress" url="https://sindoc.wordpress.com">sindoc.wordpress.com</foaf:account>
+    <foaf:account service="website" url="https://sindoc.github.io/website">sindoc.github.io/website</foaf:account>
   </person>
 
   <!-- ── Profile ───────────────────────────────────────────────────────────── -->
   <profile>
-    Seasoned Collibra Solution Architect with 10+ years designing and deploying data governance platforms across enterprise and edge environments. Deep practitioner in semantic technologies — RDF, OWL, SPARQL, ontology modelling — and in the integration layer that connects governance platforms to real-world data flows (MuleSoft / Collibra Connect, Kafka, Java, Python). Founder of Lutino.io, building Singine: an open-source AI agent orchestrator for document ingestion, knowledge graph construction, and natural language querying over administrative data.
+    Certified Collibra Solution Architect (Dec 2024) with 10+ years designing and deploying data governance platforms across enterprise and regulated-industry environments. Deep practitioner in semantic technologies — RDF, OWL, SPARQL, ontology modelling — and in the integration layer that connects governance platforms to real-world data flows (MuleSoft / Collibra Connect, Kafka, Java, Python). Founder of Lutino.io, building Singine: an open-source AI agent orchestrator for document ingestion, knowledge graph construction, and natural language querying over administrative data.
 
-    Beyond the screen: aspiring ranger with a commitment to stewarding open, real-world communities with the same rigour applied to data. Brings four languages, a background in logic and anthropology, and a documented twenty-year history of independent open-source contribution.
+    Beyond the screen: aspiring ranger with a commitment to stewarding open, real-world communities with the same rigour applied to data. Brings six languages, a background in logic and philosophy (VUB 2008–2012), and a twenty-year history of independent open-source contribution.
   </profile>
 
   <!-- ── Skills ────────────────────────────────────────────────────────────── -->
@@ -97,18 +97,31 @@
   <!-- ── Experience ────────────────────────────────────────────────────────── -->
   <experience>
     <position
+      schema:jobTitle="AI &amp; Data Governance Specialist"
+      collibra:role="AIGovernanceSpecialist"
+    >
+      <company>AI Markets Group</company>
+      <location>London, UK</location>
+      <start>2024</start>
+      <end>Present</end>
+      <achievement>Advising on AI governance frameworks and data quality programmes for financial markets clients; applying Collibra DGC operating model principles to AI asset cataloguing and lineage tracking.</achievement>
+      <achievement>Bridging semantic ontology expertise (RDF, OWL, SKOS) with emerging AI regulation requirements (EU AI Act, DORA); translating compliance requirements into implementable metamodel extensions.</achievement>
+      <achievement>Designing MCP-based agent interfaces for governance workflow automation; integrating Collibra REST APIs with Python and Java orchestration layers.</achievement>
+    </position>
+
+    <position
       schema:jobTitle="Collibra Solution Architect"
       collibra:role="SolutionArchitect"
     >
-      <company>[Collibra Partner / Enterprise Client]</company>
-      <location>London / Remote</location>
-      <start>[Start Year]</start>
-      <end>[End Year]</end>
-      <achievement>Designed and delivered end-to-end Collibra implementations: operating model definition, asset type taxonomy, domain structure, attribute model, and workflow orchestration.</achievement>
-      <achievement>Authored Collibra metamodels aligned to DCAT, PROV-O, and FIBO for regulated-industry data catalogues; versioned via YAML schema registry with semantic diff tooling.</achievement>
+      <company>Collibra Partner Ecosystem — Enterprise Clients</company>
+      <location>London · Brussels · Remote</location>
+      <start>2014</start>
+      <end>2024</end>
+      <achievement>Designed and delivered end-to-end Collibra implementations for regulated-industry clients: operating model definition, asset type taxonomy, domain structure, attribute model, and workflow orchestration.</achievement>
+      <achievement>Authored Collibra metamodels aligned to DCAT, PROV-O, and FIBO for financial and regulatory data catalogues; versioned via YAML schema registry with semantic diff tooling.</achievement>
       <achievement>Led Collibra Connect (Mule ESB OEM) integration streams: flow authoring in Anypoint Studio, connector development, .jar deployment lifecycle, and migration planning to Collibra Marketplace Spring Boot templates.</achievement>
       <achievement>Operated Collibra Edge deployments across distributed client environments; managed apps/ deployment directories and Mule runtime lifecycle.</achievement>
-      <achievement>Advised clients on the Keep-vs-Migrate decision framework for legacy Mule flows, reducing unnecessary rewrite spend.</achievement>
+      <achievement>Advised clients on the Keep-vs-Migrate decision framework for legacy Mule flows, reducing unnecessary rewrite spend. Built the Mule Runtime 4.10 CE fork for hosting legacy Collibra Connect flows.</achievement>
     </position>
 
     <position
@@ -117,13 +130,12 @@
     >
       <company>Lutino.io / Plain Source</company>
       <location>London</location>
-      <start>[Start Year]</start>
+      <start>2020</start>
       <end>Present</end>
       <achievement>Founded Plain Source; launched Lutino.io (subscription management platform, v1.055) and Singine (AI agent orchestrator for document processing and knowledge graph construction).</achievement>
-      <achievement>Architected Singine as a polyglot, multi-layer platform: Clojure core (OCR pipeline, RDF triple generation, temporal algebra, Union-Find entity resolution, embeddings), Python CLI bridge, Node.js MCP gateway, GraphQL API.</achievement>
-      <achievement>Designed the Singine XML wire protocol (sg:request / sg:response), canonical namespace registry (sg:, sp:, lu: URIs), and metamodel alignment rules across Singine, SilkPage, and Collibra dimensions.</achievement>
+      <achievement>Architected Singine as a polyglot, multi-layer platform: Clojure core, Python CLI bridge, Node.js MCP gateway, GraphQL API; designed the Singine XML wire protocol and canonical namespace registry.</achievement>
       <achievement>Built singine-mcp: an MCP stdio server exposing infrastructure and LinkedIn tools as typed MCP tools (Zod schemas, XML response parsing, idempotent revert tokens).</achievement>
-      <achievement>Shipped SilkPage (XML/XSLT publishing framework, MarkupWare v0.6.0) and open-source governance tooling (collibra Java repo: edge deployment, contract lifecycle, semantic pipelines).</achievement>
+      <achievement>Shipped SilkPage (XML/XSLT publishing framework, MarkupWare v0.6.0) and open-source governance tooling including this live CV system.</achievement>
     </position>
 
     <position
@@ -134,33 +146,32 @@
       <location>Independent</location>
       <start>2001</start>
       <end>Present</end>
-      <achievement>Maintained the MarkupWare portfolio of open-source markup and programming language projects under the Khakbaz Foundation (est. 2001).</achievement>
+      <achievement>Maintained the MarkupWare portfolio of open-source markup and programming language projects under the Khakbaz Foundation (est. 2001); twenty-year contributor to open standards communities.</achievement>
       <achievement>Designed and published the datatech-wiki-kg knowledge graph supporting Wikipedia contributions on data technology topics.</achievement>
-      <achievement>Contributed to AI benchmarking (ai repo), Emacs MCP explorer tooling, and the SinLisp runtime (Lisp dialect for singine workflow orchestration).</achievement>
-      <achievement>Active member of open-source communities across GitHub, Stack Overflow, Mastodon, and Patreon.</achievement>
+      <achievement>Contributed to AI benchmarking, Emacs MCP explorer tooling, and the SinLisp runtime (Lisp dialect for singine workflow orchestration).</achievement>
     </position>
   </experience>
 
   <!-- ── Projects ──────────────────────────────────────────────────────────── -->
   <projects>
-    <project sg:repo="sindoc/singine">
+    <project sg:repo="sindoc/singine" sg:url="https://github.com/sindoc/singine">
       <name>Singine</name>
       <stack>Python · Clojure · Node.js · Kafka · RDF</stack>
       <description>AI agent orchestrator; document ingestion → knowledge graph → NL query</description>
     </project>
-    <project sg:repo="sindoc/silkpage">
+    <project sg:repo="sindoc/silkpage" sg:url="https://github.com/sindoc/silkpage">
       <name>SilkPage</name>
-      <stack>XSLT · XSD · XML</stack>
-      <description>Page/site builder and publishing framework (MarkupWare v0.6.0)</description>
+      <stack>XSLT · XSD · XML · Java</stack>
+      <description>Page/site builder and publishing framework (MarkupWare v0.6.0); powers this CV</description>
     </project>
-    <project sg:repo="sindoc/singine">
+    <project sg:repo="sindoc/singine" sg:url="https://github.com/sindoc/singine">
       <name>singine-mcp</name>
       <stack>Node.js · MCP SDK · Zod</stack>
       <description>MCP stdio server: infra hardening + LinkedIn tools as typed MCP tools</description>
     </project>
-    <project sg:repo="sindoc/collibra">
+    <project sg:repo="sindoc/collibra" sg:url="https://github.com/sindoc/collibra">
       <name>Collibra CE Build</name>
-      <stack>Java · Maven · Mule 4 Kernel</stack>
+      <stack>Java 17 · Maven · Mule 4 Kernel</stack>
       <description>Fork of Mule Runtime 4.10 for hosting legacy Collibra Connect flows</description>
     </project>
     <project sg:repo="sindoc/singine">
@@ -170,7 +181,7 @@
     </project>
     <project sg:repo="sindoc/datatech-wiki-kg">
       <name>datatech-wiki-kg</name>
-      <stack>Python · RDF</stack>
+      <stack>Python · RDF · SPARQL</stack>
       <description>Knowledge graph backing Wikipedia data technology article contributions</description>
     </project>
   </projects>
@@ -178,17 +189,27 @@
   <!-- ── Education ─────────────────────────────────────────────────────────── -->
   <education>
     <degree>
-      <level>[Degree]</level>
-      <field>[Field — e.g. Computer Science / Mathematics / Linguistics]</field>
-      <institution>[University]</institution>
-      <year>[Year]</year>
+      <level>Master's</level>
+      <field>Logic, Philosophy &amp; Linguistics</field>
+      <institution>Vrije Universiteit Brussel (VUB)</institution>
+      <location>Brussels, Belgium</location>
+      <start>2008</start>
+      <end>2012</end>
     </degree>
   </education>
 
   <!-- ── Certifications ────────────────────────────────────────────────────── -->
   <certifications>
-    <cert collibra:level="Ranger">Collibra Ranger</cert>
-    <cert>[Other certifications: AWS, TOGAF, data governance frameworks]</cert>
+    <cert
+      collibra:level="SolutionArchitect"
+      issued="2024-12"
+      expires="2026-12"
+      issuer="Collibra"
+    >Collibra Solution Architect Certification</cert>
+    <cert
+      issued="2016-09"
+      issuer="MIT"
+    >MIT Fintech: Future Commerce</cert>
   </certifications>
 
   <!-- ── Personal ──────────────────────────────────────────────────────────── -->

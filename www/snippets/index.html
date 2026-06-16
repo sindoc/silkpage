@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Singine Snippets — dev.silkpage.markupware.com</title>
+<style>
+  :root {--ink:#1a1a2e;--mid:#3a3a5c;--accent:#4a6fa5;--bg:#e8ecf0;--rule:#c8d0dc;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,serif}
+  nav#sg-nav{background:var(--ink);color:#fff;padding:8px 20px;display:flex;gap:16px;align-items:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;position:sticky;top:0;z-index:10}
+  nav#sg-nav a{color:#ccc;text-decoration:none} nav#sg-nav a:hover{color:#fff}
+  nav#sg-nav .brand{color:var(--accent);font-weight:700;margin-right:8px}
+  main{max-width:900px;margin:24px auto;padding:0 20px 60px}
+  h1{font-size:20pt;margin-bottom:8px}
+  h2{font-size:13pt;color:var(--accent);margin:24px 0 10px;border-bottom:1px solid var(--rule);padding-bottom:4px}
+  h3{font-size:10.5pt;font-weight:700;margin:0}
+  .snippet-card{background:#fff;border-radius:6px;margin-bottom:16px;box-shadow:0 1px 6px rgba(26,26,46,.1);overflow:hidden}
+  .snippet-header{padding:12px 16px 8px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+  .badges{display:flex;gap:6px;flex-shrink:0;margin-top:4px}
+  .repo-badge{background:var(--accent);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:7pt;padding:2px 7px;border-radius:3px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .file-badge{background:#dde0e8;color:var(--mid);font-family:'Courier New',monospace;font-size:7.5pt;padding:2px 7px;border-radius:3px}
+  pre.code-block{background:#1a1a2e;color:#c8d0e8;font-family:'Courier New',monospace;font-size:8.5pt;padding:14px 18px;overflow-x:auto;line-height:1.55;tab-size:2}
+  code{background:none;color:inherit}
+  .mime-table{width:100%;border-collapse:collapse;font-size:9pt;margin-top:8px}
+  .mime-table th{text-align:left;font-family:'Helvetica Neue',Arial,sans-serif;font-size:7.5pt;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;padding:4px 8px 4px 0;border-bottom:1px solid var(--rule)}
+  .mime-table td{padding:3px 8px 3px 0;border-bottom:1px solid #eef;vertical-align:top}
+  .mime-table td:first-child code{background:#dde0e8;color:var(--ink)}
+  .handler{display:inline-block;background:var(--accent);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:7pt;padding:1px 5px;border-radius:2px;font-weight:700}
+</style>
+</head>
+<body>
+<nav id="sg-nav">
+  <span class="brand">sg:snippets</span>
+  <a href="/cv/">CV</a>
+  <a href="/graph/">Graph</a>
+  <a href="/mime/">MIME</a>
+  <a href="/">Home</a>
+</nav>
+<main>
+  <h1>Singine · SilkPage · sindoc</h1>
+  <p style="color:var(--mid);font-family:'Helvetica Neue',Arial,sans-serif;font-size:9pt;margin:6px 0 20px">
+    Composable bash commands from singine, silkpage, and sindoc repositories
+  </p>
+
+  <h2>Commands</h2>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>Install singine</h3>
+  <div class="badges"><span class="repo-badge">singine</span> <span class="file-badge">Makefile / README</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash"># Install singine CLI into ~/.local/bin
+make install          # sh-compatible
+make install-bash     # bash-specific
+make install-workstation  # + git-filter-repo
+
+# After install, source the dotfile:
+source ~/.singinerc
+singine --help
+
+# Or run without installing:
+/usr/bin/python3 -m singine serve
+/usr/bin/python3 -m singine cv pdf --output ~/Downloads/cv.pdf</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>singine serve — start the SilkPage appserver</h3>
+  <div class="badges"><span class="repo-badge">singine</span> <span class="file-badge">bin/SingineServe.java</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash"># Start the Java HTTP appserver (XSLT on demand)
+singine serve                       # port 4242, silkpage www/
+singine serve --port 8080           # custom port
+singine serve --webroot /path/to/www
+
+# Or directly:
+java bin/SingineServe.java 4242 /path/to/www
+
+# Check status:
+curl http://localhost:4242/api/cv/status
+
+# Download CV formats via API:
+curl 'http://localhost:4242/api/cv/download?format=pdf' -o cv.pdf
+curl 'http://localhost:4242/api/cv/download?format=rtf' -o cv.rtf</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>singine cv — CV generation</h3>
+  <div class="badges"><span class="repo-badge">singine</span> <span class="file-badge">singine/cv.py</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash">singine cv html                     # print path to cv/index.html
+singine cv md                       # print path to cv-sina-heshmati.md
+singine cv rtf --output ~/cv.rtf    # generate RTF (pure Python)
+singine cv pdf --output ~/cv.pdf    # PDF via Chrome headless
+singine cv serve --port 4242        # start XSLT server</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>singine install baremetal</h3>
+  <div class="badges"><span class="repo-badge">singine</span> <span class="file-badge">singine/command.py</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash"># Full machine bootstrap: pip install, dotfile, launcher, Node upgrade
+singine install baremetal
+
+# What it does:
+# 1. python3 -m pip install -e /path/to/singine  (editable)
+# 2. Creates ~/.singinerc  (PATH, aliases, env vars)
+# 3. Adds  source ~/.singinerc  to ~/.bash_profile
+# 4. Installs ~/.local/bin/singine  launcher
+# 5. brew upgrade node  (background)
+
+# Apply to current shell:
+source ~/.singinerc
+which singine</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>singine graph publish — Logseq graph to HTML</h3>
+  <div class="badges"><span class="repo-badge">singine</span> <span class="file-badge">singine/graph.py</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash"># Publish ~/ws/ls/kern to www/graph/
+singine graph publish
+singine graph publish --graph ~/ws/ls/kern
+singine graph publish --out /path/to/www/graph
+
+# Output:
+#   www/graph/index.html         landing page
+#   www/graph/pages/*.html       individual pages
+#   www/graph/journals/*.html    journal entries
+#   www/graph/graph-data.xml     RDF/XML graph manifest</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>singine mime xml — MIME-to-XML tree</h3>
+  <div class="badges"><span class="repo-badge">singine</span> <span class="file-badge">singine/mime_xml.py</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash">singine mime xml --root ~/ws/singine/main/singine --out /tmp/tree.xml
+singine mime html                   # show MIME capabilities table
+singine mime file path/to/file.py   # wrap single file as XML</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>SilkPage build — Ant / XProc pipeline</h3>
+  <div class="badges"><span class="repo-badge">silkpage</span> <span class="file-badge">build.sh / Makefile</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash"># Build the SilkPage site (requires Ant + Saxon)
+make docs-html         # HTML docs output
+make website-preview   # Ant-based preview
+./build.sh             # XProc/Calabash full pipeline
+
+# Dependencies check:
+make check
+# → checks: make xsltproc xmllint tidy zip java javac ant
+
+# XSLT pipeline:
+#   layout.xml → autolayout.xml  (Saxon 12 HE via Calabash)
+#   index.xml + main.xsl → dist/website/  (Saxon 6.5.3 Docbook-Website)</code></pre>
+</div>
+<div class="snippet-card">
+<div class="snippet-header">
+  <h3>Build Mule Runtime CE (Collibra Connect legacy)</h3>
+  <div class="badges"><span class="repo-badge">mule (fork)</span> <span class="file-badge">build.sh</span></div>
+</div>
+<pre class="code-block"><code class="lang-bash"># In ~/ws/mule/fork/mule/
+./build.sh                        # fast: skip tests, style, GPG
+./build.sh -pl core               # single module
+./build.sh -DskipTests=false      # with unit tests
+
+# Requirements: Java 17+ (SDKMAN), Maven 3.9+
+# build.sh auto-patches BOM POMs and clears .lastUpdated locks</code></pre>
+</div>
+
+
+  <h2>SilkPage / Forrest MIME Capabilities</h2>
+  <p style="font-size:9pt;color:var(--mid);margin:6px 0 10px">
+    How SilkPage maps MIME types to pipeline handlers — used by <code>singine mime xml</code>
+    to generate semantic XML from any file tree.
+  </p>
+<table class="mime-table">
+<thead><tr><th>MIME Type</th><th>Handler</th><th>XSL / Language</th></tr></thead>
+<tbody><tr><td><code>application/json</code></td><td><span class="handler">code-block</span></td><td>json</td></tr>
+<tr><td><code>application/ld+json</code></td><td><span class="handler">code-block</span></td><td>json-ld</td></tr>
+<tr><td><code>application/pdf</code></td><td><span class="handler">binary</span></td><td>—</td></tr>
+<tr><td><code>application/rdf+xml</code></td><td><span class="handler">rdf-html</span></td><td>site/silkpage.markupware.com/rdf-html.xsl</td></tr>
+<tr><td><code>application/toml</code></td><td><span class="handler">code-block</span></td><td>toml</td></tr>
+<tr><td><code>application/x-clojure</code></td><td><span class="handler">code-block</span></td><td>clojure</td></tr>
+<tr><td><code>application/x-clojurescript</code></td><td><span class="handler">code-block</span></td><td>clojurescript</td></tr>
+<tr><td><code>application/x-yaml</code></td><td><span class="handler">code-block</span></td><td>yaml</td></tr>
+<tr><td><code>application/xhtml+xml</code></td><td><span class="handler">xslt</span></td><td>core/src/xsl/butterfly/main.xsl</td></tr>
+<tr><td><code>application/xml</code></td><td><span class="handler">xslt</span></td><td>core/src/xsl/butterfly/main.xsl</td></tr>
+<tr><td><code>application/xslt+xml</code></td><td><span class="handler">identity</span></td><td>—</td></tr>
+<tr><td><code>text/html</code></td><td><span class="handler">static</span></td><td>—</td></tr>
+<tr><td><code>text/plain</code></td><td><span class="handler">source-wrap</span></td><td>—</td></tr>
+<tr><td><code>text/turtle</code></td><td><span class="handler">code-block</span></td><td>turtle</td></tr>
+<tr><td><code>text/x-ballerina</code></td><td><span class="handler">code-block</span></td><td>ballerina</td></tr>
+<tr><td><code>text/x-java-source</code></td><td><span class="handler">code-block</span></td><td>java</td></tr>
+<tr><td><code>text/x-makefile</code></td><td><span class="handler">code-block</span></td><td>makefile</td></tr>
+<tr><td><code>text/x-markdown</code></td><td><span class="handler">md-xslt</span></td><td>—</td></tr>
+<tr><td><code>text/x-python</code></td><td><span class="handler">code-block</span></td><td>python</td></tr>
+<tr><td><code>text/x-rust</code></td><td><span class="handler">code-block</span></td><td>rust</td></tr>
+<tr><td><code>text/x-sh</code></td><td><span class="handler">code-block</span></td><td>bash</td></tr>
+<tr><td><code>text/xml</code></td><td><span class="handler">xslt</span></td><td>core/src/xsl/butterfly/main.xsl</td></tr></tbody>
+</table>
+</main>
+</body>
+</html>
