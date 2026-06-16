@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sina K. Heshmati — CV</title>
+  <style>
+    /* ── Reset & base ────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #1a1a2e;
+      --mid:      #3a3a5c;
+      --accent:   #4a6fa5;
+      --rule:     #c8d0dc;
+      --bg:       #e8ecf0;
+      --page-w:   210mm;
+      --page-h:   297mm;
+      --pad-x:    16mm;
+      --pad-y:    14mm;
+      font-size:  10pt;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: var(--ink);
+      padding: 12mm 0 24mm;
+    }
+
+    /* ── A4 page shell ────────────────────────────────────────────────────── */
+    .page {
+      width: var(--page-w);
+      height: var(--page-h);
+      padding: var(--pad-y) var(--pad-x);
+      margin: 0 auto 8mm;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(26,26,46,.18);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Page label in the gutter */
+    .page::before {
+      content: attr(data-page);
+      position: absolute;
+      top: 4mm;
+      right: 5mm;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 7pt;
+      color: #aab;
+      letter-spacing: .05em;
+    }
+
+    /* ── Page-break label between pages ────────────────────────────────────── */
+    .page-break-label {
+      width: var(--page-w);
+      margin: 0 auto;
+      text-align: center;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 7.5pt;
+      color: #8899aa;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 3mm 0;
+      border-top: 1px dashed #bbc;
+      border-bottom: 1px dashed #bbc;
+    }
+
+    /* ── Typography ─────────────────────────────────────────────────────────── */
+    h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .tagline {
+      font-size: 9.5pt;
+      color: var(--accent);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: .04em;
+      margin-top: 1.5mm;
+    }
+
+    .contact-bar {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 8pt;
+      color: var(--mid);
+      margin-top: 2mm;
+      line-height: 1.6;
+    }
+
+    .contact-bar span { margin-right: 3.5mm; }
+    .contact-bar a    { color: var(--accent); text-decoration: none; }
+
+    h2 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 0.4mm solid var(--rule);
+      padding-bottom: 1mm;
+      margin-top: 5mm;
+      margin-bottom: 2.5mm;
+    }
+
+    h2:first-of-type { margin-top: 4mm; }
+
+    h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .role-meta {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 8pt;
+      color: var(--mid);
+      margin-bottom: 1.5mm;
+    }
+
+    p, li {
+      font-size: 9pt;
+      line-height: 1.55;
+      color: var(--mid);
+    }
+
+    ul { padding-left: 3.5mm; }
+    li { margin-bottom: .8mm; }
+    li::marker { color: var(--accent); }
+
+    .experience-block { margin-bottom: 4mm; }
+
+    /* ── Skills grid ──────────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2mm 4mm;
+      margin-top: 1mm;
+    }
+
+    .skill-col h4 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5mm;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .skill-col ul { padding-left: 0; list-style: none; }
+    .skill-col li { font-size: 8.5pt; line-height: 1.5; }
+    .skill-col li::before { content: "· "; color: var(--accent); }
+
+    /* ── Projects table ───────────────────────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1mm;
+    }
+
+    th {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink);
+      border-bottom: 0.3mm solid var(--rule);
+      padding-bottom: 1mm;
+      text-align: left;
+    }
+
+    td {
+      font-size: 8.5pt;
+      color: var(--mid);
+      padding: 1.2mm 0;
+      border-bottom: 0.2mm solid #edf0f4;
+      vertical-align: top;
+    }
+
+    td:first-child { font-weight: 600; color: var(--ink); width: 28mm; }
+    td:nth-child(2) { width: 26mm; font-family: 'Courier New', monospace; font-size: 7.5pt; padding-right: 2mm; }
+
+    /* ── Two-col layout for lower sections ───────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 8mm;
+    }
+
+    /* ── Print ────────────────────────────────────────────────────────────── */
+    @media print {
+      body { background: none; padding: 0; }
+      .page { box-shadow: none; margin: 0; page-break-after: always; }
+      .page-break-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ PAGE 1 ═══════════════════════════════ -->
+<div class="page" data-page="1 / 2">
+
+  <!-- Header -->
+  <div>
+    <h1>Sina K. Heshmati</h1>
+    <div class="tagline">Collibra Solution Architect &nbsp;·&nbsp; Ontology Designer &nbsp;·&nbsp; Data &amp; AI Governance Engineer</div>
+    <div class="contact-bar">
+      <span>London, UK</span>
+      <span><a href="https://sina.khakbaz.com">sina.khakbaz.com</a></span>
+      <span><a href="https://gravatar.com/sindoc">gravatar.com/sindoc</a></span>
+      <span><a href="https://github.com/sindoc">github.com/sindoc</a></span>
+      <span>English · French · Dutch · Arabic</span>
+    </div>
+  </div>
+
+  <!-- Profile -->
+  <h2>Professional Profile</h2>
+  <p>
+    Seasoned Collibra Solution Architect with deep expertise in data governance platform design,
+    ontology engineering, and the integration layer connecting governance to real-world data flows.
+    Practitioner in semantic technologies — RDF, OWL, SPARQL, JSON-LD — and polyglot engineer
+    spanning Java, Python, Clojure, and Rust. Founder of <strong>Lutino.io</strong>, building
+    <strong>Singine</strong>: an open-source AI agent orchestrator for document ingestion, knowledge
+    graph construction, and natural language querying over administrative data. Twenty-year record
+    of independent open-source contribution through the Khakbaz Foundation / MarkupWare portfolio.
+  </p>
+
+  <!-- Skills -->
+  <h2>Core Competencies</h2>
+  <div class="skills-grid">
+    <div class="skill-col">
+      <h4>Governance &amp; Semantics</h4>
+      <ul>
+        <li>Collibra DGC &amp; Operating Model</li>
+        <li>Collibra Edge &amp; Marketplace</li>
+        <li>Ontology design (OWL, SKOS, DCAT, PROV)</li>
+        <li>SPARQL · JSON-LD · Turtle</li>
+        <li>Metamodel authoring &amp; versioning</li>
+        <li>Contract &amp; Lineage modelling</li>
+        <li>FIBO · ODRL integration</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>Integration &amp; Engineering</h4>
+      <ul>
+        <li>MuleSoft Mule ESB · Collibra Connect</li>
+        <li>Kafka event streaming</li>
+        <li>GraphQL &amp; REST API design</li>
+        <li>MCP (Model Context Protocol)</li>
+        <li>Edge brokering &amp; cert management</li>
+        <li>XML · XSLT · XSD pipelines</li>
+        <li>iText PDF generation</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>Platforms &amp; Tooling</h4>
+      <ul>
+        <li>Java · Python · Clojure · Rust</li>
+        <li>Node.js · TypeScript · Ballerina</li>
+        <li>Maven · Ant · Gradle · Docker</li>
+        <li>Ubuntu · nginx · Hetzner VPS</li>
+        <li>Logseq · Emacs</li>
+        <li>RDF triple stores</li>
+        <li>Git · Ansible</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <h2>Professional Experience</h2>
+
+  <div class="experience-block">
+    <h3>Collibra Solution Architect — <em>[Client / Partner Firm]</em></h3>
+    <div class="role-meta">[Start Year] – [End Year] &nbsp;·&nbsp; London / Remote</div>
+    <ul>
+      <li>Designed end-to-end Collibra implementations: operating model, asset type taxonomy, domain structure, workflow orchestration, and attribute model aligned to client data strategy.</li>
+      <li>Authored Collibra metamodels against DCAT, PROV-O, and FIBO for regulated-industry data catalogues; versioned via YAML schema registry with semantic diff tooling.</li>
+      <li>Led Collibra Connect (Mule ESB OEM) integration streams: flow authoring in Anypoint Studio, connector development, <code>.jar</code> lifecycle management, and Mule 4 runtime deployment.</li>
+      <li>Operated Collibra Edge across distributed client environments; advised on Keep-vs-Migrate framework for legacy Mule flows to Collibra Marketplace Spring Boot templates.</li>
+      <li>Delivered metamodel alignment validation tooling and bats-based integration test suites for governance platform regression coverage.</li>
+    </ul>
+  </div>
+
+  <div class="experience-block">
+    <h3>Founder &amp; Principal Engineer — <em>Lutino.io / Plain Source</em></h3>
+    <div class="role-meta">[Start Year] – Present &nbsp;·&nbsp; London</div>
+    <ul>
+      <li>Founded Plain Source; launched Lutino.io (subscription management, v1.055) and Singine — an AI agent orchestrator for administrative document processing and knowledge graph construction.</li>
+      <li>Architected Singine as a polyglot multi-layer platform: Clojure core (OCR, RDF triple generation, temporal algebra, Union-Find entity resolution), Python CLI bridge, Node.js MCP gateway, GraphQL API.</li>
+      <li>Designed the Singine XML wire protocol (<code>sg:request / sg:response</code>), canonical namespace registry, and metamodel alignment rules spanning Singine, SilkPage, and Collibra dimensions.</li>
+    </ul>
+  </div>
+
+</div><!-- /page 1 -->
+
+<div class="page-break-label">— page break —</div>
+
+<!-- ═══════════════════════════════════ PAGE 2 ═══════════════════════════════ -->
+<div class="page" data-page="2 / 2">
+
+  <!-- Experience continued -->
+  <h2>Professional Experience <span style="font-weight:400;font-size:8pt;text-transform:none;letter-spacing:0">(continued)</span></h2>
+
+  <div class="experience-block">
+    <h3>Open Source Engineer &amp; Ontology Practitioner — <em>Khakbaz Foundation / MarkupWare</em></h3>
+    <div class="role-meta">2001 – Present &nbsp;·&nbsp; Independent</div>
+    <ul>
+      <li>Maintained the MarkupWare portfolio (est. 2001): SilkPage XML/XSLT publishing framework, singine-mcp MCP stdio server, and the SinLisp runtime (Lisp dialect for workflow orchestration).</li>
+      <li>Built <code>singine-mcp</code>: MCP stdio server exposing infrastructure hardening (UFW, SSH, fail2ban, nginx) and LinkedIn tools as typed MCP tools with Zod schemas and XML response parsing.</li>
+      <li>Published <code>datatech-wiki-kg</code>: knowledge graph supporting Wikipedia data technology article contributions; Emacs MCP explorer tooling; AI benchmarking repository.</li>
+      <li>Active contributor across GitHub, Stack Overflow, Mastodon, and Patreon; Khakbaz Foundation member since 2001.</li>
+    </ul>
+  </div>
+
+  <!-- Projects -->
+  <h2>Key Projects</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Project</th>
+        <th>Stack</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Singine</td>
+        <td>Python · Clojure · Kafka · RDF</td>
+        <td>AI agent orchestrator — document ingestion → knowledge graph → NL query</td>
+      </tr>
+      <tr>
+        <td>SilkPage</td>
+        <td>XSLT · XSD · XML</td>
+        <td>Page/site builder and publishing framework (MarkupWare v0.6.0)</td>
+      </tr>
+      <tr>
+        <td>singine-mcp</td>
+        <td>Node.js · MCP SDK · Zod</td>
+        <td>MCP stdio server: infra hardening + LinkedIn tools as typed MCP tools</td>
+      </tr>
+      <tr>
+        <td>mcp-photo suite</td>
+        <td>Python · MCP SDK</td>
+        <td>Four MCP servers: iCloud Photos, Google Photos, SilkPage Photo, photo-scan</td>
+      </tr>
+      <tr>
+        <td>Collibra CE Build</td>
+        <td>Java · Maven · Mule 4</td>
+        <td>Fork of Mule Runtime 4.10 for hosting legacy Collibra Connect flows</td>
+      </tr>
+      <tr>
+        <td>datatech-wiki-kg</td>
+        <td>Python · RDF</td>
+        <td>Knowledge graph backing Wikipedia data technology article contributions</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Education + Certifications (two-col) -->
+  <div class="two-col">
+    <div>
+      <h2>Education</h2>
+      <div class="experience-block">
+        <h3>[Degree], [Field]</h3>
+        <div class="role-meta">[University] &nbsp;·&nbsp; [Year]</div>
+      </div>
+    </div>
+    <div>
+      <h2>Certifications</h2>
+      <div class="experience-block">
+        <ul>
+          <li>[Collibra certification — confirm tier]</li>
+          <li>[Additional certifications]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Languages + Communities (two-col) -->
+  <div class="two-col">
+    <div>
+      <h2>Languages</h2>
+      <p>English &nbsp;·&nbsp; French &nbsp;·&nbsp; Dutch &nbsp;·&nbsp; Arabic</p>
+    </div>
+    <div>
+      <h2>Selected Profiles</h2>
+      <p style="font-size:8.5pt;line-height:1.8">
+        <a href="https://github.com/sindoc">github.com/sindoc</a><br/>
+        <a href="https://gravatar.com/sindoc">gravatar.com/sindoc</a><br/>
+        <a href="https://lutino@substack.com">Substack: lutino</a> &nbsp;·&nbsp; Strava &nbsp;·&nbsp; Mastodon
+      </p>
+    </div>
+  </div>
+
+  <!-- Personal -->
+  <h2>Personal</h2>
+  <p>
+    Mathematician by disposition, logician by training, writer by habit. Drawn to environments that
+    reward patience, situational awareness, and long-horizon stewardship — qualities shared by
+    robust data governance programmes and old-growth forests alike. Aspiring ranger: actively
+    pursuing the skills and credentials to work in conservation and land stewardship alongside
+    a technical career. Member of open-source and real-world communities for twenty-five years.
+    Interests: mathematics, linguistics, anthropology, history, action &amp; adventure.
+  </p>
+
+</div><!-- /page 2 -->
+
+</body>
+</html>
